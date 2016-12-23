@@ -1,0 +1,152 @@
+<include  file='public:header'/>
+<link href="__TMPL__statics/css/skin_0.css" rel="stylesheet" type="text/css"/>
+<style>
+.item-title span{ background:#F00; color:#FFF; padding:5px 15px; margin-right:40px;}
+</style>
+
+<div class="page">
+
+    <div class="fixed-bar">
+        <div class="item-title">
+            <h3>系统信息</h3>
+            <span style="float:right">尊敬的&nbsp;<{$admin.username}>&nbsp;您上次登录IP跟本次登录IP地址不一致，建议您立即修改密码！</span>
+        </div>
+    </div>
+    <div class="fixed-empty"></div>
+
+    <div class="info-panel">
+
+
+
+        <dl class="member">
+            <dt>
+                <div class="ico"><i></i><sub title="会员总数"><span><em><{$counts.users|default=0}></em></span></sub></div>
+                <h3>会员</h3>
+                <h5>今日新增/已验证手机号</h5>
+            </dt>
+            <dd>
+                <ul>
+                    <li class="w50pre normal"><a href="<{:U('admin/user/index')}>">今日新增<sub><em><{$counts.totay_user|default=0}></em></sub></a></li>
+                    <li class="w50pre normal"><a href="<{:U('admin/user/index')}>">已验证手机号<sub><em><{$counts.user_moblie|default=0}></em></sub></a>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+
+        <dl class="shop">
+            <dt>
+            <div class="ico"><i></i><sub title="商家总数"><span><em><{$counts.shops|default=0}></em></span></sub></div>
+            <h3>店铺</h3>
+            <h5>今日审核/待审核/待认领/已认证</h5>
+            </dt>
+            <dd>
+                <ul>
+                    <li class="w25pre normal"><a href="<{:U('admin/shop/index')}>">今日审核<sub><em><{$counts.totay_shop|default=0}></em></sub></a></li>
+                    <li class="w25pre normal"><a href="<{:U('admin/shop/apply')}>">待审核<sub><em><{$counts.totay_shop_audit|default=0}></em></sub></a></li>
+                    <li class="w25pre normal"><a href="<{:U('admin/shop/recognition')}>">待认领<sub><em><{$counts.shoprecognition|default=0}></em></sub></a></li>
+                    <li class="w25pre normal"><a href="<{:U('admin/audit/index')}>">已认证<sub><em><{$counts.shop_audit|default=0}></em></sub></a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl class="goods">
+            <dt>
+            <div class="ico"><i></i><sub title="商品总数"><span><em><{$counts['goods']|default=0}></em></span></sub></div>
+            <h3>商品</h3>
+            <h5>今日新增/待审核/订单</h5>
+            </dt>
+            <dd>
+                <ul>
+                    <li class="w33pre normal"><a href="<{:U('admin/goods/index')}>">今日新增<sub><em><{$counts['goods_day']|default=0}></em></sub></a></li>
+                    <li class="w34pre normal"><a href="<{:U('admin/goods/index')}>">待审核<sub><em><{$counts['goods_audit']|default=0}></em></sub></a></li>
+                    <li class="w33pre normal"><a href="<{:U('admin/order/index')}>">订单<sub><em><{$counts['order']|default=0}></em></sub></a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl class="trade">
+            <dt>
+            <div class="ico"><i></i><sub title="今日资金流动次数"><span><em><{$counts['moneylogs']|default=0}></em></span></sub></div>
+            <h3>资金</h3>
+            <h5>总资金/今日提现/待审提现</h5>
+            </dt>
+            <dd>
+                <ul>
+                    <li class="w33pre"><a href="<{:U('admin/usermoneylogs/index')}>">总资金<sub><em></em></sub></a></li>
+                    <li class="w33pre normal"><a href="<{:U('admin/usercash/index')}>">今日提现<sub><em><{:round($counts['money_cash_day']/100,2)}></em></sub></a></li>
+                    <li class="w33pre normal"><a href="<{:U('admin/usercash/index')}>">待审提现<sub><em><{$counts['money_cash_audit']|default=0}></em></sub></a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl class="trade">
+            <dt>
+            <div class="ico"><i></i><sub title="抢购数量"><span><em><{$counts.tuan|default=0}></em></span></sub></div>
+            <h3>抢购</h3>
+            <h5>今日上单/待审核/订单/今日订单</h5>
+            </dt>
+            <dd>
+                <ul>
+                    <li class="w25pre normal"><a href="<{:U('tuan/index')}>">今日上单<sub><em><{$counts.tuan_day|default=0}></em></sub></a></li>
+                    <li class="w25pre normal"><a href="<{:U('tuan/index')}>">待审核<sub><em><{$counts.tuan_audit|default=0}></em></sub></a></li>
+                    <li class="w25pre normal"><a href="<{:U('tuanorder/index')}>">订单<sub><em><{$counts.order_tuan|default=0}></em></sub></a></li>
+                    <li class="w25pre normal"><a href="<{:U('tuanorder/index')}>">今日订单<sub><em><{$counts.totay_order_tuan|default=0}></em></sub></a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl class="trade">
+            <dt>
+            <div class="ico"><i></i><sub title="优惠券总数"><span><em><{$counts.coupon}></em></span></sub></div>
+            <h3>优惠券</h3>
+            <h5>新增/待审核/待验证</h5>
+            </dt>
+            <dd>
+                <ul>
+                    <li class="w33pre normal"><a href="<{:U('coupon/index')}>">新增<sub><em><{$counts.coupon_day}></em></sub></a></li>
+                    <li class="w34pre normal"><a href="<{:U('coupon/index')}>">待审核<sub><em><{$counts.coupon_audit}></em></sub></a></li>
+                    <li class="w33pre normal"><a href="<{:U('tuancode/index')}>">待验证<sub><em><{$counts.tuan_code_used}></em></sub></a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl class="cms">
+            <dt>
+            <div class="ico"><i></i></div>
+            <h3>点评</h3>
+            <h5>今日商家点评/今日团购点评</h5>
+            </dt>
+            <dd>
+                <ul>
+                    <li class="w50pre"><a href="<{:U('shopdianping/index')}>">今日商家点评<sub><em><{$counts.totay_dianping}></em></sub></a></li>
+                    <li class="w50pre"><a href="<{:U('tuandianping/index')}>">今日团购点评<sub><em><{$counts.totay_dianping_tuan}></em></sub></a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl class="cms">
+            <dt>
+            <div class="ico"><i></i><sub title="文章总数"><span><em><{$counts.article}></em></span></sub></div>
+            <h3>文章</h3>
+            <h5>今日新增/待审核</h5>
+            </dt>
+            <dd>
+                <ul>
+                    <li class="w50pre normal"><a href="<{:U('article/index')}>">今日新增<sub><em><{$counts.article_day}></em></sub></a></li>
+                    <li class="w50pre normal"><a href="<{:U('article/index')}>">待审核<sub><em><{$counts.article_audit}></em></sub></a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl class="goods">
+            <dt>
+            <div class="ico"><i></i><sub title="家政服务数"><span><em><{$counts.houseworksetting}></em></span></sub></div>
+            <h3>家政服务</h3>
+            <h5>今日预约/待确认预约</h5>
+            </dt>
+            <dd>
+                <ul>
+                    <li class="w50pre normal"><a href="<{:U('housework/index')}>">今日预约<sub><em><{$counts.totay_jiazheng}></em></sub></a></li>
+                    <li class="w50pre normal"><a href="<{:U('housework/index')}>">待确认预约<sub><em><{$counts.totay_jiazheng_queren}></em></sub></a></li>
+                </ul>
+            </dd>
+        </dl>
+    </div>
+</div>
+
+ 
+
+<include  file='public:footer'/> 
