@@ -158,7 +158,7 @@
 	/*附近三级  改*/
 	
 	.hide {
-		position: absolute;
+		position: fixed;
 		top: 91px;
 		background: rgba(0, 0, 0, 0.7);
 		width: 100%;
@@ -234,43 +234,6 @@
 	</div>
 </header>
 <script>
-	//	$(function() {
-	//		$("#search-btn").click(function() {
-	//			if($(".top-search").css("display") == 'block') {
-	//				$(".top-search").hide();
-	//				$(".top-title").show(200);
-	//			} else {
-	//				$(".top-search").show();
-	//				$(".top-title").hide(200);
-	//			}
-	//		});
-	//		$("#search-bar li").each(function(e) {
-	//			$(this).click(function() {
-	//				if($(this).hasClass("on")) {
-	//					$(this).parent().find("li").removeClass("on");
-	//					$(this).removeClass("on");
-	//					$(".serch-bar-mask").hide();
-	//				} else {
-	//					$(this).parent().find("li").removeClass("on");
-	//					$(this).addClass("on");
-	//					$(".serch-bar-mask").show();
-	//				}
-	//				$(".serch-bar-mask .serch-bar-mask-list").each(function(i) {
-	//
-	//					if(e == i) {
-	//						$(this).parent().find(".serch-bar-mask-list").hide();
-	//						$(this).show();
-	//					} else {
-	//						$(this).hide();
-	//					}
-	//					$(this).find("li").click(function() {
-	//						$(this).parent().find("li").removeClass("on");
-	//						$(this).addClass("on");
-	//					});
-	//				});
-	//			});
-	//		});
-	//	});
 	$(function() {
 		$("#search-btn").click(function() {
 			if($(".top-search").css("display") == 'block') {
@@ -324,254 +287,85 @@
 		<li class="x4"><span>排序</span><i></i></li>
 	</ul>
 </div>
-<!--<div class="serch-bar-mask" style="display:none;">
-	<div class="serch-bar-mask-list">
-
-		<ul>
-			<li <if condition="empty($cat)">class="on"</if> >
-				<a href="<{:U('mall/index')}>">全部</a>
-			</li>
-
-			<if condition="$cat">
-				<li>
-					<a style="color:red;" href="<{:U('mall/index',array('cat'=>$item['cate_id'],'area'=>$area,'order'=>$order))}>">
-						<{$goodscates[$cat][ 'cate_name']}>
-					</a>
-				</li>
-			</if>
-
-			<foreach name="goodscates" item="item">
-				<if condition="$item.parent_id eq $cat">
-					<li>
-						<a <if condition="$item.cate_id eq $cat"> style="color:red;" </if> title="
-				<{$var.cate_name}>" href="
-					<{:U( 'mall/index',array( 'cat'=>$item['cate_id'],'area'=>$area,'order'=>$order))}>">
-						<{$item.cate_name}>
-							</a>
-							</li>
-							</if>
-			</foreach>
-		</ul>
-
-	</div>
-	<div class="serch-bar-mask-list">
-		<ul>
-			<li <if condition="empty($area)">class="on"</if> >
-				<a href="<{:U('mall/index',array('cat'=>$cat,'area'=>0,'order'=>$order))}>">全部</a>
-			</li>
-			<volist name="areas" id="item">
-
-				<li <if condition="$item['area_id'] eq $area">class="on"</if> >
-					<a href="<{:U('mall/index',array('cat'=>$cat,'area'=>$item['area_id'],'order'=>$order))}>">
-						<{$item.area_name}>
-					</a>
-				</li>
-			</volist>
-		</ul>
-	</div>
-
-	<div class="serch-bar-mask-list">
-		<ul>
-			<li>
-				<a href="<{:U('mall/index',array('cat'=>$cat,'area'=>$area,'business'=>$var['business_id'],'order'=>'1'))}>">按照时间</a>
-			</li>
-			<li>
-				<a href="<{:U('mall/index',array('cat'=>$cat,'area'=>$area,'business'=>$var['business_id'],'order'=>'2'))}>">按照销量</a>
-			</li>
-		</ul>
-	</div>
-</div>-->
 
 <div class="hide">
 	<div class="abbr">
 		<div class="first_list">
-			<ul>
+			<ul style="height: 360px;overflow: auto;">
 				<li class="directory select">全部分类</li>
-				<li class="directory">美食</li>
-				<li class="directory">休闲娱乐</li>
-				<li class="directory">酒店</li>
-				<li class="directory">生活服务</li>
-				<li class="directory">旅游</li>
-				<li class="directory">购物</li>
-				<li class="directory">家政</li>
-				<li class="directory" style="border: 0;">汽车</li>
+                <volist name="goodscates" id="v">
+                    <if condition="$v['parent_id'] eq 0">
+				        <li class="directory" data-li="<{$v['cate_id']}>"><{$v['cate_name']}></li>
+                    </if>
+                </volist>
 			</ul>
 		</div>
 		<div class="second_list">
-			<ul style="display: block;">
-				<li class="two_directory">
-					<a href="###">全部分类</a>
-				</li>
-			</ul>
-			<ul style="display: none;">
-				<li class="two_directory">
-					<a href="###">全部</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">自助餐</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">火锅</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">烧烤/烤肉</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">日本料理</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">蛋糕</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">香锅</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">烤鱼</a>
-				</li>
-			</ul>
-			<ul style="display: none;">
-				<li class="two_directory">
-					<a href="###">全部</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">休闲娱乐1</a>
-				</li>
-			</ul>
-			<ul style="display: none;">
-				<li class="two_directory">
-					<a href="###">全部</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">酒店1</a>
-				</li>
-			</ul>
-			<ul style="display: none;">
-				<li class="two_directory">
-					<a href="###">全部</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">生活服务1</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">生活服务2</a>
-				</li>
-			</ul>
-			<ul style="display: none;">
-				<li class="two_directory">
-					<a href="###">全部</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">旅游1</a>
-				</li>
-			</ul>
-			<ul style="display: none;">
-				<li class="two_directory">
-					<a href="###">全部</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">购物1</a>
-				</li>
-			</ul>
-			<ul style="display: none;">
-				<li class="two_directory">
-					<a href="###">全部</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">家政1</a>
-				</li>
-			</ul>
-			<ul style="display: none;">
-				<li class="two_directory">
-					<a href="###">全部</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">汽车1</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">汽车2</a>
-				</li>
-			</ul>
+            <ul style="display: block;height: 360px;overflow: auto;">
+                <li class="two_directory">
+                    <a href="<{:U('mall/index')}>">全部分类</a>
+                </li>
+                <volist name="goodscates" id="v">
+                    <if condition="$v['parent_id'] neq 0">
+                        <li class="two_directory">
+                            <a href="<{:U('mall/index',array('cate_id'=>$v['cate_id']))}>"><{$v['cate_name']}></a>
+                        </li>
+                    </if>
+                </volist>
+            </ul>
+            <volist name="goodscates" id="v">
+                <if condition="$v['parent_id'] eq 0">
+                    <ul style="display: block;height: 360px;overflow: auto;" data-ul="<{$v['cate_id']}>">
+                        <volist name="goodscates" id="vv">
+                            <if condition="$vv['parent_id'] eq $v['cate_id']">
+                                <li class="two_directory">
+                                    <a href="<{:U('mall/index',array('cate_id'=>$vv['cate_id']))}>"><{$vv['cate_name']}></a>
+                                </li>
+                            </if>
+                        </volist>
+                    </ul>
+                </if>
+            </volist>
 		</div>
 	</div>
 	<div class="abbr">
 		<div class="first_list">
 			<ul>
 				<li class="directory select">全城</li>
-				<li class="directory">区1</li>
-				<li class="directory">区2</li>
-				<li class="directory">区3</li>
-				<li class="directory" style="border: 0;">区4</li>
+                <volist name="areas" id="v">
+                    <li class="directory"><{$v['area_name']}></li>
+                </volist>
 			</ul>
 		</div>
 		<div class="second_list">
 			<ul style="display: block;">
-				<li class="two_directory">
-					<a href="###">1</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">2</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">3</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">4</a>
-				</li>
+                <volist name="areas" id="v">
+                    <li class="two_directory">
+                        <a href="<{:U('mall/index',array('area'=>$v['area_id']))}>"><{$v['area_name']}></a>
+                    </li>
+                </volist>
 			</ul>
-			<ul style="display: none;">
-				<li class="two_directory">
-					<a href="###">区11</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">区12</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">区13</a>
-				</li>
-			</ul>
-			<ul style="display: none;">
-				<li class="two_directory">
-					<a href="###">区21</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">区22</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">区23</a>
-				</li>
-			</ul>
-			<ul style="display: none;">
-				<li class="two_directory">
-					<a href="###">区31</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">区32</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">区33</a>
-				</li>
-			</ul>
-			<ul style="display: none;">
-				<li class="two_directory">
-					<a href="###">区41</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">区42</a>
-				</li>
-				<li class="two_directory">
-					<a href="###">区43</a>
-				</li>
-			</ul>
+            <volist name="areas" id="v">
+                <ul style="display: none;">
+                    <volist name="businesses" id="vv">
+                        <if condition="$vv['area_id'] eq $v['area_id']">
+                            <li class="two_directory">
+                                <a href="<{:U('mall/index',array('business'=>$vv['business_id']))}>"><{$vv['business_name']}></a>
+                            </li>
+                        </if>
+                    </volist>
+                </ul>
+            </volist>
 		</div>
 	</div>
 	<div class="abbr">
 		<div class="first_list">
 			<ul>
-				<li class="directory select">按时间</li>
-				<li class="directory">按销量</li>
-				<li class="directory">按区域</li>
-				<li class="directory">按价格</li>
-				<li class="directory" style="border: 0;">按积分</li>
+				<li class="directory select"><a href="<{:U('mall/index',array('order'=>1))}>">按时间</a></li>
+				<li class="directory"><a href="<{:U('mall/index',array('order'=>2))}>">按销量</a></li>
+				<li class="directory"><a href="<{:U('mall/index',array('order'=>'3'))}>">按区域</a></li>
+				<li class="directory"><a href="<{:U('mall/index',array('order'=>'4'))}>">按价格</a></li>
+				<li class="directory" style="border: 0;"><a href="<{:U('mall/index',array('order'=>5))}>">按积分</a></li>
 			</ul>
 		</div>
 	</div>

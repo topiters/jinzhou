@@ -90,7 +90,7 @@
 					<ul>
 						<volist name="autocates" id="list" offset="0" length='8' key="k">
 							<li>
-								<a href="<{:U('mall/lists',array('$id'=>$list['cate_id']))}>"><img src="/static/default/wap/images/<{$k}>.png"><span><{$list.cate_name}></span></a>
+								<a href="<{:U('mall/lists',array('id'=>$list['cate_id']))}>"><img src="/static/default/wap/images/<{$k}>.png"><span><{$list.cate_name}></span></a>
 							</li>
 
 						</volist>
@@ -103,7 +103,7 @@
 					<ul>
 						<volist name="autocates" id="list" offset="8" length='8' key="k">
 							<li>
-								<a href="<{:U('mall/lists',array('$shopcate_id'=>$list['shopcate_id']))}>"><img src="/static/default/wap/images/<{$k}>.png"><span><{$list.cate_name}></span></a>
+								<a href="<{:U('mall/lists',array('shopcate_id'=>$list['shopcate_id']))}>"><img src="/static/default/wap/images/<{$k}>.png"><span><{$list.cate_name}></span></a>
 							</li>
 
 						</volist>
@@ -136,9 +136,11 @@
 	<div class="tabCon">
 		<div class="cur">
 			<volist name="good" id="good">
-				<p style="padding-bottom: 5px;">
-					<a href="<{:U('mall/detail',array('goods_id'=>$good['goods_id']))}>" style="width: 48%;display: inline-block;"><img src="__ROOT__/attachs/<{$good.photo}>" style="height:153px; width:100%;"></a>
-					<a href="<{:U('mall/detail',array('goods_id'=>$good['goods_id']))}>" style="width: 48%;display: inline-block;border-left: 1px solid #ddd;"><img src="__ROOT__/attachs/<{$good.photo}>" style="height:153px; width:100%;"></a>
+				<p style="padding-bottom: 5px;width: 50%;float:left;">
+					<if condition="$i % 2 eq 0">
+					<a href="<{:U('mall/detail',array('goods_id'=>$good['goods_id']))}>" style="display: inline-block;"><img src="__ROOT__/attachs/<{$good.photo}>" style="height:153px; width:100%;"></a>
+						<else/>
+					<a href="<{:U('mall/detail',array('goods_id'=>$good['goods_id']))}>" style="display: inline-block;border-left: 1px solid #ddd;"><img src="__ROOT__/attachs/<{$good.photo}>" style="height:153px; width:100%;"></a></if>
 				</p>
 			</volist>
 			<!--<p class="cur-list">11</p>
@@ -148,9 +150,11 @@
 		<div class="u_1">
 
 			<volist name="list11" id="list">
-				<p style="padding-bottom: 5px;">
-					<a href="<{:U('mall/detail',array('goods_id'=>$list['goods_id']))}>" style="width: 48%;display: inline-block;"><img src="__ROOT__/attachs/<{$list.photo}>" style="height:153px; width:100%;"></a>
-					<a href="<{:U('mall/detail',array('goods_id'=>$list['goods_id']))}>" style="width: 48%;display: inline-block;border-left: 1px solid #ddd;"><img src="__ROOT__/attachs/<{$list.photo}>" style="height:153px; width:100%;"></a>
+				<p style="padding-bottom: 5px;width: 50%;float:left;">
+                    <if condition="$i % 2 eq 0">
+					<a href="<{:U('mall/detail',array('goods_id'=>$list['goods_id']))}>" style="display: inline-block;"><img src="__ROOT__/attachs/<{$list.photo}>" style="height:153px; width:100%;"></a>
+                        <else/>
+                        <a href="<{:U('mall/detail',array('goods_id'=>$list['goods_id']))}>" style="display: inline-block;border-left: 1px solid #ddd;"><img src="__ROOT__/attachs/<{$list.photo}>" style="height:153px; width:100%;"></a></if>
 				</p>
 			</volist>
 
