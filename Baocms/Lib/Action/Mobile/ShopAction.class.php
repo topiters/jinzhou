@@ -10,7 +10,7 @@ class ShopAction extends CommonAction {
         $this->assign('channel',  $this->lifechannel);
 		
 		//统计商家分类数量代码开始
-		$shopcates = D('Shopcate')->fetchAll();
+		$shopcates = D('Shopcate')->order('cate_id')->select();
 	    foreach ($shopcates as $key => $v) {
            if ($v['cate_id']) {
             $catids = D('Shopcate')->getChildren($v['cate_id']);
@@ -22,7 +22,7 @@ class ShopAction extends CommonAction {
         }
             $shopcates[$key]['count'] = $count;
         }
-
+//        dump($shopcates);die;
         $this->assign('shopcates',$shopcates);
 		//结束
 		
@@ -30,13 +30,18 @@ class ShopAction extends CommonAction {
 	
 
     public function index() {
+        $areas = D('area')->where("city_id = {$this->city_id}")->select();
+//        dump($areas);die;
+        $this->assign('areas' , $areas);
+        $businesses = D('business')->select();
+        $this->assign('businesses' , $businesses);
         $cat = (int) $this->_param('cat');
         $this->assign('cat', $cat);
         $order = (int) $this->_param('order');
         $this->assign('order', $order);
         $keyword = $this->_param('keyword', 'htmlspecialchars');
         $this->assign('keyword', $keyword);
-        $areas = D('Area')->fetchAll();
+//        $areas = D('Area')->fetchAll();
         $area = (int) $this->_param('area');
         $this->assign('area_id', $area);
         $biz = D('Business')->fetchAll();
@@ -163,12 +168,14 @@ class ShopAction extends CommonAction {
             $lng = $this->city['lng'];
         }
         switch ($order) {
+            case 1:
+                $orderby = ' view desc ';
+                break;
             case 2:
-                $orderby = array('orderby' => 'asc', 'ranking' => 'desc');
+                $orderby = ' fans_num desc ';
                 break;
             default:
                 $orderby = " (ABS(lng - '{$lng}') +  ABS(lat - '{$lat}') ) asc ";
-
                 break;
         }
         $count = $Shop->where($map)->count(); // 查询满足要求的总记录数 

@@ -11,7 +11,7 @@ class MallAction extends CommonAction{
         //统计商城分类数量代码开始
         $cat = (int) $this->_param('cat');
         $Goods = D('Goods');
-        $goodscates = D('Goodscate')->fetchAll();
+        $goodscates = D('Goodscate')->order('cate_id')->select();
         foreach ($goodscates as $key => $v) {
             if ($v['cate_id']) {
                 $catids = D('Goodscate')->getChildren($v['cate_id']);
@@ -23,9 +23,15 @@ class MallAction extends CommonAction{
             }
             $goodscates[$key]['count'] = $count;
         }
+//        dump($goodscates);die;
         $this->assign('goodscates', $goodscates);
     }
     public function index(){
+
+        $areas = D('area')->where("city_id = {$this->city_id}")->select();
+        $this->assign('areas' , $areas);
+        $businesses = D('business')->select();
+        $this->assign('businesses' , $businesses);
         $keyword = $this->_param('keyword', 'htmlspecialchars');
         $this->assign('keyword', $keyword);
         $cat = (int) $this->_param('cat');
@@ -233,6 +239,12 @@ class MallAction extends CommonAction{
             $order_arr = 'create_time desc';
         } elseif ($order == '2') {
             $order_arr = 'sold_num desc';
+        } elseif ($order == '3') {
+            $order_arr = 'area_id desc';
+        } elseif ($order == '4') {
+            $order_arr = 'mall_price desc';
+        } elseif ($order == '5') {
+            $order_arr = 'mobile_fan desc';
         } else {
          $order_arr = 'orderby desc'; 
         }
@@ -262,11 +274,16 @@ class MallAction extends CommonAction{
             $list[$k] = $val;
              
         }
-        
-       
-        
+        $arr = array();
+        foreach ($list as $v) {
+            $arr[] = $v['d'];
+        }
+        if (!$order) {
+            array_multisort($arr , SORT_ASC , $list);
+        }
+
+//        dump($list);die;
     //  $list=sort($list['d']);
-       
        $this->assign('list', $list);
         // 赋值数据集
         $this->assign('page', $show);
@@ -407,8 +424,16 @@ class MallAction extends CommonAction{
         $insert = $record->getRecord($this->uid, $goods_id);
         $this->assign('recom', $recom);
         $this->assign('detail', $detail);
-        $this->assign('shop', D('Shop')->find($shop_id));
-//        dump(D('Shop')->find($shop_id));die;
+        $shop = D('Shop')->find($shop_id);
+        $lat = addslashes(cookie('lat'));
+        $lng = addslashes(cookie('lng'));
+        if (empty($lat) || empty($lng)) {
+            $lat = $this->city['lat'];
+            $lng = $this->city['lng'];
+        }
+        $shop['distance'] = getDistance($lat , $lng , $shop['lat'] , $shop['lng']);
+        $this->assign('shop', $shop);
+//        dump($shop);die;
         $pingnum = D('Goodsdianping')->where(array('goods_id' => $goods_id, 'show_date' => array('ELT', TODAY)))->count();
         $this->assign('pingnum', $pingnum);
 
