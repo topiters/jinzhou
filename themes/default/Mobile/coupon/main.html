@@ -1,0 +1,489 @@
+<!doctype html>
+<html>
+
+	<head>
+		<link href="/static/default/wap/css1/youhui.css" rel="stylesheet" type="text/css">
+		<link href="/static/default/wap/css/sanji.css" rel="stylesheet" type="text/css">
+		<!--<script type="text/javascript" src=""></script>-->
+		<meta content="width=device-width, minimum-scale=1,initial-scale=1, maximum-scale=1, user-scalable=1;" id="viewport" name="viewport" />
+		<script src="/static/default/wap/css1/jquery.min.js"></script>
+		<script>
+			$(function() {
+				//设计案例切换
+				$('.title-list li').mouseover(function() {
+					var liindex = $('.title-list li').index(this);
+					$(this).addClass('on').siblings().removeClass('on');
+					$('.product-wrap div.product').eq(liindex).fadeIn(150).siblings('div.product').hide();
+					var liWidth = $('.title-list li').width();
+					$('.case .title-list p').stop(false, true).animate({
+						'left': liindex * liWidth + 'px'
+					}, 300);
+				});
+
+				//设计案例hover效果
+				$('.product-wrap .product li').hover(function() {
+					$(this).css("border-color", "#ff6600");
+					$(this).find('p > a').css('color', '#ff6600');
+				}, function() {
+					$(this).css("border-color", "#fafafa");
+					$(this).find('p > a').css('color', '#666666');
+				});
+			});
+		</script>
+		<meta charset="utf-8">
+		<title>找优惠</title>
+	</head>
+
+	<body>
+		<!--头部-->
+		<div class="header">
+			<div class="jiazh">找优惠</div>
+		</div>
+		<!--分类-->
+
+		<!--banner-->
+		<div class="banner" style="margin-top: 40px;">
+			<div class="ban_n">
+				<calldata mdl="Ad" where=" closed=0 AND site_id=83 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
+					<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
+				</calldata>
+			</div>
+		</div>
+		<!--优惠三级-->
+		<div id="search-bar" class="search-bar">
+			<ul class="line">
+				<li class="x3"><span>全部</span><i></i></li>
+				<li class="x3"><span>区域</span><i></i></li>
+				<li class="x3"><span>智能排序</span><i></i></li>
+				<!--<li class="x3"><span>筛选</span><i></i></li>-->
+			</ul>
+		</div>
+		<div class="hide-o">
+			<div class="abbr-o">
+				<div class="first_list-o">
+					<ul>
+						<li class="directory-o select-o">全部分类</li>
+						<li class="directory-o">美食</li>
+						<li class="directory-o">休闲娱乐</li>
+						<li class="directory-o">酒店</li>
+						<li class="directory-o">生活服务</li>
+						<li class="directory-o">旅游</li>
+						<li class="directory-o">购物</li>
+						<li class="directory-o">家政</li>
+						<li class="directory-o" style="border: 0;">汽车</li>
+					</ul>
+				</div>
+				<div class="second_list-o">
+					<ul style="display: block;">
+						<li class="two_directory-o">
+							<a href="###">全部分类</a>
+						</li>
+					</ul>
+					<ul style="display: none;">
+						<li class="two_directory-o">
+							<a href="###">全部</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">自助餐</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">火锅</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">烧烤/烤肉</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">日本料理</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">蛋糕</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">香锅</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">烤鱼</a>
+						</li>
+					</ul>
+					<ul style="display: none;">
+						<li class="two_directory-o">
+							<a href="###">全部</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">休闲娱乐1</a>
+						</li>
+					</ul>
+					<ul style="display: none;">
+						<li class="two_directory-o">
+							<a href="###">全部</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">酒店1</a>
+						</li>
+					</ul>
+					<ul style="display: none;">
+						<li class="two_directory-o">
+							<a href="###">全部</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">生活服务1</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">生活服务2</a>
+						</li>
+					</ul>
+					<ul style="display: none;">
+						<li class="two_directory-o">
+							<a href="###">全部</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">旅游1</a>
+						</li>
+					</ul>
+					<ul style="display: none;">
+						<li class="two_directory-o">
+							<a href="###">全部</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">购物1</a>
+						</li>
+					</ul>
+					<ul style="display: none;">
+						<li class="two_directory-o">
+							<a href="###">全部</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">家政1</a>
+						</li>
+					</ul>
+					<ul style="display: none;">
+						<li class="two_directory-o">
+							<a href="###">全部</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">汽车1</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">汽车2</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="abbr-o">
+				<div class="first_list-o">
+					<ul>
+						<li class="directory-o select-o">全城</li>
+						<li class="directory-o">区1</li>
+						<li class="directory-o">区2</li>
+						<li class="directory-o">区3</li>
+						<li class="directory-o" style="border: 0;">区4</li>
+					</ul>
+				</div>
+				<div class="second_list-o">
+					<ul style="display: block;">
+						<li class="two_directory-o">
+							<a href="###">1</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">2</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">3</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">4</a>
+						</li>
+					</ul>
+					<ul style="display: none;">
+						<li class="two_directory-o">
+							<a href="###">区11</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">区12</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">区13</a>
+						</li>
+					</ul>
+					<ul style="display: none;">
+						<li class="two_directory-o">
+							<a href="###">区21</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">区22</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">区23</a>
+						</li>
+					</ul>
+					<ul style="display: none;">
+						<li class="two_directory-o">
+							<a href="###">区31</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">区32</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">区33</a>
+						</li>
+					</ul>
+					<ul style="display: none;">
+						<li class="two_directory-o">
+							<a href="###">区41</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">区42</a>
+						</li>
+						<li class="two_directory-o">
+							<a href="###">区43</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="abbr-o">
+				<div class="first_list-o">
+					<ul>
+						<li class="directory-o select-o">按时间</li>
+						<li class="directory-o">按销量</li>
+						<li class="directory-o">按区域</li>
+						<li class="directory-o">按价格</li>
+						<li class="directory-o" style="border: 0;">按积分</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--四个图标-->
+
+		<div class="case">
+
+			<div class="product-wrap">
+				<div class="title cf">
+					<ul class="title-list fr cf ">
+						<li class="on"><img src="/static/default/wap/images/youhui_07_05.png"></li>
+						<li><img src="/static/default/wap/images/youhui_07_07.png"></li>
+						<li><img src="/static/default/wap/images/youhui_07_09.png"></li>
+						<li><img src="/static/default/wap/images/youhui_07_11.png"></li>
+						<p><b></b></p>
+					</ul>
+				</div>
+
+				<!--案例1-->
+				<div class="product show">
+					<ul class="cf">
+						<li class="ml0">
+							<p style="padding-left: 10px;"><img src="/static/default/wap/images/in_08.png"><del>限时限量&nbsp;&nbsp;疯狂抢购</del></p>
+							<a href="javascript:;" class="imgwrap">
+
+								<volist name="xiangou" id="item">
+									<a href="<{:U('tuan/detail',array('tuan_id'=>$item['tuan_id']))}>">
+										<ul style=" border-bottom:1px #E2E2E2 solid;">
+											<li style="width:25%;"><img src="__ROOT__/attachs/<{$item.photo}>"></li>
+											<li style="width:50%;">
+												<?php 
+                 $shop_id=$item['shop_id'];
+                 $map=array("shop_id"=>$shop_id);
+                 $shopname=D("Shop")->where($map)->limit(0,1)->select();
+                 ?>
+												<volist name="shopname" id="val">
+													<ol style="font-size:1.6em; margin-top:6px; margin-left:6px;">
+														<{$val.shop_name}>
+													</ol>
+												</volist>
+
+												<ol style="font-size:1.2em;color:#F00; margin-left:6px;">
+													<{$item.title}>
+												</ol>
+
+												<ol style="color:#F00;margin-top:10px; margin-left:6px;">￥
+													<{:round($item[ 'tuan_price']/100,2)}><del style="color:#CCC;">&nbsp;&nbsp;&nbsp;门市价：￥<{:round($item['price']/100,2)}></del></ol>
+											</li>
+											<li style="width:20%;">
+												<p class="p_1">马上抢</p>
+												<p class="p_2">已抢
+													<{$item.sold_num}>件</p>
+											</li>
+										</ul>
+									</a>
+								</volist>
+
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="product show" style="display:none;">
+					<ul class="cf" style=" border-bottom:1px #E2E2E2 solid;">
+						<li class="ml0">
+							<p><img src="/static/default/wap/images/in_08.png"><del>限时限量疯狂抢购</del></p>
+							<a href="javascript:;" class="imgwrap">
+
+								<volist name="tuan" id="item">
+
+									<a href="<{:U('tuan/detail',array('tuan_id'=>$item['tuan_id']))}>">
+										<ul>
+
+											<li style="width:40%;"><img src="__ROOT__/attachs/<{$item.photo}>"></li>
+											<li style="width:40%;">
+												<?php 
+                 $shop_id=$item['shop_id'];
+                 $map=array("shop_id"=>$shop_id);
+                 $shopname=D("Shop")->where($map)->limit(0,1)->select();
+                 ?>
+
+												<volist name="shopname" id="val">
+													<ol style="font-size:1.6em; margin-top:6px; margin-left:6px;">
+														<{$val.shop_name}>
+													</ol>
+												</volist>
+												<ol style="font-size:1.2em;color:#CCC;margin: 10px 0 0 6px;">
+													<{$item.title}>
+												</ol>
+												<ol style="color:#F00;margin:20px 0 0 6px;">￥
+													<{:round($item[ 'tuan_price']/100,2)}>&nbsp;&nbsp;&nbsp;<del style="color:#CCC;">门市价：￥<{:round($item['price']/100,2)}></del></ol>
+											</li>
+											<li style="width:18%;">
+												<p class="p_2" style="margin-top:72px;color:#ccc; font-size:1.3em">已售：
+													<{$item.sold_num}>
+												</p>
+											</li>
+
+										</ul>
+									</a>
+
+								</volist>
+
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="product show" style="display:none;">
+					<ul class="cf">
+						<li class="ml0">
+
+							<a href="javascript:;" class="imgwrap">
+
+								<volist name="djj" id="val">
+									<a href="<{:U('coupon/detail',array('coupon_id'=>$val['coupon_id']))}>">
+										<ul style="border:none;    border-bottom: 1px #e2e2e2 solid;">
+
+											<?php 
+          	$shop_id=$val['shop_id'];
+            $map=array("shop_id"=>$shop_id);
+            $shop=D("Shop")->where($map)->select();
+          	
+          	 ?>
+											<volist name="shop" id="shop">
+												<li style="width:40%;"><img style="margin-left:1px;" src="__ROOT__/attachs/<{$shop['logo']}>"></li>
+
+												<li style="width:40%;">
+
+													<ol style="font-size:1.6em; margin-top:6px; margin-left:10px;">
+														<{$shop[ 'shop_name']}>
+													</ol>
+											</volist>
+											<ol style="font-size:1.2em;color:#CCC; margin: 10px 0 0 10px;">
+												<{$val[ 'title']}>
+											</ol>
+											<ol style="color:#F00;margin:20px 0 0 10px;font-size:1.4em;">
+												<{$val[ 'condition']}>元金额门槛</del>
+											</ol>
+											</li>
+											<li style="width:18%;">
+												<p class="p_1">马上领取</p>
+												<p class="p_2">金额：
+													<{$val[ 'money']}>元</p>
+											</li>
+
+										</ul>
+									</a>
+								</volist>
+
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="product show" style="display:none;">
+					<ul class="cf">
+						<li class="ml0">
+							<p><img src="/static/default/wap/images/in_08.png"><del>限时限量&nbsp;&nbsp;疯狂兑换</del></p>
+							<a href="javascript:;" class="imgwrap">
+
+								<volist name="jifen" id="val">
+									<a href="<{:U('jifen/detail',array('goods_id'=>$val['goods_id']))}>">
+										<ul>
+
+											<li style="width:40%;"><img style="margin-left:1px;" src="__ROOT__/attachs/<{$val.face_pic}>"></li>
+											<li style="width:40%;">
+												<ol style="font-size:1.6em; margin-top:6px; margin-left:22px;">
+													<{$val.title}>
+												</ol>
+												<ol style="font-size:1.2em;color:#CCC; margin-left:22px;">数量：
+													<{$val.num}>&nbsp;&nbsp;&nbsp;已兑：
+														<{$val.exchange_num}>
+												</ol>
+												<ol style="color:#999;margin-top:10px; margin-left:22px;font-size:1.4em;">所需积分：<span style="color:#ff870d"><{$val.integral}></span></del>
+												</ol>
+											</li>
+											<?php 
+                 $time=$val['create_time'];
+                  $date=date("Y-m-d",$time);
+                ?>
+											<li style="width:18%;">
+												<p class="p_2" style="color:#999;">
+													<{$date}>
+												</p>
+												<p class="p_1" style="background-color:#ff870d; height:40px;margin-top:0; line-height:40px;font-size:1.6em;">兑换</p>
+											</li>
+										</ul>
+									</a>
+								</volist>
+
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!--底部-->
+		<div style=" width:100%; height:60px;"></div>
+		<script type="text/javascript">
+			$(function() {
+				$("#search-bar li").click(function() {
+						if($(this).hasClass("this")) {
+							$(this).removeClass("this");
+							//			$(this).find("i").removeClass("fa-caret-up").addClass("fa-sort-desc");
+							$(".hide-o").hide();
+						} else {
+							$(".hide-o").show();
+							var y = $(this).index();
+							$(".abbr-o").hide();
+							$(".abbr-o").eq(y).show();
+							/*-----------------------------------*/
+							//alert(y);
+							$(".abbr-o").eq(y).find(".second_list-o ul").eq(0).show();
+							/*-----------------------------------*/
+							$(".main-list-tol li").removeClass("this");
+							$(".hide-o").show();
+							//			$(".mall-cate li i").removeClass("fa-caret-up").addClass("fa-sort-desc");
+							$(this).addClass("this");
+							//			$(this).find("i").addClass("fa-caret-up").removeClass("fa-sort-desc");
+						}
+					})
+					/*隐藏菜单的事件操作*/
+
+				/*--------------------------------------20140905-----------*/
+				$(".second_list-o ul").hide();
+				$(".directory-o").click(function() {
+					$(".directory-o").removeClass("select-o");
+					$(this).addClass("select-o");
+					var z = $(this).index();
+					var a = $(this).parent().parent().parent().index();
+					$(".second_list-o ul").hide();
+					$(".abbr-o").eq(a).find(".second_list-o").find("ul").eq(z).show();
+				})
+			})
+		</script>
+		<include file='public:footer' />

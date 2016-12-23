@@ -1,0 +1,55 @@
+<include file="public:header"/>
+	<header class="top-fixed bg-yellow bg-inverse">
+		<div class="top-back">
+			<a class="top-addr" href="javascript:history.go(-1);"><i class="icon-angle-left"></i></a>
+		</div>
+		<div class="top-title">
+			商品列表
+		</div>
+		<div class="top-search" style="display:none;">
+			<form method="post" action="<{:U('mall/index')}>">
+				<input name="keyword" placeholder="输入商品的关键字"  />
+				<button type="submit" class="icon-search"></button> 
+			</form>
+		</div>
+		<div class="top-signed">
+			<a id="search-btn" href="javascript:void(0);"><i class="icon-search"></i></a>
+		</div>
+	</header>
+	
+	
+   <div class="item-list" id="item-list">
+   <ul>
+   <volist name="list" id="item" key="index"> 
+	<li class="line">		
+    <a href="<{:U('mall/detail',array('goods_id'=>$item['goods_id']))}>">		
+    <div class="x3"><img src="<{:config_img($item['photo'])}>" />		
+    </div>		
+    <div class="x9" style="margin-top:-25px; ">
+    <h5><{:bao_msubstr($item['title'],0,18)}></h5>	
+    
+    	<if condition="!empty($item['mobile_fan'])">
+        <p class="desc">手机下单立减 <span style="color:#F00; font-size:12px;"><{:round($item['mobile_fan']/100,2)}></span> 元</p>	
+		<else/>
+        <p class="desc"><{:bao_msubstr($item['intro'],0,26)}></p>	
+        </if>  
+             
+        <p class="info"><span>&yen;<{:round($item['mall_price']/100,2)}></span><del>&yen;<{:round($item['price']/100,2)}></del>				
+        <em>已售<{$item.sold_num}></em>
+        <php>
+        $shopids = D('Shop')->where('shop_id ='.$item['shop_id'])->find();
+        $is_renzheng = $shopids['is_renzheng'];
+        </php>
+        <if condition="$is_renzheng eq 1"><em class="is_renzheng">认证</em></if>
+        	</p>	
+        	</div>		
+            </a>	
+       </li>
+       </volist>
+       </ul>
+
+	</div> 
+	
+	
+	
+<include  file='public:footer'/>    

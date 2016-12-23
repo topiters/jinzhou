@@ -1,0 +1,471 @@
+<include file="public:header" />
+<link href="/static/default/wap/css1/liebiao.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+/*商家三级*/
+	.hide-o {
+		position: absolute;
+		top: 91px;
+		background: rgba(0, 0, 0, 0.7);
+		width: 100%;
+		height: 10000px;
+		z-index: 10;
+		display: none;
+	}
+	
+	.abbr-o {
+		display: flex;
+		display: -webkit-flex;
+		width: 100%;
+		background: #fff;
+	}
+	
+	.first_list-o {
+		flex: 1;
+		-webkit-box-flex: 1;
+		overflow: hidden;
+	}
+	
+	.select-o.directory-o {
+		border-right: 1px solid #f2f2f2;
+		background: #f2f2f2;
+	}
+	
+	.second_list-o {
+		flex: 1;
+		overflow: hidden;
+		background: #f2f2f2;
+		-webkit-box-flex: 1;
+	}
+	
+	.directory-o {
+		list-style: none;
+		font-size: 14px;
+		padding: 10px 10px;
+		border-bottom: 1px solid #e6e6e6;
+	}
+	
+	.two_directory-o {
+		padding: 10px 10px;
+		border-bottom: 1px solid #e6e6e6;
+	}
+	
+	.two_directory-o a {
+		text-decoration: none;
+		font-size: 14px;
+	}
+</style>
+<header class="top-fixed bg-yellow bg-inverse">
+	<div class="top-back">
+		<a class="top-addr" href="<{:U('index/index')}>"><i class="icon-angle-left"></i></a>
+	</div>
+	<div class="top-title">
+		商家分类
+	</div>
+	<div class="top-search" style="display:none;">
+		<form method="post" action="<{:U('shop/index')}>">
+			<input name="keyword" placeholder="输入商家的关键字" />
+			<button type="submit" class="icon-search"></button>
+		</form>
+	</div>
+	<div class="top-signed">
+		<a id="search-btn" href="javascript:void(0);"><i class="icon-search"></i></a>
+	</div>
+</header>
+<script>
+//	$(function() {
+//		$("#search-btn").click(function() {
+//			if($(".top-search").css("display") == 'block') {
+//				$(".top-search").hide();
+//				$(".top-title").show(200);
+//			} else {
+//				$(".top-search").show();
+//				$(".top-title").hide(200);
+//			}
+//		});
+//		$("#search-bar li").each(function(e) {
+//			$(this).click(function() {
+//				if($(this).hasClass("on")) {
+//					$(this).parent().find("li").removeClass("on");
+//					$(this).removeClass("on");
+//					$(".serch-bar-mask").hide();
+//				} else {
+//					$(this).parent().find("li").removeClass("on");
+//					$(this).addClass("on");
+//					$(".serch-bar-mask").show();
+//				}
+//				$(".serch-bar-mask .serch-bar-mask-list").each(function(i) {
+//
+//					if(e == i) {
+//						$(this).parent().find(".serch-bar-mask-list").hide();
+//						$(this).show();
+//					} else {
+//						$(this).hide();
+//					}
+//					$(this).find("li").click(function() {
+//						$(this).parent().find("li").removeClass("on");
+//						$(this).addClass("on");
+//					});
+//				});
+//			});
+//		});
+//	});
+	$(function() {
+		$("#search-btn").click(function() {
+			if($(".top-search").css("display") == 'block') {
+				$(".top-search").hide();
+				$(".top-title").show(200);
+			} else {
+				$(".top-search").show();
+				$(".top-title").hide(200);
+			}
+		});
+		$("#search-bar li").click(function() {
+				if($(this).hasClass("this")) {
+					$(this).removeClass("this");
+					//			$(this).find("i").removeClass("fa-caret-up").addClass("fa-sort-desc");
+					$(".hide-o").hide();
+				} else {
+					$(".hide-o").show();
+					var y = $(this).index();
+					$(".abbr-o").hide();
+					$(".abbr-o").eq(y).show();
+					/*-----------------------------------*/
+					//alert(y);
+					$(".abbr-o").eq(y).find(".second_list-o ul").eq(0).show();
+					/*-----------------------------------*/
+					$(".main-list-tol li").removeClass("this");
+					$(".hide-o").show();
+					//			$(".mall-cate li i").removeClass("fa-caret-up").addClass("fa-sort-desc");
+					$(this).addClass("this");
+					//			$(this).find("i").addClass("fa-caret-up").removeClass("fa-sort-desc");
+				}
+			})
+			/*隐藏菜单的事件操作*/
+
+		/*--------------------------------------20140905-----------*/
+		$(".second_list-o ul").hide();
+		$(".directory-o").click(function() {
+			$(".directory-o").removeClass("select-o");
+			$(this).addClass("select-o");
+			var z = $(this).index();
+			var a = $(this).parent().parent().parent().index();
+			$(".second_list-o ul").hide();
+			$(".abbr-o").eq(a).find(".second_list-o").find("ul").eq(z).show();
+		})
+	})
+</script>
+
+<div id="search-bar" class="search-bar">
+	<ul class="line">
+		<li class="x3"><span>商家分类</span><i></i></li>
+		<li class="x3"><span>地区</span><i></i></li>
+		<li class="x3"><span>排序</span><i></i></li>
+		<!--<li class="x3"><span>筛选</span><i></i></li>-->
+	</ul>
+</div>
+<!--<div class="serch-bar-mask" style="display:none;">
+	<div class="serch-bar-mask-list">
+		<ul>
+			<li class="on">
+				<a class="<if condition='empty($cat)'>on</if> ">
+					<a href="<{:U('shop/index')}>">全部分类</a>
+			</li>
+			<if condition="$cat">
+				<li>
+					<a style="color:red;" href="<{:LinkTo('shop/index',array('cat'=>$cat))}>">
+						<{$shopcates[$cat][ 'cate_name']}>
+					</a>
+				</li>
+			</if>
+			<foreach name="shopcates" item="var">
+				<if condition="$var.parent_id eq $cat">
+					<li>
+						<a <if condition="$var.cate_id eq $cat"> style="color:red;" </if> title="
+				<{$var.cate_name}>" href="
+					<{:LinkTo( 'shop/index',array( 'cat'=>$var['cate_id']))}>">
+						<{$var.cate_name}>
+							</a>
+							</li>
+							</if>
+			</foreach>
+		</ul>
+	</div>
+	<div class="serch-bar-mask-list">
+		<ul>
+			<li>
+				<a href="<{:LinkTo('shop/index',array('cat'=>$cat))}>" class="<if condition='empty($area_id)'>on</if>">全部地区</a>
+			</li>
+			<foreach name="areas" item="var">
+				<php>if($var['city_id'] == $city_id){</php>
+				<li>
+					<a <if condition="$var.area_id eq $area_id"> style="color:red;" </if> href="
+						<{:LinkTo( 'shop/index',array( 'cat'=>$cat,'area'=>$var['area_id']))}>">
+							<{$var.area_name}>
+					</a>
+				</li>
+				<php>}</php>
+			</foreach>
+		</ul>
+	</div>
+	<div class="serch-bar-mask-list">
+		<ul>
+			<li>
+				<a href="<{:LinkTo('shop/index',array('cat'=>$cat,'area'=>$area_id))}>" class="<if condition='empty($business_id)'>on</if>">全部商圈</a>
+			</li>
+			<foreach name="biz" item="var">
+				<eq name="var.area_id" value="$area_id">
+					<li>
+						<a <if condition="$var.business_id eq $business_id">
+							style="color:red;"
+							</if> href="
+							<{:LinkTo( 'shop/index',array( 'cat'=>$cat,'area'=>$area_id,'business'=>$var['business_id']))}>">
+								<{$var.business_name}>
+						</a>
+					</li>
+				</eq>
+			</foreach>
+		</ul>
+	</div>
+	<div class="serch-bar-mask-list">
+		<ul>
+			<li>
+				<a <if condition="$order eq 1"> style="color:red;"</if> href="
+					<{:LinkTo( 'shop/index',array( 'cat'=>$cat,'area'=>$area_id,'business'=>$business_id,'order'=>1))}>">距离优先</a>
+			</li>
+			<li>
+				<a <if condition="$order eq 2">style="color:red;"</if> href="
+					<{:LinkTo( 'shop/index',array( 'cat'=>$cat,'area'=>$area_id,'business'=>$business_id,'order'=>2))}>">推荐排序</a>
+			</li>
+		</ul>
+	</div>
+	<div class="serch-bar-mask-bg"></div>
+</div>
+
+<div class="blank-40"></div>-->
+<div class="hide-o">
+	<div class="abbr-o">
+		<div class="first_list-o">
+			<ul>
+				<li class="directory-o select-o">全部分类</li>
+				<li class="directory-o">美食</li>
+				<li class="directory-o">休闲娱乐</li>
+				<li class="directory-o">酒店</li>
+				<li class="directory-o">生活服务</li>
+				<li class="directory-o">旅游</li>
+				<li class="directory-o">购物</li>
+				<li class="directory-o">家政</li>
+				<li class="directory-o" style="border: 0;">汽车</li>
+			</ul>
+		</div>
+		<div class="second_list-o">
+			<ul style="display: block;">
+				<li class="two_directory-o">
+					<a href="###">全部分类</a>
+				</li>
+			</ul>
+			<ul style="display: none;">
+				<li class="two_directory-o">
+					<a href="###">全部</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">自助餐</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">火锅</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">烧烤/烤肉</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">日本料理</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">蛋糕</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">香锅</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">烤鱼</a>
+				</li>
+			</ul>
+			<ul style="display: none;">
+				<li class="two_directory-o">
+					<a href="###">全部</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">休闲娱乐1</a>
+				</li>
+			</ul>
+			<ul style="display: none;">
+				<li class="two_directory-o">
+					<a href="###">全部</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">酒店1</a>
+				</li>
+			</ul>
+			<ul style="display: none;">
+				<li class="two_directory-o">
+					<a href="###">全部</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">生活服务1</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">生活服务2</a>
+				</li>
+			</ul>
+			<ul style="display: none;">
+				<li class="two_directory-o">
+					<a href="###">全部</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">旅游1</a>
+				</li>
+			</ul>
+			<ul style="display: none;">
+				<li class="two_directory-o">
+					<a href="###">全部</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">购物1</a>
+				</li>
+			</ul>
+			<ul style="display: none;">
+				<li class="two_directory-o">
+					<a href="###">全部</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">家政1</a>
+				</li>
+			</ul>
+			<ul style="display: none;">
+				<li class="two_directory-o">
+					<a href="###">全部</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">汽车1</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">汽车2</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="abbr-o">
+		<div class="first_list-o">
+			<ul>
+				<li class="directory-o select-o">全城</li>
+				<li class="directory-o">区1</li>
+				<li class="directory-o">区2</li>
+				<li class="directory-o">区3</li>
+				<li class="directory-o" style="border: 0;">区4</li>
+			</ul>
+		</div>
+		<div class="second_list-o">
+			<ul style="display: block;">
+				<li class="two_directory-o">
+					<a href="###">1</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">2</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">3</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">4</a>
+				</li>
+			</ul>
+			<ul style="display: none;">
+				<li class="two_directory-o">
+					<a href="###">区11</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">区12</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">区13</a>
+				</li>
+			</ul>
+			<ul style="display: none;">
+				<li class="two_directory-o">
+					<a href="###">区21</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">区22</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">区23</a>
+				</li>
+			</ul>
+			<ul style="display: none;">
+				<li class="two_directory-o">
+					<a href="###">区31</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">区32</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">区33</a>
+				</li>
+			</ul>
+			<ul style="display: none;">
+				<li class="two_directory-o">
+					<a href="###">区41</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">区42</a>
+				</li>
+				<li class="two_directory-o">
+					<a href="###">区43</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="abbr-o">
+		<div class="first_list-o">
+			<ul>
+				<li class="directory-o select-o">按时间</li>
+				<li class="directory-o">按销量</li>
+				<li class="directory-o">按区域</li>
+				<li class="directory-o">按价格</li>
+				<li class="directory-o" style="border: 0;">按积分</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!--banner-->
+<div class="banner" style="margin-top: 40px;">
+	<div class="ban_n">
+		<calldata mdl="Ad" where=" closed=0 AND site_id=80 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
+			<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
+		</calldata>
+	</div>
+</div>
+<!--附近-->
+<div class="tuijian">
+	<div class="tj1"></div>
+	<div class="tj2">
+		<P style="margin-left:20px;">附近推荐</P>
+	</div>
+	<div class="tj3"></div>
+</div>
+
+<style>
+	.container {
+		margin-top: 0rem;
+	}
+</style>
+
+<div class="container" style="padding:0,0,0,0;">
+	<div id="shop-list" class="shop-list"></div>
+</div>
+<script>
+	$(document).ready(function() {
+		loaddata('<{$nextpage}>', $("#shop-list"), true);
+	});
+</script>
+
+<include file="public:footer" />

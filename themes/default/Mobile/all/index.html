@@ -1,0 +1,157 @@
+<include file="public:header" />
+<header class="top-fixed bg-yellow bg-inverse">
+	<div class="top-back">
+		<a class="top-addr" href="<{:U('index/index')}>"><i class="icon-angle-left"></i></a>
+	</div>
+	<div class="top-title">
+		搜索详情
+	</div>
+</header>
+
+<style>
+	ul {
+		padding-left: 0px;
+	}
+	
+	.xiaoqu-search {
+		padding: 15px;
+		background: #fafafa;
+		border-bottom: thin solid #eee;
+		padding-bottom: 5px
+	}
+	
+	.xiaoqu-list p {
+		height: 20px;
+		line-height: 20px;
+		margin: 0;
+		color: #999;
+		font-size: 12px;
+		overflow: hidden;
+	}
+	
+	p {
+		margin-bottom: 0px;
+	}
+	
+	.list-media-x {
+		margin-top: 0rem;
+	}
+	
+	.list-media-x p {
+		margin-top: .01rem;
+		line-height: 20px;
+		font-size: 12px;
+	}
+	
+	.list-media-x li dd.zhong {
+		display: block;
+		padding: 10px;
+		overflow: hidden;
+		width: 100%;
+		border-bottom: 1px #eee solid
+	}
+	
+	.list-media-x li dd.zhong span.album {
+		font-size: 12px;
+		color: #FFF;
+		margin-right: 0px;
+		position: absolute;
+		right: 10%;
+		bottom: 0;
+		width: 45px;
+		height: 20px;
+		line-height: 20px;
+		text-align: center;
+		background: #06c1ae;
+	}
+	
+	.list-media-x li dd.zhong a img {
+		padding-bottom: 0
+	}
+	/*搜索二级*/
+	
+	.criteria h3 {
+		color: #404040;
+		font-size: 14px;
+		line-height: 24px;
+	}
+	
+	.criteria ul {
+		margin: 10px 0;
+		border-left: 1px solid #e6e6e6;
+	}
+	
+	.search_criteria li {
+		-webkit-box-flex: 1;
+		text-align: center;
+		line-height: 42px;
+		font-size: 14px;
+		color: #404040;
+		border-right: 1px solid #e6e6e6;
+		border-top: 1px solid #e6e6e6;
+		border-bottom: 1px solid #e6e6e6;
+		background: #fff;
+	}
+	
+	.search_criteria .this {
+		background: #e6e6e6;
+	}
+	
+	.search_criteria li a {
+		color: #404040;
+		display: block;
+	}
+	
+	.search_criteria {
+		display: -webkit-box;
+	}
+	
+	.criteria {
+		overflow: hidden;
+		padding: 0 10px 5px 10px;
+	}
+</style>
+
+<div class="line xiaoqu-search">
+	<form method="post" action="<{:U('all/index')}>" id="form1" class="form1">
+		<div class="form-group">
+			<div class="field">
+				<div class="input-group">
+					<span class="addbtn"><button type="button" class="button icon-search"></button></span>
+					<input type="text" class="input" name="keyword" size="50" value="<{$keyword}>" placeholder="输入标题" />
+					<span class="addbtn"><button type="submit" class="button">搜索</button></span>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div class="list-media-x" id="list-media">
+	<div class="criteria">
+		<h3>请选择搜索类型</h3>
+		<ul class="search_criteria">
+			<li id="tab1" class="this">搜团购</li>
+			<li id="tab2" class="">搜商品</li>
+			<li id="tab3" class="">搜优惠</li>
+			<li id="tab4" class="">搜商家</li>
+		</ul>
+	</div>
+</div>
+<script>
+	$(document).ready(function() {
+		$(".search_criteria li").click(function() {
+			$(".search_criteria li").removeClass("this");
+			$(this).addClass("this");
+		})
+
+		$(".search_criteria li").click(function() {
+			var t = $(this).index();
+			//alert(t);
+			$(".list-view .hot_search_list").hide();
+			$(".list-view .hot_search_list").eq(t).show();
+
+		})
+	});
+</script>
+
+<include file="public:footer" />

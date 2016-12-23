@@ -1,0 +1,23 @@
+<volist name="list" id="item" key="index">
+	<div class="jq_g clearfix">
+		<div class="jq1">
+			<a href="<{:U('mall/detail',array('goods_id'=>$item['goods_id']))}>"><img src="<{:config_img($item['photo'])}>" style="height:111px;"></a>
+		</div>
+		<div class="jq2">
+			<p class="p1">
+				<a href="<{:U('mall/detail',array('goods_id'=>$item['goods_id']))}>"><strong>【<{$item['shop_name']}>】</strong></a>
+			</p>
+			<p class="p2">
+				<{$item.title}>
+			</p>
+			<p class="p3">
+				<{$item.d}>
+			</p>
+			<div class="qq_1 clearfix">
+				<a>￥
+					<{:round($item[ 'mall_price']/100,2)}>
+						<{$l}>
+				</a><span>￥<{:round($item['price']/100,2)}></span><del>已售：<{$item.sold_num}></del></div>
+		</div>
+	</div>
+</volist>

@@ -1,0 +1,227 @@
+<include file="public:header"/>
+<link href="/static/default/wap/css1/lb01.css" rel="stylesheet" type="text/css">
+<link href="/static/default/wap/css1/caiyin.css" rel="stylesheet" type="text/css">
+	<script src="/static/default/wap/css1/swiper1.min.js"></script>
+<style>
+.line li {padding: 0px !important;}
+</style>
+	<header class="top-fixed bg-yellow bg-inverse">
+		<div class="top-back">
+			<a class="top-addr" href="<{:U('index/index')}>"><i class="icon-angle-left"></i></a>
+		</div>
+		<div class="top-title">
+			<volist name="mingcheng" id="mc">
+			<{$mc.cate_name}>
+			</volist>
+		</div>
+		<div class="top-search" style="display:none;">
+			<form method="post" action="<{:U('tuan/index')}>">
+				<input name="keyword" placeholder="输入团购的关键字"  />
+				<button type="submit" class="icon-search"></button> 
+			</form>
+		</div>
+		<div class="top-signed">
+			<a id="search-btn" href="javascript:void(0);"><i class="icon-search"></i></a>
+		</div>
+	</header>
+	
+	<div id="search-bar" class="search-bar">
+		<ul class="line">
+			<li class="x3"><span>分类</span><i></i></li>
+			<li class="x3"><span>地区</span><i></i></li>
+			<!--  <li class="x3"><span>商圈</span><i></i></li>-->
+			<li class="x3"><span>排序</span><i></i></li>
+		</ul>
+	</div>
+    
+    <div class="serch-bar-mask" style="display:none;">
+		<div class="serch-bar-mask-list">
+			<ul>
+
+				<li class="<if condition='empty($cat)'>on</if> "><a href="<{:U('tuan/index')}>" >全部</a></li>
+				<!--  <if condition="!empty($cat)">    
+					<li class="on"><a href="<{:LinkTo('tuan/index',array('cat'=>$cat))}>"><{$tuancates[$cat]['cate_name']}></a></li>
+				</if>   -->
+				<foreach name="tuancates" item="var">
+				<!--  	<if condition="$var.parent_id eq $cat">   
+						<li><a title="<{$var.cate_name}>" href="<{:LinkTo('tuan/index',array('cat'=>$var['cate_id']))}>"><{$var.cate_name}></a></li>
+					</if>-->
+					<if condition="$var.parent_id eq 0">
+					<li><a title="<{$var.cate_name}>" href="<{:LinkTo('tuan/index',array('cat'=>$var['cate_id']))}>"><{$var.cate_name}></a></li>
+				</if>
+				</foreach>
+				
+			</ul>
+		</div>
+		<div class="serch-bar-mask-list">
+			<ul>
+				<li class="<if condition='empty($area_id)'>on</if>"><a href="<{:LinkTo('tuan/index',array('cat'=>$cat))}>">全部区域</a></li>
+          
+				<foreach name="areas" item="var">
+                <php>if($var['city_id'] == $city_id){</php>
+					<li <if condition="$var.area_id eq $area_id">class="on"</if>><a href="<{:LinkTo('tuan/index',array('cat'=>$cat,'area'=>$var['area_id']))}>"><{$var.area_name}></a></li>
+                    <php>}</php>
+				</foreach>
+                
+			</ul>
+		</div>
+		<div class="serch-bar-mask-list">
+			<ul>
+				<li class="<if condition='empty($business_id)'>on</if> "><a href="<{:LinkTo('tuan/index',array('cat'=>$cat,'area'=>$area_id))}>">全部商圈</a></li>
+				<foreach name="biz" item="var">
+					<eq name="var.area_id" value="$area_id">
+					<li <if condition="$var.business_id eq $business_id">class="on"</if> ><a href="<{:LinkTo('tuan/index',array('cat'=>$cat,'area'=>$area_id,'business'=>$var['business_id']))}>"><{$var.business_name}></a></li>
+					</eq>
+				</foreach>
+			</ul>
+		</div>
+		<div class="serch-bar-mask-list">
+			<ul>
+				<li <if condition="$order eq 1">class="on"</if>><a href="<{:LinkTo('tuan/index',array('cat'=>$cat,'area'=>$area_id,'business'=>$business_id,'order'=>1))}>">销量排行</a></li>
+				<li <if condition="$order eq 2">class="on"</if>><a href="<{:LinkTo('tuan/index',array('cat'=>$cat,'area'=>$area_id,'business'=>$business_id,'order'=>2))}>">推荐排序</a></li>
+                <li <if condition="$order eq 3">class="on"</if>><a href="<{:LinkTo('tuan/index',array('cat'=>$cat,'area'=>$area_id,'business'=>$business_id,'order'=>3))}>">距离优先</a></li>
+			</ul>
+		</div>
+	</div>
+		
+	<script type="text/javascript">
+	$(function(){
+		$("#search-btn").click(function(){
+			if($(".top-search").css("display")=='block'){
+				$(".top-search").hide();
+				$(".top-title").show(200);
+			}
+			else{
+				$(".top-search").show();
+				$(".top-title").hide(200);
+			}
+		});
+		$("#search-bar li").each(function(e){
+			$(this).click(function(){
+				if($(this).hasClass("on")){
+					$(this).parent().find("li").removeClass("on");
+					$(this).removeClass("on");
+					$(".serch-bar-mask").hide();
+				}
+				else{
+					$(this).parent().find("li").removeClass("on");
+					$(this).addClass("on");
+					$(".serch-bar-mask").show();
+				}
+				$(".serch-bar-mask .serch-bar-mask-list").each(function(i){
+					
+					if(e==i){
+						$(this).parent().find(".serch-bar-mask-list").hide();
+						$(this).show();
+					}
+					else{
+						$(this).hide();
+					}
+					$(this).find("li").click(function(){
+						$(this).parent().find("li").removeClass("on");
+						$(this).addClass("on");
+					});
+				});
+			});
+		});
+	});
+	</script>
+	
+	
+	
+	<div class="banner">
+  		<div class="ban_n">
+  		<calldata mdl="Ad" where=" closed=0 AND site_id=68 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
+				<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
+                </calldata>
+  		</div>
+  </div>
+  
+  <div class="content">
+    
+   <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                   <div class="icon">
+                    <ul >
+                    <volist name="fenlei" id="dh" offset="0" length='8' key="k">
+                      
+                            <li><a href="<{:U('tuan/index',array('cat'=>$dh['cate_id'],'area'=>$area,'order'=>$order))}>"><img src="/static/default/wap/images/<{$k}>.png"><span><{$dh.cate_name}></span></a></li>
+                   
+                         </volist>
+                    </ul>
+                   
+                  </div>
+            </div>
+            <div class="swiper-slide">
+                    <div class="icon">
+					      <ul >
+                                <volist name="fenlei" id="dh" offset="8" length='8' key="k">
+                      
+                            <li><a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="/static/default/wap/images/<{$k+8}>.png"><span><{$dh.cate_name}></span></a></li>
+                   
+                         </volist>
+                            </ul>
+                                 
+                       </div>
+            </div>
+           </div>
+           </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+         <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true
+    });
+    </script> 
+    
+     
+        <div class="jingpin">
+        	<div class="jp_1"><img src="/static/default/wap/images/index-177_95.png"></div>
+            <div class="jp_2"><h1>精品推荐</h1></div>	
+        </div>
+<!--餐厅-->        
+        <div class="caiting">
+        	<ul>
+        	<volist name="jingxuan" id="jingxuan" offset="0" length='3'>
+        	 <php>
+            		$shop = D('Shop') -> where('shop_id ='.$jingxuan['shop_id']) -> find();
+               		$shop_name = $shop['shop_name'];
+            		</php>
+            	<li><a href="<{:U('tuan/detail',array('tuan_id'=>$jingxuan['tuan_id']))}>"><img src="__ROOT__/attachs/<{$jingxuan.photo}>"><span>【<{$shop_name}>】</span></a></li>
+             </volist>   
+            </ul>
+        </div> 
+        
+          <div class="tuijian">
+    	<div class="tj1"></div>
+        <div class="tj2"><P style="margin-left:20px;margin:0;padding:0;text-decoration: none;font-family: '微软雅黑';">附近推荐</P></div>
+        <div class="tj3"></div>
+      </div>  
+ 
+     <volist name="goods" id="goods" offset="0" length='4'>
+     
+                    <php>
+            		$shop = D('Shop') -> where('shop_id ='.$goods['shop_id']) -> find();
+               		$shop_name = $shop['shop_name'];
+            		</php>
+            
+            
+       <div class="jq_g">
+       		<div class="jq1"><a href="<{:U('tuan/detail',array('tuan_id'=>$goods['tuan_id']))}>"><img src="__ROOT__/attachs/<{$goods.photo}>"></a></div>
+            <div class="jq2">
+            	<p class="p1"><a href="<{:U('tuan/detail',array('tuan_id'=>$goods['tuan_id']))}>">【<{$shop_name}>】</a></p>
+                <p class="p2"><{$goods.title}></p>
+                <p class="p3"><{$goods.d}></p>
+                <div class="qq_1"><a>￥<{:round($goods['tuan_price']/100,2)}></a><i>￥<{:round($goods['price']/100,2)}></i><del>已售：<{$goods.sold_num}></del></div>
+            </div>
+       </div>
+       </volist>
+        
+ 	</div>    
+	
+    
+	
+<include  file='public:footer'/>    

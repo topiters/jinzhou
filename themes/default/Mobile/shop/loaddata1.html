@@ -1,0 +1,30 @@
+<volist name="list" id="item" key="index">
+	
+ <div class="shangjia">   
+         <div class="suning"> 
+                <div class="su"><img src="<{:config_img($item['logo'])}>"></div>
+                <div class="ping">
+                    <div class="ss_1"><a href="#"><{$item['shop_name']}></a></div>
+                    <div class="ss_2">
+                     	
+				<span class="ui-starbar" style="margin-left:5%;"><span style="width:<{:round($item['score']*2,2)}>%"></span></span>
+			
+			 <del><{:round($item['score']*2,2)}>分</del>
+                     </div>
+                     <div class="ss_3"><p>销量&nbsp;<{$item['num']}>&nbsp;&nbsp;共<{$item['con']}>件宝贝</p></div>
+                </div>
+                <div class="jin">
+                    <div class="j_1"><{$item.d}></div>
+                    <div class="j_2"><a href=""><img src="/static/default/wap/images/liebiao01_06.png"></a></div>
+                </div>	
+             </div>
+       <div class="su__n">
+         	<ul>
+            	<li><a href="dianpu.html"><img src="__ROOT__/attachs/<{item['photo']}>"></a></li>
+                <li><a href="dianpu.html"><img src="images/liebiao01_10.png"></a></li>
+                <li><a href="dianpu.html"><img src="images/liebiao01_10.png"></a></li>
+            </ul>
+       </div>
+   </div>        
+      
+</volist>

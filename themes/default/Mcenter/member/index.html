@@ -1,0 +1,110 @@
+<include file="public:header"/>
+<link href="/static/default/wap/css1/dingdan.css" rel="stylesheet" type="text/css">
+<script src="/static/default/wap/other/roll.js"></script>
+<div class="header" style="margin-top:-50px;">
+    <if condition="$is_shop neq null">
+        <div style="float:left;position: fixed;margin: 15px;"><a href="<{:U('store/index/index')}>" style="color: #fff;">点击切换为商家版</a></div>
+    </if>
+    <if condition="$is_shop eq null">
+        <li><a href="<{:U('mcenter/apply/index')}>"><img src="/static/default/wap/images/x_images/dingdan_44.png"><span>我要开店</span></a>
+        </li>
+    </if>
+    	<div class="jiazh" style="font-size:2em;padding-left: 50px;">用户中心</div>
+        <div class="search" style="padding-right: 20px; width: 30px;"><a href="<{:U('mobile/sign/signed')}>" style="color:#fff; font-size:1.5em;">签到</a></div>
+</div>
+    
+<!--个人登录状态-->
+	<div class="geren">
+    	<div class="t_t1" onclick="location.href='<{:U('information/index')}>'">
+        	<div class="g1"><img src="<{:config_img($MEMBER['face'])}>"></div>
+            <div class="g2">
+            	<p class="g_p"><a style="font-size:1.8em; color:#fff;" href="<{:U('information/index')}>"> <{$MEMBER.nickname}> </a></p>
+                <p class="g_d"><a style="font-size:1em; color:#fff;" href="<{:U('information/index')}>">余额：<{:round($MEMBER['money']/100,2)}>元&nbsp;&nbsp;&nbsp;&nbsp;积分：<{$MEMBER.integral}></a></p>
+            </div>
+            <div class="g3"><a href="<{:U('information/index')}>"></a><img src="/static/default/wap/images/x_images/dd2_07.png"></a></div>
+        </div>
+
+<!--小图标3-->        
+        <div class="r_r1">
+        	<ul>
+            	<li><a href="<{:U('mobile/favorites/index')}>"><img src="/static/default/wap/images/x_images/dd_01_07.png"><span>我的收藏</span></a></li>
+                <li><a href="<{:U('information/index')}>"><img src="/static/default/wap/images/x_images/dd_01_09.png"><span>我的信息</span></a></li>
+                <li><a href="<{:U('mcenter/member/fabu')}>"><img src="/static/default/wap/images/x_images/dd_01_07.png"><span>我的发布</span></a></li>
+            </ul>
+        </div>	
+    </div>
+    
+<!--我的订单--> 
+  
+    <div class="dingdan">
+        <div class="d_d1">
+            <div class="f1"><div class="dingdan_d_1"><p style="font-size:1.6em; line-height:40px; margin-left:30px;"><strong>我的订单</strong></p></div></div>
+            <!--  
+            <div class="f2"><div class="dingdan_d_2"><a href="#" style="font-size:1.6em; line-height:40px; color:#666; margin-left:40px;">查看全部订单</a></div></div>
+            -->
+        </div>
+        <div class="d_d2">
+        	<ul>
+            	<li style="width:25%"><a href="<{:LinkTo('goods/index',array('aready'=>1))}>"><img src="/static/default/wap/images/x_images/dingdan_21.png"><span>待付款</span></a></li>
+                <li style="width:25%"><a href="<{:LinkTo('goods/index',array('aready'=>3))}>"><img src="/static/default/wap/images/x_images/dingdan_24.png"><span>待发货</span></a></li>
+                <li style="width:25%"><a href="<{:LinkTo('goods/index',array('aready'=>4))}>"><img src="/static/default/wap/images/x_images/dingdan_33.png"><span>已完成</span></a></li>
+               <!--   <li><a href="#"><img src="/static/default/wap/images/x_images/dingdan_27.png"><span>退款/退货</span></a></li>-->
+                <li style="width:25%"><a href="<{:U('tuan/index')}>"><img src="/static/default/wap/images/x_images/dingdan_30.png"><span>我的团购</span></a></li>
+                
+            </ul>
+        </div>
+    </div> 
+     
+<!--中间图标--> 
+	<div class="tbiao" style="height:auto;">
+    	<ul>
+        	<li><a href="<{:U('coupon/index')}>"><img src="/static/default/wap/images/x_images/dingdan_50.png"><span>我的代金券</span></a></li>
+            <li><a href="<{:U('Mall/cart/cart')}>"><img src="/static/default/wap/images/x_images/dingdan_41.png"><span>购物车</span></a></li>
+             <li><a href="<{:U('Lifeservice/index')}>"><img src="/static/default/wap/images/x_images/dingdan_57.png"><span>我的预约</span></a></li>
+            <li><a href="tel:<{$CONFIG.site.tel}>"><img src="/static/default/wap/images/x_images/dingdan_47.png"><span>客服中心</span></a></li>
+        
+		</ul>
+        
+    </div>   
+   
+<!--我的财产--> 
+  
+    <div class="caichan">
+        <div class="d_d3">
+            <div class="f3"><div class="dingdan_d_3"><p style="font-size:1.6em; line-height:40px; margin-left:30px;"><strong>我的财产</strong></p></div></div>
+            <!--  
+            <div class="f4"><div class="dingdan_d_4"><a href="#" style="font-size:1.6em; line-height:40px; color:#666; margin-left:40px;">查看全部财产</a></div></div>
+        -->
+        </div>
+        <div class="d_d4">
+        	<ul>
+            	<li><a href="<{:U('mcenter/money/index')}>"><img src="/static/default/wap/images/x_images/dingdan_72.png"><span>余额充值</span></a></li>
+               
+                <li><a href="<{:U('coupon/index')}>"><img src="/static/default/wap/images/x_images/dingdan_77.png"><span>代金券</span></a></li>
+               
+            </ul>
+        </div>
+    </div>    
+   
+<!--收货地址管理-->   
+   
+   <div class="shouhuo">
+   		<div class="d_d5">
+            <div class="f5"><div class="dingdan_d_5"><p style="font-size:1.6em; line-height:40px; margin-left:30px;"><strong>收货地址</strong></p></div></div>
+            <div class="f6"><div class="dingdan_d_6"><a href="<{:U('mcenter/addrs/index')}>" style="font-size:1.6em; line-height:40px; color:#666; margin-left:40px;">查看收货地址</a></div></div>
+        </div>
+   </div>
+   
+  
+  
+  
+<div class="blank-10"></div>
+<div class="container text-center">
+		<a class="button button-block button-big bg-dot" href="<{:U('mobile/passport/logout')}>" style="width:90%;">退出后台</a>
+</div> 
+   
+   
+   
+   
+   
+<include file="public:footer"/>

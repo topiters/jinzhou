@@ -1,0 +1,162 @@
+<include file='public:header' />
+
+<link href="/static/default/wap/css1/lb01.css" rel="stylesheet" type="text/css">
+<link href="/static/default/wap/css1/dianpu.css" rel="stylesheet" type="text/css">
+
+<style>
+	.tabCon .u_1 {
+		width: 100%;
+	}
+	
+	.tabCon .u_1 img {
+		width: 100%;
+	}
+	/*.cur1{
+		display: flex;
+		width: 100%;
+	}
+	.cur1-list{
+		flex: 1;
+	}*/
+</style>
+
+<!--左右按钮-->
+<script>
+	window.onload = function() {
+		var oDiv = document.getElementById("tab");
+		var oLi = oDiv.getElementsByTagName("div")[0].getElementsByTagName("li");
+		var aCon = oDiv.getElementsByTagName("div")[1].getElementsByTagName("div");
+		var timer = null;
+		for(var i = 0; i < oLi.length; i++) {
+			oLi[i].index = i;
+			oLi[i].onclick = function() {
+				show(this.index);
+			}
+		}
+
+		function show(a) {
+			index = a;
+			var alpha = 0;
+			for(var j = 0; j < oLi.length; j++) {
+				oLi[j].className = "";
+				aCon[j].className = "";
+				aCon[j].style.opacity = 0;
+				aCon[j].style.filter = "alpha(opacity=0)";
+			}
+			oLi[index].className = "cur";
+			clearInterval(timer);
+			timer = setInterval(function() {
+				alpha += 2;
+				alpha > 100 && (alpha = 100);
+				aCon[index].style.opacity = alpha / 100;
+				aCon[index].style.filter = "alpha(opacity=" + alpha + ")";
+				alpha == 100 && clearInterval(timer);
+			}, 5)
+		}
+	}
+</script>
+
+<script src="/static/default/wap/css1/swiper1.min.js"></script>
+
+<header class="top-fixed bg-yellow bg-inverse">
+	<div class="top-back">
+		<a class="top-addr" href="javascript:history.go(-1);"><i class="icon-angle-left"></i></a>
+	</div>
+	<div class="top-title">
+		<{$detail.weidian_name}>
+	</div>
+	<!--  
+		<div class="top-share">
+			<a href="javascript:void(0);" id="share-btn"><i class="icon-share"></i></a>
+		</div>
+		-->
+</header>
+
+<div class="content">
+
+	<div class="banner">
+		<div class="pic_1">
+			<calldata mdl="Ad" where=" closed=0 AND site_id=80 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
+				<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>" style="width:100%; height:150px"></a>
+			</calldata>
+		</div>
+	</div>
+
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+
+			<div class="swiper-slide">
+				<div class="icon">
+					<ul>
+						<volist name="autocates" id="list" offset="0" length='8' key="k">
+							<li>
+								<a href="<{:U('mall/lists',array('$id'=>$list['cate_id']))}>"><img src="/static/default/wap/images/<{$k}>.png"><span><{$list.cate_name}></span></a>
+							</li>
+
+						</volist>
+					</ul>
+				</div>
+			</div>
+
+			<div class="swiper-slide">
+				<div class="icon">
+					<ul>
+						<volist name="autocates" id="list" offset="8" length='8' key="k">
+							<li>
+								<a href="<{:U('mall/lists',array('$shopcate_id'=>$list['shopcate_id']))}>"><img src="/static/default/wap/images/<{$k}>.png"><span><{$list.cate_name}></span></a>
+							</li>
+
+						</volist>
+					</ul>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Add Pagination -->
+	<div class="swiper-pagination"></div>
+</div>
+<!-- Initialize Swiper -->
+<script>
+	var swiper = new Swiper('.swiper-container', {
+		pagination: '.swiper-pagination',
+		paginationClickable: true
+	});
+</script>
+
+<div id="tab">
+	<div class="tabList">
+		<ul>
+			<li class="cur">店铺首页</li>
+			<li>全部宝贝</li>
+		</ul>
+	</div>
+	<div class="tabCon">
+		<div class="cur">
+			<volist name="good" id="good">
+				<p style="padding-bottom: 5px;">
+					<a href="<{:U('mall/detail',array('goods_id'=>$good['goods_id']))}>" style="width: 48%;display: inline-block;"><img src="__ROOT__/attachs/<{$good.photo}>" style="height:153px; width:100%;"></a>
+					<a href="<{:U('mall/detail',array('goods_id'=>$good['goods_id']))}>" style="width: 48%;display: inline-block;border-left: 1px solid #ddd;"><img src="__ROOT__/attachs/<{$good.photo}>" style="height:153px; width:100%;"></a>
+				</p>
+			</volist>
+			<!--<p class="cur-list">11</p>
+      <p class="cur-list">22</p>-->
+		</div>
+
+		<div class="u_1">
+
+			<volist name="list11" id="list">
+				<p style="padding-bottom: 5px;">
+					<a href="<{:U('mall/detail',array('goods_id'=>$list['goods_id']))}>" style="width: 48%;display: inline-block;"><img src="__ROOT__/attachs/<{$list.photo}>" style="height:153px; width:100%;"></a>
+					<a href="<{:U('mall/detail',array('goods_id'=>$list['goods_id']))}>" style="width: 48%;display: inline-block;border-left: 1px solid #ddd;"><img src="__ROOT__/attachs/<{$list.photo}>" style="height:153px; width:100%;"></a>
+				</p>
+			</volist>
+
+		</div>
+
+	</div>
+</div>
+
+<include file='public:footer' />

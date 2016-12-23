@@ -1,0 +1,165 @@
+<include file="public:header"/>
+<link href="/static/default/wap/css1/lb01.css" rel="stylesheet" type="text/css">
+<link href="/static/default/wap/css1/caiyin.css" rel="stylesheet" type="text/css">
+	<style>
+*{margin:0;padding:0; text-decoration:none; font-family:'微软雅黑';}
+body{
+	font-size:62.5%;
+	16px*62.5%:10px;
+	background-attachment:fixed;
+	background-color:#eeeeee;
+	}
+/*头部*/			
+.header{
+	width:100%;
+	height:60px;
+	overflow:hidden;
+	background-color:#F00;
+	}
+.header .return{
+	float:left;
+	width:5%;
+	margin-top:20px;
+	}
+	.header .return img{
+		margin-left:10px;
+	}
+.header .fabu a{
+	display:block;
+	}	
+	
+.header .fabu{
+	float:left;
+	width:62.5%;
+	line-height:60px;
+	}
+.header .fabu a{
+	width:100%;
+	color:#FFF;
+	font-size:2.2em;
+	text-align:center;
+	}
+.header .my{
+	float:right;
+	line-height:60px;
+	width:32.5%;
+	}	
+.header .my a{
+	float:right;
+	width:100%;
+	font-size:1.8em;
+	color:#FFF;
+	text-align:center;
+
+	}
+	
+	
+/*发布类型*/	
+.lx_1{
+	width:100%;
+	height:320px;
+	background-color:#FFF;
+	}
+.lx_1 ul{
+	text-align:center;
+	}
+.lx_1 ul li{
+	margin-top:20px;
+	width:30%;
+	display:inline-block;
+	white-space:nowrap;
+	}	
+.lx_1 ul li img{
+	width:60px;
+	height:60px;
+	}	
+.lx_1 ul li span{
+	display:block;
+	color:#606060;
+	font-size:14px;
+	margin-top:4px;
+	}	
+	
+	
+		
+</style>
+	<script src="/static/default/wap/css1/swiper1.min.js"></script>
+
+	<header class="top-fixed bg-yellow bg-inverse">
+		<div class="top-back">
+			<a class="top-addr" href="javascript:history.go(-1);"><i class="icon-angle-left"></i></a>
+		</div>
+		<div class="top-title">
+		选择发布类型
+		</div>
+		<div class="top-search" style="display:none;">
+			<form method="post" action="<{:U('mall/index')}>">
+				<input name="keyword" placeholder="输入商品的关键字"  />
+				<button type="submit" class="icon-search"></button> 
+			</form>
+		</div>
+		<div class="top-signed">
+			<a id="search-btn" href="javascript:void(0);"><!--<i class="icon-search"></i>--></a>
+		</div>
+	</header>
+	  <script type="text/javascript">
+	$(function(){
+		$("#search-btn").click(function(){
+			if($(".top-search").css("display")=='block'){
+				$(".top-search").hide();
+				$(".top-title").show(200);
+			}
+			else{
+				$(".top-search").show();
+				$(".top-title").hide(200);
+			}
+		});
+		$("#search-bar li").each(function(e){
+			$(this).click(function(){
+				if($(this).hasClass("on")){
+					$(this).parent().find("li").removeClass("on");
+					$(this).removeClass("on");
+					$(".serch-bar-mask").hide();
+				}
+				else{
+					$(this).parent().find("li").removeClass("on");
+					$(this).addClass("on");
+					$(".serch-bar-mask").show();
+				}
+				$(".serch-bar-mask .serch-bar-mask-list").each(function(i){
+					
+					if(e==i){
+						$(this).parent().find(".serch-bar-mask-list").hide();
+						$(this).show();
+					}
+					else{
+						$(this).hide();
+					}
+					$(this).find("li").click(function(){
+						$(this).parent().find("li").removeClass("on");
+						$(this).addClass("on");
+					});
+				});
+			});
+		});
+	});
+	</script>  
+  
+	
+	<div class="lx_1">
+    	<ul>
+    	
+    	<volist name="categorylist" id="item"  key="k">
+        	<li><a href="<{:U('life/message',array('channel_id'=>$key))}>"><img src="/static/default/wap/images/fabu01_<{$k}>.png"><span><{$item['channel']}></span></a></li>
+           
+        </volist>
+        
+        </ul>
+        
+    </div>    
+    
+    
+	
+  
+	
+<include  file='public:footer'/>    

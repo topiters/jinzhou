@@ -1,0 +1,86 @@
+<include file='public:header'/>  
+<link href="/static/default/wap/css1/jiazhengzhx.css" rel="stylesheet" type="text/css">  
+	<header class="top-fixed bg-yellow bg-inverse">
+		<div class="top-back">
+			<a class="top-addr" href="javascript:history.go(-1);"><i class="icon-angle-left"></i></a>
+		</div>
+		<div class="top-title">
+			家政预约
+		</div>
+       
+	</header>
+	
+   <style>
+   .button-big {
+    padding:3px; 
+    font-size: 12px;
+    line-height: 12px;
+}
+
+   </style>  
+  
+   <div class="content">
+    	
+        <div class="banner">
+        	<div class="pic_1">
+        	<calldata mdl="Ad" where=" closed=0 AND site_id=79 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
+				<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
+                </calldata>
+        	</div>
+        </div>
+        
+<!--日常保洁--> 
+       
+        <div class="box_3">
+        	<div class="bo_1">
+        	<a href="#"><p>日常保洁</p><p>25元/每小时起</p></a></div>
+            <div class="bo_2"><a href="#"><p>2小时急速扫</p><p>两名保洁服务</p></a></div>
+            <div class="bo_3"><a href="#"><p>新家开荒</p><p>8元/平方起</p></a></div>
+        </div>
+        
+<!--立即预约-->     
+
+	 <div class="yuyue">
+     <a href="<{:U('lifeservice/fabu')}>"> 	<input class="inp_1" type="button" value="立即预约"></a>
+     </div>    
+     
+<!--十二个小图标-->     
+
+	<div class="icon">
+    	<ul>
+    	
+      
+        <foreach name="housekeepingcates" item="item"   key="k"> 
+       
+        	<li><a href="<{:U('lifeservice/index',array('cat'=>$item['cate_id']))}>">
+        	<img src="/static/default/wap/images/jz<{$k}>.png">
+        	<span><{$item.cate_name}></span>
+        	</a>
+        	</li>
+        
+         </foreach>
+        </ul>
+        
+    </div>
+
+<!--精品推荐-->
+    <div class="jingpin">
+    	<div class="jp_1"><h1>精品推荐 </h1></div>
+    	
+    	<volist name="list" id="item">   
+        <div class="tuijian">
+        	<div class="tj_1"><a href="<{:U('lifeservice/detail',array('id'=>$item['id']))}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a></div>
+            <div class="tj_2">
+            	<p><a href="<{:U('lifeservice/detail',array('id'=>$item['id']))}>"><{$item['name']}>|简介：<{$item['title']}></a></p>
+                <div class="jiaqian"><a href="<{:U('lifeservice/detail',array('id'=>$item['id']))}>"><{$item['price']/100}>元/<{$item['unit']}></a><del><{$item['yuyue_num']}>人已预约</del></div>
+            </div>
+        </div>
+       </volist>
+        
+        
+    </div>
+  
+    
+     
+	
+<include file="public:footer"/>

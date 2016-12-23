@@ -1,0 +1,183 @@
+<include file="public:header" />
+<style type="text/css">
+	.z1 , .z2{
+		display: inline-block;
+	}
+	.z2 {
+		width: 40%;
+	}
+	.z2 input{
+		width: 80%;
+	}
+	.z3{
+		border: 1px solid #D20004;
+		padding: 2px;
+		display: inline-block;
+	}
+	.line span{
+		display: inline-block;
+	}
+	.line img{
+		width: 38px;
+		height: 38px;
+	}
+	.f22{
+		font-size: 20px;
+	}
+	.f16{
+		font-size: 16px;
+	}
+	.text-input{
+		background-color: #fff;
+	}
+	.forget-next{
+		width: 100%;
+		text-align: center;
+		padding: 25px 0;
+	}
+	.forget-btn{
+		width: 80%;
+		height: 35px;
+		border: 0;
+		background-color: #D20004;
+		
+	}
+	.forget-btn a{
+		color: #fff;
+	}
+</style>
+<header class="top-fixed bg-yellow bg-inverse">
+	<div class="top-back">
+		<a class="top-addr" href="<{:U('passport/login')}>"><i class="icon-angle-left"></i></a>
+	</div>
+	<div class="top-title">
+		找回密码
+	</div>
+	<div class="top-share">
+		<a href="<{:U('passport/register')}>">注册</a>
+	</div>
+</header>
+
+<div class="line">
+	<div class="button-toolbar" style="width: 100%;">
+		<!--<div class="button-group">
+			<a class="block button <if condition='$way eq 2'>bg-dot active</if>" href="<{:U('passport/forget',array('way'=>2))}>">通过手机</a>
+			<a class="block button <if condition='$way eq 1'>bg-dot active</if>" href="<{:U('passport/forget',array('way'=>1))}>">通过邮箱</a>
+		</div>-->
+		<form action="<{:U('passport/newpwd')}>" method="post" target="x-frame">
+			<div class="line padding border-bottom">
+				<img src="/static/default/wap/images/zhanghao-01.png"/>
+				<span class="z1 f22"><label>账号</label></span>
+				<span class="z2"><input type="text" name="mobile" id="mobile" class="text-input" placeholder="请输入11位手机号"></span>
+			</div>	
+			<div class="line padding border-bottom">
+				<img src="/static/default/wap/images/yanzheng-01.png"/>
+				<span class="z1 f22">验证</span>
+				<span class="z2"><input type="text" name="scode" id="scode" class="text-input" placeholder="请输入验证码"></span>
+				<span class="z3 text-small text-gray f16"  id="jq_send" href="javascript:void(0);">获取验证码</span>
+			</div>
+			<div class="forget-next">
+				<button class="forget-btn">
+					<a href="<{:U('passport/forget-next')}>">下一步</a></button>
+			</div>
+		</form>
+	</div>
+</div>
+<!--<form action="<{:U('passport/newpwd')}>" method="post" target="x-frame">
+	<if condition="$way eq 2">
+	<div class="line padding border-bottom">
+		<span class="x3 text-gray">用户名</span>
+		<span class="x8"><input type="text" name="account" id="account" class="text-input" placeholder="请输入用户名"></span>
+	</div>
+    
+	<div class="line padding border-bottom">
+		<span class="x3 text-gray">输入手机</span>
+		<span class="x5"><input type="text" name="mobile" id="mobile" class="text-input" placeholder="请输入11位手机号"></span>
+		<span class="x4"><a class="button button-small bg-dot" id="jq_send" href="javascript:void(0);">获取验证码</a></span>
+	</div>
+	
+    
+	<div class="line padding border-bottom">
+		<span class="x3 text-gray">验证码</span>
+		<span class="x5"><input type="text" name="scode" id="scode" class="text-input" placeholder="验证码"></span>
+		<span class="x4"><em class="text-small text-gray">手机收到的验证码<em></span>
+	</div>
+
+	<div class="container">
+		<div class="blank-30"></div>
+		<p><span class="text-dot">小提示：</span>  请输入您认证过的手机号码，点击“<strong>获取新密码</strong>”按钮后系统会将新密码发送到您的认证手机上。</p>
+	</div>
+    
+    
+    <elseif condition="$way eq 1"/> 
+    
+    
+    
+    <div class="line padding border-bottom">
+		<span class="x3 text-gray">邮箱</span>
+		<span class="x8"><input type="text" name="email" id="email" class="text-input" placeholder="请输入邮箱"></span>
+	</div>
+    <div class="line padding border-bottom">
+		<span class="x3 text-gray">用户名</span>
+		<span class="x8"><input type="text" name="account" id="account" class="text-input" placeholder="请输入用户名"></span>
+	</div>
+    
+    <div class="line padding border-bottom">
+		<span class="x3 text-gray">验证码</span>
+		<span class="x5"><input type="text" name="yzm" id="yzm" class="text-input" placeholder="验证码"></span>
+		<span class="x4"><a href="javascript:void(0);" class="baott_yzm_getA" rel="bao_yzm_code"><img style="height:36px;" id="bao_yzm_code"  src="__ROOT__/index.php?g=app&m=verify&a=index&mt=<{:time()}>" /> </a></span>
+	</div>
+    </if>
+	<div class="container">
+		<div class="blank-30"></div>
+        <input type="hidden" name="way" id="way" value="<{$way}>" />
+		<button class="button button-big button-block bg-dot">获取新密码</button>
+		<div class="blank-30"></div>
+	</div>
+</form>-->
+
+<script type="text/javascript">
+	var mobile_timeout;
+	var mobile_count = 100;
+	var mobile_lock = 0;
+	$(function() {
+		$("#jq_send").click(function() {
+			if(mobile_lock == 0) {
+				mobile_lock = 1;
+				$.ajax({
+					url: '<{:U("passport/findsms")}>',
+					data: 'mobile=' + $("#mobile").val() + '&account=' + $("#account").val(),
+					type: 'post',
+					success: function(data) {
+						if(data == 1) {
+							mobile_count = 60;
+							BtnCount();
+						} else {
+							mobile_lock = 0;
+							alert(data);
+						}
+					}
+				});
+			}
+		});
+	});
+	BtnCount = function() {
+		if(mobile_count == 0) {
+			$('#jq_send').html("重新发送");
+			mobile_lock = 0;
+			clearTimeout(mobile_timeout);
+		} else {
+			mobile_count--;
+			$('#jq_send').html("重新发送(" + mobile_count.toString() + ")秒");
+			mobile_timeout = setTimeout(BtnCount, 1000);
+		}
+	};
+	//获取验证码图片的
+	$(document).ready(function(e) {
+		$(document).on('click', '.yzm_code', function() {
+			$("#" + $(this).attr('rel')).attr('src', BAO_ROOT + '/index.php?g=app&m=verify&a=index&mt=' + Math.random());
+		});
+	});
+</script>
+
+<include file="public:footer_null" />

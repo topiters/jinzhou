@@ -1,0 +1,259 @@
+<volist name="list" id="item" key="index">
+
+	<style>
+		.swiper-container {
+			margin: 0 auto;
+			position: relative;
+			overflow: hidden;
+			z-index: 1
+		}
+		
+		.swiper-container-no-flexbox .swiper-slide {
+			float: left
+		}
+		
+		.swiper-wrapper {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			z-index: 1;
+			display: flex
+		}
+		
+		.swiper-slide {
+			-webkit-flex-shrink: 0;
+			-ms-flex: 0 0 auto;
+			flex-shrink: 0;
+			width: 100%;
+			height: 100%;
+			position: relative
+		}
+		
+		.swiper-container .swiper-notification {
+			position: absolute;
+			left: 0;
+			top: 0;
+			pointer-events: none;
+			opacity: 0;
+			z-index: -1fff
+		}
+		
+		.swiper-button-prev {
+			position: absolute;
+			top: 50%;
+			width: 27px;
+			height: 44px;
+			margin-top: -22px;
+			z-index: 10;
+			cursor: pointer;
+			background-size: 27px 44px;
+			background-position: center;
+			background-repeat: no-repeat
+		}
+		
+		.swiper-pagination {
+			position: absolute;
+			z-index: 10;
+			margin-top: -20px;
+			margin-left: 162px;
+		}
+		
+		.swiper-pagination-bullet {
+			width: 8px;
+			height: 8px;
+			display: inline-block;
+			border-radius: 100%;
+			background: #fff;
+			opacity: .2
+		}
+		
+		.swiper-pagination-bullet-active {
+			opacity: 1;
+			background: #F00;
+		}
+		
+		.swiper-container-horizontal>.swiper-pagination {
+			bottom: 10px;
+			left: 0;
+			width: 100%
+		}
+		
+		.swiper-container {
+			width: 100%;
+			height: 100%;
+		}
+		
+		.swiper-slide {
+			text-align: center;
+			font-size: 18px;
+			background: #fff;
+			/* Center slide text vertically */
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			-webkit-justify-content: center;
+			justify-content: center;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			-webkit-align-items: center;
+			align-items: center;
+		}
+		
+		.swiper-slide img {
+			width: 86%;
+			height: 80px;
+		}
+		
+		.header .banner {
+			width: 100%
+		}
+		
+		.banner img {
+			width: 100%;
+			height: auto;
+		}
+		/*<!--中间内容区-->*/
+		
+		.content {
+			width: 100%;
+		}
+		
+		.content-1 ul li:nth-child(2) {
+			border-left: 1px solid #ddd;
+			border-right: 1px solid #ddd;
+		}
+		
+		.content-1 {
+			width: 100%;
+			height: 108px;
+			overflow: hidden;
+			text-align: center;
+			margin-top: 8px;
+		}
+		
+		.content-1 ul {
+			text-align: center;
+			width: 100%;
+		}
+		
+		.content-1 ul,
+		li,
+		a,
+		span {
+			display: block;
+			font-size: 0.8em;
+			color: #999;
+		}
+		
+		.content-1 li {
+			display: inline-block;
+			float: left;
+			width: 33%;
+			white-space: nowrap;
+			margin-top: 2px;
+		}
+		
+		.content-1 strong {
+			color: #666666;
+		}
+	</style>
+
+	<script src="/static/default/wap/css1/swiper1.min.js"></script>
+
+	<div class="shangjia">
+		<div class="suning" onclick="localhost.href='<{:U('mart/shop',array('id'=>$item['weidianid']))}>'">
+			<div class="su"><img src="<{:config_img($item['logo'])}>"></div>
+			<div class="ping">
+				<div class="ss_1">
+					<a>
+						<{$item[ 'shop_name']}>
+					</a>
+				</div>
+				<div class="ss_2">
+
+					<span class="ui-starbar" style="margin-left:5%;"><span style="width:<{:round($item['score']*2,2)}>%"></span></span>
+
+					<del><{:round($item['score']*2,2)}>分</del>
+				</div>
+				<div class="ss_3">
+					<p>销量&nbsp;
+						<{$item[ 'num']}>&nbsp;&nbsp;共
+							<{$item[ 'con']}>件宝贝</p>
+				</div>
+			</div>
+			<div class="jin">
+				<div class="j_1">
+					<{$item.d}>
+				</div>
+				<div class="j_2">
+					<a href="<{:U('mart/shop',array('id'=>$item['weidianid']))}>"><img src="/static/default/wap/images/liebiao01_06.png"></a>
+				</div>
+			</div>
+		</div>
+		<?php 
+             $id=$item['shop_id'];
+             $map=array("closed"=>0,"audit"=>1,"shop_id"=>$id,"end_date"=>array("EGT",TODAY));
+             $orderby=array("views"=>"desc");
+             $goods=D("Goods")->where($map)->order($orderby)->limit(0,6)->select();
+              ?>
+
+		<div class="slidem2 swiper-container">
+			<div class="swiper-wrapper">
+
+				<?php if(!empty($goods)){ ?>
+				<div class="swiper-slide">
+					<div class="content-1">
+						<ul>
+							<volist name="goods" id="goods" offset="0" length="3">
+								<li>
+									<a href="<{:U('mall/detail',array('goods_id'=>$goods['goods_id']))}>">
+										<img src="__ROOT__/attachs/<{$goods['photo']}>" style="height:119px;">
+									</a>
+								</li>
+							</volist>
+						</ul>
+					</div>
+				</div>
+				<?php }?>
+
+				<?php 
+             $id=$item['shop_id'];
+             $map=array("closed"=>0,"audit"=>1,"shop_id"=>$id,"end_date"=>array("EGT",TODAY));
+             $orderby=array("views"=>"desc");
+             $goods=D("Goods")->where($map)->order($orderby)->limit(0,6)->select();
+              ?>
+
+				<div class="swiper-slide">
+					<div class="content-1">
+						<ul>
+
+							<volist name="goods" id="goods" offset="3" length="3" key="k">
+								<li>
+									<a href="<{:U('mall/detail',array('goods_id'=>$goods['goods_id']))}>">
+										<img src="__ROOT__/attachs/<{$goods['photo']}>" style="height:119px;">
+									</a>
+								</li>
+							</volist>
+
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- Add Pagination -->
+
+		<!-- Initialize Swiper -->
+		<script>
+			var swiper = new Swiper('.slidem2', {
+				pagination: '.slidem3',
+				paginationClickable: true
+			});
+		</script>
+
+	</div>
+
+</volist>

@@ -1,0 +1,121 @@
+<include file="public:header" />
+<style type="text/css">
+	.z1 , .z2{
+		display: inline-block;
+	}
+	.z2 {
+		width: 40%;
+	}
+	.z2 input{
+		width: 80%;
+	}
+	.z3{
+		border: 1px solid #D20004;
+		padding: 2px;
+		display: inline-block;
+	}
+	.line span{
+		display: inline-block;
+	}
+	.line img{
+		width: 38px;
+		height: 38px;
+	}
+	.f22{
+		font-size: 20px;
+	}
+	.f16{
+		font-size: 16px;
+	}
+	.text-input{
+		background-color: #fff;
+	}
+	.forget-next{
+		width: 100%;
+		text-align: center;
+		padding: 25px 0;
+	}
+	.forget-btn{
+		width: 80%;
+		height: 35px;
+		border: 0;
+		background-color: #D20004;
+		color: #fff;
+	}
+</style>
+<header class="top-fixed bg-yellow bg-inverse">
+	<div class="top-back">
+		<a class="top-addr" href="<{:U('passport/forget')}>"><i class="icon-angle-left"></i></a>
+	</div>
+	<div class="top-title">
+		找回密码
+	</div>
+	<div class="top-share">
+		<a href="<{:U('passport/register')}>">注册</a>
+	</div>
+</header>
+
+<div class="line">
+	<div class="button-toolbar" style="width: 100%;">
+		<form action="<{:U('passport/newpwd')}>" method="post" target="x-frame">
+			<div class="line padding border-bottom">
+				<img src="/static/default/wap/images/mima-01.png"/>
+				<span class="z1 f22"><label>新密码</label></span>
+				<span class="z2"><input type="text" name="mobile" id="mobile" class="text-input" placeholder="请输入新密码"></span>
+			</div>	
+			<div class="line padding border-bottom">
+				<img src="/static/default/wap/images/yanzheng-01.png"/>
+				<span class="z1 f22">确认密码</span>
+				<span class="z2"><input type="text" name="scode" id="scode" class="text-input" placeholder="请再输入一次密码"></span>
+			</div>
+			<div class="forget-next">
+				<button class="forget-btn">下一步</button>
+			</div>
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+	var mobile_timeout;
+	var mobile_count = 100;
+	var mobile_lock = 0;
+	$(function() {
+		$("#jq_send").click(function() {
+			if(mobile_lock == 0) {
+				mobile_lock = 1;
+				$.ajax({
+					url: '<{:U("passport/findsms")}>',
+					data: 'mobile=' + $("#mobile").val() + '&account=' + $("#account").val(),
+					type: 'post',
+					success: function(data) {
+						if(data == 1) {
+							mobile_count = 60;
+							BtnCount();
+						} else {
+							mobile_lock = 0;
+							alert(data);
+						}
+					}
+				});
+			}
+		});
+	});
+	BtnCount = function() {
+		if(mobile_count == 0) {
+			$('#jq_send').html("重新发送");
+			mobile_lock = 0;
+			clearTimeout(mobile_timeout);
+		} else {
+			mobile_count--;
+			$('#jq_send').html("重新发送(" + mobile_count.toString() + ")秒");
+			mobile_timeout = setTimeout(BtnCount, 1000);
+		}
+	};
+	//获取验证码图片的
+	$(document).ready(function(e) {
+		$(document).on('click', '.yzm_code', function() {
+			$("#" + $(this).attr('rel')).attr('src', BAO_ROOT + '/index.php?g=app&m=verify&a=index&mt=' + Math.random());
+		});
+	});
+</script>
+
+<include file="public:footer_null" />

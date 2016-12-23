@@ -1,0 +1,39 @@
+<include file='public:header'/>
+
+<style>
+.my_fabu_box ul li{ background-color:#FFF; padding:10px; overflow:hidden; border-bottom:solid 1px #f1f1f1;}
+.my_fabu_1{ float:left; width:30%;}
+.my_fabu_2{ float:left; width:52%;}
+.my_fabu_3{ float:left; width:16%; font-size:12px;color:#999; margin-top:20px;}
+.my_fabu_1 img{ width:80px; height:80px;margin-top: 10px;}
+.my_fabu_color{color:#F00; font-size:12px;}
+.my_fabu_2 p{ font-size:16px; margin-bottom:10px;}
+
+</style>
+<header class="top-fixed bg-yellow bg-inverse">
+	<div class="top-back">
+		<a class="top-addr" href="<{:U('index/index')}>"><i class="icon-angle-left"></i></a>
+	</div>
+	<div class="top-title">
+		我的发布
+	</div>
+	<div class="top-share">
+		<!--<a href="<{:U('favorites/lists')}>" id="share-btn"><i class="icon-plus"></i></a>-->
+	</div>
+
+</header>   
+      
+<div class="my_fabu_box">
+	<ul>
+	 <volist name='fabu'  id='item'>
+	<li onclick="location.href='<{:U('mobile/life/detail',array('life_id'=>$item['life_id']))}>'">
+        	<div class="my_fabu_1"><img src="__ROOT__/attachs/<{$item.photo}>"></div>
+            <div class="my_fabu_2"><p><{$item.title}></p><p><a>价格：</a><a class="my_fabu_color"><{$item.num1}>元</a></p></div>
+            <p class="my_fabu_3"><{:formatTime($item.create_time)}></p>
+			
+        </li>
+	</volist>	
+    </ul>
+</div>
+
+<include file='public:footer'/>

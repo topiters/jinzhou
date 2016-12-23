@@ -1,0 +1,625 @@
+<include file='public:header' />
+
+<style>
+	.swiper-container {
+		margin: 0 auto;
+		position: relative;
+		overflow: hidden;
+		z-index: 1
+	}
+	
+	.swiper-container-no-flexbox .swiper-slide {
+		float: left
+	}
+	
+	.swiper-wrapper {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+		display: flex
+	}
+	
+	.swiper-slide {
+		-webkit-flex-shrink: 0;
+		-ms-flex: 0 0 auto;
+		flex-shrink: 0;
+		width: 100%;
+		height: 100%;
+		position: relative
+	}
+	
+	.swiper-container .swiper-notification {
+		position: absolute;
+		left: 0;
+		top: 0;
+		pointer-events: none;
+		opacity: 0;
+		z-index: -1
+	}
+	
+	.swiper-button-prev {
+		position: absolute;
+		top: 50%;
+		width: 27px;
+		height: 44px;
+		margin-top: -22px;
+		z-index: 10;
+		cursor: pointer;
+		background-size: 27px 44px;
+		background-position: center;
+		background-repeat: no-repeat
+	}
+	
+	.swiper-pagination {
+		position: absolute;
+		z-index: 10;
+		margin-top: -20px;
+		margin-left: 162px;
+	}
+	
+	.swiper-pagination-bullet {
+		width: 8px;
+		height: 8px;
+		display: inline-block;
+		border-radius: 100%;
+		background: #fff;
+		opacity: .2
+	}
+	
+	.swiper-pagination-bullet-active {
+		opacity: 1;
+		background: #F00;
+	}
+	
+	.swiper-container-horizontal>.swiper-pagination {
+		bottom: 10px;
+		left: 0;
+		width: 100%
+	}
+	
+	.swiper-container {
+		width: 100%;
+		height: 100%;
+	}
+	
+	.swiper-slide {
+		text-align: center;
+		font-size: 18px;
+		background: #fff;
+		/* Center slide text vertically */
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		-webkit-justify-content: center;
+		justify-content: center;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		-webkit-align-items: center;
+		align-items: center;
+	}
+	
+	.swiper-slide img {
+		width: 86%;
+		height: 80px;
+	}
+	
+	.header .banner {
+		width: 100%
+	}
+	
+	.banner img {
+		width: 100%;
+		height: auto;
+	}
+	/*<!--中间内容区-->*/
+	
+	.content {
+		width: 100%;
+	}
+	
+	.content-1 {
+		width: 100%;
+		height: 108px;
+		overflow: hidden;
+		text-align: center;
+		margin-top: 8px;
+	}
+	
+	.content-1 ul {
+		text-align: center;
+		width: 100%;
+	}
+	
+	.content-1 ul,
+	li,
+	a,
+	span {
+		display: block;
+		font-size: 0.8em;
+		color: #000000;
+	}
+	
+	.content-1 li {
+		display: inline-block;
+		float: left;
+		width: 33.3%;
+		white-space: nowrap;
+		margin-top: 2px;
+	}
+	
+	.content-1 strong {
+		color: #666666;
+	}
+</style>
+
+<link href="/static/default/wap/css1/style.css" rel="stylesheet" type="text/css">
+<script src="/static/default/wap/css1/swiper1.min.js"></script>
+<script src="/static/default/wap/other/roll.js"></script>
+<script src="__TMPL__statics/js/jquery.flexslider-min.js" type="text/javascript" charset="utf-8"></script>
+<header class="top-fixed bg-yellow bg-inverse">
+	<div class="top-local">
+		<a href="<{:U('city/index')}>" class="top-addr">
+			<{:bao_msubstr($city_name,0,2,false)}> <i class="icon-angle-down"></i></a>
+	</div>
+	<div class="header-1">
+		<div class="h2">
+			<img class="ss" src="/static/default/wap/images/index-177_06.png" onclick="form.submit()">
+			<form name="form" method="post" action="<{:U('all/index')}>">
+				<!--<img class="ss" src="/static/default/wap/images/index-177_06.png">-->
+				<input type="text" placeholder="查商户、找优惠">
+				<!--<button type="submit">
+		<img style="display:block;" class="ss" src="/static/default/wap/images/index-177_06.png">
+		</button>-->
+
+			</form>
+			<!--<img class="ss" src="/static/default/wap/images/index-177_06.png" onclick="form.submit()">-->
+		</div>
+		<div class="h3">
+			<a href="<{:U('mcenter/information/index')}>"><img src="/static/default/wap/images/index-177_03_01.png"><span>消息</span></a>
+		</div>
+	</div>
+
+</header>
+<script type="text/javascript">
+	$(function() {
+		$("#search-btn").click(function() {
+			if($(".top-search").css("display") == 'block') {
+				$(".top-search").hide();
+				$(".top-title").show(200);
+			} else {
+				$(".top-search").show();
+				$(".top-title").hide(200);
+			}
+		});
+		$("#search-bar li").each(function(e) {
+			$(this).click(function() {
+				if($(this).hasClass("on")) {
+					$(this).parent().find("li").removeClass("on");
+					$(this).removeClass("on");
+					$(".serch-bar-mask").hide();
+				} else {
+					$(this).parent().find("li").removeClass("on");
+					$(this).addClass("on");
+					$(".serch-bar-mask").show();
+				}
+				$(".serch-bar-mask .serch-bar-mask-list").each(function(i) {
+
+					if(e == i) {
+						$(this).parent().find(".serch-bar-mask-list").hide();
+						$(this).show();
+					} else {
+						$(this).hide();
+					}
+					$(this).find("li").click(function() {
+						$(this).parent().find("li").removeClass("on");
+						$(this).addClass("on");
+					});
+				});
+			});
+		});
+	});
+</script>
+
+<div id="focus" class="focus">
+	<div class="hd">
+		<ul></ul>
+	</div>
+	<!--下面的limit="0,2"是幻灯的个数，2代表2张图，以此类推，site_id=57是你广告位的ID-->
+	<div class="bd">
+		<ul>
+			<calldata mdl="Ad" where=" closed=0 AND site_id=57 AND city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,3" cache="7200" order="orderby asc">
+				<li>
+					<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>" /></a>
+				</li>
+			</calldata>
+		</ul>
+	</div>
+</div>
+
+<script type="text/javascript">
+	TouchSlide({
+		slideCell: "#focus",
+		titCell: ".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+		mainCell: ".bd ul",
+		effect: "left",
+		autoPlay: true, //自动播放
+		autoPage: true, //自动分页
+		switchLoad: "_src", //切换加载，真实图片路径为"_src", 
+		//delayTime:"3000",
+	});
+</script>
+
+<!--分类开始-->
+<div id="index" class="page-center-box">
+	<script>
+		$(document).ready(function() {
+			$('.flexslider_cate').flexslider({
+				directionNav: true,
+				pauseOnAction: false,
+				/*slideshow: false,*/
+				/*touch:true,*/
+			});
+			/*首页菜单分类结束*/
+			$('.flexslider_yiyuan').flexslider({
+				controlNav: false,
+				pauseOnAction: false,
+				/*slideshow: false,*/
+				/*touch:true,*/
+			});
+			/*首页菜单分类结束*/
+		});
+	</script>
+
+	<div class="blank-10  bg"></div>
+
+	<div class="slidem2 swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+				<div class="content-1">
+					<ul>
+						<volist name="daohang" id="dh" offset="0" length='8' key="k">
+
+							<li>
+								<a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="/static/default/wap/images/<{$k}>.png"><span><{$dh.cate_name}></span></a>
+							</li>
+
+						</volist>
+					</ul>
+
+				</div>
+			</div>
+
+			<div class="swiper-slide">
+				<div class="content-1">
+					<ul>
+						<volist name="daohang" id="dh" offset="8" length='8' key="k">
+
+							<li>
+								<a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="/static/default/wap/images/<{$k+8}>.png"><span><{$dh.cate_name}></span></a>
+							</li>
+
+						</volist>
+
+						<volist name='nav' id='item'>
+							<if condition="$item.nav_id eq 57">
+								<li>
+									<a href="<{:U('lifeservice/fenlei')}>"><img src="/static/default/wap/images/jiazheng_17.png"><span><{$item.nav_name}></span></a>
+								</li>
+
+							</if>
+							<if condition="$item.nav_id eq 61">
+								<li>
+									<a href="<{:U('life/category')}>"><img src="/static/default/wap/images/7.png"><span><{$item.nav_name}></span></a>
+								</li>
+
+							</if>
+
+						</volist>
+
+					</ul>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- Add Pagination -->
+	<div class="slidem3 swiper-pagination"></div>
+
+	<!-- Initialize Swiper -->
+	<script>
+		var swiper = new Swiper('.slidem2', {
+			pagination: '.slidem3',
+			paginationClickable: true
+		});
+	</script>
+
+	<div class="content-2">
+		<div class="con-lt">
+			<calldata mdl="Ad" where=" closed=0 AND site_id=84 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
+				<!--<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>-->
+				<a href="/mobile/coupon/main.html"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
+			</calldata>
+
+		</div>
+		<div class="con-rt">
+			<div class="rt-1"><img src="/static/default/wap/images/index-177_47.png"></div>
+			<div class="rt-2">
+				<a href="<{:U('life/leixing')}>"><strong>信息发布</strong></a>
+			</div>
+		</div>
+	</div>
+
+	<div class="toutiao" onclick="location.href='/mobile/news'">
+		<div class="pc-tt"><img src="/static/default/wap/images/index-177_55.png"></div>
+		<div class="pc-d"></div>
+		<div class="zuixin">
+			<img src="/static/default/wap/images/new.png"/>
+			<!--<span>最新</span>-->
+		</div>
+		<div class="zx-1">
+			最新发布的新闻消息
+		</div>
+	</div>
+
+	<!--美食-->
+	<div class="mshi">
+		<div class="miaosha">
+			<div class="ss" onclick="location.href='/mobile/coupon/main'">
+				<div class="ms-1">
+					<div class="div1">
+						<p>·14点场</p>
+					</div>
+				</div>
+				<div class="div2">
+					<p>养身煨汤</p>
+				</div>
+				<div class="div3">
+					<ul>
+						<li>00</li>
+						<li>00</li>
+						<li>00</li>
+					</ul>
+				</div>
+			</div>
+			<div class="ms-2">
+				<calldata mdl="Ad" where=" closed=0 AND site_id=62 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
+					<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
+				</calldata>
+			</div>
+		</div>
+		<!--好喝-->
+		<div class="haohe">
+			<div class="hao-1">
+				<div class="hh1">
+					<div class="h-1"><img src="/static/default/wap/images/index-177_62.png"></div>
+					<div class="h-2">
+						<p class="h-22">有好喝</p>
+						<div class="pp-1">
+							<p class="pp1">各种奶茶</p>
+							<p class="pp1">品质精选</p>
+						</div>
+					</div>
+				</div>
+				<div class="hh2">
+					<calldata mdl="Ad" where=" closed=0 AND site_id=63 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
+						<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
+					</calldata>
+				</div>
+			</div>
+
+			<div class="hao-2">
+				<div class="hlt">
+					<p style="font-size:2em; color:#28b8dd;">爱K歌</p>
+					<p>【皇马歌城】</p>
+					<p style="font-size:0.8em; color:#999;">72支冰醇套餐</p>
+					<div class="tu">
+						<calldata mdl="Ad" where=" closed=0 AND site_id=64 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
+							<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
+						</calldata>
+					</div>
+				</div>
+
+				<div class="hrt">
+					<div class="hrt1">
+						<calldata mdl="Ad" where=" closed=0 AND site_id=65 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
+							<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
+						</calldata>
+					</div>
+					<div class="hrt2">
+						<calldata mdl="Ad" where=" closed=0 AND site_id=70 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
+							<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
+						</calldata>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="shangjia">
+		<ul>
+			<li style="margin-top:2px;"><img src="/static/default/wap/images/index-177_83.png"></li>
+			<li style="width:20%">
+				<p style="margin:0;">附近商家</p>
+			</li>
+			<li class="gd_1">
+				<a href="/mobile/shop"><img src="/static/default/wap/images/index-177_98.png"></a>
+			</li>
+		</ul>
+	</div>
+
+	<div class="slidem2 swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+				<div class="jiudian">
+					<ul>
+						<volist name="shoplist" id="item" offset="0" length='3'>
+							<li>
+								<a href="<{:U('mart/shop',array('id'=>$item['weidianid']))}>"><img src="__ROOT__/attachs/<{$item.logo|default='default.jpg'}>">
+									<span><p><{$item.shop_name}></p></span>
+								</a>
+							</li>
+						</volist>
+					</ul>
+				</div>
+			</div>
+
+			<div class="swiper-slide">
+				<div class="jiudian">
+					<ul>
+						<volist name="shoplist" id="item" offset="3" length='3'>
+							<li>
+								<a href="<{:U('mart/shop',array('id'=>$item['weidianid']))}>"><img src="__ROOT__/attachs/<{$item.logo|default='default.jpg'}>">
+									<span><p><{$item.shop_name}></p></span>
+								</a>
+							</li>
+						</volist>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Add Pagination -->
+
+	<!-- Initialize Swiper -->
+	<script>
+		var swiper = new Swiper('.slidem2', {
+			pagination: '.slidem3',
+			paginationClickable: true
+		});
+	</script>
+
+	<div class="shangjia">
+		<ul>
+			<li style="margin-top:2px;"><img src="/static/default/wap/images/index-177_95.png"></li>
+			<li style="width:20%">
+				<p style="margin:0;">推荐品牌</p>
+			</li>
+			<li class="gd_1">
+				<a href="#"><img src="/static/default/wap/images/index-177_98.png"></a>
+			</li>
+		</ul>
+	</div>
+
+	<!--非常大牌-->
+	<div class="dapai">
+		<div class="dap1">
+			<div class="one1"><span>非常大牌</span><img src="/static/default/wap/images/index-177_103.png"></div>
+			<p class="two" style="text-align:center;color:#F00">起范儿尖货让你嗨翻全场</p>
+			<div class="three">
+				<calldata mdl="Ad" where=" closed=0 AND site_id=71 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
+					<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
+				</calldata>
+			</div>
+		</div>
+
+		<div class="dap2">
+			<div class="dp-1">
+				<p>全球精选</p>
+				<p style="font-size:1em; text-align:center;color:#F00">超低包邮</p>
+				<div class="dp2">
+					<calldata mdl="Ad" where=" closed=0 AND site_id=72 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
+						<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
+					</calldata>
+				</div>
+			</div>
+			<div class="dp-1" x>
+				<p>全球精选</p>
+				<p style="font-size:1em; text-align:center;color:#F00">超低包邮</p>
+				<div class="dp2">
+					<calldata mdl="Ad" where=" closed=0 AND site_id=73 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
+						<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
+					</calldata>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--天天特价-->
+
+	<div class="dapai">
+		<div class="dap1">
+			<div class="one1"><span>天天特价</span><img src="/static/default/wap/images/index-177_103.png"></div>
+			<p class="two" style="text-align:center;color:#F00">每日精选千款好货</p>
+			<div class="three">
+				<calldata mdl="Ad" where=" closed=0 AND site_id=75 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
+					<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
+				</calldata>
+			</div>
+		</div>
+
+		<div class="dap2">
+			<div class="dp-1">
+				<p>品牌店庆</p>
+				<p style="font-size:1em; text-align:center; color:#F00">低至9.9元</p>
+				<div class="dp2">
+					<calldata mdl="Ad" where=" closed=0 AND site_id=76 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
+						<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
+					</calldata>
+				</div>
+			</div>
+			<div class="dp-1" x>
+				<p>丽人购</p>
+				<p style="font-size:1em; text-align:center;color:#F00">品牌特买</p>
+				<div class="dp2">
+					<calldata mdl="Ad" where=" closed=0 AND site_id=77 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
+						<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
+					</calldata>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="tuijian">
+		<div class="tj1"></div>
+		<div class="tj2">时实为您推荐</div>
+		<div class="tj3"></div>
+	</div>
+
+	<!--推荐下左-->
+	<div class="leri">
+
+		<volist name="meishi" id="meishi" offset="0" length='4'>
+			<php>
+				$shop = D('Shop') -> where('shop_id ='.$meishi['shop_id']) -> find(); $shop_name = $shop['shop_name']; $addr=$shop['addr'];
+			</php>
+			<div class="tjms" onclick="location.href='<{:U('mall/detail',array('goods_id'=>$meishi['goods_id']))}>'">
+				<ul>
+					<li>
+						<a href="#"><img src="__ROOT__/attachs/<{$meishi.photo}>" style="height:132px;"></a>
+					</li>
+					<li class="ui2" style="margin-top: 10px;">
+						<a><strong>【<{$shop_name}>】</strong>
+							<{:bao_msubstr($meishi[ 'title'],0,18)}>
+						</a>
+					</li>
+					<li style="margin:4px;">
+						<a style="float:left;font-size:1.4em;color:#F00;">￥
+							<{:round($meishi[ 'mall_price']/100,2)}>&nbsp;<span>￥<{:round($meishi['price']/100,2)}></span><del>已售：<{$meishi.sold_num}></del></a>
+						<!-- <div><i>￥<{:round($meishi['price']/100,2)}></i><del>已售：<{$meishi.sold_num}></del></div> -->
+					</li>
+					<li>
+						<a class="x_icon1"><img src="/static/default/wap/images/index-177_143.png">
+							<p>
+								<{:bao_msubstr($addr,0,10)}>
+							</p>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!--<div class="tjms-b"></div>-->
+		</volist>
+
+		<!--右-->
+
+	</div>
+
+	<!--左-->
+
+</div>
+
+<include file="public:footer" />

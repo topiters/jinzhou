@@ -1,0 +1,133 @@
+<include file="public:header"/>
+<link href="/static/default/wap/css1/lb01.css" rel="stylesheet" type="text/css">
+<link href="/static/default/wap/css1/caiyin.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+	.caiting ul li:nth-child(2){
+		border-left: 1px solid #ddd;
+			border-right: 1px solid #ddd;
+	}
+</style>
+	<script src="/static/default/wap/css1/swiper1.min.js"></script>
+
+	<header class="top-fixed bg-yellow bg-inverse">
+		<div class="top-back">
+			<a class="top-addr" href="javascript:history.go(-1);"><i class="icon-angle-left"></i></a>
+		</div>
+		<div class="top-title">
+		生活信息
+		</div>
+		<div class="top-search" style="display:none;">
+			<form method="post" action="<{:U('mall/index')}>">
+				<input name="keyword" placeholder="输入商品的关键字"  />
+				<button type="submit" class="icon-search"></button> 
+			</form>
+		</div>
+		<div class="top-signed">
+			<a id="search-btn" href="javascript:void(0);"><!--<i class="icon-search"></i>--></a>
+		</div>
+	</header>
+  
+	
+	<div class="banner">
+  		<div class="ban_n">
+  		<calldata mdl="Ad" where=" closed=0 AND site_id=82 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
+				<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
+                </calldata>
+  		</div>
+  </div> 
+  
+  
+  <div class="content">
+    
+   <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                   <div class="icon">
+                    <ul >
+                    <volist name="categorylist" id="dh" offset="0" length='8' key="k">
+                      
+                            <li><a href="<{:U('life/message',array('channel_id'=>$key))}>"><img src="/static/default/wap/images/<{$k}>.png"><span><{$dh['channel']}></span></a></li>
+                   
+                         </volist>
+                    </ul>
+                   
+                  </div>
+            </div>
+            <div class="swiper-slide">
+                    <div class="icon">
+					      <ul >
+                                <volist name="list" id="dh" offset="8" length='8' key="k">
+                      
+                            <li><a href="<{:U('life/message',array('channel_id'=>$key))}>"><img src="/static/default/wap/images/<{$k+8}>.png"><span><{$dh.cate_name}></span></a></li>
+                   
+                         </volist>
+                            </ul>
+                                 
+                       </div>
+            </div>
+           </div>
+           </div>
+        </div>
+        
+        
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+         <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true
+    });
+    </script> 
+    
+     
+        <div class="jingpin">
+        	<div class="jp_1"><img src="/static/default/wap/images/index-177_95.png"></div>
+            <div class="jp_2"><h1>精品推荐</h1></div>	
+        </div>
+<!--餐厅-->        
+        <div class="caiting">
+        	<ul>
+        	<volist name="jplist" id="item">
+            	<li><a href="<{:U('life/detail',array('life_id'=>$item['life_id']))}>"><img src="<{:config_img($item['photo'])}>">	
+            	<span>【<{:bao_msubstr($item['title'],0,8)}>】</span>
+            	
+            	</a></li>
+               </volist>
+            </ul>
+        </div> 
+        
+          <div class="tuijian">
+    	<div class="tj1"></div>
+        <div class="tj2"><P style="margin-left:20px;margin:0;padding:0;text-decoration: none;font-family: '微软雅黑';">附近推荐</P></div>
+        <div class="tj3"></div>
+      </div>  
+ 
+     <volist name="near" id="item" offset="0" length='6'>
+       <div class="jq_g">
+       		<div class="jq1"><a href="<{:U('life/detail',array('life_id'=>$item['life_id']))}>"><img src="<{:config_img($item['photo'])}>"></a></div>
+            <div class="jq2">
+            	<p class="p1"><a href="<{:U('life/detail',array('life_id'=>$item['life_id']))}>">【<{:bao_msubstr($item['title'],0,8)}>】</a></p>
+                <if condition="!empty($item['addr'])">
+                <p class="p2">地址：<{$item.addr}></p>
+                </if>
+                <if condition="empty($item['addr'])">
+                <p class="p2">地址：暂无</p>
+                </if>
+                <p class="p3"><{$item.d}></p>
+                <div class="qq_1">
+                <if condition="!empty($item['num2'])">
+                <a>价格：<{$item.num2}></a>
+                </if >
+                <if condition="empty($item['num2'])">
+                <a>价格：面议</a>
+                </if >
+            <del>已浏览：<{$item.views}>次</del></div>
+            </div>
+       </div>
+       </volist>
+        
+ 	</div>    
+    
+  
+	
+<include  file='public:footer'/>    
