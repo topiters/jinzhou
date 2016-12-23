@@ -26,14 +26,39 @@ class CouponAction extends CommonAction {
            foreach ($shops as $k => $val) {
             $shops[$k]['d'] = getDistance($lat, $lng, $val['lat'], $val['lng']);
         }
-        
+        $goodscates = D('Goodscate')->order('cate_id')->select();
+        $this->assign('goodscates' , $goodscates);
+        $areas = D('area')->where("city_id = {$this->city_id}")->select();
+        $this->assign('areas' , $areas);
+        $businesses = D('business')->select();
+        $this->assign('businesses' , $businesses);
+
         //团购
         $condition=array("closed"=>0,"audit"=>1,"end_date"=>array("egt",TODAY),"xiadan"=>0);
+        if ($this->_param('area')){
+            $condition['area'] = (int)$this->_param('area');
+        }
+        if ($this->_param('business')) {
+            $condition['business'] = (int)$this->_param('business');
+        }
+        if ($this->_param('cate_id')) {
+            $condition['cate_id'] = (int)$this->_param('cate_id');
+        }
         $tuan=D("Tuan")->where($condition)->select();
+//        echo D('Tuan')->getLastSql();dump($tuan);die;
         $this->assign("tuan",$tuan);
         
         //限时抢购
         $condition1=array("closed"=>0,"audit"=>1,"end_date"=>array("egt",TODAY),"xiadan"=>1);
+        if ($this->_param('area')) {
+            $condition1['area'] = (int)$this->_param('area');
+        }
+        if ($this->_param('business')) {
+            $condition1['business'] = (int)$this->_param('business');
+        }
+        if ($this->_param('cate_id')) {
+            $condition1['cate_id'] = (int)$this->_param('cate_id');
+        }
         $xiangou=D("Tuan")->where($condition1)->select();
         $this->assign("xiangou",$xiangou);
         
@@ -44,6 +69,12 @@ class CouponAction extends CommonAction {
         
         //代金券
         $cd=array("closed"=>0,"audit"=>1,"expire_date"=>array("EGT",TODAY));
+        if ($this->_param('area')) {
+            $cd['area'] = (int)$this->_param('area');
+        }
+        if ($this->_param('cate_id')) {
+            $cd['cate_id'] = (int)$this->_param('cate_id');
+        }
         $djj=D("Coupon")->where($cd)->select();
         $this->assign("djj",$djj);
         

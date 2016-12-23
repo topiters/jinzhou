@@ -42,7 +42,7 @@
 		<!--分类-->
 
 		<!--banner-->
-		<div class="banner" style="margin-top: 40px;">
+		<div class="banner" style="margin-top: 90px;">
 			<div class="ban_n">
 				<calldata mdl="Ad" where=" closed=0 AND site_id=83 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
 					<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
@@ -55,199 +55,83 @@
 				<li class="x3"><span>全部</span><i></i></li>
 				<li class="x3"><span>区域</span><i></i></li>
 				<li class="x3"><span>智能排序</span><i></i></li>
-				<!--<li class="x3"><span>筛选</span><i></i></li>-->
 			</ul>
 		</div>
 		<div class="hide-o">
 			<div class="abbr-o">
 				<div class="first_list-o">
-					<ul>
-						<li class="directory-o select-o">全部分类</li>
-						<li class="directory-o">美食</li>
-						<li class="directory-o">休闲娱乐</li>
-						<li class="directory-o">酒店</li>
-						<li class="directory-o">生活服务</li>
-						<li class="directory-o">旅游</li>
-						<li class="directory-o">购物</li>
-						<li class="directory-o">家政</li>
-						<li class="directory-o" style="border: 0;">汽车</li>
+					<ul style="height: 360px;overflow: auto;">
+						<li class="directory-o select">全部分类</li>
+						<volist name="goodscates" id="v">
+							<if condition="$v['parent_id'] eq 0">
+								<li class="directory-o" data-li="<{$v['cate_id']}>"><{$v['cate_name']}></li>
+							</if>
+						</volist>
 					</ul>
 				</div>
 				<div class="second_list-o">
-					<ul style="display: block;">
-						<li class="two_directory-o">
-							<a href="###">全部分类</a>
-						</li>
-					</ul>
-					<ul style="display: none;">
-						<li class="two_directory-o">
-							<a href="###">全部</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">自助餐</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">火锅</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">烧烤/烤肉</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">日本料理</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">蛋糕</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">香锅</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">烤鱼</a>
-						</li>
-					</ul>
-					<ul style="display: none;">
-						<li class="two_directory-o">
-							<a href="###">全部</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">休闲娱乐1</a>
-						</li>
-					</ul>
-					<ul style="display: none;">
-						<li class="two_directory-o">
-							<a href="###">全部</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">酒店1</a>
-						</li>
-					</ul>
-					<ul style="display: none;">
-						<li class="two_directory-o">
-							<a href="###">全部</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">生活服务1</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">生活服务2</a>
-						</li>
-					</ul>
-					<ul style="display: none;">
-						<li class="two_directory-o">
-							<a href="###">全部</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">旅游1</a>
-						</li>
-					</ul>
-					<ul style="display: none;">
-						<li class="two_directory-o">
-							<a href="###">全部</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">购物1</a>
-						</li>
-					</ul>
-					<ul style="display: none;">
-						<li class="two_directory-o">
-							<a href="###">全部</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">家政1</a>
-						</li>
-					</ul>
-					<ul style="display: none;">
-						<li class="two_directory-o">
-							<a href="###">全部</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">汽车1</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">汽车2</a>
-						</li>
-					</ul>
+                    <ul style="display: block;height: 360px;overflow: auto;">
+                        <li class="two_directory-o">
+                            <a href="<{:U('coupon/main')}>">全部分类</a>
+                        </li>
+                        <volist name="goodscates" id="v">
+                            <if condition="$v['parent_id'] neq 0">
+                                <li class="two_directory-o">
+                                    <a href="<{:U('coupon/main',array('cate_id'=>$v['cate_id']))}>"><{$v['cate_name']}></a>
+                                </li>
+                            </if>
+                        </volist>
+                    </ul>
+                    <volist name="goodscates" id="v">
+                        <if condition="$v['parent_id'] eq 0">
+                            <ul style="display: block;height: 360px;overflow: auto;" data-ul="<{$v['cate_id']}>">
+                                <volist name="goodscates" id="vv">
+                                    <if condition="$vv['parent_id'] eq $v['cate_id']">
+                                        <li class="two_directory-o">
+                                            <a href="<{:U('coupon/main',array('cate_id'=>$vv['cate_id']))}>"><{$vv['cate_name']}></a>
+                                        </li>
+                                    </if>
+                                </volist>
+                            </ul>
+                        </if>
+                    </volist>
 				</div>
 			</div>
 			<div class="abbr-o">
 				<div class="first_list-o">
 					<ul>
-						<li class="directory-o select-o">全城</li>
-						<li class="directory-o">区1</li>
-						<li class="directory-o">区2</li>
-						<li class="directory-o">区3</li>
-						<li class="directory-o" style="border: 0;">区4</li>
+                        <li class="directory-o select">全城</li>
+                        <volist name="areas" id="v">
+                            <li class="directory-o"><{$v['area_name']}></li>
+                        </volist>
 					</ul>
 				</div>
 				<div class="second_list-o">
-					<ul style="display: block;">
-						<li class="two_directory-o">
-							<a href="###">1</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">2</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">3</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">4</a>
-						</li>
-					</ul>
-					<ul style="display: none;">
-						<li class="two_directory-o">
-							<a href="###">区11</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">区12</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">区13</a>
-						</li>
-					</ul>
-					<ul style="display: none;">
-						<li class="two_directory-o">
-							<a href="###">区21</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">区22</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">区23</a>
-						</li>
-					</ul>
-					<ul style="display: none;">
-						<li class="two_directory-o">
-							<a href="###">区31</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">区32</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">区33</a>
-						</li>
-					</ul>
-					<ul style="display: none;">
-						<li class="two_directory-o">
-							<a href="###">区41</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">区42</a>
-						</li>
-						<li class="two_directory-o">
-							<a href="###">区43</a>
-						</li>
-					</ul>
+                    <ul style="display: block;">
+                        <volist name="areas" id="v">
+                            <li class="two_directory-o">
+                                <a href="<{:U('coupon/main',array('area'=>$v['area_id']))}>"><{$v['area_name']}></a>
+                            </li>
+                        </volist>
+                    </ul>
+                    <volist name="areas" id="v">
+                        <ul style="display: none;">
+                            <volist name="businesses" id="vv">
+                                <if condition="$vv['area_id'] eq $v['area_id']">
+                                    <li class="two_directory-o">
+                                        <a href="<{:U('coupon/main',array('business'=>$vv['business_id']))}>"><{$vv['business_name']}></a>
+                                    </li>
+                                </if>
+                            </volist>
+                        </ul>
+                    </volist>
 				</div>
 			</div>
 			<div class="abbr-o">
 				<div class="first_list-o">
 					<ul>
-						<li class="directory-o select-o">按时间</li>
-						<li class="directory-o">按销量</li>
-						<li class="directory-o">按区域</li>
-						<li class="directory-o">按价格</li>
-						<li class="directory-o" style="border: 0;">按积分</li>
+						<li class="directory-o select-o"><a href="<{:U('coupon/main',array('news'=>1))}>">按发布时间</a></li>
+						<li class="directory-o"><a href="<{:U('coupon/main',array('news'=>2))}>">按下载量</a></li>
 					</ul>
 				</div>
 			</div>

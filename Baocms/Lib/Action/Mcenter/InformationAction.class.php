@@ -7,7 +7,7 @@ class InformationAction extends CommonAction {
 	public function index() {
 		$u = D('Users');
 		$ud = D('UserAddr');
-                $bc = D('Connect');
+        $bc = D('Connect');
 		$map = array('user_id' => $this->uid);
 		$res = $u-> where($map) -> find();
 		$addr_count = $ud -> where($map) -> count();
