@@ -1,0 +1,289 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0;padding:0; text-decoration:none; font-family:'微软雅黑';}
+body{font-size:62.5%;
+			16px*62.5%:10px;
+			background-attachment:fixed;
+			background-color:#eeeeee;
+			}
+/*头部*/			
+.header{
+	width:100%;
+	height:50px;
+	background-color:#d20004;
+	position: fixed;
+	top: 0;
+	}
+	
+.header .jiazh{
+	float:left;
+	width:100%;
+	text-align:center;
+	line-height:52px;
+	font-size:16px;
+	color:#FFF;
+	}
+	/*分类*/	
+
+/*一*/
+
+	.fenlei{
+		overflow:hidden;
+		width:100%;
+		height:60px;
+		background-color:#FFF;
+		}
+	
+	.fenlei .fen_1{
+		float:left;
+		width:30%;
+		height:50px;
+		margin:0 6px;
+		}	
+	.fenlei .fen_1 .f_1{
+		float:left;
+		width:26%;
+		height:20px;
+		background:url(../images/caiyin00_09.png) no-repeat;
+		background-size:100% 100%;
+		margin-top:16px;
+		}
+		
+	.fenlei .fen_1 .f_2{
+		margin-left:4px;
+		line-height:50px;
+		font-size:1.6em;
+		color:#999;
+		float:left;
+		}
+		
+	.fenlei .fen_1 .f_3{
+		float:right;
+		width:10%;
+		height:50px;
+		background:url(../images/caiyin00_13.png) no-repeat bottom right;
+		background-size:100% auto;
+	
+		}
+	
+
+/*二*/
+
+	.fenlei .fen_2{
+		float:left;
+		overflow:hidden;
+		width:30%;
+		height:50px;
+		margin:0 6px;
+		}	
+	.fenlei .fen_2 .f_4{
+		float:left;
+		width:18%;
+		height:20px;
+		background:url(../images/caiyin00_03.png) no-repeat;
+		background-size:100% 100%;
+		margin-top:16px;
+		}
+		
+	.fenlei .fen_2 .f_5{
+		margin-left:4px;
+		line-height:50px;
+		font-size:1.6em;
+		color:#999;
+		float:left;
+		}
+		
+	.fenlei .fen_2 .f_6{
+		float:right;
+		width:10%;
+		height:50px;
+		background:url(../images/caiyin00_13.png) no-repeat bottom right;
+		background-size:100% auto;
+	
+		}
+	
+	
+
+/*三*/		
+	.fenlei .fen_3{
+		float:right;
+		overflow:hidden;
+		width:30%;
+		height:50px;
+		margin:0 6px;
+		}	
+	.fenlei .fen_3 .f_7{
+		float:left;
+		width:26%;
+		height:20px;
+		background:url(../images/caiyin00_06.png) no-repeat;
+		background-size:100% 100%;
+		margin-top:16px;
+		}
+		
+	.fenlei .fen_3 .f_8{
+		margin-left:4px;
+		line-height:50px;
+		font-size:1.6em;
+		color:#999;
+		float:left;
+		}
+		
+	.fenlei .fen_3 .f_9{
+		float:right;
+		width:10%;
+		height:50px;
+		background:url(../images/caiyin00_13.png) no-repeat bottom right;
+		background-size:100% auto;
+	
+		}
+		
+/*<!--banner-->*/
+.banner{
+	width:100%;
+	}
+	
+.banner .ban_n img{
+	width:100%;
+	height: 160px;
+	}
+	
+/*<!--四个图标-->*/	
+
+.case{width:100%;background:#fff;box-shadow:0 0 10px #ccc; text-align:center;}
+.case .title{ width:100%;height:68px;border-bottom: 3px solid #e7e7e7;padding-bottom:10px;}
+.case .title-list{ width:100%; position: relative; top: 6px;}
+.case .title-list li{
+		display:inline-block;
+		float:left;
+		width:25%;
+	}
+.case .title-list li img{
+	width:62px;
+	height:62px;
+	text-align:center;
+	
+	}	
+.case .title-list li.on{ color: #fc353a; font-weight: bold;}
+.case .title-list p{position:absolute;top:72px;left:0px;width:90px;height:7px;border-top: 3px solid #fc353a; overflow: hidden; text-align: center;}
+.case .title-list b{display:inline-block;width:0;height:0;margin-top:-3px;border-style:solid dashed dashed dashed;border-width:9px;border-color: #fc353a #fff #fff #fff;overflow: hidden;zoom: 1;font-size: 0;}
+.product{ width:100%; height:auto; position: relative; overflow: hidden; display: none; margin-top: 8px;}
+.product ul{ width:100%; left: 0px;}
+.product a{border-bottom: 1px #e2e2e2 solid;}
+.product-wrap .show{ width:100%; display: block;}
+.product-wrap .product li{ float: left; display: inline;transition:0.4s;-webkit-transition:0.4s;-moz-transition: 0.4s;-o-transition: 0.4s;-ms-transition: 0.4s;}
+.product-wrap .product li.ml0{ width:100%;margin-left:0px;}
+.product-wrap .product li a.imgwrap{ display: block; background: #fff; width:100%;height:auto;}
+.product-wrap .product li p{color: #666666;line-height: 22px;}
+.product-wrap .product li p a{ color: #666666; text-decoration: none;}
+.product-wrap .product li p a:hover{ color: #fc353a; text-decoration: none;}
+
+
+
+
+.cf .ml0 p{
+	width:100%;
+	height:40px; 
+	background-color:#fff;
+	font-size:1.6em; 
+	display:block;
+	text-align:left;
+	}
+.cf .ml0 p del{
+	width:100%;
+	color:#f16184;
+	height:40px;
+	line-height:40px;
+	margin-left:6px;
+	}
+.cf .ml0 p img{
+	margin-top:8px;
+	width:20px;
+	height:20px;
+	}
+
+.ml0 ul{
+	width:100%;
+	/*height:88px;*/
+	overflow:hidden;
+	    border-bottom: 1px #e2e2e2 solid;
+	}
+.ml0 ul li{
+	float:left;
+	}
+.ml0 ul li .p_1{
+	margin-top:52px;
+	width:70px;
+	height:22px;
+	background-color:#F00;
+	border-radius:3px;
+	font-size:1.2em;
+	color:#fff;
+	text-align:center;
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	}
+.ml0 ul li .p_2{
+	font-size:1.2em;
+	color:#f00;
+	text-align:center;
+	display:block;
+	}
+.ml0 ul li img{
+	width:100%;
+	height:110px;
+	}
+.ml0 ul li ol{
+	background-color:#fff;
+	font-size:1.4em;
+	font-weight:bold;
+	color:#333;
+	text-align:left;
+	}
+.ml0 ul li ol img{
+	width:80px;
+	height:12px;
+	}
+
+
+
+
+
+
+
+
+	
+	
+/*底部*/
+	
+	.footer{
+		width:100%;
+		height:50px;
+		background-color:#FFF;
+		position:fixed;
+		left:0;
+		bottom:0;
+		overflow:hidden;
+		}	
+	
+	.footer ul li{
+		margin-top:2px;
+		float:left;
+		width:20%;
+		display:inline-block;
+		text-align:center;
+		}
+	.footer ul li a{
+		width:100%;
+		}		
+	.footer ul li img{
+		width:24px;
+		height:24px;
+		}	
+	.footer ul li span{
+		color:#666;
+		display:block;
+		font-size:12px;
+		}				
+		

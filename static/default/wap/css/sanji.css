@@ -1,0 +1,71 @@
+
+/* 筛选组件 */
+.search-bar{height:40px;width:100%;background:#FFF;border-bottom:1px #eee solid;position:fixed;z-index:999;top:50px;}
+.search-bar ul{padding:0;list-style:none;}
+.search-bar li{float:left;height:30px;line-height:30px;border-right: 1px #eee solid;position:relative;}
+.search-bar li:last-child{border-right:none!important;}
+.search-bar span{margin-left:5px;font-size: 14px;}
+.search-bar i{display: block;width:10px;height:6px;background:url(../image/icon-down.png) no-repeat;background-size:10px 6px;position:absolute;top:12px;right:2px;}
+.search-bar li.on{color: #2FBDAA;}
+.search-bar li.on i{background-image: url("../image/icon-up.png");}
+.serch-bar-mask{position:fixed;top:90px;bottom:60px;left:0;width:100%;height:90%;z-index: 1001;background:rgba(0,0,0,0.6);}
+.serch-bar-mask div{position: relative;z-index: 1002;width: 100%;height: 100%;overflow-x: hidden;overflow-y: scroll;}
+.serch-bar-mask-list ul{list-style:none;padding:0;}
+.serch-bar-mask-list li{display: block;line-height: 40px;padding: 0px 20px;background: #FFF;border-bottom: 1px solid #eee;}
+.serch-bar-mask-list li a{color: #333;display: block;}
+.serch-bar-mask-list li.on{background: #F3F3F3;}
+.line{overflow:hidden;}
+.line{width: 100%;}
+.line{margin:0;padding:0;}
+.x3{width: 33%;}
+.hide-o {
+		position: fixed;
+		top: 91px;
+		background: rgba(0, 0, 0, 0.7);
+		width: 100%;
+		height: 10000px;
+		z-index: 10;
+		display: none;
+	}
+	
+	.abbr-o {
+		display: flex;
+		display: -webkit-flex;
+		width: 100%;
+		background: #fff;
+	}
+	
+	.first_list-o {
+		flex: 1;
+		-webkit-box-flex: 1;
+		overflow: hidden;
+	}
+	
+	.select-o.directory-o {
+		border-right: 1px solid #f2f2f2;
+		background: #f2f2f2;
+	}
+	
+	.second_list-o {
+		flex: 1;
+		overflow: hidden;
+		background: #f2f2f2;
+		-webkit-box-flex: 1;
+	}
+	
+	.directory-o {
+		list-style: none;
+		font-size: 14px;
+		padding: 10px 10px;
+		border-bottom: 1px solid #e6e6e6;
+	}
+	
+	.two_directory-o {
+		padding: 10px 10px;
+		border-bottom: 1px solid #e6e6e6;
+	}
+	
+	.two_directory-o a {
+		text-decoration: none;
+		font-size: 14px;
+	}

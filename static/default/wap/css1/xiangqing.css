@@ -1,0 +1,276 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0;padding:0; text-decoration:none; font-family:'微软雅黑';}
+body{font-size:62.5%;
+	 16px*62.5%:10px;
+	 background-attachment:fixed;
+	 background-color:#eeeeee;
+	}
+/*头部*/			
+.header{
+	width:100%;
+	height:60px;
+	overflow:hidden;
+	background-color:#F00;
+	}
+.header .return{
+	float:left;
+	width:30%;
+	margin-top:18px;
+	}
+.header .return img{
+	margin-left:10px;
+	}
+	
+.header .jiazh{
+	float:left;
+	width:40%;
+	text-align:center;
+	line-height:60px;
+	font-size:2.4em;
+	color:#FFF;
+	}
+.header .search{
+	float:right;
+	width:30%;
+	margin-top:18px;
+	}
+	.header .search img{
+		float:right;
+		margin-right:10px;
+		}
+		
+/*banner图*/	
+	.banner{
+		width:100%;
+		position:relative;
+		}		
+	.banner img{
+		width:100%;
+		}			
+	.banner .ht{
+		width:100%;
+		height:40px;
+		background-color: rgba(210,0,4,0.7);
+		position:absolute;
+		left:0;
+		bottom:0;
+		overflow:hidden;
+		}	
+	.ht ul .f1{
+		width:15%;
+		display:inline-block;
+		float:left;
+		text-align:center;
+		margin-top:8px;
+		}	
+	.ht ul .f2{
+		width:85%;
+		display:inline-block;
+		float:left;
+		line-height:40px;
+		font-size:1.6em;
+		color:#FFF;
+		}	
+	.ht ul li img{
+		width:23px;
+		height:22px;
+		}
+/*规格价位*/
+.jq {
+	width:100%;
+	height:160px;
+	background-color:#fff;
+	margin-bottom:10px;
+	}
+.jq .j1 p{
+	line-height:50px;
+	font-size:1.8em;
+	margin-left:10px;
+	}
+.jq .j2{
+	width:100%;
+	height:60px;
+	overflow:hidden;
+	}
+.jq .j2 .q1{
+	float:left;
+	width:20%;
+	
+	}
+.jq .j2 p{
+	font-size:1.6em;
+	text-align:center;
+	margin-left:10px;
+	}
+
+.jq .j2 .q2{
+	float:left;
+	width:80%;
+	}
+.jq .j2 del{
+	line-height:40px;
+	margin-left:10px;
+	}
+.j3 p{
+	font-size:1.6em;
+	margin-left:10px;
+	}
+.j4 p{
+	font-size:1.6em;
+	margin-left:10px;
+	}
+	
+/*拍卖记录*/	
+.jilu{
+	width:100%;
+	height:50px;
+	background-color:#fff;
+	margin-bottom:2px;
+	}	
+.jilu p{
+	height:50px;
+	line-height:50px;
+	margin-left:10px;
+	background:url(../images/xiangqing_03.png) no-repeat left center;
+	background-size:20px 28px;
+	font-size:1.6em;
+	}	
+
+.jilu p del img{
+	width:10px; 
+	height:20px;
+	padding-top:14px;
+	margin-left:180px;
+	}	
+	
+/*记录*/	
+.jl_1{
+	width:100%;
+	height:180px;
+	background-color:#fff;
+	margin-bottom:6px;
+	}	
+	
+.jl_1 .sjjl1{
+	overflow:hidden;
+	width:100%;
+	height:60px;
+	text-align:center;
+	}	
+.jl_1 .sjjl1 .s1{
+	float:left;
+	width:10%;
+	height:60px;
+	}	
+.jl_1 .sjjl1 .s1 img{
+	width:23px;
+	height:32px;
+	margin-top:16px;
+	}
+.jl_1 .sjjl1 .s2{
+	float:left;
+	width:70%;
+	line-height:60px;
+	font-size:1.6em;
+	}	
+.jl_1 .sjjl1 .s3{
+	float:left;
+	width:20%;
+	line-height:60px;
+	font-size:1.6em;
+	}	
+/**/
+.jilu_1{
+	width:100%;
+	height:50px;
+	background-color:#fff;
+	margin-bottom:2px;
+	}	
+.jilu_1 p{
+	height:50px;
+	line-height:50px;
+	margin-left:10px;
+	background:url(../images/xiangqing_12.png) no-repeat left center;
+	background-size:30px 30px;
+	font-size:1.6em;
+	}	
+
+.jilu_1 p del img{
+	width:10px; 
+	height:20px;
+	padding-top:14px;
+	margin-left:200px;
+	}	
+		
+/*拖动*/	
+.p_1{
+	width:100%;
+	height:40px;
+	overflow:hidden;
+	}
+.p_1 .p1{
+	float:left;
+	text-align:center;
+	width:33.3%;
+	}
+.p_1 .p2{
+	float:left;
+	text-align:center;
+	width:33.3%;
+	line-height:40px;
+	font-size:1.6em
+	}
+.p_1 .p3{
+	float:right;
+	text-align:center;
+	width:33.3%;
+	margin-top:20px;
+	}
+	
+
+
+
+
+
+
+/*底部*/
+body{ position:relative;}
+.footer_1{
+	width:100%;
+	height:60px;
+	background-color:#fff;
+	position:fixed;
+	left:0;
+	bottom:0;
+	}
+.footer_1 .f1{
+	width:100%;
+	overflow:hidden;
+	}	
+.footer_1 .f1 ul li{
+	padding-top:5px;
+	display:inline-block;
+	float:left;
+	text-align:center;
+	height:60px;
+	}
+.footer_1 .f1 ul li img{
+	width:24px;
+	height:24px;
+	}	
+.footer_1 .f1 ul li a{
+	font-size:1.6em;
+	color:#999;
+	}
+
+
+
+
+
+
+
+
+
+
+

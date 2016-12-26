@@ -1,0 +1,579 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0;padding:0; text-decoration:none; font-family:'微软雅黑';}
+body{font-size:62.5%;
+			16px*62.5%:10px;
+			background-attachment:fixed;
+			background-color:#eeeeee;
+			}
+/*个人资料页面*/			
+			
+/*头部*/			
+.header{
+	width:100%;
+	height:60px;
+	background-color:#F00;
+	}
+	
+.header .jiazh{
+	float:left;
+	width:100%;
+	text-align:center;
+	line-height:60px;
+	font-size:2.4em;
+	color:#FFF;
+	}
+/*头像*/
+.touxiang{
+	width:100%;
+	height:130px;
+	overflow:hidden;
+	background-color:#fff;
+	}
+.touxiang .tu_1{
+	float:left;
+	margin-left:20px;
+	margin-top:20px;
+	}
+.touxiang .tu_1 img{
+	width:80px;
+	height:80px;
+	}
+.touxiang .font1{
+	margin-left:10px;
+	line-height:110px;
+	font-size:2em;
+	float:left;
+	}
+/*手机*/
+
+.shouji{
+	width:100%;
+	overflow:hidden;
+	background-color:#fff;
+	margin-top:2px;
+	}
+.shouji .sj1{
+	float:left;
+	margin-left:20px;
+	margin-top:20px;
+	}
+
+.shouji .sj1 img{
+	width:40px;
+	height:40px;
+	}
+.shouji .sjh{
+	float:left;
+	line-height:80px;
+	font-size:2em;
+	color:#606060;
+	}
+.shouji .sjh span{
+	margin-left:20px;
+	}
+.shouji .ghhao{
+	width:80px;
+	height:40px;
+	border:1px #999 solid;
+	border-radius:6px;
+	float:right;
+	margin-right:20px;
+	margin-top:20px;
+	text-align:center;
+	}
+.shouji .ghhao a{
+	line-height:40px;
+	color:#06F;
+	font-size:2em;
+	}
+/*地址*/
+.dizhi{
+	width:100%;
+	overflow:hidden;
+	background-color:#fff;
+	margin-top:2px;
+	}
+.dizhi .tubiao{
+	float:left;
+	margin-top:10px;
+	}
+.dizhi .tubiao img{
+	width:40px;
+	height:40px;
+	margin-left:20px;
+	}
+.dizhi .f1{
+	float:left;
+	margin-left:10px;
+	}
+.dizhi .f1 p{
+	font-size:2em;
+	color:#606060;
+	line-height:60px;
+	margin-left:10px;
+	}
+.dizhi .jt{
+	float:right;
+	margin-right:20px;
+	margin-top:16px;
+	}
+.dizhi .jt a img{
+	width:30px;
+	height:30px;
+	}
+/*个人资料页面结束*/
+
+
+
+/*用户注册页面*/
+
+/*头部*/			
+.header{
+	width:100%;
+	height:60px;
+	overflow:hidden;
+	background-color:#F00;
+	}
+.header .return{
+	float:left;
+	width:40%;
+	margin-top:18px;
+	}
+.header .return a img{
+		width:15px;
+		height:24px;
+		margin-left:10px;
+		}
+	
+.header .denglu{
+	float:left;
+	width:60%;
+	line-height:60px;
+	font-size:2.4em;
+	color:#FFF;
+	}
+/*<!--表单-->*/
+form{
+	width:100%;
+	}
+form .yonghu{
+	text-align:center;
+	margin-top:20px;
+	}
+
+form .yh{
+	background:url(../images/denglu01_03.png) no-repeat left center;
+	background-size:22px 22px;
+	width:88%;
+	height:50px;
+	border-radius:5px;
+	background-color:#fff;
+	border:none;
+	padding-left:30px;
+	}
+form .mima{
+	background:url(../images/denglu01_07.png) no-repeat left center;
+	background-size:22px 22px;
+	width:88%;
+	height:50px;
+	border-radius:5px;
+	background-color:#fff;
+	border:none;
+	padding-left:30px;
+	}
+form .yzheng{
+	width:180px;
+	height:50px;
+	border-radius:5px;
+	background-color:#fff;
+	border:none;
+	}
+form .yz{
+	width:100px;
+	height:50px;
+	border-radius:5px;
+	background-color:#fff;
+	border:none;
+	background-color:#858585;
+	color:#fff;
+	font-size:1.2em;
+	margin-left:10px;
+	text-align:center;
+	}			
+		
+form .huiyuan{
+	width:96%;
+	height:50px;
+	border-radius:5px;
+	background-color:#ff4f03;
+	border:none;
+	text-align:center;
+	color:#fff;
+	}
+form .kz_c{
+	width:100%;
+	overflow:hidden;
+	text-align:center;
+	}
+form .kz_c .cc_1{
+	float:left;
+	width:45%;
+	height:50px;
+	border:none;
+	margin:2%;
+	border-radius:5px;	
+	}
+/*<!--其它登录方式-->*/
+.fs_1{
+	width:100%;
+	height:150px;
+	background-color:#fff;
+	margin-top:10px;
+	}
+.fs_1 .font_1{
+	width:100%;
+	height:40px;
+	font-size:1.6em;
+	margin-left:10px;
+	line-height:40px;
+	}
+.fs_1 .fs_3{
+	width:100%;
+	height:110px;
+	overflow:hidden;
+	}
+.fs_1 .fs_3 ul li{
+	width:33.3%;
+	display:inline-block;
+	text-align:center;
+	float:left;
+	}
+.fs_1 .fs_3 ul li img{
+	width:80px;
+	height:80px;
+	}	
+.fs_1 .fs_3 ul li span{
+	display:block;
+	font-size:1.4em;
+	color:#333;
+	}
+
+/*用户注册页面结束*/
+
+
+
+/*我的店铺页面*/
+/*头像*/
+.tx{
+	width:100%;
+	overflow:hidden;
+	height:80px;
+	background-color:#fff;
+	}
+.tx .t1{
+	float:left;
+	margin-left:20px;
+	margin-top:10px;
+	}
+.tx .t1 img{
+	width:60px;
+	height:60px;
+	}
+.tx .t2{
+	float:left;
+	margin-left:20px;
+	}	
+.tx .t2 p{
+	font-size:2em;
+	color:#606060;
+	line-height:80px;
+	}	
+/*黄条字提示*/	
+.f_y{
+	width:100%;
+	height:30px;
+	background-color:#ffbb18;
+	}	
+	
+.f_y p{
+	color:#fff;
+	font-size:1.4em;
+	margin-left:6px;
+	line-height:30px;
+	}	
+/*实名制动认证*/	
+.rz{
+	width:100%;
+	background-color:#444a6a;
+	height:60px;
+	}
+.rz .zi_1{
+	float:left;
+	margin-top:10px;
+	margin-left:6px;
+	}
+.rz .zi_1 .s1{
+	font-size:1.6em;
+	color:#fff;
+	text-align:center;
+	}
+.rz .zi_1 .s2{
+	font-size:1.4em;
+	color:#fff;
+	text-align:center;
+	}
+
+.rz .r_1{
+	float:right;
+	margin-right:10px;
+	}
+.rz .r_1 img{
+	width:40px;
+	height:40px;
+	margin-top:10px;
+	}
+.rz .r_2 p{
+	font-size:1.4em;
+	color:#4dc27b;
+	line-height:60px;
+	}
+
+.rz .r_2{
+	float:right;
+	margin-right:20px;
+	}
+	
+/*今日头条*/
+.toutiao{
+	width:100%;
+	height:60px;
+	background-color:#fff;
+	overflow:hidden;
+	}
+.toutiao .t_t1{
+	width:100px;
+	margin-left:10px;
+	float:left;
+	}	
+	
+.toutiao .t_t1 img{
+	margin-top:20px;
+    width:80px;
+	}	
+	
+.toutiao .xinwen1{
+	float:left;
+	width:200px;
+	text-align:center;
+	height:40px;
+	border-left:2px #CCC solid;
+	margin-top:10px;
+	}	
+.toutiao .xinwen1 a{
+	font-size:1.6em;
+	color:#606060;
+	line-height: 40px;
+	}
+	
+.toutiao .t_t2{
+	float:right;
+	}	
+.toutiao .t_t2 img{
+	margin-right:10px;
+	margin-top:20px;
+	width:12px;
+	height:18px;
+	}	
+	
+/*三个图标*/	
+	
+.icon_1{
+	width:100%;
+	background-color:#fff;
+	height:80px;
+	text-align:center;
+	margin-top:8px;
+	}	
+	
+.icon_1 ul{
+	overflow:hidden;
+	}	
+.icon_1 ul li{
+	margin-top:10px;
+	display:inline-block;
+	float:left;
+	width:33.3%;
+	}
+	
+.icon_1 ul li img{
+	/*width:40%;*/
+	text-align:center;
+	}	
+.icon_1 ul li span{
+	display:block;
+	color:#606060;
+	font-size: 12px;
+    margin-top: 2px;
+	}	
+	
+/*四图标*/	
+	
+.icon_2{
+	width:100%;
+	height:140px;
+	background-color:#fff;
+	
+	text-align:center;
+	margin-top:8px;
+	}	
+	
+.icon_2 ul{
+	overflow:hidden;
+	}	
+.icon_2 ul li{
+	margin-top:4px;
+	display:inline-block;
+	float:left;
+	width:25%;
+	}
+	
+.icon_2 ul li img{
+	/*width:52%;*/
+	text-align:center;
+	}	
+.icon_2 ul li span{
+	display:block;
+	color:#606060;
+	margin-top:2px;
+	font-size:12px;
+	}		
+	
+/*我的店铺页面结束*/	
+	
+	
+	
+/*我的收藏页面开始*/	
+
+
+.content {
+	background-color:#fff;
+	}
+
+.tabs {
+  width:100%;
+  float: none;
+  list-style: none;
+  position: relative;
+  text-align: left;
+}
+.tabs li {
+  float: left;
+  display: block;
+  width:50%;
+}
+.tabs input[type="radio"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+.tabs label {
+  display: block;
+  padding: 14px 21px;
+  border-radius: 2px 2px 0 0;
+  font-size: 20px;
+  font-weight: normal;
+  text-transform: uppercase;
+  background: #fff;
+  cursor: pointer;
+  position: relative;
+  text-align:center;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.tabs label:hover {
+  background: #508438;
+}
+.tabs .tab-content {
+  z-index: 2;
+  display: none;
+  overflow: hidden;
+  width: 100%;
+  font-size: 17px;
+  line-height: 25px;
+/*  padding: 25px;
+*/  position: absolute;
+  top: 53px;
+  left: 0;
+  background: #fff;
+}
+.tabs .tab-content .tab_1{
+	border-top:2px #CCC solid;
+	width:100%;
+	height:100px;
+	overflow:hidden;
+	}
+.tabs .tab-content .shoucang{
+	float:left;
+	margin-left:20px;
+	margin-top:20px;
+	}
+.tabs .tab-content .shoucang img{
+	width:60px;
+	height:60px;
+	}
+.tabs .tab-content .shoucang span img{
+	width:120px;
+	height:26px;
+	display:block;
+	}
+.tabs .tab-content .shoucang a{	
+	font-size:1.2em;
+	color:#606060;
+	}
+.tabs .tab-content .shoucang_1{
+	float:right;
+	overflow:hidden;
+	}
+.tabs .tab-content .shoucang_1 .shch{
+	float:left;
+	width:50px;
+	height:28px;
+	background-color:#d20004;
+	border-radius:10px;
+	margin-top:40px;
+	text-align:center;
+	margin-right:6px;
+	}	
+.tabs .tab-content .shoucang_1 .shch p{
+	font-size:0.8em;
+	color:#fff;
+	line-height:28px;
+	text-align:center;
+	}	
+
+.tabs [id^="tab"]:checked + label {
+  top: 0;
+  padding-top: 17px;
+  background: #eed69c;
+  color:#fff;
+}
+.tabs [id^="tab"]:checked ~ [id^="tab-content"] {
+  display: block;
+}
+
+	
+/*我的店铺页面结束*/
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,319 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0;padding:0; text-decoration:none; font-family:'微软雅黑';}
+body{font-size:62.5%;
+			16px*62.5%:10px;
+			background-attachment:fixed;
+			background-color:#fff;
+			}
+/*头部*/			
+.header{
+	width:100%;
+	height:60px;
+	overflow:hidden;
+	background-color:#F00;
+	}
+.header .return{
+	float:left;
+	width:30%;
+	margin-top:18px;
+	}
+	.header .return img{
+		margin-left:10px;
+		
+		}
+	
+.header .jiazh{
+	float:left;
+	width:40%;
+	text-align:center;
+	line-height:60px;
+	font-size:2.4em;
+	color:#FFF;
+	}
+.header .search{
+	float:right;
+	width:30%;
+	margin-top:18px;
+	}
+	.header .search img{
+		float:right;
+		margin-right:10px;
+		}
+/*中间内容区*/
+.content{
+	width:100%;
+}
+
+.content .con-zhou{
+	height:40px;
+	background-color:#FFF;
+	overflow:hidden;
+	border-bottom:#CCC 2px solid;
+	}
+	
+	
+.con-zhou .con_1{
+	float:left;
+	width:50%;
+	margin-top:8px;
+	margin-left:10px;
+	}
+.con-zhou .con_1 img{
+	width:14px;
+	}	
+	
+.con-zhou .con_1 del{
+	font-size:1.8em;
+	color:#333;
+	}
+	
+.con-zhou .con_2{
+	float:right;
+	width:40%;
+	margin-top:8px;
+	margin-right:10px;
+	}
+	
+.con-zhou .con_2 img{
+	float:right;
+	width:26px;
+	}
+<!--banner图-->	
+
+.banner .pic_1{
+	width:100%;
+	}
+.banner .pic_1 img{
+	width:100%;
+	height:auto;
+	}
+/*日常保洁*/
+.box_3{
+	width:100%;
+	height:100px;
+	overflow:hidden;
+	text-align:center;
+	background-color:#FFF;
+	
+	}
+.box_3 .bo_1{
+	float:left;
+	width:31%;
+	height:65px;
+	border:1.5px solid #F00;
+	margin-left:6px;
+	margin-top:17.5px;
+	}
+.box_3 .bo_2{
+	float:left;
+	width:31%;
+	height:65px;
+	border:1.5px solid #F00;
+	margin-left:6px;
+	margin-top:17.5px;
+	}
+.box_3 .bo_3{
+	float:right;
+	width:30%;
+	height:65px;
+	border:1.5px solid #F00;
+	margin-right:5px;
+	margin-top:17.5px;
+	}
+.box_3 p{
+	text-align:center;
+	line-height:30px;
+	font-size:1.4em;
+	color:#666;
+	}
+	
+/*立即预约*/	
+
+.yuyue{
+	width:100%;
+	height:60px;
+	background-color:#fff;
+	margin-bottom:10px;
+	}
+.yuyue .inp_1{
+	width:100%;
+	height:46px;
+	background-color:#d20004;
+	font-size:2em;
+	border:none;
+	color:#FFF;
+	}
+/*十二个小图标*/
+.icon{
+	width:100%;
+	height:306px;
+	background-color:#fff;
+	overflow:hidden;
+	margin-bottom:15px;
+	}
+.icon ul{
+	width:100%;
+	text-align:center;
+	margin:0;
+	}
+
+.icon ul li{ 
+	display:inline-block;
+	white-space:nowrap;
+    margin: 10px 0px;
+    width: 24%;
+	}
+.icon ul li span{
+	display:block;
+	font-size:12px;
+	margin-top: 6px;
+	}
+/*精品推荐*/
+
+.jingpin{
+	width:100%;
+	height:180px;
+	background-color:#fff;
+	margin-bottom:210px;
+	}
+.jingpin .jp_1{
+	width:100%;
+	height:60px;
+	border-bottom:1px #e2e2e2 solid;
+	border-top:1px #e2e2e2 solid;
+	}	
+.jingpin .jp_1 h1{
+	color:#999;
+	letter-spacing:4px;
+	line-height:60px;
+	margin-left:10px;
+	}
+	
+.jingpin .tuijian{
+	width:100%;
+	height:120px;
+	overflow:hidden;
+	background-color:#fff;
+    border-bottom: 1px #e2e2e2 solid;
+	}
+.jingpin .tuijian .tj_1{
+	float:left;
+	width:40%;
+	margin-left:10px;
+	}
+.jingpin .tuijian .tj_1 img{
+	width: 100%;
+    height: 100px;
+    margin-top: 8px;
+	}
+.jingpin .tuijian .tj_2{
+	float:right;
+	width:56%;
+	margin-top:18px;
+	}
+.jingpin .tuijian .tj_2 p a{
+	display:block;
+	word-wrap:break-word;
+	font-size:1.4em;
+	color:#999;
+	margin-left: 6px;
+	}
+
+.jingpin .tuijian .tj_2 .jiaqian{
+	overflow:hidden;
+	line-height:60px;
+	}
+.tuijian .tj_2 .jiaqian a{
+	font-size:1.4em;
+	color:#F00;
+	float:left;
+	margin-left: 6px;
+	}
+.tuijian .tj_2 .jiaqian i{
+	float:left;
+	text-decoration:line-through;
+	color:#999;
+	}
+.tuijian .tj_2 .jiaqian del{
+	float:right;
+	font-size:1.2em;
+	color:#999;
+	margin-right:4px;
+	}
+
+.tuiJ {
+	width:100%;
+	height:140px;
+	overflow:hidden;
+	background-color:#FFF;
+	}
+.tuiJ .tuiJ_1{
+	float:left;
+	width:30%;
+	margin-left:10px;
+	} 
+.tuiJ .tuiJ_1 img{
+	width:100%;
+	margin-top:16px;
+	}
+.tuiJ .tuiJ_2{
+	float:right;
+	width:66%;
+	margin-top:34px;
+	} 		
+.tuiJ .tuiJ_2 p a{
+	display:block;
+	word-wrap:break-word;
+	font-size:1.6em;
+	color:#999;
+	}
+.tuiJ .tuiJ_2 .jiaqian{
+	overflow:hidden;
+	line-height:60px;
+	}
+.tuiJ .tuiJ_2 .jiaqian a{
+	font-size:2em;
+	color:#F00;
+	float:left;
+	}
+.tuiJ .tuiJ_2 .jiaqian i{
+	float:left;
+	text-decoration:line-through;
+	color:#999;
+	}
+.tuiJ .tuiJ_2 .jiaqian del{
+	float:right;
+	font-size:1.8em;
+	color:#999;
+	margin-right:4px;
+	}	
+/*底部*/	
+.footer{
+	width:100%;
+	height:50px;
+	background-color:#FFF;
+	position:fixed;
+	left:0;
+	bottom:0;
+	overflow:hidden;
+	}	
+
+.footer ul li{
+	margin-top:5px;
+	float:left;
+	width:20%;
+	display:inline-block;
+	text-align:center;
+	}
+.footer ul li a{
+	width:100%;
+	}		
+.footer ul li img{
+	width:24px;
+	height:24px;
+	}	
+.footer ul li span{
+	color:#666;
+	display:block;
+	}
