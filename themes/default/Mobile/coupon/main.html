@@ -169,17 +169,17 @@
                  $shopname=D("Shop")->where($map)->limit(0,1)->select();
                  ?>
 												<volist name="shopname" id="val">
-													<ol style="font-size:1.6em; margin-top:6px; margin-left:6px;">
-														<{$val.shop_name}>
+													<ol style="font-size:1.6em;color:#F00; margin-top:6px; margin-left:6px;">
+														<{$item.title}>
 													</ol>
 												</volist>
 
-												<ol style="font-size:1.2em;color:#F00; margin-left:6px;">
-													<{$item.title}>
+												<ol style="font-size:1.2em; margin-left:6px;">
+													<{$val.shop_name}>
 												</ol>
 
 												<ol style="color:#F00;margin-top:10px; margin-left:6px;">￥
-													<{:round($item[ 'tuan_price']/100,2)}><del style="color:#CCC;">&nbsp;&nbsp;&nbsp;门市价：￥<{:round($item['price']/100,2)}></del></ol>
+													<{:round($item[ 'tuan_price']/100,2)}><del style="color:#CCC;">&nbsp;&nbsp;&nbsp;市场价：￥<{:round($item['price']/100,2)}></del></ol>
 											</li>
 											<li style="width:20%;">
 												<p class="p_1">马上抢</p>

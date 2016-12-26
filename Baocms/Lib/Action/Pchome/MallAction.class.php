@@ -294,7 +294,7 @@ class MallAction extends CommonAction
         } else {
             $goods = cookie('goods');
             if (empty($goods)) {
-                $this->error("亲还没有选购产品呢!", U('mall/index'));
+                $this->error("亲还没有选购产品呢!");
             }
             $goods_ids = array_keys($goods);
             $cart_goods = D('Goods')->itemsByIds($goods_ids);

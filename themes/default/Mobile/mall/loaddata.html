@@ -5,10 +5,10 @@
 		</div>
 		<div class="jq2">
 			<p class="p1">
-				<a href="<{:U('mall/detail',array('goods_id'=>$item['goods_id']))}>"><strong>【<{$item['shop_name']}>】</strong></a>
+				<a href="<{:U('mall/detail',array('goods_id'=>$item['goods_id']))}>"><strong>【<{$item.title}>】</strong></a>
 			</p>
 			<p class="p2">
-				<{$item.title}>
+				<{$item['shop_name']}>
 			</p>
 			<p class="p3">
 				<{$item.d}>

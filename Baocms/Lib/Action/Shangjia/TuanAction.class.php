@@ -298,6 +298,7 @@ class TuanAction extends CommonAction
         }
         $data['is_hot'] = (int) $data['is_hot'];
         $data['is_new'] = (int) $data['is_new'];
+        $data['xiadan'] = (int)$data['xiadan'];
         $data['is_chose'] = (int) $data['is_chose'];
         $data['is_multi'] = (int) $data['is_multi'];
         $data['freebook'] = (int) $data['freebook'];
@@ -488,6 +489,7 @@ class TuanAction extends CommonAction
         $data['branch_id'] = (int) $data['branch_id'];
         $data['is_hot'] = (int) $data['is_hot'];
         $data['is_new'] = (int) $data['is_new'];
+        $data['xiadan'] = (int)$data['xiadan'];
         $data['is_chose'] = (int) $data['is_chose'];
         $data['is_multi'] = (int) $data['is_multi'];
         $data['freebook'] = (int) $data['freebook'];

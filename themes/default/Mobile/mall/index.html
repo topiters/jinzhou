@@ -373,7 +373,7 @@
 <!--banner-->
 <div class="banner" style="margin-top:40px;">
 	<div class="ban_n">
-		<calldata mdl="Ad" where=" closed=0 AND site_id=81 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
+		<calldata mdl="Ad" where=" closed=0 AND site_id=81 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="3" cache="600" order="orderby asc">
 			<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
 		</calldata>
 	</div>
@@ -396,10 +396,10 @@
 							<a href="<{:U('mall/detail',array('goods_id'=>$item['goods_id']))}>">
 								<img src="<{:config_img($item['photo'])}>" style="height:72px; width:80%;">
 								<?php 
-            	$id=$item['shop_id'];
-                $map=array("shop_id"=>$id);
-                $shopname=D("Shop")->where($map)->limit(0,1)->select();
-            	?>
+            						$id=$item['shop_id'];
+                					$map=array("shop_id"=>$id);
+                					$shopname=D("Shop")->where($map)->limit(0,1)->select();
+            					?>
 								<volist name="shopname" id="val">
 									<span>【<{$val['shop_name']}>】</span>
 								</volist>
@@ -418,10 +418,10 @@
 							<a href="<{:U('mall/detail',array('goods_id'=>$item['goods_id']))}>">
 								<img src="<{:config_img($item['photo'])}>" style="height:72px;  width:80%;">
 								<?php 
-            	$id=$item['shop_id'];
-                $map=array("shop_id"=>$id);
-                $shopname=D("Shop")->where($map)->limit(0,1)->select();
-            	?>
+            						$id=$item['shop_id'];
+                					$map=array("shop_id"=>$id);
+                					$shopname=D("Shop")->where($map)->limit(0,1)->select();
+            					?>
 								<volist name="shopname" id="val">
 									<span>【<{$val['shop_name']}>】</span>
 								</volist>

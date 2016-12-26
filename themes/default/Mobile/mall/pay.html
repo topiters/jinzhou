@@ -18,13 +18,14 @@
 					type: 1,
 					title:'新增收货地址',
 					skin: 'layer-ext-demo', //加上边框
-					area: ['90%', '340px'], //宽高
+					area: ['90%', '400px'], //宽高
 					content: '<div class="form-x form-auto"><div class="line margin-top"><div class="x2 label"><label>联系人</label></div><div class="x10 field"><input type="text" class="input input-auto" id="name" name="name" size="10"  value=""></div></div>   <div class="line margin-top"><div class="x2 label"><label>地区</label></div><div class="x10 field form-inline"><select id="city_id" name="city_id"  class="input margin-small-right input-auto"><option value="0">请选择...</option></select><select id="area_id" name="area_id" class="input  margin-small-right input-auto"><option value="0">请选择...</option></select><select id="business_id" name="business_id" class="input input-auto"><option value="0">请选择...</option></select></div></div><div class="line margin-top"><div class="x2 label"><label>手机</label></div><div class="x10 field"><input type="text" class="input input-auto" name="mobile" id="mobile" value=""></div></div><div class="line margin-top"><div class="x2 label"><label>地址</label></div><div class="x10 field"><input type="text" class="input input-auto" size="25" name="addr" id="addr" value="" /></div></div><div class="line margin-top"><div class="x10 float-right"><input class="button bg-dot addr_post" type="submit" value="添加地址" /></div></div></div>'
 				});
 
 				get_option();
 				$('.layui-layer-content').css('padding','15px');
-				
+                $('.layui-layer-setwin').css('right', '5px');
+                $('.layui-layer-setwin').css('top', '5px');
 				$('.addr_post').click(function(){
 					var name = $('#name').val();
 					var city_id = $('#city_id').val();
@@ -59,10 +60,12 @@
 					type: 1,
 					title:'修改收货地址',
 					skin: 'layer-ext-demo', //加上边框
-					area: ['90%', '340px'], //宽高
+					area: ['90%', '400px'], //宽高
 					content: '<div class="form-x form-auto"><div class="line margin-top"><div class="x2 label"><label>联系人</label></div><div class="x10 field"><input type="text" class="input input-auto" id="name" name="name" size="10"  value="'+n+'"></div></div>   <div class="line margin-top"><div class="x2 label"><label>地区</label></div><div class="x10 field form-inline"><select id="city_ids" name="city_id"  class="input margin-small-right input-auto"><option value="0">请选择...</option></select><select id="area_ids" name="area_id" class="input  margin-small-right input-auto"><option value="0">请选择...</option></select><select id="business_ids" name="business_id" class="input input-auto"><option value="0">请选择...</option></select></div></div><div class="line margin-top"><div class="x2 label"><label>手机</label></div><div class="x10 field"><input type="text" class="input input-auto" name="mobile" id="mobile" value="'+m+'"></div></div><div class="line margin-top"><div class="x2 label"><label>地址</label></div><div class="x10 field"><input type="text" class="input input-auto" size="25" name="addr" id="addr" value="'+addr+'" /></div></div><div class="line margin-top"><div class="x10 float-right"><input class="button  bg-blue edit_post" type="submit" value="立即修改"  val="'+val+'" /></div></div></div>'
 				});
 				$('.layui-layer-content').css('padding','15px');
+                $('.layui-layer-setwin').css('right', '5px');
+                $('.layui-layer-setwin').css('top', '5px');
 				get_option();
 				changeCAB(c,a,b);
 				$('.edit_post').click(function(){

@@ -393,7 +393,7 @@ class MallAction extends CommonAction{
         //传递访问的最后一个商品的ID
         $this->assign('back', $back);
         if (empty($goods)) {
-            $this->error('亲还没有选购产品呢!', U('mall/index'));
+            $this->error('亲还没有选购产品呢!');
         }
         $goods_ids = array_keys($goods);
         $cart_goods = D('Goods')->itemsByIds($goods_ids);

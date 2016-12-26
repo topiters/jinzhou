@@ -3,10 +3,10 @@
 <script src="/static/default/wap/other/roll.js"></script>
 <div class="header" style="margin-top:-50px;">
     <if condition="$is_shop neq null">
-        <div style="float:left;position: fixed;margin: 15px;"><a href="<{:U('store/index/index')}>" style="color: #fff;">点击切换为商家版</a></div>
+        <div class="qiehuan"><a href="<{:U('store/index/index')}>" style="color: #fff;">点击切换为商家版</a></div>
     </if>
-    	<div class="jiazh" style="font-size:2em;padding-left: 130px;width: 120px;">用户中心</div>
-        <div class="search" style="padding-right: 20px; width: 30px;"><a href="<{:U('mobile/sign/signed')}>" style="color:#fff; font-size:1.5em;">签到</a></div>
+    	<div class="jiazh">用户中心</div>
+        <div class="search"><a href="<{:U('mobile/sign/signed')}>" style="color:#fff; font-size:1.5em;">签到</a></div>
 </div>
     
 <!--个人登录状态-->
@@ -96,7 +96,7 @@
   
 <div class="blank-10"></div>
 <div class="container text-center">
-		<a class="button button-block button-big bg-dot" href="<{:U('mobile/passport/logout')}>" style="width:90%;">退出后台</a>
+		<a class="button button-block button-big bg-dot" href="<{:U('mobile/passport/logout')}>">退出后台</a>
 </div> 
    
    
