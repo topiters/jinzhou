@@ -25,15 +25,15 @@
       
 <div class="my_fabu_box">
 	<ul>
-	 <volist name='fabu'  id='item'>
-	<li onclick="location.href='<{:U('mobile/life/detail',array('life_id'=>$item['life_id']))}>'">
-        	<div class="my_fabu_1"><img src="__ROOT__/attachs/<{$item.photo}>"></div>
-            <div class="my_fabu_2"><p><{$item.title}></p><p><a>价格：</a><a class="my_fabu_color"><{$item.num1}>元</a></p></div>
-            <p class="my_fabu_3"><{:formatTime($item.create_time)}></p>
-			
-        </li>
-	</volist>	
-    </ul>
+		<volist name="fabu" id="item">
+			<li onclick="location.href='<{:U('mobile/life/detail',array('life_id'=>$item['life_id']))}>'">
+				<div class="my_fabu_1"><img src="__ROOT__/attachs/<{$item.photo}>"></div>
+				<div class="my_fabu_2"><p><{$item.title}></p>
+					<p><a>价格：</a><a class="my_fabu_color"><{$item.num1}>元</a></p></div>
+				<p class="my_fabu_3"><{:formatTime($item['create_time'])}></p>
+			</li>
+		</volist>
+	</ul>
 </div>
 
 <include file='public:footer'/>

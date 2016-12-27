@@ -46,7 +46,7 @@
 .list-media-x li dt{ overflow: hidden;display:block;padding:5px 10px;width:100%;border-bottom:1px #eee solid}
 .list-media-x li dl{display:block;padding:0 10px;height:50px;line-height:350px;width:100%}
 .list-media-x li dl i{float:right;color:#999}
-.list-media-x li dd.zhong{display:block;padding:10px;overflow:hidden;width:100%;border-bottom:1px #eee solid}
+.list-media-x li dd.zhong{display:block;padding:10px;margin:0;overflow:hidden;width:100%;border-bottom:1px #eee solid}
 .list-media-x li dd.zhong a img{padding-bottom:0}
 .list-media-x li dt a i{font-style:normal;float:right}
 .list-media-x li dt a{font-weight:400}

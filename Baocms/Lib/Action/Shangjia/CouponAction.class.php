@@ -3,9 +3,9 @@
 
 
 class CouponAction extends CommonAction{
-    
-    private $create_fields = array( 'title', 'photo', 'expire_date','num','limit_num', 'intro');
-    private $edit_fields = array( 'title', 'photo', 'expire_date','num','limit_num', 'intro');
+
+    private $create_fields = array('title' , 'photo' , 'expire_date' , 'num' , 'limit_num' , 'intro' , 'money' , 'condition');
+    private $edit_fields = array('title' , 'photo' , 'expire_date' , 'num' , 'limit_num' , 'intro' , 'money' , 'condition');
     
     
     public function index() {
@@ -30,6 +30,7 @@ class CouponAction extends CommonAction{
         
          if ($this->isPost()) {
             $code = $this->_post('code', false);
+//            dump($code);die;
             $res = array();
             foreach ($code as $k => $val) {
                 if (!empty($val)) {
@@ -121,22 +122,30 @@ class CouponAction extends CommonAction{
         $data['title'] = htmlspecialchars($data['title']);
         if (empty($data['title'])) {
             $this->baoError('标题不能为空');
-        } $data['photo'] = htmlspecialchars($data['photo']);
+        }
+        $data['photo'] = htmlspecialchars($data['photo']);
         if (empty($data['photo'])) {
             $this->baoError('请上传优惠券图片');
         }
         if (!isImage($data['photo'])) {
             $this->baoError('优惠券图片格式不正确');
-        } $data['expire_date'] = htmlspecialchars($data['expire_date']);
+        }
+        $data['money'] = int($data['money']);
+        if (empty($data['money'])) {
+            $this->baoError('优惠金额不能为空');
+        }
+        $data['expire_date'] = htmlspecialchars($data['expire_date']);
         if (empty($data['expire_date'])) {
             $this->baoError('过期日期不能为空');
         }
         if (!isDate($data['expire_date'])) {
             $this->baoError('过期日期格式不正确');
-        } $data['intro'] = htmlspecialchars($data['intro']);
+        }
+        $data['intro'] = htmlspecialchars($data['intro']);
         if (empty($data['intro'])) {
             $this->baoError('优惠券描述不能为空');
         }
+        $data['condition'] = int($data['condition']);
         $data['num'] = (int)$data['num'];
         $data['limit_num'] = (int)$data['limit_num'];
         $data['create_time'] = NOW_TIME;
@@ -185,7 +194,11 @@ class CouponAction extends CommonAction{
         }
         if (!isImage($data['photo'])) {
             $this->baoError('优惠券图片格式不正确');
-        } $data['expire_date'] = htmlspecialchars($data['expire_date']);
+        }
+        if (empty($data['money'])) {
+            $this->baoError('优惠金额不能为空');
+        }
+        $data['expire_date'] = htmlspecialchars($data['expire_date']);
         if (empty($data['expire_date'])) {
             $this->baoError('过期日期不能为空');
         }

@@ -62,7 +62,7 @@
 .detail-ft{padding:10px;background:#FFF;border-top:thin solid #eee;}
 .detail-ft .tel-col span{color:#FFF!important;}
 .detail-lst{width:100%;}
-.detail-lst .more-btn{display:block;width:92%;text-align:center;margin-top:20px;margin-left: auto;margin-right: auto;}
+.detail-lst .more-btn{display:block;width:92%;text-align:center;margin:10px;}
 
 /* 发布信息 */
 .fabu-form .row{padding:10px;border-bottom:thin solid #eee;}

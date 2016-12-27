@@ -2,8 +2,9 @@
 class CouponAction extends CommonAction {
 
     public function main() {
-           $news= (int) $this->_param('news');
-         if ($news == 1) {
+//        dump($this->_CONFIG['sms']);die;
+        $news= (int) $this->_param('news');
+        if ($news == 1) {
             $orderby = array('coupon_id' => 'desc');
         }
         if ($news == 2) {

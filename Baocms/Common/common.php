@@ -195,7 +195,7 @@ function getDomain($url) {
 function formatTime($time) {
 
     $t = NOW_TIME - $time;
-    $mon = (int) ($t / (86400 * 30));
+    $mon = (int) ($t / 2592000);
     if ($mon >= 1) {
         return '一个月前';
     }

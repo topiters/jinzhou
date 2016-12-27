@@ -50,23 +50,39 @@
                 </div>
                 </td>
             </tr>
-            
-               <tr>
-                <td  width="120"><p class="tuanfabu_t">总数量：</p></td>
+            <tr>
+                <td width="120"><p class="tuanfabu_t"><em>·</em>优惠金额：</p></td>
                 <td>
                     <div class="tuanfabu_nr">
-                    <input type="text" name="data[num]" value="<{$detail.num|default=''}>"   class="manageInput" />
-                   总数量为0的时候，就不能下载了
-                   </div>
+                        <input type="text" name="data[money]" value="<{$detail.money|default=''}>" class="manageInput"/>
+                    </div>
                 </td>
             </tr>
-             <tr>
-                <td  width="120"><p class="tuanfabu_t">单人限制下载：</p></td>
-                <td >
+            <tr>
+                <td width="120"><p class="tuanfabu_t">限制金额：</p></td>
+                <td>
                     <div class="tuanfabu_nr">
-                    <input type="text" name="data[limit_num]" value="<{$detail.limit_num|default=''}>"   class="manageInput" />
-                  0为不限制，如果填入数字代码该用户只能下载多少次
-                  </div>
+                        <input type="text" name="data[condition]" value="<{$detail.condition|default=''}>" class="manageInput"/>
+                        0为不限制，如果填入数字代表该用户满多少元才能使用
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td width="120"><p class="tuanfabu_t">总数量：</p></td>
+                <td>
+                    <div class="tuanfabu_nr">
+                        <input type="text" name="data[num]" value="<{$detail.num|default=''}>" class="manageInput"/>
+                        总数量为0的时候，就不能下载了
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td width="120"><p class="tuanfabu_t">单人限制下载：</p></td>
+                <td>
+                    <div class="tuanfabu_nr">
+                        <input type="text" name="data[limit_num]" value="<{$detail.limit_num|default=''}>" class="manageInput"/>
+                        0为不限制，如果填入数字代码该用户只能下载多少次
+                    </div>
                 </td>
             </tr>
             <tr>

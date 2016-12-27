@@ -58,6 +58,7 @@ class AllAction extends CommonAction {
 		$Biz = D('Biz');
 		
 		$list_shop=$Shop->Field('"商家" as t_name,"shop/detail" as t_url,"shop_id" as t_param,shop_id as t_id,shop_name as t_title,photo as t_photo,tel as t_note')->order($orderby)->where($where_shop)->select();
+		echo $Shop->getLastSql();die;
 		$list_tuan=$Tuan->Field('"抢购" as t_name,"tuan/detail" as t_url,"tuan_id" as t_param,tuan_id as t_id,title as t_title,photo as t_photo,concat("￥",round(tuan_price/100,2)) as t_note')->order($orderby)->where($where_tuan)->select();
 		$list_goods=$Goods->Field('"商城" as t_name,"mall/detail" as t_url,"goods_id" as t_param,goods_id as t_id,title as t_title,photo as t_photo,concat("￥",round(mall_price/100,2)) as t_note')->order($orderby)->where($where_goods)->select();
 		$list_ele=$Eleproduct->Field('"外卖" as t_name,"ele/shop" as t_url,"shop_id" as t_param,shop_id as t_id,product_name as t_title,photo as t_photo,concat("￥",round(settlement_price/100,2)) as t_note')->order($orderby)->where($where_ele)->select();
@@ -144,6 +145,7 @@ class AllAction extends CommonAction {
 		$this->assign('searchindex',0);
         $this->assign('total_num',count($list));
         $this->assign('list',$list);
+//        dump($list);die;
         $this->assign('page', $show);
         $this->display();
     }

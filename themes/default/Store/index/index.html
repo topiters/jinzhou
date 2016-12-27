@@ -35,31 +35,20 @@
 </if>
 
 
-<!--金州商城开店认证-->   
- <if condition="$SHOP['is_renzheng'] neq 1"> 
- <a href="<{:U('audit/index')}>">
- <div class="rz" style="margin-top:2px;">
- 	<div class="zi_1">
-    	<p class="s1">金州商城开店认证</p>
-        <p class="s2">完成实名制认证才能收到款</p>
-    </div>
-   <div class="r_1"><img style="width:12px;height:18px;" src="/static/default/wap/images/jiazheng_04.png"></div>
-   <div class="r_2"><p style="color:#fff;">未认证</p></div>
- </div> 
-</a>
-</if>
-
-
-<!--今日头条-->
-    <div class="toutiao">
-    	<div class="t_t1"><a href="javascript:;"><img src="/static/default/wap/images/tt1_03.png"></a></div>
-        <div class="xinwen1">
-        <volist name="article" id="item" offset="0" length='1'>
-        <a href="<{:U('mobile/news/detail',array('article_id'=>$item['article_id']))}>"><{$item.title}></a>
-        </volist>
+<!--金州商城开店认证-->
+<if condition="$SHOP['is_renzheng'] neq 1">
+    <a href="<{:U('audit/index')}>">
+        <div class="rz" style="margin-top:2px;">
+            <div class="zi_1">
+                <p class="s1">金州商城开店认证</p>
+                <p class="s2">完成实名制认证才能收到款</p>
+            </div>
+            <div class="r_1"><img style="width:12px;height:18px;" src="/static/default/wap/images/jiazheng_04.png">
+            </div>
+            <div class="r_2"><p style="color:#fff;">未认证</p></div>
         </div>
-        <div class="t_t2"><a href="javascript:;"><img src="/static/default/wap/images/jiazheng_05.png"></a></div>	
-    </div>
+    </a>
+</if>
 
 <!--三图标-->	
 <div class="icon_1">
@@ -80,21 +69,17 @@
         <li><a href="<{:U('housework/index')}>"><img src="/static/default/wap/images/t006.png"><span>家政服务</span></a></li>
         </if>
         
-        <li><a href="<{:U('coupon/index')}>"><img src="/static/default/wap/images/t001.png"><span>代金券</span></a></li>
+        <li><a href="<{:U('coupon/index')}>"><img src="/static/default/wap/images/t001.png"><span>验券</span></a></li>
         <li><a href="<{:U('store/dianping/index')}>"><img src="/static/default/wap/images/t003.png"><span>点评</span></a></li>
         <li><a href="<{:U('branch/index')}>"><img src="/static/default/wap/images/t007.png"><span>基本设置</span></a></li>
     </ul>
 </div>
 
 
- 
 <div class="blank-10"></div>
 <div class="container text-center">
 		<a class="button button-block button-big bg-dot" href="<{:U('mobile/passport/logout')}>" style="width:90%;">退出后台</a>
 </div>
 
 
-
-
 <include  file='public:footer'/>
-

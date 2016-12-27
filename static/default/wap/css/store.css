@@ -3,7 +3,7 @@
 .text-mix a{color:#00F;font-size:12px}
 .x3 p{display:block;padding:0 10px;height:40px;line-height:40px}
 
-#shangjia_tab{display:block;width:100%;height:2.2rem;background-color:#fff;border-bottom:.11rem #dedede solid;position:fixed;z-index:999;top:3.15rem}
+#shangjia_tab{display:block;width:100%;height:2.2rem;background-color:#fff;border-bottom:.11rem #dedede solid;position:fixed;z-index:999;top:2rem}
 #shangjia_tab li{display:block;float:left}
 #shangjia_tab li a{display:block;text-align:center;line-height:2.2rem;height:2.2rem;color:#999}
 #shangjia_tab li a.on{border-bottom:.22rem solid #2fbdaa;margin-top:-0rem}
@@ -34,7 +34,7 @@
 .list-media-x li dt span{font-weight:400; font-size:12px;margin-left:28px;}
 .text-dot1{color:#999}
 
-.xiaoqu-search{padding:15px;background:#fafafa;border-bottom:thin solid #eee;padding-bottom:5px}
+.xiaoqu-search{background:#fafafa;border-bottom:thin solid #eee;padding-bottom:5px}
 .xiaoqu-list ul{padding:0;list-style:none}
 .xiaoqu-list li{padding:10px;border-bottom:thin solid #eee}
 .xiaoqu-list img{width:90%}
@@ -193,7 +193,7 @@
 .uploader-list{width:100%;overflow:hidden;background:#fff}
 .file-item{float:left;position:relative;background:#fff;margin-top:10px}
 .upload-state-done:after{content:"\f00c";font-family:FontAwesome;font-style:normal;font-weight:400;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:16px;position:absolute;bottom:0;right:10%;color:#4cae4c;z-index:99}
-.tuan-card{height:140px;padding:10px}
+.tuan-card{padding:10px}
 .tuan-card .card-r{margin:10px 0;width:100%;border-left:thin dashed #eee;height:100px;text-align:center;padding:10px 0}
 .tuan-card .card-r a{display:block;width:100%}
 .tuan-card .card-r img{width:60px;height:60px}

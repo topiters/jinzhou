@@ -186,7 +186,9 @@
 	height:160px;
 	}		
 		
-		
+.banner .hd ul{
+	display: none;
+}		
 /*中间区域*/	
 .content{
 	width:100%;

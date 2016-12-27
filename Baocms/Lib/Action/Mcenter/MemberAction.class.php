@@ -145,8 +145,7 @@ class MemberAction extends CommonAction{
     
     public function fabu(){
     
-    	$this->assign('fabu', D('Life')->where(array(user_id => $this->uid))->select());
-    
+    	$this->assign('fabu', D('Life')->where(array('user_id' => $this->uid,'audit'=>1))->select());
     	$this->display();
     
     }

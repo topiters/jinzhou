@@ -13,6 +13,7 @@ class  LifephotoModel extends CommonModel{
                 'life_id' => $life_id,
                 'photo' => htmlspecialchars($val)
             ));
+            D('life')->where("life_id = $life_id")->save(array('photo'=>$val));
         }
         return true;
     }

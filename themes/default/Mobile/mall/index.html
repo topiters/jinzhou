@@ -211,7 +211,7 @@
 </style>
 
 <script src="/static/default/wap/css1/swiper1.min.js"></script>
-
+<script src="/static/default/wap/other/roll.js"></script>
 <link href="/static/default/wap/css1/fujin.css" rel="stylesheet" type="text/css">
 
 <header class="top-fixed bg-yellow bg-inverse">
@@ -373,11 +373,34 @@
 <!--banner-->
 <div class="banner" style="margin-top:40px;">
 	<div class="ban_n">
-		<calldata mdl="Ad" where=" closed=0 AND site_id=81 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="3" cache="600" order="orderby asc">
-			<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
-		</calldata>
+        <div id="focus">
+            <div class="hd">
+                <ul></ul>
+            </div>
+            <div class="bd">
+                <ul>
+                    <calldata mdl="Ad" where=" closed=0 AND site_id=81 AND city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,3" cache="7200" order="orderby asc">
+                        <li>
+                            <a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"/></a>
+                        </li>
+                    </calldata>
+                </ul>
+            </div>
+        </div>
 	</div>
 </div>
+<script type="text/javascript">
+    TouchSlide({
+        slideCell: "#focus",
+        titCell: ".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+        mainCell: ".bd ul",
+        effect: "left",
+        autoPlay: true, //自动播放
+        autoPage: true, //自动分页
+        switchLoad: "_src", //切换加载，真实图片路径为"_src",
+        //delayTime:"3000",
+    });
+</script>
 <!--中间区域-->
 <div class="jingpin">
 	<div class="jp_1"><img src="/static/default/wap/images/index-177_95.png"></div>
