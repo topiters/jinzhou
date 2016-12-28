@@ -27,10 +27,12 @@ class LifeAction extends CommonAction {
     public function index() {
         foreach($this->lifechannel as $k=>$channel){
             foreach($this->lifecate as $k1=>$cate){
-                if($k==$cate['channel_id']){
+                if($channel['channel_id']==$cate['channel_id']){
                     $list[$k]['cate'][]= $cate;
                     if(!isset($list[$k]['channel'])){
-                       $list[$k]['channel']  = $channel;
+                        $list[$k]['channel_id'] = $channel['channel_id'];
+                        $list[$k]['channel'] = $channel['channel_name'];
+                        $list[$k]['channel_img'] = $channel['channel_img'];
                     }    
                 }
             }
@@ -38,41 +40,66 @@ class LifeAction extends CommonAction {
         $this->assign('list',$list);
         $this->display(); // 输出模板   
     }
-	
-	
-	   
- public function leixing(){
-    	
-    	foreach($this->lifechannel as $k=>$channel){
-    		foreach($this->lifecate as $k1=>$cate){
-    			if($k==$cate['channel_id']){
-    				$list[$k]['cate'][]= $cate;
-    				if(!isset($list[$k]['channel'])){
-    					$list[$k]['channel']  = $channel;
-    				}
-    			}
-    		}
-    	}
-    	$this->assign('categorylist',$list);
-    	
-    	
-    	$this->display();
+
+
+//    public function leixing() {
+//
+//        foreach ($this->lifechannel as $k => $channel) {
+//            foreach ($this->lifecate as $k1 => $cate) {
+//                if ($k == $cate['channel_id']) {
+//                    $list[$k]['cate'][] = $cate;
+//                    if (!isset($list[$k]['channel'])) {
+//                        $list[$k]['channel'] = $channel;
+//                    }
+//                }
+//            }
+//        }
+//        dump($list);die;
+//        $this->assign('categorylist' , $list);
+//
+//
+//        $this->display();
+//    }
+
+    public function leixing() {
+//     dump($this->lifecate);
+//     dump($this->lifechannel);
+//     die;
+        foreach ($this->lifechannel as $k => $channel) {
+            foreach ($this->lifecate as $k1 => $cate) {
+                if ($channel['channel_id'] == $cate['channel_id']) {
+                    $list[$k]['cate'][] = $cate;
+                    if (!isset($list[$k]['channel'])) {
+                        $list[$k]['channel_id'] = $channel['channel_id'];
+                        $list[$k]['channel'] = $channel['channel_name'];
+                        $list[$k]['channel_img'] = $channel['channel_img'];
+                    }
+                }
+            }
+        }
+        $this->assign('categorylist' , $list);
+//        dump($list);die;
+
+        $this->display();
     }
     
     
-    
     public function category(){
-    	
-    	foreach($this->lifechannel as $k=>$channel){
-    		foreach($this->lifecate as $k1=>$cate){
-    			if($k==$cate['channel_id']){
-    				$list[$k]['cate'][]= $cate;
-    				if(!isset($list[$k]['channel'])){
-    					$list[$k]['channel']  = $channel;
-    				}
-    			}
-    		}
-    	}
+
+
+        foreach ($this->lifechannel as $k => $channel) {
+            foreach ($this->lifecate as $k1 => $cate) {
+                if ($channel['channel_id'] == $cate['channel_id']) {
+                    $list[$k]['cate'][] = $cate;
+                    if (!isset($list[$k]['channel'])) {
+                        $list[$k]['channel_id'] = $channel['channel_id'];
+                        $list[$k]['channel'] = $channel['channel_name'];
+                        $list[$k]['channel_img'] = $channel['channel_img'];
+                    }
+                }
+            }
+        }
+//        dump($list);die;
     	$this->assign('categorylist',$list);
     	
     	//推荐
@@ -104,18 +131,20 @@ class LifeAction extends CommonAction {
     	
     	$channel_id = (int) $this->_param('channel_id');
     	$Life = D('Life');
-    	foreach($this->lifechannel as $k=>$channel){
-    		if($k==$channel_id){
-    			foreach($this->lifecate as $k1=>$cate){
-    				if($k==$cate['channel_id']){
-    					$list[$k]['cate'][]= $cate;
-    					if(!isset($list[$k]['channel'])){
-    						$list[$k]['channel']  = $channel;
-    					}
-    				}
-    			}
-    		}
-    	}
+        foreach ($this->lifechannel as $k => $channel) {
+            if ($channel['channel_id'] == $channel_id) {
+                foreach ($this->lifecate as $k1 => $cate) {
+                    if ($channel['channel_id'] == $cate['channel_id']) {
+                        $list[$k]['cate'][] = $cate;
+                        if (!isset($list[$k]['channel'])) {
+                            $list[$k]['channel_id'] = $channel['channel_id'];
+                            $list[$k]['channel'] = $channel['channel_name'];
+                            $list[$k]['channel_img'] = $channel['channel_img'];
+                        }
+                    }
+                }
+            }
+        }
     	$this->assign('city_id', $this->city_id);
     
     
@@ -151,6 +180,7 @@ class LifeAction extends CommonAction {
         $map = $linkArr = array();
         if ($channel = (int) $this->_param('channel')) {
             $cates_ids = array();
+//            dump($this->lifecate);die;
             foreach ($this->lifecate as $val) {
                 if ($val['channel_id'] == $channel) {
                     $cates_ids[] = $val['cate_id'];
@@ -186,7 +216,8 @@ class LifeAction extends CommonAction {
         } else {
             die('0');
         }
-        $count = $Life->where($map)->count(); // 查询满足要求的总记录数 
+//        dump($map);die;
+        $count = $Life->where($map)->count(); // 查询满足要求的总记录数
         $Page = new Page($count, 25); // 实例化分页类 传入总记录数和每页显示的记录数
         $show = $Page->show(); // 分页显示输出
         $var = C('VAR_PAGE') ? C('VAR_PAGE') : 'p';
@@ -195,6 +226,7 @@ class LifeAction extends CommonAction {
             die('0');
         }
         $list = $Life->where($map)->order(array('top_date' => 'desc', 'last_time' => 'desc'))->limit($Page->firstRow . ',' . $Page->listRows)->select();
+        dump($map);
         $this->assign('list', $list); // 赋值数据集
         $this->assign('page', $show); // 赋值分页输出
         $this->display(); // 输出模板

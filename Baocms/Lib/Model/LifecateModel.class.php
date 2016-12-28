@@ -41,7 +41,9 @@ class LifecateModel extends CommonModel {
     }
     
     public function getChannelMeans(){
-        return $this->channelMeans;
+        $re = D('life_channel')->select();
+        return $re;
+//        return $this->channelMeans;
     }
     
     

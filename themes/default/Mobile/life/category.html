@@ -46,7 +46,7 @@
                     <ul >
                     <volist name="categorylist" id="dh" offset="0" length='8' key="k">
                       
-                            <li><a href="<{:U('life/message',array('channel_id'=>$key))}>"><img src="/static/default/wap/images/<{$k}>.png"><span><{$dh['channel']}></span></a></li>
+                            <li><a href="<{:U('life/message',array('channel_id'=>$dh['channel_id']))}>"><img src="/static/default/wap/images/<{$dh.channel_img}>.png"><span><{$dh['channel']}></span></a></li>
                    
                          </volist>
                     </ul>
@@ -56,9 +56,9 @@
             <div class="swiper-slide">
                     <div class="icon">
 					      <ul >
-                                <volist name="list" id="dh" offset="8" length='8' key="k">
+                                <volist name="categorylist" id="dh" offset="8" length='8' key="k">
                       
-                            <li><a href="<{:U('life/message',array('channel_id'=>$key))}>"><img src="/static/default/wap/images/<{$k+8}>.png"><span><{$dh.cate_name}></span></a></li>
+                            <li><a href="<{:U('life/message',array('channel_id'=>$dh['channel_id']))}>"><img src="/static/default/wap/images/<{$dh.channel_img}>.png"><span><{$dh.channel}></span></a></li>
                    
                          </volist>
                             </ul>

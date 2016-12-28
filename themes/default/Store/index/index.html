@@ -19,19 +19,20 @@
         <div class="t2"><p><{$SHOP.shop_name}></p></div>
 </div>
 <!--黄条字提示-->
+<if condition="$SHOP['is_renzheng'] neq 1">
 	<div class="f_y"><p>完成实名认证和开店认证后买家才能看到商品哦</p></div>
+</if>
     
-    
-<!--实名制认证-->   
-  <if condition="$SHOP['is_renzheng'] eq 1"> 
- <div class="rz">
- 	<div class="zi_1">
-    	<p class="s1">实名制认证</p>
-        <p class="s2">完成实名制认证才能收到款</p>
+<!--实名制认证-->
+<if condition="$SHOP['is_renzheng'] eq 1">
+    <div class="rz">
+        <div class="zi_1">
+            <p class="s1">实名制认证</p>
+            <p class="s2">完成实名制认证才能收到款</p>
+        </div>
+        <div class="r_2"><p>已认证</p></div>
+        <div class="r_1"><img src="/static/default/wap/images/rz.png"></div>
     </div>
-   <div class="r_2"><p>已认证</p></div>
-   <div class="r_1"><img src="/static/default/wap/images/rz.png"></div>
- </div>   
 </if>
 
 
@@ -54,7 +55,7 @@
 <div class="icon_1">
 	<ul>
     	<li><a href="<{:U('tuan/index')}>"><img src="/static/default/wap/images/t001.png"><span>抢购管理</span></a></li>
-        <li><a href="<{:U('mart/index')}>"><img src="/static/default/wap/images/t002.png"><span>微店管理</span></a></li>
+        <li><a href="<{:U('mart/index')}>"><img src="/static/default/wap/images/t002.png"><span>商家管理</span></a></li>
         <li><a href="<{:U('money/index')}>"><img src="/static/default/wap/images/t003.png"><span>商家资金管理</span></a></li>
     </ul>
 </div>
@@ -62,7 +63,8 @@
 <!--四图标-->
 <div class="icon_2">
 	<ul>
-    	<li><a href="<{:U('nearwork/index')}>"><img src="/static/default/wap/images/t004.png"><span>人才招聘</span></a></li>
+    	<!--<li><a href="<{:U('nearwork/index')}>"><img src="/static/default/wap/images/t004.png"><span>人才招聘</span></a></li>-->
+        <li><a href="<{:U('nearwork/index')}>"><img src="/static/default/wap/images/t004.png"><span>营销管理</span></a></li>
         <li><a href="<{:U('news/index')}>"><img src="/static/default/wap/images/t005.png"><span>文章管理</span></a></li>
         
         <if condition="$open_lifeservice eq 1">
@@ -78,7 +80,7 @@
 
 <div class="blank-10"></div>
 <div class="container text-center">
-		<a class="button button-block button-big bg-dot" href="<{:U('mobile/passport/logout')}>" style="width:90%;">退出后台</a>
+		<a class="button button-block button-big bg-dot" href="<{:U('mobile/passport/logout')}>" >退出后台</a>
 </div>
 
 

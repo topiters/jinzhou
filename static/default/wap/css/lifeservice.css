@@ -64,7 +64,7 @@
 
 /*小区列表*/
 .xiaoqu-list ul{padding:0;list-style:none;}
-.xiaoqu-list li{border-bottom:thin solid #eee;}
+.xiaoqu-list li{border-bottom:thin solid #eee;padding-left: 10px;}
 .xiaoqu-list img{width:90%;}
 .xiaoqu-list h5{margin-bottom:5px;}
 .xiaoqu-list p{height:20px;line-height:20px;margin:0;color:#999;font-size:12px;overflow:hidden;}

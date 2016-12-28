@@ -150,7 +150,7 @@ body{
     	<ul>
     	
     	<volist name="categorylist" id="item"  key="k">
-        	<li><a href="<{:U('life/message',array('channel_id'=>$key))}>"><img src="/static/default/wap/images/fabu01_<{$k}>.png"><span><{$item['channel']}></span></a></li>
+        	<li><a href="<{:U('life/message',array('channel_id'=>$item['channel_id']))}>"><img src="/static/default/wap/images/fabu01_<{$item['channel_img']}>.png"><span><{$item['channel']}></span></a></li>
            
         </volist>
         

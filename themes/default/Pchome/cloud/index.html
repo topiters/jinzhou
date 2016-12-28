@@ -17,7 +17,7 @@
         </style>
     <div class="yhsy_flexslider">
         <ul class="slides">
-            <calldata mdl="Ad" where=" bg_date ELT '{$today}' AND end_date EGT '{$today}' AND city_id IN ({$city_ids}) AND closed=0 AND site_id=60" limit="0,3" cache="21600" order="orderby asc">
+            <calldata mdl="Ad" where=" bg_date ELT '{$today}' AND end_date EGT '{$today}' AND city_id IN ({$city_ids}) AND closed=0 AND site_id=600" limit="0,3" cache="21600" order="orderby asc">
                 <li class="sy_hotgzLi flex-active-slide" style="width: 100%; float: left; height: 321px; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;"><a href="<{$item.link_url}>" title="<{$item.title}>" target="_blank"><img width="1200" height="321" src="__ROOT__/attachs/<{$item.photo}>" draggable="false"></a></li>
             </calldata>
         </ul>

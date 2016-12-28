@@ -118,6 +118,7 @@
 				<div class="input-group">
 					<span class="addbtn"><button type="button" class="button icon-search"></button></span>
 					<input type="text" class="input" name="keyword" size="50" value="<{$keyword}>" placeholder="输入标题" />
+                    <input type="hidden" name="type" value="tab1"/>
 					<span class="addbtn"><button type="submit" class="button">搜索</button></span>
 				</div>
 			</div>
@@ -151,6 +152,22 @@
 
 		})
 	});
+	$('.addbtn').click(function () {
+        var type = $('.this').attr('id');
+        $("input[name=type]").val(type);
+    })
+    var nowThis = '<{$type}>';
+	if (nowThis != '') {
+	    $('.search_criteria li').removeClass('this');
+	    $('#<{$type}>').addClass('this');
+    }
 </script>
-
+<div id="item-list">
+	<div></div>
+</div>
+<script>
+    $(document).ready(function () {
+        loaddata('<{$nextpage}>', $("#item-list div"), true);
+    });
+</script>
 <include file="public:footer" />

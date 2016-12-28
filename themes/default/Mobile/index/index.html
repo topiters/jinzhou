@@ -169,14 +169,8 @@
 		<div class="h2">
 			<img class="ss" src="/static/default/wap/images/index-177_06.png" onclick="form.submit()">
 			<form name="form" method="post" action="<{:U('all/index')}>">
-				<!--<img class="ss" src="/static/default/wap/images/index-177_06.png">-->
-				<input type="text" placeholder="查商户、找优惠">
-				<!--<button type="submit">
-		<img style="display:block;" class="ss" src="/static/default/wap/images/index-177_06.png">
-		</button>-->
-
+				<input type="text" placeholder="查商户、找优惠" name="keyword">
 			</form>
-			<!--<img class="ss" src="/static/default/wap/images/index-177_06.png" onclick="form.submit()">-->
 		</div>
 		<div class="h3">
 			<a href="<{:U('mcenter/information/index')}>"><img src="/static/default/wap/images/index-177_03_01.png"><span>消息</span></a>
@@ -282,11 +276,27 @@
 				<div class="content-1">
 					<ul>
 						<volist name="daohang" id="dh" offset="0" length='8' key="k">
-
-							<li>
-								<a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="/static/default/wap/images/<{$k}>.png"><span><{$dh.cate_name}></span></a>
-							</li>
-
+                            <if condition="$dh.cate_id eq 25">
+                                <li>
+                                    <a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="/static/default/wap/images/2.png"><span><{$dh.cate_name}></span></a>
+                                </li>
+                                <elseif condition="$dh.cate_id eq 16"/>
+                                <li>
+                                    <a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="/static/default/wap/images/33.png"><span><{$dh.cate_name}></span></a>
+                                </li>
+                                <elseif condition="$dh.cate_id eq 21"/>
+                                <li>
+                                    <a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="/static/default/wap/images/44.png"><span><{$dh.cate_name}></span></a>
+                                </li>
+                                <elseif condition="$dh.cate_id eq 23"/>
+                                <li>
+                                    <a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="/static/default/wap/images/8.png"><span><{$dh.cate_name}></span></a>
+                                </li>
+                                <else/>
+                                <li>
+                                    <a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="/static/default/wap/images/<{$k}>.png"><span><{$dh.cate_name}></span></a>
+                                </li>
+                            </if>
 						</volist>
 					</ul>
 
@@ -297,11 +307,19 @@
 				<div class="content-1">
 					<ul>
 						<volist name="daohang" id="dh" offset="8" length='8' key="k">
-
+                            <if condition="$dh.cate_id eq 27">
+                                <li>
+                                    <a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="/static/default/wap/images/13.png"><span><{$dh.cate_name}></span></a>
+                                </li>
+                                <elseif condition="$dh.cate_id eq 26"/>
+                                <li>
+                                    <a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="/static/default/wap/images/3.png"><span><{$dh.cate_name}></span></a>
+                                </li>
+                                <else/>
 							<li>
 								<a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="/static/default/wap/images/<{$k+8}>.png"><span><{$dh.cate_name}></span></a>
 							</li>
-
+                            </if>
 						</volist>
 
 						<volist name='nav' id='item'>
@@ -313,7 +331,7 @@
 							</if>
 							<if condition="$item.nav_id eq 61">
 								<li>
-									<a href="<{:U('life/category')}>"><img src="/static/default/wap/images/7.png"><span><{$item.nav_name}></span></a>
+									<a href="<{:U('life/category')}>"><img src="/static/default/wap/images/11.png"><span><{$item.nav_name}></span></a>
 								</li>
 
 							</if>
@@ -340,11 +358,13 @@
 
 	<div class="content-2">
 		<div class="con-lt">
-			<calldata mdl="Ad" where=" closed=0 AND site_id=84 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
-				<!--<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>-->
-				<a href="/mobile/coupon/main.html"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
-			</calldata>
-
+			<!--<calldata mdl="Ad" where=" closed=0 AND site_id=84 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">-->
+				<!--<a href="/mobile/coupon/main.html"><img src="__ROOT__/attachs/<{$item.photo}>"></a>-->
+			<!--</calldata>-->
+            <div class="rt-1"><img src="/static/default/wap/images/index-177_46.png"></div>
+            <div class="rt-2">
+                <a href="/mobile/coupon/main.html"><strong>立即领取</strong></a>
+            </div>
 		</div>
 		<div class="con-rt">
 			<div class="rt-1"><img src="/static/default/wap/images/index-177_47.png"></div>
@@ -369,25 +389,30 @@
 	<!--美食-->
 	<div class="mshi">
 		<div class="miaosha">
-			<div class="ss" onclick="location.href='/mobile/coupon/main'">
-				<div class="ms-1">
-					<div class="div1">
-						<p>·14点场</p>
-					</div>
-				</div>
-				<div class="div2">
-					<p>养身煨汤</p>
-				</div>
-				<div class="div3">
-					<ul>
-						<li>00</li>
-						<li>00</li>
-						<li>00</li>
-					</ul>
-				</div>
-			</div>
+			<!--<div class="ss" onclick="location.href='/mobile/coupon/main'">-->
+				<!--<div class="ms-1">-->
+					<!--<div class="div1">-->
+						<!--<p>·14点场</p>-->
+					<!--</div>-->
+				<!--</div>-->
+				<!--<div class="div2">-->
+					<!--<p>养身煨汤</p>-->
+				<!--</div>-->
+				<!--<div class="div3">-->
+					<!--<ul>-->
+						<!--<li>00</li>-->
+						<!--<li>00</li>-->
+						<!--<li>00</li>-->
+					<!--</ul>-->
+				<!--</div>-->
+			<!--</div>-->
+            <div class="ms-2">
+                <calldata mdl="Ad" where=" closed=0 AND site_id=60 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
+                    <a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
+                </calldata>
+            </div>
 			<div class="ms-2">
-				<calldata mdl="Ad" where=" closed=0 AND site_id=62 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
+				<calldata mdl="Ad" where=" closed=0 AND site_id=61 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
 					<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
 				</calldata>
 			</div>
@@ -396,14 +421,17 @@
 		<div class="haohe">
 			<div class="hao-1">
 				<div class="hh1">
-					<div class="h-1"><img src="/static/default/wap/images/index-177_62.png"></div>
-					<div class="h-2">
-						<p class="h-22">有好喝</p>
-						<div class="pp-1">
-							<p class="pp1">各种奶茶</p>
-							<p class="pp1">品质精选</p>
-						</div>
-					</div>
+					<!--<div class="h-1"><img src="/static/default/wap/images/index-177_62.png"></div>-->
+					<!--<div class="h-2">-->
+						<!--<p class="h-22">有好喝</p>-->
+						<!--<div class="pp-1">-->
+							<!--<p class="pp1">各种奶茶</p>-->
+							<!--<p class="pp1">品质精选</p>-->
+						<!--</div>-->
+					<!--</div>-->
+					<calldata mdl="Ad" where=" closed=0 AND site_id=62 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
+						<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>" style="width: 94px;height: 100px;"></a>
+					</calldata>
 				</div>
 				<div class="hh2">
 					<calldata mdl="Ad" where=" closed=0 AND site_id=63 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
@@ -414,9 +442,14 @@
 
 			<div class="hao-2">
 				<div class="hlt">
-					<p style="font-size:2em; color:#28b8dd;">爱K歌</p>
-					<p>【皇马歌城】</p>
-					<p style="font-size:0.8em; color:#999;">72支冰醇套餐</p>
+					<!--<p style="font-size:2em; color:#28b8dd;">爱K歌</p>-->
+					<!--<p>【皇马歌城】</p>-->
+					<!--<p style="font-size:0.8em; color:#999;">72支冰醇套餐</p>-->
+                    <div class="tu">
+                        <calldata mdl="Ad" where=" closed=0 AND site_id=69 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
+                            <a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
+                        </calldata>
+                    </div>
 					<div class="tu">
 						<calldata mdl="Ad" where=" closed=0 AND site_id=64 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
 							<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
@@ -509,7 +542,7 @@
 	<div class="dapai">
 		<div class="dap1">
 			<div class="one1"><span>非常大牌</span><img src="/static/default/wap/images/index-177_103.png"></div>
-			<p class="two" style="text-align:center;color:#F00">起范儿尖货让你嗨翻全场</p>
+			<p class="two" style="text-align:center;color:#F00"></p>
 			<div class="three">
 				<calldata mdl="Ad" where=" closed=0 AND site_id=71 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
 					<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
@@ -544,7 +577,7 @@
 	<div class="dapai">
 		<div class="dap1">
 			<div class="one1"><span>天天特价</span><img src="/static/default/wap/images/index-177_103.png"></div>
-			<p class="two" style="text-align:center;color:#F00">每日精选千款好货</p>
+			<p class="two" style="text-align:center;color:#F00"></p>
 			<div class="three">
 				<calldata mdl="Ad" where=" closed=0 AND site_id=75 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
 					<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
@@ -555,7 +588,7 @@
 		<div class="dap2">
 			<div class="dp-1">
 				<p>品牌店庆</p>
-				<p style="font-size:1em; text-align:center; color:#F00">低至9.9元</p>
+				<p style="font-size:1em; text-align:center; color:#F00">品牌特卖</p>
 				<div class="dp2">
 					<calldata mdl="Ad" where=" closed=0 AND site_id=76 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
 						<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>
@@ -564,7 +597,7 @@
 			</div>
 			<div class="dp-1" x>
 				<p>丽人购</p>
-				<p style="font-size:1em; text-align:center;color:#F00">品牌特买</p>
+				<p style="font-size:1em; text-align:center;color:#F00">品牌特卖</p>
 				<div class="dp2">
 					<calldata mdl="Ad" where=" closed=0 AND site_id=77 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
 						<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>"></a>

@@ -21,12 +21,11 @@
         <div class="hdsy_flexslider">
             <ul class="slides">
 
-                <calldata mdl="Ad" where=" bg_date ELT '{$today}' AND  city_id IN ({$city_ids}) AND end_date EGT '{$today}' AND closed=0 AND site_id=60" limit="0,2" cache="21600" order="orderby asc">
+                <calldata mdl="Ad" where=" bg_date ELT '{$today}' AND  city_id IN ({$city_ids}) AND end_date EGT '{$today}' AND closed=0 AND site_id=600" limit="0,2" cache="21600" order="orderby asc">
                     <li class="sy_hotgzLi flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;"><a href="<{$item.link_url}>" title="<{$item.title}>" target="_blank"><img width="1200" height="80" src="__ROOT__/attachs/<{$item.photo}>" draggable="false"></a></li>
                 </calldata>
             </ul>
             <ol class="flex-control-nav flex-control-paging"></ol>
-
         </div>
     </div>
     <div class="hdsy_tab">

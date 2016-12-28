@@ -29,6 +29,8 @@ class HouseworkAction extends CommonAction
         $list = $Housework->where($map)->order(array('housework_id' => 'desc'))->limit($Page->firstRow . ',' . $Page->listRows)->select();
         $workids = array();
         foreach ($list as $k => $val) {
+            $cate_name = D('housekeeping_cate')->where("cate_id = {$val['cate_id']}")->find();
+            $list[$k]['cate_name'] = $cate_name['cate_name'];
             $workids[$val['housework_id']] = $val['housework_id'];
             if (empty($val['num'])) {
                 $list[$k]['num'] = $this->_CONFIG['housework']['num'];
@@ -40,6 +42,7 @@ class HouseworkAction extends CommonAction
         $this->assign('looks', D('Houseworklook')->checkLook($this->shop_id, $workids));
         $this->assign('workTypes', $Housework->getCfg());
         $this->assign('list', $list);
+//        dump($list);die;
         // 赋值数据集
         $this->assign('holder', $holder);
         $this->assign('page', $show);

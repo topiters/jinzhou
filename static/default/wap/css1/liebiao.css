@@ -303,7 +303,7 @@ body{font-size:62.5%;
 		}	
 	
 	.footer ul li{
-		margin-top:5px;
+		/* margin-top:5px; */
 		float:left;
 		width:20%;
 		display:inline-block;

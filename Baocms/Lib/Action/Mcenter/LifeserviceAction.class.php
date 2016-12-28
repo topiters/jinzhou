@@ -33,9 +33,11 @@ class LifeserviceAction extends CommonAction {
 		
 		
         $list = $Housework->where($map)->order(array('housework_id' => 'desc'))->limit($Page->firstRow . ',' . $Page->listRows)->select();
-		
+
         $houseworksetting_ids = array();
         foreach ($list as $k => $val) {
+            $cate_name = D('housekeeping_cate')->where("cate_id = {$val['cate_id']}")->find();
+            $list[$k]['cate_name'] = $cate_name['cate_name'];
             $houseworksetting_ids[$val['id']] = $val['id'];
         }
 		

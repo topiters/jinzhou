@@ -407,7 +407,7 @@ form .kz_c .cc_1{
 	}
 	
 .icon_1 ul li img{
-	/*width:40%;*/
+	width:40%;
 	text-align:center;
 	}	
 .icon_1 ul li span{
@@ -421,9 +421,8 @@ form .kz_c .cc_1{
 	
 .icon_2{
 	width:100%;
-	height:140px;
+	/* height:140px; */
 	background-color:#fff;
-	
 	text-align:center;
 	margin-top:8px;
 	}	
@@ -439,7 +438,7 @@ form .kz_c .cc_1{
 	}
 	
 .icon_2 ul li img{
-	/*width:52%;*/
+	width:52%;
 	text-align:center;
 	}	
 .icon_2 ul li span{

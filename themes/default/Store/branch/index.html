@@ -48,7 +48,7 @@ ul { padding-left: 0px;}
                     <p class="addr">申请时间：<{$var.create_time|date='Y-m-d H:i',###}></eq></p>
                     <p class="addr">审核状态：<eq name="var.audit" value="0">等待审核<else/>正常</eq></p>
                 </div>
-                <div class="x2">
+                <div class="x222">
                 <a class="button button-small bg-blue"  href="<{:U('mobile/shop/shop',array('shop_id'=>$var['shop_id'],'branch_id'=>$var['branch_id']))}>">详情</a>
                 <a class="button button-small margin-top bg-dot "  href="<{:U('branch/edit',array('branch_id'=>$var['branch_id']))}>">编辑</a>
                 <a href="javascript:void(0);" rel="<{$var.branch_id}>"  class="jquery-delete button button-small margin-top bg-blue">删除</a>
