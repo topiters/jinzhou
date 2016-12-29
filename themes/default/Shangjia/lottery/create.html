@@ -216,25 +216,27 @@
                 </div></td>
             </tr>
 
-            <tr>
-                <td width="120"><p class="tuanfabu_t">粉丝状态</p></td>
-                <td>
-                    <div class="tuanfabu_nr">
-                        <label><input type="radio" <?php if($detail.follower_condtion == 1) echo 'checked="checked"';?>  name="data[follower_condtion]" id="data[is_bao]" value="1"/>关注</label>
-                        <label><input type="radio" <?php if(!$detail.follower_condtion) echo 'checked="checked"';?>  name="data[follower_condtion]" id="data[is_bao]" value="0"/>不关注</label>
-                    </div>
-                </td>
-            </tr>
+            <input type="hidden" name="data[follower_condtion]" value="0"/>
+            <!--<tr>-->
+                <!--<td width="120"><p class="tuanfabu_t">粉丝状态</p></td>-->
+                <!--<td>-->
+                    <!--<div class="tuanfabu_nr">-->
+                        <!--<label><input type="radio" <?php if($detail.follower_condtion == 1) echo 'checked="checked"';?>  name="data[follower_condtion]" id="data[is_bao]" value="1"/>关注</label>-->
+                        <!--<label><input type="radio" <?php if(!$detail.follower_condtion) echo 'checked="checked"';?>  name="data[follower_condtion]" id="data[is_bao]" value="0"/>不关注</label>-->
+                    <!--</div>-->
+                <!--</td>-->
+            <!--</tr>-->
 
-            <tr>
-                <td width="120"><p class="tuanfabu_t">粉丝状态</p></td>
-                <td>
-                    <div class="tuanfabu_nr">
-                        <label><input type="radio" <?php if($detail.member_condtion == 1) echo 'checked="checked"';?>  name="data[member_condtion]" id="data[is_bao]" value="1"/>会员</label>
-                        <label><input type="radio" <?php if(!$detail.member_condtion) echo 'checked="checked"';?>  name="data[member_condtion]" id="data[is_bao]" value="0"/>不限</label>
-                    </div>
-                </td>
-            </tr>
+            <input type="hidden" name="data[member_condtion]" value="0"/>
+            <!--<tr>-->
+                <!--<td width="120"><p class="tuanfabu_t">粉丝状态</p></td>-->
+                <!--<td>-->
+                    <!--<div class="tuanfabu_nr">-->
+                        <!--<label><input type="radio" <?php if($detail.member_condtion == 1) echo 'checked="checked"';?>  name="data[member_condtion]" id="data[is_bao]" value="1"/>会员</label>-->
+                        <!--<label><input type="radio" <?php if(!$detail.member_condtion) echo 'checked="checked"';?>  name="data[member_condtion]" id="data[is_bao]" value="0"/>不限</label>-->
+                    <!--</div>-->
+                <!--</td>-->
+            <!--</tr>-->
         </table>
         <div class="tuanfabu_an">
         <input type="submit" class="radius3 sjgl_an tuan_topbt" value="确认发布" />

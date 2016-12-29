@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<title>幸运大乐透-<{$CONFIG.site.title}></title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<link rel="stylesheet" href="/static/default/wap/css/base.css">
+	<link rel="stylesheet" href="/static/default/wap/css/<{$ctl}>.css"/>
+	<link rel="stylesheet" href="/static/default/wap/css/store.css">
+	<script src="/static/default/wap/js/jquery.js"></script>
+	<script src="/static/default/wap/js/base.js"></script>
+	<script src="/static/default/wap/other/layer.js"></script>
+	<script src="/static/default/wap/other/roll.js"></script>
+	<script src="/static/default/wap/js/public.js"></script>
+    <script type="text/javascript" src="/static/default/wap/js/jQueryRotate.2.2.js"></script>
+    <script type="text/javascript" src="/static/default/wap/js/jquery.easing.min.js"></script>
+	<script src="/static/default/wap/js/dingwei.js"></script>
+	<script>
+        function bd_encrypt(gg_lat, gg_lon)   // 百度地图测距偏差 问题修复
+        {
+            var x_pi = 3.14159265358979324 * 3000.0 / 180.0;
+            var x = gg_lon;
+            var y = gg_lat;
+            var z = Math.sqrt(x * x + y * y) + 0.00002 * Math.sin(y * x_pi);
+            var theta = Math.atan2(y, x) + 0.000003 * Math.cos(x * x_pi);
+            var bd_lon = z * Math.cos(theta) + 0.0065;
+            var bd_lat = z * Math.sin(theta) + 0.006;
+            dingwei('<{:U("mobile/index/dingwei",array("t"=>$nowtime,"lat"=>"llaatt","lng"=>"llnngg"))}>', bd_lat, bd_lon);
+        }
+        navigator.geolocation.getCurrentPosition(function (position) {
+            bd_encrypt(position.coords.latitude, position.coords.longitude);
+        });
+	</script>
+
+    <style type="text/css">
+        .demo {
+            width: 350px;
+            height: 350px;
+            position: relative;
+            margin: 50px auto
+        }
+
+        #disk {
+            width: 350px;
+            height: 350px;
+            background: url(/static/default/wap/images/disk.jpg) no-repeat;
+            background-size: 350px 350px;
+        }
+
+        #start {
+            width: 163px;
+            height: 320px;
+            position: absolute;
+            top: 76px;
+            left: 130px;
+        }
+
+        #start img {
+            cursor: pointer
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $("#startbtn").click(function () {
+                lottery();
+            });
+        });
+        function lottery() {
+            $.ajax({
+                type: 'POST',
+                url: "<{:U('lottery/run')}>",  //提交地址 改为你自己的
+                dataType: 'json',
+                cache: false,
+                error: function () {
+                    alert('出错了！');
+                    return false;
+                },
+                success: function (json) {
+                    //$("#startbtn").unbind('click').css("cursor", "default");
+                    if (json.error != '') {
+                        alert(json.error);
+                        $("#startbtn").unbind('click').css("cursor", "default");
+                        return false;
+                    } else {
+                        var a = json.angle; //角度
+                        var p = json.prize; //奖项
+                        $("#startbtn").rotate({
+                            duration: 3000, //转动时间
+                            angle: 0,
+                            animateTo: 1800 + a, //转动角度
+                            easing: $.easing.easeOutSine,
+                            callback: function () {
+                                if (p == '谢谢参与') {
+                                    alert('谢谢参与！');
+                                } else {
+                                    alert('恭喜你，中得' + p + '！');
+                                }
+                            }
+                        });
+                    }
+
+                }
+            });
+        }
+    </script>
+</head>
+
+
+<header class="top-fixed bg-yellow bg-inverse">
+    <div class="top-back">
+        <a class="top-addr" href="<{:U('index/index')}>"><i class="icon-angle-left"></i></a>
+    </div>
+    <div class="top-title">
+        幸运大转盘
+    </div>
+    <div class="top-share">
+        <a href="javascript:void(0);" id="cate-btn"></a>
+    </div>
+</header>
+<body>
+
+
+<div id="main">
+    <div class="msg"></div>
+    <div class="demo">
+        <div id="disk"></div>
+        <div id="start"><img src="/static/default/wap/images/start.png" id="startbtn"></div>
+    </div>
+</div>
+
+
+
+
+<include file="public:footer"/>
