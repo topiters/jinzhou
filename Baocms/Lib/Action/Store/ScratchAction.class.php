@@ -11,35 +11,47 @@ class ScratchAction extends CommonAction {
     }
     public function index($page=1)
     {
-        if(!$shop_id = $this->shop_id){
-			 $this->baoError('商家不能为空');
-		}
-        import('ORG.Util.Page'); // 导入分页类
-		$map = array('shop_id' => $shop_id);
-		$obj = D('Weixin_scratch');
-		$count = $obj->where($map)->count();
-		$Page = new Page($count, 25);
-		$show = $Page->show();
-		$list = $obj->where($map)->order(array('scratch_id' => 'desc'))->limit($Page->firstRow . ',' . $Page->listRows)->select();
-        foreach ($list as $k => $val) {
-            $url = U('weixin/scratch/show', array('scratch_id' => $val['scratch_id']));
-            $url = __HOST__ . $url;
-            $tooken = 'scratch_' . $val['scratch_id'];
-            $file = baoQrCode($tooken, $url);
-            $list[$k]['file'] = $file;
+        if (empty($this->uid)) {
+            $this->error('登录状态失效!' , U('passport/login'));
         }
-		$this->assign('list', $list); // 赋值数据集
-        $this->assign('page', $show); // 赋值分页输出
         $this->display(); // 输出模板
+    }
+
+    public function run() {
+        $a=1;
+    }
+
+    protected function getRand($proArr) {
+        $result = '';
+
+        //概率数组的总概率精度
+        $proSum = array_sum($proArr);
+
+        //概率数组循环
+        foreach ($proArr as $key => $proCur) {
+            $randNum = mt_rand(1 , $proSum);
+            if ($randNum <= $proCur) {
+                $result = $key;
+                break;
+            } else {
+                $proSum -= $proCur;
+            }
+        }
+        unset ($proArr);
+        return $result;
     }
 
 	public function create()
 	{
 		if(!$shop_id = $this->shop_id){
-			 $this->baoError('商家不能为空');
+			 $this->error('商家不能为空');
 		}
 		if ($this->isPost()) {
 			$data = $this->createCheck();
+            if (!empty($_FILES['photo_file']['name'])) {
+                $upload = new UploadAction();
+                $data['photo'] = $upload->uploadify();
+            }
 			$obj = D('Weixin_scratch');
 			$objk = D('Shop_weixin_keyword');
 			
@@ -47,7 +59,7 @@ class ScratchAction extends CommonAction {
 			$map['shop_id'] = $shop_id;
 			$map['keyword'] = $data['keyword'];
 			if($k = $objk->where($map)->select()){
-				$this->baoError('该关键字已经被使用，请修改关键字');
+				$this->error('该关键字已经被使用，请修改关键字');
 			}else{
 				$keyword = array();
                 $keyword['title'] = $data['title'];
@@ -59,13 +71,13 @@ class ScratchAction extends CommonAction {
 				$keyword['url'] = $data[''];
 				$keyword['photo'] = $data['end_photo'];
 				if(!$keyword_id = $objk->add($keyword)){
-					$this->baoError('添加关键字失败！');
+					$this->error('添加关键字失败！');
 				}	
 			}				
 			if ($id = $obj->add($data)) {
-				 $this->baoSuccess('添加成功', U('scratch/index'));
+				 $this->success('添加成功', U('store/coupon/prize'));
             }else{
-				$this->baoError('添加失败！');
+				$this->error('添加失败！');
 			}	
 		}else{
 			$this->display();
@@ -76,16 +88,16 @@ class ScratchAction extends CommonAction {
         $data = $this->checkFields($this->_post('data', false), $this->create_fields);
         $data['title'] = htmlspecialchars($data['title']);
         if (empty($data['title'])) {
-            $this->baoError('标题不能为空');
+            $this->error('标题不能为空');
         }
 		if (empty($data['stime'])) {
-            $this->baoError('开始时间不能为空');
+            $this->error('开始时间不能为空');
         }
 		if (empty($data['ltime'])) {
-            $this->baoError('结束时间不能为空');
+            $this->error('结束时间不能为空');
         }
 		if (empty($data['intro'])) {
-            $this->baoError('封面简介不能为空');
+            $this->error('封面简介不能为空');
         }
         $data['shop_id'] = $this->shop_id;
         $data['type'] = news;
@@ -97,29 +109,34 @@ class ScratchAction extends CommonAction {
         return $data;
     }
 
-     public function edit($scratch_id = null) {
-        if ($scratch_id = (int) $scratch_id) {
+    public function edit($scratch_id = null) {
+        if ($scratch_id = (int)$scratch_id) {
             $obj = D('Weixin_scratch');
             if (!$detail = $obj->find($scratch_id)) {
-                $this->baoError('请选择要编辑的活动');
+                $this->error('请选择要编辑的活动');
             }
-            if($detail['shop_id'] != $this->shop_id){
+            if ($detail['shop_id'] != $this->shop_id) {
                 $this->error('不可操作其他商家的活动！');
             }
             if ($this->isPost()) {
                 $data = $this->editCheck();
-				$obj = D('Weixin_scratch');
-				$data['scratch_id'] = $scratch_id;			
-                if (false !== $obj->save($data)) {
-                    $this->baoSuccess('修改成功', U('scratch/index'));
+                if (!empty($_FILES['photo_file']['name'])) {
+                    $upload = new UploadAction();
+                    $data['photo'] = $upload->uploadify();
                 }
-                $this->baoError('修改失败');
+                $obj = D('Weixin_scratch');
+                $data['scratch_id'] = $scratch_id;
+                if (false !== $obj->save($data)) {
+                    $this->success('修改成功' , U('store/coupon/prize'));
+                }
+                $this->error('修改失败');
             } else {
-                $this->assign('detail', $detail);
+                $this->assign('nowtime' , time());
+                $this->assign('detail' , $detail);
                 $this->display();
             }
         } else {
-            $this->baoError('请选择要编辑活动');
+            $this->error('请选择要编辑活动');
         }
     }
 
@@ -129,16 +146,16 @@ class ScratchAction extends CommonAction {
         $data = $this->checkFields($this->_post('data', false), $this->edit_fields);
         $data['title'] = htmlspecialchars($data['title']);
 		if (empty($data['title'])) {
-            $this->baoError('标题不能为空');
+            $this->error('标题不能为空');
         }
 		if (empty($data['stime'])) {
-            $this->baoError('开始时间不能为空');
+            $this->error('开始时间不能为空');
         }
 		if (empty($data['ltime'])) {
-            $this->baoError('结束时间不能为空');
+            $this->error('结束时间不能为空');
         }
 		if (empty($data['intro'])) {
-            $this->baoError('封面简介不能为空');
+            $this->error('封面简介不能为空');
         }
         return $data;
     }
@@ -150,14 +167,14 @@ class ScratchAction extends CommonAction {
 		$obj = D('Weixin_scratch');
         if($scratch_id = (int)$scratch_id){
 			if(!$detail = $obj->find($scratch_id)){
-				$this->baoError('你要删除的内容不存在');
+				$this->error('你要删除的内容不存在');
 			}elseif($obj->delete($scratch_id)){
-				$this->baoSuccess('删除成功！',U('scratch/index'));
+				$this->success('删除成功！',U('store/coupon/prize'));
 			}else{
-                $this->baoError('删除失败！');
+                $this->error('删除失败！');
             }
         }else{
-            $this->baoError('没有指定ID');
+            $this->error('没有指定ID');
         }
     }  
 
@@ -168,7 +185,7 @@ class ScratchAction extends CommonAction {
             $obj = D('Weixin_scratchsn');
 			$obje = D('Weixin_scratch');
 			if(!$detail = $obje->find($scratch_id)){
-				$this->baoError('该活动不存在');
+				$this->error('该活动不存在');
 			}else{
 				$this->assign('detail', $detail);
 			}
@@ -185,7 +202,7 @@ class ScratchAction extends CommonAction {
 			}
 			 
 		}else{
-			$this->baoError('该优惠卷不存在');
+			$this->error('该优惠卷不存在');
 		}
 		$this->display();
     }
@@ -196,7 +213,7 @@ class ScratchAction extends CommonAction {
 		$obj = D('Weixin_scratchsn');
         if($sn_id = (int)$sn_id){
 			if(!$detail = $obj->find($sn_id)){
-				$this->baoError('你要修改的内容不存在或已经删除');
+				$this->error('你要修改的内容不存在或已经删除');
 			}else{
 				if($detail['is_use'] == '1'){
 					$data['is_use'] = 0;
@@ -207,7 +224,7 @@ class ScratchAction extends CommonAction {
 				}
 				$data['sn_id'] = $sn_id;
                 if($obj->save($data)){
-					$this->baoSuccess('修改成功！',U('scratch/sn',array('scratch_id'=>$detail['scratch_id'])));
+					$this->success('修改成功！',U('scratch/sn',array('scratch_id'=>$detail['scratch_id'])));
                 }
             }
         }
@@ -217,9 +234,9 @@ class ScratchAction extends CommonAction {
 		$obj = D('Weixin_scratchsn');
         if($sn_id = (int)$sn_id){
 			if(!$detail = $obj->where(array('sn_id'=>$sn_id))->select()){
-				$this->baoError('你要修改的内容不存在或已经删除');
+				$this->error('你要修改的内容不存在或已经删除');
 			}elseif($obj->delete($sn_id)){
-				$this->baoSuccess('删除成功！',U('scratch/sn',array('scratch_id'=>$detail[0]['scratch_id'])));
+				$this->success('删除成功！',U('scratch/sn',array('scratch_id'=>$detail[0]['scratch_id'])));
 			}
         }
     }
@@ -228,15 +245,15 @@ class ScratchAction extends CommonAction {
 	public function goods($scratch_id)
 	{
 		if(!$shop_id = $this->shop_id){
-			 $this->baoError('商家不能为空');
+			 $this->error('商家不能为空');
 		}
         $obj = D('Weixin_scratch');
         $objp = D('Weixin_prize'); 
         
         if(!($scratch_id = (int)$scratch_id)){
-            $this->baoError('没有指定刮刮卡ID');
+            $this->error('没有指定刮刮卡ID');
         }else if(!$detail = $obj->find($scratch_id)){
-            $this->baoError('该刮刮卡不存在或已经删除');
+            $this->error('该刮刮卡不存在或已经删除');
         }else{
             import('ORG.Util.Page'); // 导入分页类
             $map = array('shop_id' => $shop_id);
@@ -266,20 +283,24 @@ class ScratchAction extends CommonAction {
 	public function goodscreate($scratch_id=null)
     {
 		if(!$shop_id = $this->shop_id){
-			 $this->baoError('商家不能为空');
+			 $this->error('商家不能为空');
 		}
 		$obj = D('Weixin_scratch');
         if(!($scratch_id = (int)$scratch_id)){
-            $this->baoError('没有指定刮刮卡ID');
+            $this->error('没有指定刮刮卡ID');
         }else if(!$detail = $obj->find($scratch_id)){
-            $this->baoError('该刮刮卡不存在或已经删除');
+            $this->error('该刮刮卡不存在或已经删除');
         }if ($this->isPost()) {
 			$data = $this->goodscreateCheck($scratch_id);
+            if (!empty($_FILES['photo_file']['name'])) {
+                $upload = new UploadAction();
+                $data['photo'] = $upload->uploadify();
+            }
 			$objp = D('Weixin_prize');
 			if ($id = $objp->add($data)) {
-				$this->baoSuccess('添加成功', U('scratch/goods',array('scratch_id'=>$scratch_id)));
+				$this->success('添加成功', U('scratch/goods',array('scratch_id'=>$scratch_id)));
             }else{
-				$this->baoError('添加失败！');
+				$this->error('添加失败！');
 			}	
 		}else{
 			$this->assign('scratch_id', $scratch_id); // 赋值数据集
@@ -292,24 +313,15 @@ class ScratchAction extends CommonAction {
         $data['title'] = htmlspecialchars($data['title']);
 		//$data['shop_ip'] = $shop_id;
 		$data['scratch_id'] = $scratch_id;
-       /* if (empty($data['title'])) {
-            $this->baoError('标题不能为空');
+        if (empty($data['title'])) {
+            $this->error('标题不能为空');
         }
-		if (empty($data['stime'])) {
-            $this->baoError('开始时间不能为空');
+		if (empty($data['name'])) {
+            $this->error('奖项不能为空');
         }
-		if (empty($data['ltime'])) {
-            $this->baoError('结束时间不能为空');
+		if (empty($data['num'])) {
+            $this->error('名额数量不能为空');
         }
-		if (empty($data['intro'])) {
-            $this->baoError('封面简介不能为空');
-        }
-        $data['shop_id'] = $this->shop_id;
-        $data['type'] = news;
-		$data['dateline'] = NOW_TIME;
-        if (empty($data['type'])) {
-            $data['type'] = news;
-        }*/
 		$data['shop_id'] = $this->shop_id;
         return $data;
     }
@@ -317,28 +329,32 @@ class ScratchAction extends CommonAction {
     public function goodsedit($id=null)
     {
 		if(!$shop_id = $this->shop_id){
-			 $this->baoError('商家不能为空');
+			 $this->error('商家不能为空');
 		}
 		$obj = D('Weixin_scratch');
 		$objp = D('Weixin_prize');
         if (!$detail = $objp->find($id)) {
-              $this->baoError('未指定要修改的内容ID');
+              $this->error('未指定要修改的内容ID');
         }
         if($detail['shop_id'] != $this->shop_id){
             $this->error('不可操作其他商家的活动！');
         }
         if(!($detail['scratch_id'])){
-            $this->baoError('没有指定刮刮卡ID');
+            $this->error('没有指定刮刮卡ID');
         }else if(!$details = $obj->find($scratch_id)){
-            $this->baoError('您要修改的内容不存在或已经删除');
+            $this->error('您要修改的内容不存在或已经删除');
         }if ($this->isPost()) {
 			$data = $this->checkFields($this->_post('data', false), $this->goodsedit_fields);
+            if (!empty($_FILES['photo_file']['name'])) {
+                $upload = new UploadAction();
+                $data['photo'] = $upload->uploadify();
+            }
 			$objp = D('Weixin_prize');
 			$data['id'] = $id;
 			if ($id = $objp->save($data)) {
-				$this->baoSuccess('修改成功', U('scratch/goods',array('scratch_id'=>$detail['scratch_id'])));
+				$this->success('修改成功', U('scratch/goods',array('scratch_id'=>$detail['scratch_id'])));
             }else{
-				$this->baoError('修改失败失败！');
+				$this->error('修改失败失败！');
 			}	
 		}else{
 			$this->assign('detail', $detail); // 赋值数据集
@@ -352,14 +368,14 @@ class ScratchAction extends CommonAction {
         if($id = (int)$id){
             $objp = D('Weixin_prize');
             if(!$detail = $objp->find($id)){
-                $this->baoError('你要删除的内容不存在或已经删除');
+                $this->error('你要删除的内容不存在或已经删除');
             }elseif($objp->delete($id)){
-                $this->baoSuccess('删除成功！',U('scratch/goods',array('scratch_id'=>$detail['scratch_id'])));
+                $this->success('删除成功！',U('scratch/goods',array('scratch_id'=>$detail['scratch_id'])));
             }else{
-                $this->baoError('删除失败！');
+                $this->error('删除失败！');
             }
         }else{
-            $this->baoError('没有指定ID');
+            $this->error('没有指定ID');
         }
     }
       

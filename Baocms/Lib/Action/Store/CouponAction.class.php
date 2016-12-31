@@ -230,7 +230,16 @@ class CouponAction extends CommonAction {
             $this->display();
         }
     }
-   
+
+    public function prize() {
+        $today = TODAY;
+        $shop = $this->shop_id;
+        $lottery = D('weixin_lottery')->field('id,photo')->where("ltime > '$today' and shop_id = '$shop'")->select();
+        $scratch = D('weixin_scratch')->field('scratch_id,photo')->where("ltime > '$today' and shop_id = '$shop'")->select();
+        $this->assign('lottery' , $lottery);
+        $this->assign('scratch' , $scratch);
+        $this->display();
+    }
 
 }
 

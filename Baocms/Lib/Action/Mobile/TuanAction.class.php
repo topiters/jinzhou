@@ -571,13 +571,13 @@ class TuanAction extends CommonAction
                 $codestr = join(',', $codes);
                 //发送团购劵
                 if ($this->_CONFIG['sms']['dxapi'] == 'dy') {
-                    D('Sms')->DySms($this->_CONFIG['site']['sitename'], 'sms_tuan_user', $this->member['mobile'], array('code' => $codestr, 'user' => $this->member['nickname'], 'shop_name' => $tuan['title']));
+                    D('Sms')->DySms($this->_CONFIG['site']['sitename'], 'sms_tuan_user', $this->member['mobile'], array('code' => $codestr));
                 } else {
                     D('Sms')->sendSms('sms_tuan', $this->member['mobile'], array('code' => $codestr, 'nickname' => $this->member['nickname'], 'tuan' => $tuan['title']));
                 }
                 //更新贡献度
                 D('Users')->prestige($this->uid, 'tuan');
-                D('Sms')->tuanTZshop($tuan['shop_id']);
+                //D('Sms')->tuanTZshop($tuan['shop_id']);
                 //短信通知商家，这个就不需要了吧，没那么多短信使用！
                 //====================微信支付通知==抢购=========================
                 $tuan = D('Tuan')->find($order['tuan_id']);

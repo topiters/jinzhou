@@ -297,4 +297,12 @@ class CouponAction extends CommonAction {
         $this->error('领取失败！');
     }
 
+    public function prize() {
+        $today = TODAY;
+        $lottery = D('weixin_lottery')->field('id,photo')->where("ltime > '$today'")->order('id desc')->select();
+        $scratch = D('weixin_scratch')->field('scratch_id,photo')->where("ltime > '$today'")->order('scratch_id desc')->select();
+        $this->assign('lottery',$lottery);
+        $this->assign('scratch',$scratch);
+        $this->display();
+    }
 }

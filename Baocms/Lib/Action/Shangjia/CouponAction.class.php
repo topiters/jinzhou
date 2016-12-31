@@ -212,6 +212,6 @@ class CouponAction extends CommonAction{
         $data['limit_num'] = (int)$data['limit_num'];
         return $data;
     }
-    
-    
+
+
 }

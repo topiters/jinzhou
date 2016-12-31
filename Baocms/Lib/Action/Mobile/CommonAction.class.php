@@ -452,8 +452,6 @@ class CommonAction extends Action
 
             D('Sms')->DySms($this->_CONFIG['site']['sitename'], 'sms_yzm', $mobile, array(
 
-			'sitename'=>$this->_CONFIG['site']['sitename'],
-
 			'code' => $randstring
 
 			));
