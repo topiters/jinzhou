@@ -32,13 +32,12 @@
             <tr>
                 <td><p class="tuanfabu_t">奖品图片：</p></td>
                 <td><div class="tuanfabu_nr">
-                <div style="width: 300px;height: 100px; float: left;">
+                <div style="width: 300px;height: 70px; float: left;padding-top: 30px;">
                     <input type="hidden" name="data[photo]" value="<{$detail.photo}>" id="data_photo" />
                     <input id="photo_file" name="photo_file" type="file" multiple="true" value="" />
                 </div>
                 <div style="width: 300px;height: 100px; float: left;">
                     <img id="photo_img" width="80" height="80"  src="__ROOT__/attachs/<{$detail.photo|default='default.jpg'}>" />
-                    建议尺寸<{$CONFIG.attachs.goods.thumb}>
                 </div>
                 <script>
                     $("#photo_file").uploadify({
@@ -65,10 +64,13 @@
             </tr>
 
             <tr>
-                <td width="120"><p class="tuanfabu_t">排序号：</p></td>
-                <td><div class="tuanfabu_nr">
-                <input type="data" name="data[sort]" value="<{$detail.sort|default=''}>"  class="tuanfabu_int tuanfabu_intw2" />
-                </div></td>
+                <td width="120"><p class="tuanfabu_t">概率：</p></td>
+                <td>
+                    <div class="tuanfabu_nr" style="width: 200px;height: 40px; float: left;">
+                        <input type="data" name="data[luck]" value="<{$detail.luck|default=''}>"  class="tuanfabu_int tuanfabu_intw2" />
+                    </div>
+                    <span style="width: 200px;height: 40px; line-height: 40px;color: #999">(中奖率为当前设置的概率数除以设置的所有奖品的总概率数与谢谢参与概率数之和)</span>
+                </td>
             </tr>
         </table>
         <div class="tuanfabu_an">

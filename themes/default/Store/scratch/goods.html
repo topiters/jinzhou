@@ -1,0 +1,62 @@
+<include  file='public:header'/>
+<style>
+    .top-fixed .top-share {
+        right: 10px;
+        width: 40px;
+    }
+
+    .list-media-x {
+        margin-top: 0.0rem !important;
+    }
+
+    .list-media-x p {
+        margin-top: .01rem;
+        line-height: 20px;
+        font-size: 12px;
+    }
+</style>
+
+<header class="top-fixed bg-yellow bg-inverse">
+    <div class="top-back">
+        <a class="top-addr" href="<{:U('store/coupon/prize')}>"><i class="icon-angle-left"></i></a>
+    </div>
+    <div class="top-title">
+        刮刮卡奖品管理
+    </div>
+    <div class="top-share">
+        <a href="<{:U('scratch/goodscreate',array('scratch_id'=>$_GET['scratch_id']))}>" id="cate-btn" class="top-addr"> 添加</a>
+    </div>
+</header>
+
+<div class="list-media-x" id="list-media">
+    <ul>
+        <div class="blank-10 bg"></div>
+        <foreach name="list" item="var">
+            <li class="line ">
+                <dt><a class="x4">奖品ID：<{$var.id}></a></dt>
+
+                <dd class="zhong">
+                    <div class="x4">
+                        <img src="__ROOT__/attachs/<{$var.photo}>" style="width:90%;">
+                    </div>
+
+                    <div class="8">
+                        <p class="text-small">标题：<{$var.title}></p>
+                        <p class="text-small">奖项：<{$var.name}></p>
+                        <p class="text-small">名额数量：<{$var.num}>&nbsp;&nbsp;概率值：<{$var.luck}></p>
+                    </div>
+                </dd>
+
+                <dl>
+                    <p class="text-right padding-top x6">
+                        <a href="<{:U('scratch/goodsedit',array('id'=>$var['id']))}>" class="button button-small bg-dot">详情</a>
+                        <a href="<{:U('scratch/goodsdelete',array('id'=>$var['id']))}>" rel="<{$var.goods_id}>" class="jquery-delete button button-small bg-dot">删除</a>
+                    </p>
+                </dl>
+            </li>
+            <div class="blank-10 bg"></div>
+        </foreach>
+    </ul>
+</div>
+
+<include  file='public:footer'/>

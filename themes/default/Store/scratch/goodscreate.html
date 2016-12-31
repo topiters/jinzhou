@@ -1,0 +1,79 @@
+<include  file='public:header'/>
+<script src="__PUBLIC__/js/my97/WdatePicker.js"></script>
+<header class="top-fixed bg-yellow bg-inverse">
+    <div class="top-back">
+        <a class="top-addr" href="<{:U('store/coupon/prize')}>"><i class="icon-angle-left"></i></a>
+    </div>
+    <div class="top-title">
+        添加奖项
+    </div>
+</header>
+<div class="blank-20"></div>
+<form method="post" action="<{:U('scratch/goodscreate',array('scratch_id'=>$scratch_id))}>" class="fabu-form" enctype="multipart/form-data">
+    <input type="hidden" name="">
+    <js file="__PUBLIC__/js/uploadify/jquery.uploadify.min.js"/>
+    <link rel="stylesheet" href="__PUBLIC__/js/uploadify/uploadify.css">
+    <div class="row">
+        <div class="line">
+            <span class="x3">奖项标题：</span>
+            <span class="x9">
+			<input type="text" class="text-input" name="data[title]" value="<{$detail.title|default=''}>"/>
+		</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="line">
+            <span class="x3">奖项：</span>
+            <span class="x9">
+			<input type="text" class="text-input" name="data[name]" value="<{$detail.name|default=''}>"/>
+		</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="line">
+            <span class="x3">奖品图片：</span>
+            <span class="x9">
+			    <input type="hidden" name="data[photo]" value="<{$detail.photo}>" id="data_photo"/>
+                <input id="photo_file" name="photo_file" type="file" multiple="true" value=""/>
+                <img id="photo_img" width="80" height="80" src="__ROOT__/attachs/<{$detail.photo|default='default.jpg'}>"/>
+                <script>
+                    $("#photo_file").uploadify({
+                        'swf': '__PUBLIC__/js/uploadify/uploadify.swf?t=<{$nowtime}>',
+                        'uploader': '<{:U("app/upload/uploadify",array("model"=>"goods"))}>',
+                        'cancelImg': '__PUBLIC__/js/uploadify/uploadify-cancel.png',
+                        'buttonText': '上传商品图片',
+                        'fileTypeExts': '*.gif;*.jpg;*.png',
+                        'queueSizeLimit': 1,
+                        'onUploadSuccess': function (file, data, response) {
+                            $("#data_photo").val(data);
+                            $("#photo_img").attr('src', '__ROOT__/attachs/' + data).show();
+                        }
+                    });
+            </script>
+		    </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="line">
+            <span class="x3">名额数量：</span>
+            <span class="x9">
+			<input type="text" class="text-input" name="data[num]" value="<{$detail.num|default=''}>"/>
+		</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="line">
+            <span class="x3">概率：</span>
+            <span class="x9">
+			<input type="text" class="text-input" name="data[luck]" value="<{$detail.luck|default=''}>"/>
+		    </span>
+            <span class="x3">(中奖率为当前设置的概率数除以设置的所有奖品的总概率数与谢谢参与概率数之和)</span>
+        </div>
+    </div>
+    <div class="container">
+        <div class="blank-30"></div>
+        <button type="submit" class="button button-block button-big bg-dot">确认发布</button>
+        <div class="blank-30"></div>
+    </div>
+</form>
+<include  file='public:footer'/>

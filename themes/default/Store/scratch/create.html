@@ -1,0 +1,131 @@
+<include file="public:header"/>
+<script src="__PUBLIC__/js/my97/WdatePicker.js"></script>
+<header class="top-fixed bg-yellow bg-inverse">
+    <div class="top-back">
+        <a class="top-addr" href="<{:U('store/coupon/prize')}>"><i class="icon-angle-left"></i></a>
+    </div>
+    <div class="top-title">
+        发布刮刮卡
+    </div>
+</header>
+<div class="blank-20"></div>
+<form method="post" action="<{:U('scratch/create',array('scratch_id'=>$detail['scratch_id']))}>" class="fabu-form" enctype="multipart/form-data">
+    <js file="__PUBLIC__/js/uploadify/jquery.uploadify.min.js"/>
+    <link rel="stylesheet" href="__PUBLIC__/js/uploadify/uploadify.css">
+    <div class="row">
+        <div class="line">
+            <span class="x3">标题：</span>
+            <span class="x9">
+			<input type="text" class="text-input" name="data[title]" value="<{$detail.title|default=''}>"/>
+		</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="line">
+            <span class="x3">简介：</span>
+            <span class="x9">
+			<input type="text" class="text-input" name="data[intro]" value="<{$detail.intro|default=''}>"/>
+		</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="line">
+            <span class="x3">封面图片：</span>
+            <span class="x9">
+			    <input type="hidden" name="data[photo]" value="<{$detail.photo}>" id="data_photo"/>
+                <input id="photo_file" name="photo_file" type="file" multiple="true" value=""/>
+                <img id="photo_img" width="80" height="80" src="__ROOT__/attachs/<{$detail.photo|default='default.jpg'}>"/>
+                <script>
+                    $("#photo_file").uploadify({
+                        'swf': '__PUBLIC__/js/uploadify/uploadify.swf?t=<{$nowtime}>',
+                        'uploader': '<{:U("app/upload/uploadify",array("model"=>"goods"))}>',
+                        'cancelImg': '__PUBLIC__/js/uploadify/uploadify-cancel.png',
+                        'buttonText': '上传商品图片',
+                        'fileTypeExts': '*.gif;*.jpg;*.png',
+                        'queueSizeLimit': 1,
+                        'onUploadSuccess': function (file, data, response) {
+                            $("#data_photo").val(data);
+                            $("#photo_img").attr('src', '__ROOT__/attachs/' + data).show();
+                        }
+                    });
+            </script>
+		    </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="line">
+            <span class="x3">开始时间：</span>
+            <span class="x9">
+			<input type="data" name="data[stime]" value="<{$detail.stime|default=''}>" onfocus="WdatePicker();" class="tuanfabu_int tuanfabu_intw2"/>
+		</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="line">
+            <span class="x3">结束时间：</span>
+            <span class="x9">
+			<input type="data" name="data[ltime]" value="<{$detail.ltime|default=''}>" onfocus="WdatePicker();" class="tuanfabu_int tuanfabu_intw2"/>
+		</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="line">
+            <span class="x3">过期说明：</span>
+            <span class="x9">
+			<input type="text" class="text-input" name="data[end_tips]" value="<{$detail.end_tips|default=''}>"/>
+		</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="line">
+            <span class="x3">使用说明：</span>
+            <span class="x9">
+			<input type="text" class="text-input" name="data[use_tips]" value="<{$detail.use_tips|default=''}>"/>
+		</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="line">
+            <span class="x3">预计参与人数：</span>
+            <span class="x9">
+			<input type="text" class="text-input" name="data[predict_num]" value="<{$detail.predict_num|default=''}>"/>
+		</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="line">
+            <span class="x3">每人最多允许数：</span>
+            <span class="x9">
+			<input type="text" class="text-input" name="data[max_num]" value="<{$detail.max_num|default=''}>"/>
+		</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="line">
+            <span class="x3">谢谢参与概率：</span>
+            <span class="x9">
+			<input type="text" class="text-input" name="data[unluck]" value="<{$detail.unluck|default=''}>"/>
+		</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="line">
+            <span class="x3">浏览量：</span>
+            <span class="x9">
+			    <input type="text" class="text-input" name="data[views]" value="<{$detail.views|default=''}>"/>
+		    </span>
+        </div>
+    </div>
+
+    <input type="hidden" name="data[follower_condtion]" value="0"/>
+
+    <input type="hidden" name="data[member_condtion]" value="0"/>
+
+    <div class="container">
+        <div class="blank-30"></div>
+        <button type="submit" class="button button-block button-big bg-dot">确认发布</button>
+        <div class="blank-30"></div>
+    </div>
+</form>
+
+<include file="public:footer"/>

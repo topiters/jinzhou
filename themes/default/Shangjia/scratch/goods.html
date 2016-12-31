@@ -24,7 +24,7 @@
             <td>奖项</td>
             <td>名额数量</td>
             <td>奖品图片</td>
-            <td>排序</td>
+            <td>概率</td>
             <td>操作</td>
         </tr>
         <foreach name="list" item="var">
@@ -35,7 +35,7 @@
                 <td><{$var.name}></td>
                 <td><{$var.num}></td>
                 <td style="height: 80px;"><img src="__ROOT__/attachs/<{$var.photo}>"  style="width: 80px;  margin: 0px auto;" /></td>
-                <td><{$var.sort}></td>
+                <td><{$var.luck}></td>
 				<td>
                     <a class="radius3 sjgl_an tuan_topbt" href="<{:U('scratch/goodsedit',array('id'=>$var['id']))}>">编辑</a>
                     <a mini='confirm' class="radius3 sjgl_an tuan_topbt" href="<{:U('scratch/goodsdelete',array('id'=>$var['id']))}>">删除</a>

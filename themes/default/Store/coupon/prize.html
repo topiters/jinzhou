@@ -1,0 +1,153 @@
+<include file="public:header"/>
+<header class="top-fixed bg-yellow bg-inverse">
+    <div class="top-back">
+        <a class="top-addr" href="<{:U('store/index/index')}>"><i class="icon-angle-left"></i></a>
+    </div>
+    <div class="top-title">
+        营销管理
+    </div>
+    <div class="top-signed">
+        添加活动
+    </div>
+</header>
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .zz-main {
+        width: 100%;
+    }
+
+    .zz-tol {
+        width: 100%;
+        display: flex;
+    }
+
+    .zz-tol li {
+        list-style: none;
+        flex: 1;
+        text-align: center;
+        font-size: 16px;
+        height:50px;
+        line-height:50px;
+    }
+
+    .zz-tol li.active {
+        background-color: #aaa2a1;
+        color: #fff;
+    }
+    .zz-one1 li,.zz-one2 li{
+        margin-bottom: 10px;
+    }
+    ul li a img{
+        width: 80%;
+        height:150px;
+    }
+    .zz-alert{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.7);
+    }
+    .zz-alert1{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 70%;
+        /*height: 30%;*/
+        margin-left: -35%;
+        margin-top: -35%;
+        background-color: #fff;
+        z-index: 1;
+    }
+
+    .zz-alert1 dl dt{
+        width: 100%;
+        height: 50px;
+        font-size: 18px;
+        text-align: center;
+        line-height: 50px;
+        border-bottom: 1px solid #e4e4e4;
+    }
+    .zz-alert1 span {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+    }
+</style>
+<div class="zz-main">
+    <ul class="zz-tol">
+        <li class="active">大转盘</li>
+        <li>刮刮卡</li>
+    </ul>
+
+    <div class="zz-one1">
+
+            <ul>
+                <volist name="lottery" id="v" empty="暂无数据!">
+                <li>
+                    <p><a href="<{:U('store/lottery/edit',array('id'=>$v['id']))}>"><img src="__ROOT__/attachs/<{$v['photo']}>" alt=""/></a></p>
+                    <p class="text-right padding-top x6" style="margin-top: 10px;text-align: center;width:80%;">
+                        <a href="<{:U('store/lottery/edit',array('id'=>$v['id']))}>" class="button button-small bg-dot">编辑</a>
+                        <a href="<{:U('store/lottery/delete',array('id'=>$v['id']))}>" rel="13" class="jquery-delete button button-small bg-dot">删除</a>
+                    </p>
+                </li>
+                </volist>
+            </ul>
+
+
+    </div>
+
+    <div class="zz-one2" style="display: none;">
+        <ul>
+            <volist name="scratch" id="v" empty="暂无数据!">
+                <li>
+                    <p><a href="<{:U('store/scratch/edit',array('scratch_id'=>$v['scratch_id']))}>"><img src="__ROOT__/attachs/<{$v['photo']}>" alt=""/></a></p>
+                    <p class="text-right padding-top x6" style="margin-top: 10px;text-align: center;width:80%;">
+                        <a href="<{:U('store/scratch/goods',array('scratch_id'=>$v['scratch_id']))}>" class="button button-small bg-dot">奖品</a>
+                        <a href="<{:U('store/scratch/edit',array('scratch_id'=>$v['scratch_id']))}>" class="button button-small bg-dot">详情</a>
+                        <a href="<{:U('store/scratch/delete',array('scratch_id'=>$v['scratch_id']))}>" rel="13" class="jquery-delete button button-small bg-dot">删除</a>
+                    </p>
+                </li>
+            </volist>
+        </ul>
+    </div>
+</div>
+
+<div class="zz-alert" style="display:none;">
+    <div class="zz-alert1">
+        <span style="">×</span>
+        <dl>
+            <dt><a href="<{:U('store/lottery/create')}>">大转盘</a></dt>
+            <dt><a href="<{:U('store/scratch/create')}>">刮刮乐</a></dt>
+        </dl>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('.zz-tol li').click(function () {
+            $('.zz-tol').children('li').removeClass('active');
+            $(this).addClass('active');
+        });
+        $('.zz-tol li').eq(0).click(function () {
+            $('.zz-one1').show();
+            $('.zz-one2').hide();
+        })
+        $('.zz-tol li').eq(1).click(function () {
+            $('.zz-one1').hide();
+            $('.zz-one2').show();
+        })
+    });
+    $('.top-signed').click(function () {
+        $('.zz-alert').show();
+    })
+    $('.zz-alert1 span').click(function () {
+        $('.zz-alert').hide();
+    })
+</script>
+<include file="public:footer"/>

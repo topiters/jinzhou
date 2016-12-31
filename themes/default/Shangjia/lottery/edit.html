@@ -98,7 +98,7 @@
                 </div></td>
             </tr>
             <tr>
-                <td><p class="tuanfabu_t">关键字回复图片：</p></td>
+                <td><p class="tuanfabu_t">活动结束图片：</p></td>
                 <td><div class="tuanfabu_nr">
                 <div style="width: 300px;height: 100px; float: left;">
                     <input type="hidden" name="data[end_photo]" value="<{$detail.end_photo}>" id="data_photo1" />
@@ -126,6 +126,15 @@
                 </td>
             </tr>
             <tr>
+                <td width="120"><p class="tuanfabu_t">谢谢惠顾中奖率：</p></td>
+                <td>
+                    <div class="tuanfabu_nr">
+                        <input type="text" name="data[unlucknums]" value="<{$detail.unlucknums|default=''}>" class="tuanfabu_int tuanfabu_intw2"/>
+                        <span style="padding-left: 20px;color: #999">中奖率之和请设置为100</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
                 <td width="120"><p class="tuanfabu_t">一等奖奖品设置：</p></td>
                 <td><div class="tuanfabu_nr">
                 <input type="text" name="data[fist]" value="<{$detail.fist|default=''}>" class="tuanfabu_int tuanfabu_intw2" />
@@ -136,6 +145,15 @@
                 <td><div class="tuanfabu_nr">
                 <input type="text" name="data[fistnums]" value="<{$detail.fistnums|default=''}>" class="tuanfabu_int tuanfabu_intw2" />
                 </div></td>
+            </tr>
+            <tr>
+                <td width="120"><p class="tuanfabu_t">一等奖中奖率：</p></td>
+                <td>
+                    <div class="tuanfabu_nr">
+                        <input type="text" name="data[fistlucknums]" value="<{$detail.fistlucknums|default=''}>" class="tuanfabu_int tuanfabu_intw2"/>
+                        <span style="padding-left: 20px;color: #999">中奖率之和请设置为100</span>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td width="120"><p class="tuanfabu_t">二等奖奖品设置：</p></td>
@@ -150,6 +168,15 @@
                 </div></td>
             </tr>
             <tr>
+                <td width="120"><p class="tuanfabu_t">二等奖中奖率：</p></td>
+                <td>
+                    <div class="tuanfabu_nr">
+                        <input type="text" name="data[secondlucknums]" value="<{$detail.secondlucknums|default=''}>" class="tuanfabu_int tuanfabu_intw2"/>
+                        <span style="padding-left: 20px;color: #999">中奖率之和请设置为100</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
                 <td width="120"><p class="tuanfabu_t">三等奖奖品设置：</p></td>
                 <td><div class="tuanfabu_nr">
                 <input type="text" name="data[third]" value="<{$detail.third|default=''}>" class="tuanfabu_int tuanfabu_intw2" />
@@ -160,6 +187,15 @@
                 <td><div class="tuanfabu_nr">
                 <input type="text" name="data[thirdnums]" value="<{$detail.thirdnums|default=''}>" class="tuanfabu_int tuanfabu_intw2" />
                 </div></td>
+            </tr>
+            <tr>
+                <td width="120"><p class="tuanfabu_t">三等奖中奖率：</p></td>
+                <td>
+                    <div class="tuanfabu_nr">
+                        <input type="text" name="data[thirdlucknums]" value="<{$detail.thirdlucknums|default=''}>" class="tuanfabu_int tuanfabu_intw2"/>
+                        <span style="padding-left: 20px;color: #999">中奖率之和请设置为100</span>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td width="120"><p class="tuanfabu_t">四等奖中奖设置：</p></td>
@@ -174,6 +210,15 @@
                 </div></td>
             </tr>
             <tr>
+                <td width="120"><p class="tuanfabu_t">四等奖中奖率：</p></td>
+                <td>
+                    <div class="tuanfabu_nr">
+                        <input type="text" name="data[fourlucknums]" value="<{$detail.fourlucknums|default=''}>" class="tuanfabu_int tuanfabu_intw2"/>
+                        <span style="padding-left: 20px;color: #999">中奖率之和请设置为100</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
                 <td width="120"><p class="tuanfabu_t">五等奖中奖设置：</p></td>
                 <td><div class="tuanfabu_nr">
                 <input type="text" name="data[five]" value="<{$detail.five|default=''}>" class="tuanfabu_int tuanfabu_intw2" />
@@ -186,6 +231,15 @@
                 </div></td>
             </tr>
             <tr>
+                <td width="120"><p class="tuanfabu_t">五等奖中奖率：</p></td>
+                <td>
+                    <div class="tuanfabu_nr">
+                        <input type="text" name="data[fivelucknums]" value="<{$detail.fivelucknums|default=''}>" class="tuanfabu_int tuanfabu_intw2"/>
+                        <span style="padding-left: 20px;color: #999">中奖率之和请设置为100</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
                 <td width="120"><p class="tuanfabu_t">六等奖中奖设置：</p></td>
                 <td><div class="tuanfabu_nr">
                 <input type="text" name="data[six]" value="<{$detail.six|default=''}>" class="tuanfabu_int tuanfabu_intw2" />
@@ -196,6 +250,15 @@
                 <td><div class="tuanfabu_nr">
                 <input type="text" name="data[sixnums]" value="<{$detail.sixnums|default=''}>" class="tuanfabu_int tuanfabu_intw2" />
                 </div></td>
+            </tr>
+            <tr>
+                <td width="120"><p class="tuanfabu_t">六等奖中奖率：</p></td>
+                <td>
+                    <div class="tuanfabu_nr">
+                        <input type="text" name="data[sixlucknums]" value="<{$detail.sixlucknums|default=''}>" class="tuanfabu_int tuanfabu_intw2"/>
+                        <span style="padding-left: 20px;color: #999">中奖率之和请设置为100</span>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td width="120"><p class="tuanfabu_t">个人限制抽奖次数：</p></td>
