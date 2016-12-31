@@ -90,20 +90,20 @@
 					<ul>
 						<volist name="autocates" id="list" offset="0" length='8' key="k">
 							<li>
-								<a href="<{:U('mall/lists',array('id'=>$list['cate_id']))}>"><img src="/static/default/wap/images/<{$k}>.png"><span><{$list.cate_name}></span></a>
+								<a href="<{:U('mall/lists',array('id'=>$list['cate_id']))}>"><img src="/static/default/wap/images/t002.png"><span><{$list.cate_name}></span></a>
 							</li>
 
 						</volist>
 					</ul>
 				</div>
 			</div>
-
+			<if condition="count($list) gt 8">
 			<div class="swiper-slide">
 				<div class="icon">
 					<ul>
 						<volist name="autocates" id="list" offset="8" length='8' key="k">
 							<li>
-								<a href="<{:U('mall/lists',array('shopcate_id'=>$list['shopcate_id']))}>"><img src="/static/default/wap/images/<{$k}>.png"><span><{$list.cate_name}></span></a>
+								<a href="<{:U('mall/lists',array('shopcate_id'=>$list['shopcate_id']))}>"><img src="/static/default/wap/images/t002.png"><span><{$list.cate_name}></span></a>
 							</li>
 
 						</volist>
@@ -111,7 +111,7 @@
 
 				</div>
 			</div>
-
+			</if>
 		</div>
 	</div>
 

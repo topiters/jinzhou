@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>刮刮卡-<{$CONFIG.site.title}></title>
+	<link rel="stylesheet" href="/static/default/wap/css/base.css">
+	<link rel="stylesheet" href="/static/default/wap/css/<{$ctl}>.css"/>
+	<link rel="stylesheet" href="/static/default/wap/css/store.css">
+    <link rel="stylesheet" href="/static/default/wap/css1/activity-style.css">
+	<script src="/static/default/wap/js/jquery.js"></script>
+	<script src="/static/default/wap/js/base.js"></script>
+	<script src="/static/default/wap/other/layer.js"></script>
+	<script src="/static/default/wap/other/roll.js"></script>
+	<script src="/static/default/wap/js/public.js"></script>
+	<script type="text/javascript" src="/static/default/wap/js/jQueryRotate.2.2.js"></script>
+	<script type="text/javascript" src="/static/default/wap/js/jquery.easing.min.js"></script>
+	<script type="text/javascript">
+		function loading(canvas, options) {
+			this.canvas = canvas;
+			if (options) {
+				this.radius = options.radius || 12;
+				this.circleLineWidth = options.circleLineWidth || 4;
+				this.circleColor = options.circleColor || 'lightgray';
+				this.moveArcColor = options.moveArcColor || 'gray';
+			} else {
+				this.radius = 12;
+				this.circelLineWidth = 4;
+				this.circleColor = 'lightgray';
+				this.moveArcColor = 'gray';
+			}
+		}
+		loading.prototype = {
+			show: function() {
+				var canvas = this.canvas;
+				if (!canvas.getContext) return;
+				if (canvas.__loading) return;
+				canvas.__loading = this;
+				var ctx = canvas.getContext('2d');
+				var radius = this.radius;
+				var me = this;
+				var rotatorAngle = Math.PI * 1.5;
+				var step = Math.PI / 6;
+				canvas.loadingInterval = setInterval(function() {
+					ctx.clearRect(0, 0, canvas.width, canvas.height);
+					var lineWidth = me.circleLineWidth;
+					var center = {
+						x: canvas.width / 2,
+						y: canvas.height / 2
+					};
+
+					ctx.beginPath();
+					ctx.lineWidth = lineWidth;
+					ctx.strokeStyle = me.circleColor;
+					ctx.arc(center.x, center.y + 20, radius, 0, Math.PI * 2);
+					ctx.closePath();
+					ctx.stroke();
+					//在圆圈上面画小圆   
+					ctx.beginPath();
+					ctx.strokeStyle = me.moveArcColor;
+					ctx.arc(center.x, center.y + 20, radius, rotatorAngle, rotatorAngle + Math.PI * .45);
+					ctx.stroke();
+					rotatorAngle += step;
+
+				},
+				100);
+			},
+			hide: function() {
+				var canvas = this.canvas;
+				canvas.__loading = false;
+				if (canvas.loadingInterval) {
+					window.clearInterval(canvas.loadingInterval);
+				}
+				var ctx = canvas.getContext('2d');
+				if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
+			}
+		};
+	</script>
+</head>
+<header class="top-fixed bg-yellow bg-inverse">
+    <div class="top-back">
+        <a class="top-addr" href="<{:U('coupon/prize')}>"><i class="icon-angle-left"></i></a>
+    </div>
+    <div class="top-title" style="color: #fff;">
+        <span>刮刮卡</span>
+    </div>
+    <div class="top-share">
+        <a href="javascript:void(0);" id="cate-btn"></a>
+    </div>
+</header>
+	<body data-role="page" class="activity-scratch-card-winning">
+		<script src="/static/default/wap/js/jquery.js" type="text/javascript"></script>
+		<script src="/static/default/wap/js/wScratchPad.js" type="text/javascript"></script>
+		<div class="main" style="margin-top: 70px;">
+			<div class="cover">
+				<img src="/static/default/wap/images/activity-scratch-card-bannerbg.png">
+				<div id="prize">
+				</div>
+				<div id="scratchpad">
+				</div>
+			</div>
+			<div class="content">
+				<div id="zjl" style="display:none" class="boxcontent boxwhite">
+					<div class="box">
+						<div class="title-red" style="color: #444444;">
+							<span class="red">kaka100</span>
+							<span>
+								恭喜你
+							</span>
+						</div>
+						<div class="Detail">
+							<p>
+								你中了：
+								<span class="red" id ="theAward"></span>
+							</p>
+							<p>
+								兑奖SN码：
+								<span class="red" id="sncode">
+									fa423sffd889fsdfad
+								</span>
+							</p>
+							<p class="red"></p>
+						</div>
+					</div>
+				</div>
+				<div class="boxcontent boxwhite">
+					<div class="box">
+						<div class="title-brown">
+							<span>
+								奖项设置：
+							</span>
+						</div>
+						<div class="Detail">
+                            <volist name="prize" id="v">
+                                <p>
+                                    奖项<{$i}>： <{$v['name']}>。奖品数量：<{$v['num']}>
+                                </p>
+                            </volist>
+						</div>
+					</div>
+				</div>
+				<div class="boxcontent boxwhite">
+					<div class="box">
+						<div class="title-brown">
+							活动说明：
+						</div>
+						<div class="Detail">
+							<p class="red">
+								本次活动总共可以刮<{$aInfo['max_num']}>次,你已经刮了<{$time}>次,机会如果没用完重新进入本页面可以再刮!
+							</p>
+							<p>
+								亲，请点击进入刮刮奖活动页面，祝您好运哦！
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="clear:both;">
+			</div>
+		</div>
+		<!--<script src="/static/default/wap/js/alert.js" type="text/javascript"></script>-->
+		<script type="text/javascript">
+			window.sncode = "null";
+			window.prize = "谢谢参与";
+
+			var zjl = false;
+			var num = 0;
+			var goon = true;
+			$(function() {
+				$("#scratchpad").wScratchPad({
+					width: 150,
+					height: 40,
+					color: "#a9a9a7",
+					scratchMove: function() {
+						num++;
+						if (num == 1) {
+							//一等奖机率10% 二等奖20% 三等奖30% 幸运奖40%
+//							var randNum = Math.round(Math.random()*99+1)
+//							if(randNum>=1 && randNum<=10){
+//								var award = "一等奖";
+//								zjl = true;
+//							}
+//							if(randNum>=11 && randNum<=30){
+//								var award = "二等奖";
+//								zjl = true;
+//							}
+//							if(randNum>=31 && randNum<=60){
+//								var award = "三等奖";
+//								zjl = true;
+//							}
+//							if(randNum>=61 && randNum<=100){
+//								var award = "谢谢参与";
+//							}
+
+							$.ajax({
+							    url:"<{:U('scratch/run')}>",
+                                data:"id=<{$_GET['id']}>",
+                                type:'post',
+                                dataType: 'json',
+                                cache: false,
+                                error: function () {
+                                    alert('出错了！');
+                                    return false;
+                                },
+                                success:function (json) {
+                                    if (json.error != '') {
+                                        alert(json.error + '！');
+                                        return false;
+                                    } else {
+                                        document.getElementById('prize').innerHTML = json.award;
+                                        $("#theAward").html(json.award);
+                                    }
+                                }
+                            });
+
+						}
+
+						if (zjl && num > 10 && goon) {
+
+							goon = false;
+							
+							$("#zjl").slideToggle(500);
+						}
+					}
+				});
+
+			});
+
+			// 保存数据
+//			$("#save-btnn").bind("click", function() {
+//				var submitData = {
+//					tid: 438,
+//					code: $("#sncode").text(),
+//					parssword: $("#parssword").val(),
+//					action: "setTel"
+//				};
+//				$.post('index.php?ac=acw', submitData,
+//				function(data) {
+//					if (data.success == true) {
+//						alert(data.msg);
+//						if (data.changed == true) {
+//							window.location.href = location.href;
+//						}
+//						return
+//					} else {}
+//				},
+//				"json")
+//			});
+		</script>
+		
+	</body>
+
+</html>

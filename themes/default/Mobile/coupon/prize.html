@@ -1,0 +1,94 @@
+<include file="public:header"/>
+<header class="top-fixed bg-yellow bg-inverse">
+    <div class="top-back">
+        <a class="top-addr" href="<{:U('index/index')}>"><i class="icon-angle-left"></i></a>
+    </div>
+    <div class="top-title">
+        活动中心
+    </div>
+</header>
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .zz-main {
+        width: 100%;
+    }
+
+    .zz-tol {
+        width: 100%;
+        display: flex;
+    }
+
+    .zz-tol li {
+        list-style: none;
+        flex: 1;
+        text-align: center;
+        font-size: 16px;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .zz-tol li.active {
+        background-color: #aaa2a1;
+        color: #fff;
+    }
+
+    .zz-one1 li, .zz-one2 li {
+        margin-bottom: 10px;
+    }
+
+    ul li a img {
+        width: 100%;
+        height: 150px;
+    }
+</style>
+<div class="zz-main">
+    <ul class="zz-tol">
+        <li class="active">大转盘</li>
+        <li>刮刮卡</li>
+    </ul>
+
+    <div class="zz-one1">
+
+        <ul>
+            <volist name="lottery" id="v" empty="暂无数据!">
+                <li>
+                    <a href="<{:U('lottery/index',array('id'=>$v['id']))}>"><img src="__ROOT__/attachs/<{$v['photo']}>" alt=""/></a>
+                </li>
+            </volist>
+        </ul>
+
+
+    </div>
+
+    <div class="zz-one2" style="display: none;">
+        <ul>
+            <volist name="scratch" id="v" empty="暂无数据!">
+                <li>
+                    <a href="<{:U('scratch/index',array('id'=>$v['scratch_id']))}>"><img src="__ROOT__/attachs/<{$v['photo']}>" alt=""/></a>
+                </li>
+            </volist>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('.zz-tol li').click(function () {
+            $('.zz-tol').children('li').removeClass('active');
+            $(this).addClass('active');
+        });
+        $('.zz-tol li').eq(0).click(function () {
+            $('.zz-one1').show();
+            $('.zz-one2').hide();
+        })
+        $('.zz-tol li').eq(1).click(function () {
+            $('.zz-one1').hide();
+            $('.zz-one2').show();
+        })
+    })
+</script>
+
+<include file='public:footer'/>
