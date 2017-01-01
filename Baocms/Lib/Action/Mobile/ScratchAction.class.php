@@ -15,7 +15,9 @@ class  ScratchAction extends CommonAction{
         $aInfo = D('weixin_scratch')->where("scratch_id = $aid")->find();
         $prize = D('weixin_prize')->where("scratch_id = $aid")->order('luck asc')->select();
         $time = D('weixin_record')->where("uid = $uid and type = 2 and aid = $aid")->count();
+        $nickname = D('users')->field('user_id,nickname')->where("user_id = $uid")->find();
 //        dump($aInfo);dump($prize);die;
+        $this->assign('nickname',$nickname['nickname']);
         $this->assign('time',$time);
         $this->assign('aInfo',$aInfo);
         $this->assign('prize',$prize);
@@ -30,16 +32,19 @@ class  ScratchAction extends CommonAction{
             die;
         }
         $aid = I('id');
-        $aInfo = D('weixin_lottery')->where("id = $aid")->find();
+        $aInfo = D('weixin_scratch')->where("scratch_id = $aid")->find();
+//        dump($aInfo);die;
         $max_num = $aInfo['max_num']; //单人限制次数
         $prize = D('weixin_prize')->where("scratch_id = $aid")->select();
-        $num = D('weixin_record')->where("uid = $uid and aid = $aid and type = 1")->count();
+//        dump($prize);die;
+        $num = D('weixin_record')->where("uid = $uid and aid = $aid and type = 2")->count();
         if ($num >= $max_num) {  //检测当前用户是否已达次数限制
             $result['error'] = '您的抽奖次数已用完';
         } else {
             //获取随机奖品
             $proArr[0] = $aInfo['unluck'];
-            foreach ($prize as $v) {
+            foreach ($prize as $k=>$v) {
+                $prize[$v['id']] = $v;
                 $proArr[$v['id']] = $v['luck'];
             }
             $rid = $this->getRand($proArr); //根据概率获取奖项id
@@ -48,7 +53,7 @@ class  ScratchAction extends CommonAction{
             } else {
                 $res = $prize[$rid - 1]; //中奖项
             }
-
+//            dump($res);die;
             //记录抽奖信息
             $data['uid'] = $uid;
             $data['aid'] = $aid;
@@ -59,16 +64,16 @@ class  ScratchAction extends CommonAction{
             if ($res == '谢谢参与') { //没有中奖
                 $result['prize'] = '谢谢参与';
             } else {
-                //如果中奖了记录大乐透中奖信息表
-                $nickname = D('user')->field('user_id,nickname')->where("user_id = $uid")->find();
+                //如果中奖了记录刮刮卡中奖信息表
+                $nickname = D('users')->field('user_id,nickname')->where("user_id = $uid")->find();
                 $datav['scratch_id'] = $aid;
                 $datav['uid'] = $uid;
                 $datav['shop_id'] = $aInfo['shop_id'];
                 $datav['nickname'] = $nickname['nickname'];
-                $datav['islottery'] = 1;
-                $datav['prize'] = $res['id'];
+                $datav['prize_id'] = $res['id'];
+                $datav['prize_title'] = $res['title'];
                 D('weixin_scratchsn')->add($datav);
-                $result['prize'] = $res['prize'];
+                $result['prize'] = $res['name'];
             }
             $result['error'] = '';
         }

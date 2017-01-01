@@ -106,7 +106,7 @@
 				<div id="zjl" style="display:none" class="boxcontent boxwhite">
 					<div class="box">
 						<div class="title-red" style="color: #444444;">
-							<span class="red">kaka100</span>
+							<span class="red"><{$nickname}></span>
 							<span>
 								恭喜你
 							</span>
@@ -116,12 +116,12 @@
 								你中了：
 								<span class="red" id ="theAward"></span>
 							</p>
-							<p>
-								兑奖SN码：
-								<span class="red" id="sncode">
-									fa423sffd889fsdfad
-								</span>
-							</p>
+							<!--<p>-->
+								<!--兑奖SN码：-->
+								<!--<span class="red" id="sncode">-->
+									<!--fa423sffd889fsdfad-->
+								<!--</span>-->
+							<!--</p>-->
 							<p class="red"></p>
 						</div>
 					</div>
@@ -134,7 +134,7 @@
 							</span>
 						</div>
 						<div class="Detail">
-                            <volist name="prize" id="v">
+                            <volist name="prize" id="v" empty="暂无设置任何奖项！">
                                 <p>
                                     奖项<{$i}>： <{$v['name']}>。奖品数量：<{$v['num']}>
                                 </p>
@@ -177,24 +177,6 @@
 					scratchMove: function() {
 						num++;
 						if (num == 1) {
-							//一等奖机率10% 二等奖20% 三等奖30% 幸运奖40%
-//							var randNum = Math.round(Math.random()*99+1)
-//							if(randNum>=1 && randNum<=10){
-//								var award = "一等奖";
-//								zjl = true;
-//							}
-//							if(randNum>=11 && randNum<=30){
-//								var award = "二等奖";
-//								zjl = true;
-//							}
-//							if(randNum>=31 && randNum<=60){
-//								var award = "三等奖";
-//								zjl = true;
-//							}
-//							if(randNum>=61 && randNum<=100){
-//								var award = "谢谢参与";
-//							}
-
 							$.ajax({
 							    url:"<{:U('scratch/run')}>",
                                 data:"id=<{$_GET['id']}>",
@@ -210,12 +192,12 @@
                                         alert(json.error + '！');
                                         return false;
                                     } else {
-                                        document.getElementById('prize').innerHTML = json.award;
-                                        $("#theAward").html(json.award);
+                                        zjl = true;
+                                        document.getElementById('prize').innerHTML = json.prize;
+                                        $("#theAward").html(json.prize);
                                     }
                                 }
                             });
-
 						}
 
 						if (zjl && num > 10 && goon) {
@@ -226,31 +208,7 @@
 						}
 					}
 				});
-
 			});
-
-			// 保存数据
-//			$("#save-btnn").bind("click", function() {
-//				var submitData = {
-//					tid: 438,
-//					code: $("#sncode").text(),
-//					parssword: $("#parssword").val(),
-//					action: "setTel"
-//				};
-//				$.post('index.php?ac=acw', submitData,
-//				function(data) {
-//					if (data.success == true) {
-//						alert(data.msg);
-//						if (data.changed == true) {
-//							window.location.href = location.href;
-//						}
-//						return
-//					} else {}
-//				},
-//				"json")
-//			});
 		</script>
-		
-	</body>
 
-</html>
+        <include file="public:footer"/>

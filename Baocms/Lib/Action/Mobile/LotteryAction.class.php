@@ -66,7 +66,7 @@ class  LotteryAction extends CommonAction{
                 $result['angle'] = mt_rand($min[$i] , $max[$i]);
             } else {
                 //如果中奖了记录大乐透中奖信息表
-                $nickname = D('user')->field('user_id,nickname')->where("user_id = $uid")->find();
+                $nickname = D('users')->field('user_id,nickname')->where("user_id = $uid")->find();
                 $datav['lottery_id'] = $aid;
                 $datav['uid'] = $uid;
                 $datav['shop_id'] = $aInfo['shop_id'];

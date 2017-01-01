@@ -845,7 +845,6 @@ class MallAction extends CommonAction{
 					'create_ip' => get_client_ip(), 
 					'is_paid' => 0
 				);
-                //单个付款走的这里，为什么没写入数据库$need_pay
                 $logs['log_id'] = D('Paymentlogs')->add($logs);
             } else {
                 $logs['need_pay'] = $need_pay;
