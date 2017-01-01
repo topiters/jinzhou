@@ -940,7 +940,7 @@ class MallAction extends CommonAction{
         foreach ($ordergoods_ids as $k => $v) {
             $goods_num = D('Goods')->where(array('goods_id' => $v['goods_id']))->find();
             if ($goods_num['num'] < $v['num']) {
-				$this->fengmiMsg('商品ID' . $v['goods_id'] . '库存不足无法付款',U('mcenter/goods/index',array('aready'=>1)));;
+				$this->fengmiMsg('商品ID' . $v['goods_id'] . '库存不足无法付款',U('mcenter/goods/index',array('aready'=>1)));
             }
         }
         return false;
