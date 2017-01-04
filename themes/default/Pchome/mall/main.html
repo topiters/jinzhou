@@ -2,6 +2,9 @@
 <include file="public:top"/>
 <include file="public:nav2"/>
 <!--top END-->
+<style type="text/css">
+	.mall_tit h2 .bq{ display:inline-block; width:22px; height:22px; border:1px solid #c62932; border-radius:3px; text-align:center; line-height:22px; color:#c62932; font-size:14px; font-family:"宋体"; vertical-align:middle; margin-right:10px;}
+</style>
 <script>
 $(document).ready(function () {
 	$('.sy_flexslider').flexslider({
@@ -26,7 +29,7 @@ $(document).ready(function () {
 <!--商城频道首页-->
 <!--banner内容-->
 <div class="pagewd mall_banner mb20">
-	<div class="mall_cate">
+	<!--<div class="mall_cate">
     	<ul>
         	 <php>$i=0;</php>         
         	 <foreach name="goodscate" item="item">
@@ -51,15 +54,16 @@ $(document).ready(function () {
             
     	   
 	    </ul>
-    </div>
-	<div class="sy_flexslider">
+    </div>-->
+	<!--<div class="sy_flexslider">
         <ul class="slides">
-            <calldata mdl="Ad" where=" closed=0 AND site_id=5 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,5" cache="21600" order="orderby asc">
+            <calldata mdl="Ad" where=" clos ed=0 AND site_id=5 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,5" cache="21600" order="orderby asc">
                  <li class="list" style="background:url('<{:config_img($item['photo'])}>') center center no-repeat;"><a target="_blank" href="<{$item.link_url}>"></a></li>
             </calldata>
         </ul>
-    </div>
-    <div class="mall_hot">
+        
+    </div>-->
+    <!--<div class="mall_hot">
     	<volist name='itemss' id='item' offset='0' length='1'>
             	<div class="pub_img"><a href="<{:U('cloud/detail',array('goods_id'=>$item['goods_id']))}>"><span class="tag"><img src="__TMPL__statics/images/mall/hot.png" /></span><img src="<{:config_img($item['photo'])}>" width="240" height="170" /></a></div>
                     <div class="pub_wz">
@@ -81,7 +85,7 @@ $(document).ready(function () {
                         <a href="<{:U('cloud/detail',array('goods_id'=>$item['goods_id']))}>" class="btn">立即夺宝</a>
                     </div>
         </volist>
-    </div>
+    </div>-->
 </div>
 <!--banner内容结束-->
 <div class="">

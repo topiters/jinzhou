@@ -188,7 +188,7 @@ function change_user_mobile(url1,url2){
 		title:'请绑定手机后支付',
 		skin: 'layer-ext-demo', //加上边框
 		area: ['90%', '280px'], //宽高
-		content: '<div class="padding-big">手机号<br /><input name="mobile" id="mobile" type="text" size="13" class="input input-auto" /> <button class="button" type="button" id="jq_send">获取验证码</button><br /><div class="blank-10"></div>验证码<br /><input  class="input input-auto" size="10"  name="yzm" id="yzm" type="text" /> 输入验证码<br><div class="blank-20"></div><input type="submit" value="立刻认证" class="button"  id="go_mobile" /></div>'
+		content: '<div class="padding-big">手机号<br /><input name="mobile" id="mobile" type="text" size="13" class="input input-auto" /> <button class="button" type="button" id="jq_send">获取验证码</button><br /><div class="blank-10"></div>验证码<br /><input  class="input input-auto" size="10"  name="yzm" id="yzm" type="text" /> 输入验证码<br><div class="blank-20"></div><input type="submit" value="立刻认证" style="margin-top: 15px;" class="button"  id="go_mobile" /></div>'
 	});
 	//获取验证码
 	var mobile_timeout;

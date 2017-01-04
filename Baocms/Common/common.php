@@ -4,7 +4,7 @@ function setUid($uid){
     import("ORG/Crypt/Base64");
     $uid = 'USER_'.$uid.'_'.NOW_TIME;
     $uid = Base64::encrypt($uid, C('AUTH_KEY'));
-    cookie('BAOCMS_TOKEN',$uid,3600*2); //存2小时
+    cookie('BAOCMS_TOKEN',$uid,86400); //存24小时
     return true;
 }
 function clearUid(){

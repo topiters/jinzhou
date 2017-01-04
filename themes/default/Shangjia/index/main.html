@@ -63,40 +63,6 @@
             </tr>
             </if>
             </if>
-             <if condition="!empty($waimai)"><!--如果商户开通外卖-->
-             <tr>
-                <td>外卖</td>
-                <td><{$counts['ele']}>条外卖，<{$counts['ele_audit']}>菜品未审核</td>
-                <td>今日<{$counts['totay_ele_order']}>人点餐，<{$counts['ele_order']}>总外卖订单<br/>
-                	<{$counts['totay_ele_order']}>单等待处理，<{$counts['totay_ele_order']}>单配送中，<{$counts['totay_ele_order']}>单配送完成。</td>
-                <td><a target="main_frm" href="<{:U('order/index')}>">详情</a></td>
-            </tr>
-            <else/></if>
-            <if condition="$open_ding eq '1' ">
-            <if condition="$ding['is_ding'] eq 1"><!--如果后台开通订座-->
-             <tr>
-                <td>订座</td>
-                <td>总<{$counts['ding_room']}>个包厢，总<{$counts['totay_ding_order']}>个人预约订座。</td>
-                <td>今日<{$counts['ele_order_one']}>人订座，<{$counts['ele_order_two']}>已付款，<{$counts['ele_order_eight']}>人未付款。</td>
-                <td><a target="main_frm" href="<{:U('eleorder/index')}>">详情</a></td>
-            </tr>
-            </if>
-            </if>
-            <if condition="$ding['is_biz'] neq 0"><!--如果后台开通黄页-->
-             <tr>
-                <td>黄页</td>
-                <td>共<{$counts['biz']}>条黄页信息，<{$counts['biz_audit']}>条未审核</td>
-                <td></td>
-                <td><a target="main_frm" href="<{:U('pois/index')}>">详情</a></td>
-            </tr>
-            <else/></if>
-            
-             <tr>
-                <td>粉丝</td>
-                <td>总<{$counts['favorites']}>粉丝</td>
-                <td>今日新增粉丝<{$counts['totay_favorites']}>条</td>
-                <td><a target="main_frm" href="<{:U('order/index')}>">详情</a></td>
-            </tr>
              <tr>
                 <td>评价</td>
                 <td><if condition="$open_mall eq '1' ">商城<{$counts['goods_dianping']}>条评价，</if>外卖<{$counts['ele_dianping']}>条评价<br/>
@@ -142,13 +108,14 @@
                             type: 'line',
                             margin: [50, 0, 60, 80] //距离上下左右的距离值
                             },
-                            title: {
-                            text: '',
-                                    x: - 20 //center
+                                title: {
+                                    text: ''
+                                },
+                                x: - 20 //center
                             },
-                                    subtitle: {
+                                subtitle: {
                                     text: "",
-                                            x: - 20
+                                    x: - 20
                                     },
                                     xAxis: {
                                     categories: [<{$money.d}>]
@@ -170,7 +137,7 @@
                                     }]
                             });
                             });</script>
-                                                <div id="container3" style="height: 215px;">
+                        <div id="container3" style="height: 215px;">
 
                         </div>
                     </div>

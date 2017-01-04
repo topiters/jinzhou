@@ -1,5 +1,5 @@
 /*内容搜索*/
-.fav-search{padding:15px;background:#fafafa;border-bottom:thin solid #eee;padding-bottom:5px;}
+.fav-search{padding:15px 0;background:#fafafa;border-bottom:thin solid #eee;padding-bottom:5px;}
 /*关注列表*/
 .fav-list{list-style:none;padding:0;}
 .fav-list li{border-bottom:thin solid #eee;}

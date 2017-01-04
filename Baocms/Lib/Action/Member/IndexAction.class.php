@@ -48,7 +48,8 @@ class IndexAction extends CommonAction
             if ($detail['status'] != 0 || $detail['is_used'] != 0) {
                 $this->baoError('该抢购券不能申请退款');
             }
-            if (D('Tuancode')->save(array('code_id' => $code_id, 'status' => 1))) {
+            if (D('Tuancode')->save(array('code_id' => $code_id, 'status' => 3))) {
+                D('tuan_code')->save(array('order_id' => $detail['order_id'] , 'status' => 3));
                 $this->baoSuccess('申请成功！等待网站客服处理！', U('index/index'));
             }
         }

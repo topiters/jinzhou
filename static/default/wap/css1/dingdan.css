@@ -182,9 +182,9 @@ body{font-size:62.5%;
 	}
 .tbiao ul li{
 	border-bottom:1px #E2E2E2 solid;
-	border-right:1px #E2E2E2 solid;
+	/* border-right:1px #E2E2E2 solid; */
 	float:left;
-	width:24.7%;
+	width:25%;
 	height:65px;
 	display:inline-block;
 	text-align:center;

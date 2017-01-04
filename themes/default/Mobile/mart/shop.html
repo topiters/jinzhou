@@ -65,24 +65,41 @@
 	<div class="top-title">
 		<{$detail.weidian_name}>
 	</div>
-	<!--  
-		<div class="top-share">
-			<a href="javascript:void(0);" id="share-btn"><i class="icon-share"></i></a>
-		</div>
-		-->
 </header>
 
 <div class="content">
-
-	<div class="banner">
-		<div class="pic_1">
-			<calldata mdl="Ad" where=" closed=0 AND site_id=80 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="600" order="orderby asc">
-				<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>" style="width:100%; height:150px"></a>
-			</calldata>
+	<div class="banner" style="">
+		<div class="ban_n">
+			<div id="focus">
+				<div class="hd">
+					<ul style="display: none;"></ul>
+				</div>
+				<div class="bd">
+					<ul>
+						<calldata mdl="Ad" where=" closed=0 AND site_id=80 AND city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,3" cache="7200" order="orderby asc">
+							<li>
+								<a href="<{$item.link_url}>"><img src="__ROOT__/attachs/<{$item.photo}>" style="width: 100%;height: 150px;"/></a>
+							</li>
+						</calldata>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+        TouchSlide({
+            slideCell: "#focus",
+            titCell: ".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+            mainCell: ".bd ul",
+            effect: "left",
+            autoPlay: true, //自动播放
+            autoPage: true, //自动分页
+            switchLoad: "_src", //切换加载，真实图片路径为"_src",
+            //delayTime:"3000",
+        });
+	</script>
 
-	<div class="swiper-container">
+        <div class="swiper-container">
 		<div class="swiper-wrapper">
 
 			<div class="swiper-slide">
@@ -92,7 +109,6 @@
 							<li>
 								<a href="<{:U('mall/lists',array('id'=>$list['cate_id']))}>"><img src="/static/default/wap/images/t002.png"><span><{$list.cate_name}></span></a>
 							</li>
-
 						</volist>
 					</ul>
 				</div>
@@ -105,10 +121,8 @@
 							<li>
 								<a href="<{:U('mall/lists',array('shopcate_id'=>$list['shopcate_id']))}>"><img src="/static/default/wap/images/t002.png"><span><{$list.cate_name}></span></a>
 							</li>
-
 						</volist>
 					</ul>
-
 				</div>
 			</div>
 			</if>
@@ -143,11 +157,9 @@
 					<a href="<{:U('mall/detail',array('goods_id'=>$good['goods_id']))}>" style="display: inline-block;border-left: 1px solid #ddd;"><img src="__ROOT__/attachs/<{$good.photo}>" style="height:153px; width:100%;"></a></if>
 				</p>
 			</volist>
-			<!--<p class="cur-list">11</p>
-      <p class="cur-list">22</p>-->
 		</div>
 
-		<div class="u_1">
+		<div class="u_1" style="margin-bottom: 50px;">
 
 			<volist name="list11" id="list">
 				<p style="padding-bottom: 5px;width: 50%;float:left;">
@@ -157,9 +169,7 @@
                         <a href="<{:U('mall/detail',array('goods_id'=>$list['goods_id']))}>" style="display: inline-block;border-left: 1px solid #ddd;"><img src="__ROOT__/attachs/<{$list.photo}>" style="height:153px; width:100%;"></a></if>
 				</p>
 			</volist>
-
 		</div>
-
 	</div>
 </div>
 

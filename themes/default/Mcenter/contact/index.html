@@ -1,0 +1,58 @@
+<include file="public:header"/>
+<style>
+*{margin: 0;padding: 0;box-sizing: border-box;}
+.service_container{background: #f2f2f2;padding-top: 50px;}
+.service_tip{padding: 0 30px;}
+.service_tip p{font-size: 16px;margin: 0;line-height: 2;text-indent: 20px;}
+.service_tip p span{color: #c62932;}
+.service_method{width: 280px;height:320px;margin: 30px auto;background: #fff;box-shadow: 2px 2px 10px #000000;padding: 35px 50px;}
+.service_method ul li img{width: 50px;vertical-align: middle;margin-right: 20px;}
+.service_method ul li span{color: #c62932;font-size: 20px;}
+.service_method ul li{position: relative;margin-bottom: 20px;}
+.service_method ul li p{position: absolute;left: 73px;bottom: 5px;}
+.service_address{text-align: center;}
+.footer{height: 50px;}
+.footer li {padding-top: 5px;}
+</style>
+<header class="top-fixed bg-yellow bg-inverse">
+	<div class="top-back">
+		<a class="top-addr" href="<{:U('index/index')}>"><i class="icon-angle-left"></i></a>
+	</div>
+		<div class="top-title">
+			客服中心
+		</div>
+</header>
+<div class="service_container">
+	<div class="service_tip">
+		<p><span>提示：</span>我们的客服时间是<span>每天9:00-17:30</span>如有问题，您可以选择以下任意一种形式联系我们。</p>
+	</div>
+	<div class="service_method">
+		<ul>
+			<li>
+				<img src="/static/default/wap/images/3Dpeople.png"/>
+				<span>客服热线</span>
+				<p><{$CONFIG['site']['tel']}></p>
+			</li>
+			<li>
+				<img src="/static/default/wap/images/QQ.png"/>
+				<span>QQ在线</span>
+				<p><{$CONFIG['site']['qq']}></p>
+			</li>
+			<li>
+				<img src="/static/default/wap/images/email.png"/>
+				<span>电子邮箱</span>
+				<p><{$CONFIG['site']['email']}></p>
+			</li>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        var dH = $(document).height();
+        $(".service_container").css("height", dH);
+    })
+    $(window).scroll(function () {
+        $(this).scrollTop(0)
+    });
+</script>
+<include  file='public:footer'/>

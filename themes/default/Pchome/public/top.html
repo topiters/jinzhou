@@ -16,18 +16,19 @@
 .common-banner--floor .close {z-index:10;}
 .common-banner .close {position: absolute;top:8px;right:8px;background:url(/themes/default/Pchome/statics/images/tp_54.png) no-repeat center center;}
 .common-close--iconfont-small { padding: 8px;}
+.topTwo .left h1{margin-top: 10px}
 </style>
 
 <calldata mdl="Ad" where=" closed=0 AND site_id=67 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="21600" order="orderby asc"> 
-<div class="J-hub J-banner-newtop ui-slider common-banner common-banner--newtop common-banner--floor log-mod-viewed J-banner-stamp-active" >
+<!--<div class="J-hub J-banner-newtop ui-slider common-banner common-banner&#45;&#45;newtop common-banner&#45;&#45;floor log-mod-viewed J-banner-stamp-active" >
             <div class="common-banner__sheet cf">
-                <div class="color color--left" style="background:#83d8f5"></div>
-                <div class="color color--right" style="background:#83d8f5"></div>
+                <div class="color color&#45;&#45;left" style="background:#83d8f5"></div>
+                <div class="color color&#45;&#45;right" style="background:#83d8f5"></div>
                 <a class="common-banner__link" target="_blank" href="<{$item.link_url}>" >
                      <img  src="<{:config_img($item['photo'])}>" width="1200" height="60" >
                 </a>
-            </div><a href="javascript:void(0)" class="F-glob F-glob-close common-close--iconfont-small close" title="关闭"></a>
-</div>
+            </div><a href="javascript:void(0)" class="F-glob F-glob-close common-close&#45;&#45;iconfont-small close" title="关闭"></a>
+</div>-->
 </calldata>
 <script>
     $(document).ready(function () {
@@ -41,9 +42,9 @@
     <div class="left">
         <if condition="!empty($CONFIG['site']['logo'])">
           <if condition="!empty($city['photo'])">
-            <h1><a href="<{:U('pchome/index/index')}>"><img src="__ROOT__/attachs/<{$city['photo']}>" width="215" height="65" /></a></h1>
+            <h1><a href="<{:U('pchome/index/index')}>"><img src="<{:config_img($CONFIG['site']['logo'])}>" width="215" height="65" /></a></h1>
             <else/>
-            <h1><a href="<{:U('pchome/index/index')}>"><img src="__ROOT__/attachs/<{$CONFIG.site.logo}>" /></a></h1>
+            <h1><a href="<{:U('pchome/index/index')}>"><img src="<{:config_img($CONFIG['site']['logo'])}>" /></a></h1>
         </if> 
         </if> 
         <div class="changeCity">
@@ -112,16 +113,16 @@
     
     <div class="menu">
 			<div class="ment_left">
-			  <div class="ment_left_img"><img src="/themes/default/Pchome/statics/images/o2o1_13.png"></div>
-			  <div class="ment_left_txt">随时退</div>
+			  <div class="ment_left_img"><img src="/themes/default/Pchome/statics/images/qi.png"></div>
+			  <div class="ment_left_txt">七天包退</div>
 			</div>
 			<div class="ment_left">
-			  <div class="ment_left_img"><img src="/themes/default/Pchome/statics/images/o2o1_15.png"></div>
-			  <div class="ment_left_txt">不满意免单</div>
+			  <div class="ment_left_img"><img src="/themes/default/Pchome/statics/images/zhengpin.png"></div>
+			  <div class="ment_left_txt">正品保障</div>
 			</div>
 			<div class="ment_left">
-			  <div class="ment_left_img"><img src="/themes/default/Pchome/statics/images/o2o1_17.png"></div>
-			  <div class="ment_left_txt">过期退</div>
+			  <div class="ment_left_img"><img src="/themes/default/Pchome/statics/images/fahuo.png"></div>
+			  <div class="ment_left_txt">闪电发货</div>
 			</div>
 	</div>
     

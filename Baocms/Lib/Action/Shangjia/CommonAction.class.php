@@ -48,6 +48,7 @@ class CommonAction extends Action {
 		$ding = D('Shop')->find($this->shop_id);
 //		dump($this->_CONFIG['operation']);
 //		dump($ding);die;
+//        $ding['is_pei'] = 1;
 		$this->assign('ding', $ding);
 
 		

@@ -363,4 +363,5 @@ class MemberAction extends CommonAction{
         $this->assign('counts', $counts);
         $this->display();
     }
+
 }

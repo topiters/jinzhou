@@ -126,7 +126,7 @@
                 <elseif condition="$var['status'] eq 3"/>
                 正在退款
   			    <elseif condition="$var['status'] eq 4"/>
-                已退款
+                已退款<br>若您未收到商家退款,请<a href="<{:U('../article/system',array('content_id'=>$contact['content_id']))}>"><b>联系我们</b></a>！
                 <elseif condition="$var['status'] eq -1"/>
                 到店付
                 </if>

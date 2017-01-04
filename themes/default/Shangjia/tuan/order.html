@@ -33,7 +33,7 @@
             <li class="tuanfabu_tabli on"><a href="<{:U('tuan/order')}>">订单管理</a></li>
             <li class="tuanfabu_tabli"><a href="<{:U('tuan/used')}>">抢购券验证</a></li>
         </ul>
-    </div> 
+    </div>
     <table class="tuan_table" width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr style="background-color:#eee;">
             <td>ID</td>
@@ -69,7 +69,8 @@
                       </eq> 
                 
                 <elseif condition="$var['status'] eq 3"/>
-                正在退款
+                    <!--<a href="<{:U('tuan/tui',array('id'=>$var['order_id']))}>">-->
+                正在退款 <a href="javascript:if (confirm('退款一旦完成订单状态不可更改,请确定您已支付相关款项！')) location.href='<{:U('tuan/order',array('id'=>$var['order_id']))}>'"> 完成退款</a>
   			    <elseif condition="$var['status'] eq 4"/>
                 已退款
                 <elseif condition="$var['status'] eq -1"/>

@@ -133,10 +133,11 @@ class CloudAction extends CommonAction{
                 $user_ids[$val['user_id']] = $val['user_id'];
                 $listss[date( "Y-m-d", $val['create_time'] )][date( "H:i:s", $val['create_time'] ).".".$val['microtime']][] = $val;
             }
-            krsort( &$listss );
+            $listss = &$listss;
+            krsort( $listss );
             foreach ( $listss as $k => $val )
             {
-                krsort( &$listss[$k] );
+                krsort( $listss[$k] );
             }
             $this->assign( "users", d( "Users" )->itemsByIds( $user_ids ) );
             $this->assign( "list", $listss );
@@ -145,9 +146,7 @@ class CloudAction extends CommonAction{
             $this->assign( "detail", $detail );
             if ( $detail['status'] == 1 )
             {
-                redirect( u( "cloud/zhong", array(
-                    "goods_id" => $goods_id
-                ) ) );
+                redirect( U( "cloud/zhong", array("goods_id" => $goods_id ) ) );
             }
             else
             {
@@ -185,10 +184,11 @@ class CloudAction extends CommonAction{
                 $user_ids[$val['user_id']] = $val['user_id'];
                 $listss[date( "Y-m-d", $val['create_time'] )][date( "H:i:s", $val['create_time'] ).".".$val['microtime']][] = $val;
             }
-            krsort( &$listss );
+            $listss = &$listss;
+            krsort( $listss );
             foreach ( $listss as $k => $val )
             {
-                krsort( &$listss[$k] );
+                krsort( $listss[$k] );
             }
             $this->assign( "users", d( "Users" )->itemsByIds( $user_ids ) );
             $this->assign( "list", $listss );

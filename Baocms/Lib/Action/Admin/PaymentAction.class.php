@@ -41,7 +41,7 @@ class  PaymentAction extends CommonAction{
                 'payment_id'=>$payment_id,
                 'is_open' => 1
             ));
-            $this->success("安装成功", U('payment/index'));die;
+            $this->success("保存成功", U('payment/index'));die;
         }
         if($this->isPost()){
             $data = $this->_post('data',false);
@@ -52,7 +52,7 @@ class  PaymentAction extends CommonAction{
             );
             D('Payment')->save($datas);
             D('Payment')->cleanCache();
-            $this->baoSuccess('恭喜您安装支付方式成功！',U('payment/index'));
+            $this->baoSuccess('恭喜您支付方式保存成功！',U('payment/index'));
         }else{
             $this->assign('detail',$payments[$payment_id]);
             $this->display($payments[$payment_id]['code']);

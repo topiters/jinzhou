@@ -72,7 +72,7 @@ body{background-color:#fff}
 .changeCity_link{display:inline-block;position:relative}
 .changeCity_link:after{position:absolute;z-index:7;right:-13px;top:50%;margin-top:-5px;content:'';width:6px;height:6px;border-bottom:2px solid #ff318c;border-right:2px solid #ff318c;transform:rotate(45deg);-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-webkit-transform:rotate(45deg);-o-transform:rotate(45deg)}
 .topTwo .searchBox_r{margin-top:12px}
-.topTwo .searchBox_r .searchBox{border:1px solid #dfdfdf;width:484px;height:38px;position:relative}
+.topTwo .searchBox_r .searchBox{border:1px solid #c62932;width:484px;height:38px;position:relative}
 .selectBox{float:left;position:relative}
 .searchBox .select{height:38px;line-height:38px;font-size:16px;color:#333;width:60px;padding-right:15px;text-indent:10px;display:block;border-right:1px solid #e5e5e5;background:#f9f9f9;cursor:pointer;text-indent:12px;position:relative}
 .searchBox .select:after{position:absolute;right:8px;top:50%;margin-top:-5px;content:'';width:6px;height:6px;border-bottom:2px solid #ccc;border-right:2px solid #ccc;transform:rotate(45deg);-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-webkit-transform:rotate(45deg);-o-transform:rotate(45deg)}
@@ -82,7 +82,7 @@ body{background-color:#fff}
 .selectList li a{color:#333;display:block}
 .selectList li a:hover{background:#e5e5e5}
 .searchBox .text{line-height:38px;color:#999;height:38px;background-image:none;border:none 0;text-indent:10px;width:190px;float:left;padding-right:20px;outline:0;font-size:14px}
-.searchBox .submit{background:#ff318c url(../images/sear_ico_03.png) no-repeat 50px center;border:none 0;height:38px;font-size:16px;color:#fff;padding-right:38px;padding-left:8px;float:right}
+.searchBox .submit{background:#c62932 url(../images/sear_ico_03.png) no-repeat 50px center;border:none 0;height:38px;font-size:16px;color:#fff;padding-right:38px;padding-left:8px;float:right}
 .hotSearch a{display:inline-block;margin:0 6px;color:#999;line-height:32px;font-size:15px}
 .hotSearch a:hover{color:#333}
 .nav{width:1200px;margin:0 auto;background-color: #313137;}
@@ -94,12 +94,12 @@ body{background-color:#fff}
 .navA:hover{background-color:#000}
 .navLi_pull{display:none;position:absolute;z-index:20;top:38px;left:0;width:98%;padding:10px 1%;height:auto;background:rgba(255,255,255,.8);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#BFffffff, endColorstr=#BFffffff);transition:all .4s ease-in-out;-o-transition:all .4s ease-in-out;-webkit-transition:all .4s ease-in-out;-moztransition:all .4s ease-in-out}
 .navLi_pull li{display:inline-block;padding:0 15px;margin-bottom:5px}
-.navLi_pull li a{font-size:14px;line-height:24px;color:#333}
+.navLi_pull li a{font-size:14px;line-height:24px;color:#999}
 .navLi:hover .navLi_pull{display:block}
 .navListAll{float:left;width:240px;height:44px;text-align:center;position:relative;background-color: #ff318c;cursor:pointer;color:#fff;font-size:18px;line-height:44px}
 .navListAllt{color:#fff;font-size:18px;line-height:44px;position:relative}
 .navListAllt:after{position:absolute;top:50%;margin-top:-2px;right:-20px;content:'';border-left:6px solid transparent;border-right:6px solid transparent;border-top:6px solid #fff}
-.navAll{display:none;position:absolute;z-index:2px;width:210px;top:44px;left:0;background-color:#fff;text-align:left;line-height:normal}
+.navAll{display:none;position:absolute;z-index:2;width:210px;top:44px;left:0;background-color:#fff;text-align:left;line-height:normal}
 .navListAll:hover .navAll{display:block}
 .navListAll:hover .navListAllt:after{transform:rotate(-180deg);-webkit-transform:rotate(-180deg);-moz-transform:rotate(-180deg);-webkit-transform:rotate(-180deg);-o-transform:rotate(-180deg)}
 .register_table td{padding-bottom:20px}

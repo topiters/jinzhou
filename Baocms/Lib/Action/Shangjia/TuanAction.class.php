@@ -64,6 +64,20 @@ class TuanAction extends CommonAction
     }
     public function order()
     {
+        if ($_GET['id']){
+            $order_id = I('id');
+            $obj = D('Tuancode');
+            $data = $obj->find(array('where' => array('order_id' => $order_id)));
+            if (!empty($data) && $data['shop_id'] == $this->shop_id && (int)$data['is_used'] == 0 && (int)$data['status'] == 3) {
+                D('tuan_order')->where("order_id = $order_id")->save(array('status' => 4));
+                D('tuan_code')->where("order_id = $order_id")->save(array('status' => 4));
+                echo '<script>alert("操作成功！");</script>';
+            } else {
+//                $this->baoError('该订单下的抢购券无效');
+                echo '<script>alert("该订单下的抢购券无效！");</script>';
+//                $this->baoError('操作失败！');
+            }
+        }
         $Tuanorder = D('Tuanorder');
         import('ORG.Util.Page');
         // 导入分页类
@@ -100,6 +114,7 @@ class TuanAction extends CommonAction
             $this->assign('st', 999);
         }
         $count = $Tuanorder->where($map)->count();
+//        echo $Tuanorder->getLastSql();dump($count);die;
         // 查询满足要求的总记录数
         $Page = new Page($count, 25);
         // 实例化分页类 传入总记录数和每页显示的记录数
@@ -543,6 +558,19 @@ class TuanAction extends CommonAction
         }
         $this->display();
     }
-	
+
+    public function tui() {
+        $order_id = I('id');
+        $obj = D('Tuancode');
+        $data = $obj->find(array('where' => array('order_id' => $order_id)));
+        if (!empty($data) && $data['shop_id'] == $this->shop_id && (int)$data['is_used'] == 0 && (int)$data['status'] == 3){
+//            redirect($_SERVER['HTTP_REFERER']);
+            $this->baoError('操作成功');
+
+//            $this->error('操作成功' , $_SERVER['HTTP_REFERER']);
+        } else {
+            $this->baoError('该订单下的抢购券无效');
+        }
+    }
 	
 }

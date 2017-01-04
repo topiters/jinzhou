@@ -52,6 +52,7 @@ class OrderAction extends CommonAction {
             $order_ids[$val['order_id']] = $val['order_id'];
             $tuan_ids[$val['tuan_id']] = $val['tuan_id'];
         }
+        $this->assign('contact' , D('system_content')->where("title = '联系我们'")->find());
         $this->assign('shops', D('Shop')->itemsByIds($shop_ids));
         $this->assign('tuan', D('Tuan')->itemsByIds($tuan_ids));
         $this->assign('dianping', D('Tuandianping')->itemsByIds($order_ids));

@@ -6,8 +6,13 @@
     .radio{float: left; margin:8px 10px 0 0; border: 1px #BDBDBD solid; width: 100px; height: 30px; line-height: 30px; text-align: center; cursor: pointer; background: #FFF;}
     .radio-disabled{border-color:#DDD; color:#CCC;}
     .radio-active{border-color: #2FBCAC; border-width: 2px; width: 98px; height: 28px; background: url(__TMPL__statics/images/seat/icon.png) no-repeat 80px -427px #FFF;}
-    .checkbox{float: left; width: 20px; height: 20px; background-image:url(__TMPL__statics/images/seat/icon.png); background-repeat: no-repeat; background-position: -36px -43px; margin-right: 10px;}
-    .checkbox-active{background-position: -36px -75px;}
+    /*.checkbox{float: left; width: 20px; height: 20px; background-image:url(__TMPL__statics/images/seat/icon.png); background-repeat: no-repeat; background-position: -36px -43px; }*/
+    /*.checkbox-active{background-position: -36px -75px;}*/
+    .checkbox{float: left;display:inline-block;border:1px solid #c4c4c4;background-color:#fff;width:20px;height:20px;border-radius:3px;margin-right: 10px;}
+	.checkbox input{opacity:0;filter:alpha(opacity=0)}
+	.checkbox-active{border:1px solid #c62932;background:#c62932 url(__TMPL__statics/images/seat-check.png) no-repeat center center}
+    .dcsy_sxLi.on .dcsy_sxLiA{color:#c62932}
+	.dcsy_sxLi:hover .dcsy_sxLiA{color:#c62932}
 </style>
 <script type="text/javascript">
     $(document).ready(function () {
