@@ -46,7 +46,7 @@
 .detail-base h1{font-size:16px;font-weight:700;margin-bottom:5px;}
 .detail-base .pic img{width:90%;height:100px;position:relative;}
 .detail-base .pic span.album{position: absolute; right:10%;bottom: 0;width: 20px;height: 20px;line-height: 20px;text-align: center;background-color: rgba(0,0,0,.5);color: #fff;-webkit-transform: scale(.75);-moz-transform: scale(.75);-ms-transform: scale(.75);-o-transform: scale(.75); transform: scale(.75);-webkit-transform-origin: 100% 100%;-moz-transform-origin: 100% 100%;-ms-transform-origin: 100% 100%;-o-transform-origin: 100% 100%; transform-origin: 100% 100%;}
-.detail-contact{height:90px;padding: 10px;}
+.detail-contact{padding: 10px;}
 .detail-contact p{margin:5px 0;}
 .detail-contact .icon{font-size:16px;color:#999;margin-right:5px;}
 .detail-contact .favor{display:block;text-align:center;}
