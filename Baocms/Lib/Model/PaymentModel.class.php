@@ -118,12 +118,9 @@ class PaymentModel extends CommonModel {
             require_cache(APP_PATH . 'Lib/Payment/' . $logs['code'] . '.mobile.class.php');
         } else {
             require_cache(APP_PATH . 'Lib/Payment/' . $logs['code'] . '.class.php');
-
         }
-
         $obj = new $logs['code']();
         return $obj->getCode($datas, $payment);
-
     }
 	
 	
@@ -240,9 +237,9 @@ class PaymentModel extends CommonModel {
                     $_data_balance = array(
                         'url' => 'http://' . $_SERVER['HTTP_HOST'] . '/mcenter/index/index',
                         'topcolor' => '#F55555',
-                        'first' => '亲,您的哈土豆账户有变动',
-                        'remark' => '有疑问请联系哈土豆：' . $this->CONFIG['site']['tel'],
-                        'accountType' => '哈土豆会员账户',
+                        'first' => '亲,您的账户有变动',
+                        'remark' => '有疑问请联系客服热线：' . $this->CONFIG['site']['tel'],
+                        'accountType' => '会员账户',
                         'operateType' => '费用支出',
                         'operateInfo' => '优惠买单',
                         'limit' => '-' . $limit . '元',
@@ -277,7 +274,7 @@ class PaymentModel extends CommonModel {
 						'url' => 'http://' . $_SERVER['HTTP_HOST'] . '/mcenter/index/index', 
 						'topcolor' => '#F55555', 'first' => '您的账户余额发生变动，信息如下：', 
 						'remark' => '如对上述余额变动有异议，请联系客服人员协助处理。' . $this -> CONFIG['site']['tel'], 
-						'accountType' => '蜂蜜源码会员账户', 
+						'accountType' => '会员账户',
 						'operateType' => '费用收入', 
 						'operateInfo' => '充值余额', 
 						'limit' => '+' . $limit . '元', 
@@ -307,7 +304,7 @@ class PaymentModel extends CommonModel {
 						'url' => 'http://' . $_SERVER['HTTP_HOST'] . '/mcenter/index/index', 
 						'topcolor' => '#F55555', 'first' => '您的账户余额发生变动，信息如下：', 
 						'remark' => '如对上述余额变动有异议，请联系客服人员协助处理。' . $this -> CONFIG['site']['tel'], 
-						'accountType' => '444加会员账户', 
+						'accountType' => '会员账户',
 						'operateType' => '费用支出', 
 						'operateInfo' => '购物消费', 
 						'limit' => '-' . $limit . '元', 

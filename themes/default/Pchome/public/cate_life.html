@@ -21,7 +21,7 @@
                 <div class="clear"></div>
             </h3>
             <div class="menu_flklist2">
-                <div class="menu_fl2t"><a title="<{$item.cate_name}>" target="_blank" href="<{:U('life/index',array('channel'=>$key))}>"><{$item}></a></div>
+                <div class="menu_fl2t"><a title="<{$item.cate_name}>" target="_blank" href="<{:U('life/index',array('channel'=>$item['channel_id']))}>"><{$item.channel_name}></a></div>
                 <div class="menu_fl2nr">
                     <foreach name="cates" item="var">
                        <if condition="$var['channel_id'] eq $k">

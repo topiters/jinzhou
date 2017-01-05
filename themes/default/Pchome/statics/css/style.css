@@ -3470,7 +3470,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#BF000000,endCol
 .mall_buy .list .bq_box{top:10px; border-top:none;}
 .mall_buy .list .bq_box .bq{background:#ff620d;}
 
-.mall_bggrey{ background:#f7f7f7; padding:30px 0; margin-top:50px;}
+.mall_bggrey{ padding:30px 0;}
 .mall_list_box{ width:1200px;}
 .mall_list{ display:block; float:left; background:#fff; width:298px; height:348px; border:1px solid #e5e5e5; position:relative; margin-left:-1px; margin-top:-1px; text-align:center; line-height:20px;}
 .mall_list .box{ position:absolute; z-index:1; left:-1px;top:-1px; width:278px; height:328px; padding:10px; border:1px solid transparent;}

@@ -88,6 +88,7 @@ class LifeAction extends CommonAction
         $this->assign('channelmeans', $chl);
         $this->assign('linkArr', $linkArr);
         $this->assign('tops', D('Life')->randTop());
+//        dump($chl);die;
         $this->display();
     }
 
@@ -107,7 +108,11 @@ class LifeAction extends CommonAction
             $this->error('很抱歉该信息不存在');
         }
         $chl = D('Lifecate')->getChannelMeans();
-        $this->assign('chl', $chl);
+//        dump($chl);die;
+        foreach ($chl as $k => $v) {
+            $newArr[$v['channel_id']] = $v;
+        }
+        $this->assign('chl', $newArr);
         $ex = D('Lifedetails')->find($detail['life_id']);
         $this->assign('user', D('Users')->find($detail['user_id']));
         $this->assign('cate', $this->cates[$detail['cate_id']]);
@@ -270,6 +275,7 @@ class LifeAction extends CommonAction
         $this->display();
     }
     public function fabu(){
+//        dump($this->cates);dump(D('Lifecate')->getChannelMeans());die;
         $this->assign('channelmeans', D('Lifecate')->getChannelMeans());
         $this->display();
     }
@@ -410,7 +416,11 @@ class LifeAction extends CommonAction
             }
             $this->fengmiError('发布信息失败！');
         } else {
-            $this->assign('channelmeans', D('Lifecate')->getChannelMeans());
+            $chl = D('Lifecate')->getChannelMeans();
+            foreach ($chl as $k => $v) {
+                $newArr[$v['channel_id']] = $v;
+            }
+            $this->assign('channelmeans', $newArr);
             $this->assign('cate', $cate);
             $this->assign('attrs', D('Lifecateattr')->getAttrs($cat));
             $lat = $this->_get('lat', 'htmlspecialchars');

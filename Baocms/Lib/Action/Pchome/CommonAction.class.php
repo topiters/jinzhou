@@ -59,7 +59,14 @@ class CommonAction extends Action
         $this->Goodscates = d('Goodscate')->fetchAll();
         $this->assign('goodscates' , $this->Goodscates);
 //        dump($this->Goodscates);die;
-		$this->areas = d('Area')->fetchAll();
+		$this->areas = d('Area')->where("city_id = {$this->city_id}")->fetchAll();
+        $newArr1 = d('Area')->where("city_id = {$this->city_id}")->order('orderby')->select();
+        foreach ($newArr1 as $k=>$v) {
+            $newArr2[$v['area_id']] = $v;
+        }
+        $this->areas = $newArr2;
+//		echo d('Area')->getLastSql();
+//		dump($this->areas);die;
 		$this->assign('areas', $this->areas);
 		$limit_area = array();
 		foreach ($this->areas as $k => $val) {

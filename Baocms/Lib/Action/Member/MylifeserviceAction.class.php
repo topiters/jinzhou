@@ -20,7 +20,7 @@ class MylifeserviceAction extends CommonAction {
         }
 		
         $this->assign('houseworksetting', $Houseworksetting->itemsByIds($houseworksetting_ids));
-		
+
         $this->assign('list', $list); // 赋值数据集
         $this->assign('page', $show); // 赋值分页输出
 

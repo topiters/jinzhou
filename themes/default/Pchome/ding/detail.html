@@ -1,6 +1,56 @@
 <include  file='public:header'/><include  file='public:top'/><include  file='public:nav3'/>
 <script src="__TMPL__statics/js/jquery.cookie.js?v=20150718"></script>
+<style type="text/css">
+    #cart_waimai .title {
+        height: 35px;
+        line-height: 35px;
+        background: #c62932;
+        color: #DAF1EB;
+        padding-left: 10px;
+        font-size: 12px;
+        border-bottom: 1px #a42027 solid;
+    }
 
+    .seat-h-tab li.on {
+        background-color: #c62932;
+        color: #fff
+    }
+
+    .seat-h-tab li {
+        display: block;
+        float: left;
+        width: 78px;
+        height: 28px;
+        text-align: center;
+        line-height: 28px;
+        margin-right: 10px;
+        color: #c62932;
+        background-color: #fff;
+        border: 1px solid #c62932;
+        cursor: pointer
+    }
+
+    .seat-h-order-l .room .state {
+        position: absolute;
+        left: -1px;
+        top: -1px;
+        border: 2px solid #c62932;
+        width: 90px;
+        height: 28px;
+        background: url(__TMPL__statics/images/seat_ico.png) no-repeat right bottom;
+        display: none
+    }
+
+    .seat-h-reco {
+        border: 1px solid #c62932;
+        padding: 10px;
+        margin-bottom: 20px
+    }
+
+    .spxq_bq1 {
+        background-color: #c62932
+    }
+</style>
 <div class="content">
     <div class="spxq_loca"><a href="<{:U('index/index')}>" target="_blank">首页</a> > <a href="<{:U('/ding')}>" target="_blank">订座</a> ><{$detail[shop].shop_name}></div>
     <div class="seat-jj-box">

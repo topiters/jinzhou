@@ -88,57 +88,6 @@ $(document).ready(function () {
     </div>-->
 </div>
 <!--banner内容结束-->
-<div class="">
-    <!--商品众筹-->
-    <div class="mall_tit pagewd">
-    	<h2 class="left"><b class="bq">云</b>商品云购</h2>
-        <a href="<{:U('mall/index')}>" class="more right graycl">更多&gt;</a>
-    </div>
-    <div class="mall_crowd mb20">
-    	<script src="__TMPL__mall/js/jquery.circliful.min.js??v=20160409"></script>
-        <script>
-			$(document).ready(function() {
-                $('.indicatorContainer').circliful();
-            });
-        </script>
-        
-        <div class="mall_crowd_flexslider carousel mall_crowd_box">
-          <ul class="slides">
-          	<volist name='itemss' id='item' offset='1' length='10'>
-                     <li class="list">
-                        <php>$lefts = $item['price'] - $item['join']; 
-                    $tt = round($item['join']/$item['price']*100,2);</php>
-                    
-                        <div class="pub_img"><a href="<{:U('cloud/detail',array('goods_id'=>$item['goods_id']))}>"><img src="<{:config_img($item['photo'])}>" width="282" height="200" /> 
-                                <div  class="circle-svg indicatorContainer" data-dimension="120" data-text="<{$tt}>%" data-info="" data-width="6" data-fontsize="20" data-percent="<{$tt}>" data-fgcolor="#61a9dc" data-bgcolor="#eee" data-fill="#fff"></div>
-
-                        </div>
-                        <div class="pub_wz">
-                        
-                     
-                    
-                    
-                            <h3 class="overflow_clear mb10"><a href="<{:U('cloud/detail',array('goods_id'=>$item['goods_id']))}>"><{$item.title}></a></h3>
-                            <div class="mall_progressBar mb10">
-                                <div class="mall_progressBar_wrap">
-                                    <span class="mall_progressBar_bar" style="width:<{$tt}>%;"></span>
-                                </div>
-                                <ul class="mall_progressBar_txt">
-                                    <li class="left"><p><span class="graycl">总需要人次</span> <{$item.price}></p></li>
-                                    <li class="right"><p><span class="graycl">参与人次</span> <{$item.join}></p></li>
-                                </ul>
-                                <div class="clear"></div>
-                            </div>
-                            <a href="<{:U('cloud/detail',array('goods_id'=>$item['goods_id']))}>" class="btn">立即夺宝</a>
-                        </div>
-                    </li>
-        	</volist>
-            
-          </ul>
-        </div>
-    </div>
-    <!--商品众筹结束-->
-</div>
 <div class="pagewd">
     <!--新品上架-->
     <div class="mall_tit">
@@ -154,7 +103,7 @@ $(document).ready(function () {
                     <h3><{:bao_msubstr($item['title'],0,12,false)}></h3>
                     <h3 class="fontcl1">￥<{:round($item['mall_price']/100,2)}></h3>
                     <p>市场价：<del>￥<{:round($item['price']/100,2)}></del></p>
-                    <p><span class="mr10">已售：<{$item.sold_num}></span><span class="ml10">库存：<{$item.kucun}></span></p>
+                    <p><span class="mr10">已售：<{$item.sold_num}></span><span class="ml10">库存：<{$item.num}></span></p>
                     <a href="<{:U('mall/detail',array('goods_id'=>$item['goods_id']))}>" class="btn">立即购买</a>
                 </div>
             </div>
@@ -170,7 +119,7 @@ $(document).ready(function () {
                             <p class="fontcl1 price">￥<{:round($item['mall_price']/100,2)}></p>
                             <P>市场价：<del>￥<{:round($item['price']/100,2)}></del></P>
                             <div class="box">
-                                <div class="left" style="line-height:20px; text-align:left; font-size:12px; color:#666;">已售出：<{$item.sold_num}><p>库存：<{$item.kucun}></p></div>
+                                <div class="left" style="line-height:20px; text-align:left; font-size:12px; color:#666;">已售出：<{$item.sold_num}><p>库存：<{$item.num}></p></div>
                                 <div class="right"><a href="<{:U('mall/detail',array('goods_id'=>$item['goods_id']))}>" class="btn">立即购买</a></div>
                                 <div class="clear"></div>
                             </div>
@@ -199,79 +148,13 @@ $(document).ready(function () {
                     <h3 class="overflow_clear mt10"><a href="<{:U('mall/detail',array('goods_id'=>$item['goods_id']))}>" class="blackcl3"><{:bao_msubstr($item['title'],0,12,false)}></a></h3>
                     <p class="price fontcl1">现价：￥<{:round($item['mall_price']/100,2)}></p>
                     <p>市场价：<del>￥<{:round($item['price']/100,2)}></del></p>
-                    <p class="graycl" style="overflow:hidden; margin-top:10px; font-size:12px;"><span class="left">已售：<{$item.sold_num}></span><span class="right">库存：<{$item.kucun}></span></p>
+                    <p class="graycl" style="overflow:hidden; margin-top:10px; font-size:12px;"><span class="left">已售：<{$item.sold_num}></span><span class="right">库存：<{$item.num}></span></p>
                 </li>
             </volist>
 	    </ul>
         <div class="clear"></div>
     </div>
     <!--热门推荐结束-->
-    <!--限时抢购-->
-    <div class="mall_tit">
-    	<h2 class="left"><b class="bq">抢</b>限时抢购</h2>
-        <a href="<{:U('mall/index')}>" class="more right graycl">更多&gt;</a>
-    </div>
-    <div class="mall_recmd mall_buy mb20">
-    	<div class="left mall_buy_time">
-        	<img src="__TMPL__statics/images/mall/time.png" />
-        	<p>距离结束还剩</p>
-            <script type="text/javascript" language="javascript">
-                var t1 = 20*3600*1000;
-                
-                    setInterval(function () {
-                        if(t1>0){
-                        t1-=1000;
-                       // alert(t1);
-                       var str = '';
-                        var d1 = Math.floor(t1 / 1000 / 60 / 60 / 24);
-                        var h1 = Math.floor(t1 / 1000 / 60 / 60 % 24);
-                        var m1 = Math.floor(t1 / 1000 / 60 % 60);
-                        var s1 = Math.floor(t1 / 1000 % 60);
-                        //alert(d1);
-                        //if (d1 > 30 || t1 < 11) {
-                           // $('#s1').hide();
-                       // }
-
-                        
-                        if (h1 < 10) {
-                            str+='<span>0'+h1+'</span>时';
-                        } else {
-                           str+='<span>'+h1+'</span>时';
-                        }
-                        if (m1 < 10) {
-                           str+='<span>0'+m1+'</span>分';
-                        } else {
-                            str+='<span>'+m1+'</span>分';
-                        }
-						if (s1 < 10) {
-                           str+='<span>0'+s1+'</span>分';
-                        } else {
-                            str+='<span>'+s1+'</span>分';
-                        }
-                    }
-                        $("#s1").html(str);
-                    }, 1000);
-            </script>
-            <div id="s1" class="time"></div>
-        </div>
-        <div class="right mall_buy_r">
-            <ul>
-            
-            	<volist name='xianshi' id='item'>
-                    <li class="list">
-                        <p class="bq_box"><span class="bq">抢购</span></p>
-                        <a href="<{:U('mall/detail',array('goods_id'=>$item['goods_id']))}>"><img src="<{:config_img($item['photo'])}>" width="204" height="145" /></a>
-                        <h3 class="overflow_clear mt10"><a href="<{:U('mall/detail',array('goods_id'=>$item['goods_id']))}>" class="blackcl3"><{:bao_msubstr($item['title'],0,12,false)}></a></h3>
-                        <p class="price fontcl1">￥<{$item['rush_price']/100}></p>
-                        <p>市场价：<del>￥<{$item['price']/100}></del></p>
-                    </li>
-                </volist>
-            </ul>
-            <div class="clear"></div>
-        </div>
-        <div class="clear"></div>
-    </div>
-    <!--限时抢购结束-->
 </div>
 <div class="mall_bggrey">
     <div class="pagewd">
@@ -290,7 +173,7 @@ $(document).ready(function () {
                             <p class="fontcl1">现价：<big><b>￥<{$item['mall_price']/100}></b></big><span style="margin-left:20px;">市场价：<del class="blackcl6">￥<{$item['price']/100}></del></span></p>
                             
                             <div class="btn_box"><a href="<{:U('mall/detail',array('goods_id'=>$item['goods_id']))}>" class="btn">立即购买</a></div>
-                            <p class="graycl" style="overflow:hidden; margin-top:16px;"><span class="left">已售：<{$item.sold_num}></span><span class="right">库存：<{$item.kucun}></span></p>
+                            <p class="graycl" style="overflow:hidden; margin-top:16px;"><span class="left">已售：<{$item.sold_num}></span><span class="right">库存：<{$item.num}></span></p>
                         </div>
                     </li>
                 </volist>

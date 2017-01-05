@@ -2,9 +2,26 @@
 <include file="public:top"/>
 <include file="public:nav2"/>
 <style>
-.faNav li a{ font-size:16px; font-weight:bold; color:#fff;}
-.faNav { border: none; background: #06C1AE;}
-.faNav li{border-bottom: 1px solid #1BA798;}
+    .faNav li a {
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .faNav {
+        border: none;
+        background: #c62932;
+    }
+
+    .faNav li {
+        border-bottom: 1px solid #c62932;
+    }
+
+    .fbMenu li.cur {
+        border-bottom: 3px solid #c62932;
+        height: 42px;
+        color: #c62932
+    }
 </style>
 <div class="content">
 
@@ -16,7 +33,7 @@
         </ul>
         <ul class="faNav">
             <foreach name="channelmeans" key="key" item="item">
-                <li class="fa<{$key}>" rel="<{$key}>"><a href="javascript:void(0);"><{$item}> <em> ></em></a></li>
+                <li class="fa<{$item.channel_id}>" rel="<{$item.channel_id}>"><a href="javascript:void(0);"><{$item.channel_name}> <em> ></em></a></li>
             </foreach>
         </ul>
         <script>
@@ -32,9 +49,9 @@
         </script>
         <div class="faBox">
             <foreach name="channelmeans" key="key1" item="item">
-                <ul class="jq_fabu_<{$key1}>">
+                <ul class="jq_fabu_<{$item['channel_id']}>">
                     <foreach name="cates" item="cat">
-                        <eq name="key1" value="$cat.channel_id">   
+                        <eq name="item['channel_id']" value="$cat.channel_id">
                         <li><a href="<{:U('life/create',array('cat'=>$cat['cate_id']))}>"><{$cat.cate_name}> </a></li>
                         </eq>
                     </foreach>

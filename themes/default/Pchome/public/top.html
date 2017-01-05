@@ -19,16 +19,7 @@
 .topTwo .left h1{margin-top: 10px}
 </style>
 
-<calldata mdl="Ad" where=" closed=0 AND site_id=67 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="21600" order="orderby asc"> 
-<!--<div class="J-hub J-banner-newtop ui-slider common-banner common-banner&#45;&#45;newtop common-banner&#45;&#45;floor log-mod-viewed J-banner-stamp-active" >
-            <div class="common-banner__sheet cf">
-                <div class="color color&#45;&#45;left" style="background:#83d8f5"></div>
-                <div class="color color&#45;&#45;right" style="background:#83d8f5"></div>
-                <a class="common-banner__link" target="_blank" href="<{$item.link_url}>" >
-                     <img  src="<{:config_img($item['photo'])}>" width="1200" height="60" >
-                </a>
-            </div><a href="javascript:void(0)" class="F-glob F-glob-close common-close&#45;&#45;iconfont-small close" title="关闭"></a>
-</div>-->
+<calldata mdl="Ad" where=" closed=0 AND site_id=67 AND  city_id IN ({$city_ids}) and bg_date ELT '{$today}' AND end_date EGT '{$today}' " limit="0,1" cache="21600" order="orderby asc">
 </calldata>
 <script>
     $(document).ready(function () {

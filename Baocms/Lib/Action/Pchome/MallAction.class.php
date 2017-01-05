@@ -56,6 +56,10 @@ class MallAction extends CommonAction
         $this->display();
         // 输出模板
     }
+
+    public function ceshi() {
+        $this->success('恭喜您邮件认证成功！' , U('index/index'));
+    }
     public function index()
     {
         $Goods = D('Goods');

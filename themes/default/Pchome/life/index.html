@@ -43,7 +43,7 @@
                     <div class="left goods_flList_r">
                         <a href="<{:LinkTo('life/index',$linkArr,array('channel'=>0,'cat'=>0))}>" <if condition="empty($channel)">class="goods_flListA on"<else/>class="goods_flListA"</if> >不限</a> 
                         <foreach name="channelmeans" key="key" item="item">
-                            <a class="goods_flListA <eq name='channel' value='$key'>on</eq>" href="<{:LinkTo('life/index',$linkArr,array('channel'=>$key,'cat'=>0))}>"><{$item}></a>
+                            <a class="goods_flListA <eq name='channel' value='$item.channel_id'>on</eq>" href="<{:LinkTo('life/index',$linkArr,array('channel'=>$item['channel_id'],'cat'=>0))}>"><{$item['channel_name']}></a>
                         </foreach>
                     </div>
                 </li>
@@ -161,7 +161,7 @@
                     <li>本地生活信息</li>
                 </ul>
                 <ul class="liveBoxlist">
-                    <foreach name="list"  item="var">
+                    <volist name="list"  id="var" empty="">
                         <li>
                             <a title="<{$var.title}>" href="<{:U('life/detail',array('life_id'=>$var['life_id']))}>" target="_blank">
                                 <img width="120" height="77" src="<{:config_img($var['photo'])}>" />
@@ -183,7 +183,7 @@
                             <p class="red"><{$var.text1}></p>
                         </if>
                         </li>
-                    </foreach>
+                    </volist>
                 </ul> 
                 <div class="x">
                     <{$page}>

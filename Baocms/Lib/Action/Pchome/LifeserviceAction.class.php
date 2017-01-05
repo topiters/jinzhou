@@ -118,19 +118,18 @@ protected $Activitycates = array();
         }
 		
 		$lifeservice_shop = D('Shop')->find($ids['shop_id']);//商家信息
-		$lifeservice_user = D('Users')->find($lifeservice_shop['user_id']);//用户信息
+//		$lifeservice_user = D('Users')->find($lifeservice_shop['user_id']);//用户信息
 
 		$data['id'] = $id;
 		$data['user_id'] = (int) $this->uid;
-        $data['cate_id'] = $this->lifeservicecates[$cate_id['cate_id']]['cate_name'];
+        $data['cate_id'] = $cate_id['cate_id'];
 		$data['shop_id'] = $lifeservice_shop['shop_id'];
         $data['date'] = htmlspecialchars($_POST['date']);
         $data['time'] = htmlspecialchars($_POST['time']);
-		
         if(empty($data['date'])|| empty($data['time'])){
             $this->baoError('服务时间不能为空');
         }
-        $data['svctime'] = $data['date']. $data['time']; 
+        $data['svctime'] = $data['date'].' '. $data['time'];
         if (!$data['addr'] = $this->_post('addr', 'htmlspecialchars')) {
             $this->baoError('服务地址不能为空');
         }
@@ -150,55 +149,55 @@ protected $Activitycates = array();
 			
         if (D('Housework')->add($data)) {
 			D('Houseworksetting')->updateCount($id, 'yuyue_num');
-			
-			//短信通知用户预约成功
-			$sms_time = $data['date'].'时间'.$data['time'];
-			if(!empty($data['tel'])){
-				$user_mobile = $data['tel'];
-			}else{
-				$user_mobile = $this->member['mobile'];	
-			}
-						
-			if($this->_CONFIG['sms']['dxapi'] == 'dy'){
-                D('Sms')->DySms($this->_CONFIG['site']['sitename'], 'sms_lifeservice_TZ_user', $user_mobile, array(
-			 	    'sitename'=>$this->_CONFIG['site']['sitename'], 
-                    'name' => $data['name'], 
-					'time' => $sms_time, 
-					'addr' => $data['addr'], 
-					'lifeservice' => $this->lifeservicecates[$cate_id['cate_id']]['cate_name']
-                ));
-            }else{
-                D('Sms')->sendSms('sms_lifeservice_TZ_user', $user_mobile, array(
-                    'name' => $data['name'], 
-					'time' => $sms_time, 
-					'addr' => $data['addr'], 
-					'lifeservice' => $this->lifeservicecates[$cate_id['cate_id']]['cate_name']
-                ));
-            }
-			//邮件通知管理员
-			$lifeservice = $this->_CONFIG['site']['config_email'];			
-			D('Email')->sendMail('email_lifeservice_yuyue', $lifeservice, $this->_CONFIG['site']['sitename'].'管理员：有客户预约'.$this->lifeservicecates[$cate_id['cate_id']]['cate_name'], array(
-				'name'=>$data['name'],
-				'date'=>$data['date'],
-				'time'=>$data['time'],
-				'addr'=>$data['addr'],
-				'tel'=>$data['tel'],
-				'contents'=>$data['contents']
-			));
-			//邮件通知商家
-
-			if(!empty($shangjia_email)){		
-			D('Email')->sendMail('email_sj_lifeservice_yuyue', $lifeservice_user['email'], '尊敬的商家，有客户预约'.$this->lifeservicecates[$cate_id['cate_id']]['cate_name'], array(
-				'name'=>$data['name'],
-				'date'=>$data['date'],
-				'time'=>$data['time'],
-				'addr'=>$data['addr'],
-				'tel'=>$data['tel'],
-				'contents'=>$data['contents']
-				));
-			}
-
-            $this->baoSuccess('恭喜您预约家政服务成功！网站会推荐给您最优秀的阿姨帮忙！', U('lifeservice/index'));
+            $this->baoSuccess('恭喜您预约家政服务成功！网站会推荐给您最优秀的阿姨帮忙！' , U('lifeservice/index'));
+//			//短信通知用户预约成功
+//			$sms_time = $data['date'].'时间'.$data['time'];
+//			if(!empty($data['tel'])){
+//				$user_mobile = $data['tel'];
+//			}else{
+//				$user_mobile = $this->member['mobile'];
+//			}
+//
+//			if($this->_CONFIG['sms']['dxapi'] == 'dy'){
+//                D('Sms')->DySms($this->_CONFIG['site']['sitename'], 'sms_lifeservice_TZ_user', $user_mobile, array(
+//			 	    'sitename'=>$this->_CONFIG['site']['sitename'],
+//                    'name' => $data['name'],
+//					'time' => $sms_time,
+//					'addr' => $data['addr'],
+//					'lifeservice' => $this->lifeservicecates[$cate_id['cate_id']]['cate_name']
+//                ));
+//            }else{
+//                D('Sms')->sendSms('sms_lifeservice_TZ_user', $user_mobile, array(
+//                    'name' => $data['name'],
+//					'time' => $sms_time,
+//					'addr' => $data['addr'],
+//					'lifeservice' => $this->lifeservicecates[$cate_id['cate_id']]['cate_name']
+//                ));
+//            }
+//			//邮件通知管理员
+//			$lifeservice = $this->_CONFIG['site']['config_email'];
+//			D('Email')->sendMail('email_lifeservice_yuyue', $lifeservice, $this->_CONFIG['site']['sitename'].'管理员：有客户预约'.$this->lifeservicecates[$cate_id['cate_id']]['cate_name'], array(
+//				'name'=>$data['name'],
+//				'date'=>$data['date'],
+//				'time'=>$data['time'],
+//				'addr'=>$data['addr'],
+//				'tel'=>$data['tel'],
+//				'contents'=>$data['contents']
+//			));
+//			//邮件通知商家
+//
+//			if(!empty($shangjia_email)){
+//			D('Email')->sendMail('email_sj_lifeservice_yuyue', $lifeservice_user['email'], '尊敬的商家，有客户预约'.$this->lifeservicecates[$cate_id['cate_id']]['cate_name'], array(
+//				'name'=>$data['name'],
+//				'date'=>$data['date'],
+//				'time'=>$data['time'],
+//				'addr'=>$data['addr'],
+//				'tel'=>$data['tel'],
+//				'contents'=>$data['contents']
+//				));
+//			}
+//
+//            $this->baoSuccess('恭喜您预约家政服务成功！网站会推荐给您最优秀的阿姨帮忙！', U('lifeservice/index'));
         }
         $this->baoError('服务器繁忙');
     }

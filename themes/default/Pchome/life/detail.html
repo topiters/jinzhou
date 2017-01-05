@@ -6,30 +6,99 @@
 <script type="text/javascript" src="__TMPL__statics/js/jquery.pikachoose.min.js"></script>
 <script type="text/javascript" language="javascript" src="__PUBLIC__/js/layer/layer.js"></script>
 <style>
-.hotel_detl_nr li.cate{border-radius: 3px;height: 16px;line-height: 16px; margin-bottom: 5px;width: 100px;float: left;padding: 0 10px;}
-.hotel_detl_nr li.cate a{border-color: #33b095;color: #33b095;text-align: center;}
-.hotel_detl_nr2{display: table-cell;}
-.hotel_detl_infor .pub_wz {width: 600px;}
-.hdxq_p{ font-size:16px;}
-.hotel_detl_box { border:none;}
-.hotel_detl_tit { border-bottom: 2px solid #F5F5F5;}
-.hotel_detl_infor .pub_wz .addr, .hotel_detl_infor .pub_wz .state_box, .spxq_qgjgk{padding: 10px 0;}
-.layui-layer-page .layui-layer-content{ padding:20px;}
-.layui-layer-page .layui-layer-content input[type='text']{ width:100%; height:36px; border:1px solid #ccc; background:#fff; margin-bottom:10px; text-indent:10px; font-size:14px;}
-.layui-layer-page .layui-layer-content input[type='button']{ width:100%; height:40px; border:none; background:#33b095; color:#fff; font-size:16px;}
-.layui-layer-page .layui-layer-content p{ line-height:28px; color:#999;}
-.layui-layer-page .layui-layer-content .check_box{ overflow:hidden; margin-bottom:5px;}
-.layui-layer-page .layui-layer-content .check_box label{ display:block; float:left; margin-right:20px; margin-bottom:10px;}
+    .hotel_detl_nr li.cate {
+        border-radius: 3px;
+        height: 16px;
+        line-height: 16px;
+        margin-bottom: 5px;
+        width: 100px;
+        float: left;
+        padding: 0 10px;
+    }
+
+    .hotel_detl_nr li.cate a {
+        border-color: #c62932;
+        color: #c62932;
+        text-align: center;
+    }
+
+    .hotel_detl_nr2 {
+        display: table-cell;
+    }
+
+    .hotel_detl_infor .pub_wz {
+        width: 600px;
+    }
+
+    .hdxq_p {
+        font-size: 16px;
+    }
+
+    .hotel_detl_box {
+        border: none;
+    }
+
+    .hotel_detl_tit {
+        border-bottom: 2px solid #F5F5F5;
+    }
+
+    .hotel_detl_infor .pub_wz .addr, .hotel_detl_infor .pub_wz .state_box, .spxq_qgjgk {
+        padding: 10px 0;
+    }
+
+    .layui-layer-page .layui-layer-content {
+        padding: 20px;
+    }
+
+    .layui-layer-page .layui-layer-content input[type='text'] {
+        width: 100%;
+        height: 36px;
+        border: 1px solid #ccc;
+        background: #fff;
+        margin-bottom: 10px;
+        text-indent: 10px;
+        font-size: 14px;
+    }
+
+    .layui-layer-page .layui-layer-content input[type='button'] {
+        width: 100%;
+        height: 40px;
+        border: none;
+        background: #33b095;
+        color: #fff;
+        font-size: 16px;
+    }
+
+    .layui-layer-page .layui-layer-content p {
+        line-height: 28px;
+        color: #999;
+    }
+
+    .layui-layer-page .layui-layer-content .check_box {
+        overflow: hidden;
+        margin-bottom: 5px;
+    }
+
+    .layui-layer-page .layui-layer-content .check_box label {
+        display: block;
+        float: left;
+        margin-right: 20px;
+        margin-bottom: 10px;
+    }
+
+    .farm_detl_infor .pub_wz .bq2 {
+        display: inline-block;
+        background: #c62932;
+        color: #fff;
+        border-radius: 3px;
+        height: 24px;
+        line-height: 24px;
+        padding: 0 4px;
+        margin-right: 10px;
+    }
 </style>
 <!--主体内容-->
 <div class="content zy_content" style="position: relative; padding-top: 5px;">
-	<!--<div class="spxq_xqT spxq_xqT2">
-        <ul>
-            <li class="jq_spxq_xqBt1 on"><code rel="spxq_xqBt1">详情介绍</code><em></em></li>
-            <li class="jq_spxq_xqBt2"><code rel="spxq_xqBt2">相关类目</code><em></em></li>
-            <li class="jq_spxq_xqBt3"><code rel="spxq_xqBt3">附近信息</code><em></em></li>
-        </ul>
-    </div>-->
     <script>
         $(document).ready(function () {
             var href = window.location.href;
@@ -59,10 +128,10 @@
     <div class="spxq_loca">
    		 <a href="<{:U('index/index')}>" title="<{$CONFIG.site.sitename}>"><{$CONFIG.site.sitename}></a>&gt;&gt;
          <a href="<{:U('life/index')}>">生活信息</a></li>&gt;&gt;
-         <a href="<{:U('life/index',array('channel'=>$channel,'cat'=>0))}>"><{$chl[$channel]}></a>&gt;&gt;
+         <a href="<{:U('life/index',array('channel'=>$channel,'cat'=>0))}>"><{$chl[$channel]['channel_name']}></a>&gt;&gt;
          <a href="<{:U('life/index',array('channel'=>$channel,'cat'=>$cate[cate_id]))}>"><{$cate.cate_name}></a>&gt;&gt;
          <{$detail.title}>&gt;&gt;
-         <a style="color:#F00;" href="<{:U('life/fabu')}>">我已要发布信息</a>
+         <a style="color:#F00;" href="<{:U('life/fabu')}>">我要发布信息</a>
     
     </div>
 	<!--简介-->

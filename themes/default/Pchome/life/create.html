@@ -1,11 +1,27 @@
 <include file="public:header" /> 
 <include file="public:top"/>
 <include file="public:nav2"/>
+<style type="text/css">
+    .fbMenu li.cur {
+        border-bottom: 3px solid #c62932;
+        height: 42px;
+        color: #c62932
+    }
+
+    .fbMain h3 {
+        border-bottom: 1px solid #c62932;
+        color: #c62932;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 10px;
+        margin-bottom: 25px
+    }
+</style>
 <div class="content">
 
     <div class="main">
         <ul class="fbMenu">
-            <li ><code><{$channelmeans[$cate['channel_id']]}>><{$cate.cate_name}></code></li>
+            <li ><code><{$channelmeans[$cate['channel_id']]['channel_name']}>><{$cate.cate_name}></code></li>
             <li class="cur">2.填写信息</li>
             <li>完成发布</li>
         </ul>
