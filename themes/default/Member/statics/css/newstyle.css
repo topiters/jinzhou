@@ -423,7 +423,7 @@ body{background-color:#fff}
 .order td:nth-child(1){width:250px}
 .order_p1 .right{padding-right:200px}
 .pay_total_p{text-align:right;padding:0 20px;font-weight:700;font-size:16px;color:#c62932}
-.pay_total_p span{color:#fb3203;font-size:18px}
+.pay_total_p span{color:#c62932;font-size:18px}
 .bet{width:1200px;background-color:#fff;margin-top:40px;margin-bottom:122px}
 .tab_bor{border-collapse:collapse;margin:0 auto;margin-top:40px}
 .tab_p1,.tab_p2{padding:15px 10px;font-size:20px}

@@ -937,7 +937,7 @@ span.spxq_qgRedu{right:0;bottom:-1px;height:20px}
 .admin a{padding-top:20px;padding-left:20px;font-weight:700;color:#1ca290}
 .zi{color:#1ca290}
 .all_2 li{width:240px;height:50px;float:left;line-height:40px;text-align:center}
-.all_2 li.on{color:#06c1ae}
+.all_2 li.on{color:#c62932}
 .all_2 li.on em{background-image:url(../images/tb_04.png)}
 .ul_3{height:40px;text-align:center}
 .ul_3 li{width:80px;height:45px;float:left;line-height:20px}
@@ -964,7 +964,7 @@ span.spxq_qgRedu{right:0;bottom:-1px;height:20px}
 .order_style ul.zfList{background:#f8f8f8;border:1px solid #eee;overflow:hidden;padding:20px 0}
 .order_style ul.zfList li{background:#fff;float:left;vertical-align:middle;margin:10px 9px;border:1px solid #ddd}
 .order_style ul.zfList li label.block{display:block;overflow:hidden;padding:20px}
-.order_style ul.zfList li.current{border-color:#ff6900}
+.order_style ul.zfList li.current{border-color:#c62932}
 .order_style ul.zfList li img{float:left;width:90px;height:35px}
 .order_style{border-collapse:collapse;background-color:#fff}
 .order_style tr td{border-bottom:1px dashed #d2d2d2;text-align:left}
@@ -973,14 +973,14 @@ span.spxq_qgRedu{right:0;bottom:-1px;height:20px}
 .order_p{width:1200px;padding-top:20px}
 .order_s2,.order_s4{font-size:33px;color:#ff6900;font-weight:700}
 .order_s1{margin-left:-170px}
-.order_p input{width:112px;height:30px;background-color:#06c1ae;border:none;font-size:17px;color:#fff;margin-left:630px}
-.order_p a,.order_p1 a{color:#06c1ae;display:inline-block;border:1px solid #06c1ae;width:118px;height:38px;float:left;text-align:center;line-height:40px;background:#f1fbfa;font-size:14px}
+.order_p input{width:112px;height:30px;background-color:#c62932;border:none;font-size:17px;color:#fff;margin-left:630px}
+.order_p a,.order_p1 a{color:#c62932;display:inline-block;border:1px solid #c62932;width:118px;height:38px;float:left;text-align:center;line-height:40px;background:#f1fbfa;font-size:14px}
 .order_p a:hover,.order_p1 a:hover{background:#fff}
 .order_style2{text-align:left;border-collapse:collapse;background-color:#f6f6f6;border:1px dotted #d2d2d2;padding:10px}
 .order_img{padding-left:60px}
 .order_style2 span{height:40px;line-height:40px;margin-left:20px;color:#ff6900}
 .order_p1{margin-right:64px;margin-bottom:30px;background-color:#fff;line-height:30px;padding:15px 0;float:right;text-align:right}
-.order_p1 input{width:120px;height:40px;background-color:#06c1ae;border:none;font-size:16px;color:#fff;cursor:pointer;margin-left:10px;float:right}
+.order_p1 input{width:120px;height:40px;background-color:#c62932;border:none;font-size:16px;color:#fff;cursor:pointer;margin-left:10px;float:right}
 .order_p1 input:hover{opacity:.9;filter:alpha(opacity=90)}
 .order_plus{display:none}
 .order_s3{padding-bottom:10px}
@@ -2352,12 +2352,12 @@ element.style{width:180px}
 .order-addres .addright{height:40px;overflow:hidden;padding:0 10px;line-height:40px;cursor:pointer;display:none}
 .order-addres .addright.current{background:#fdf4f1}
 .order-addres .addright:last-child{border-bottom:none}
-.order-addres .addright_on{height:40px;overflow:hidden;padding:0 10px;line-height:40px;cursor:pointer;border:2px solid #f56c08;margin:10px 0;background:#fefaf8;position:relative;display:block!important}
+.order-addres .addright_on{height:40px;overflow:hidden;padding:0 10px;line-height:40px;cursor:pointer;border:2px solid #c62932;margin:10px 0;background:#fefaf8;position:relative;display:block!important}
 .moreAddress{display:inline-block;float:right;background:#e2f2fe;margin-top:5px;color:#005ea7;border-radius:3px;height:30px;line-height:30px;padding:0 10px;cursor:pointer}
 .order-addres .addright span{color:#999}
 .order-addres .addright_on span{color:#333}
 .order-mr-change{cursor:pointer}
-.order-mr{color:#f56c08}
+.order-mr{color:#c62932}
 .order-xg{color:#06c1ae;padding-left:50px}
 .tab big{font-size:20px}
 .tab_price .price{color:#66666f}
@@ -2399,7 +2399,7 @@ element.style{width:180px}
 .admin a{padding-top:20px;padding-left:20px;font-weight:700;color:#1ca290}
 .zi{color:#1ca290}
 .all_2 li{width:240px;height:50px;float:left;line-height:40px;text-align:center}
-.all_2 li.on{color:#06c1ae}
+.all_2 li.on{color:#c62932}
 .all_2 li.on em{background-image:url(../images/tb_04.png)}
 .ul_3{height:40px;text-align:center}
 .ul_3 li{width:80px;height:45px;float:left;line-height:20px}
@@ -2621,10 +2621,10 @@ table.dzDing tr td p{line-height:24px}
 .addPay .order_style tr:nth-child(3),.order_style tr:nth-child(1),.order_style tr:nth-child(2){height:59px}
 .addPay .order_style input{width:50px;height:50px}
 .addPay .order_p{width:1200px;padding-top:20px}
-.addPay .order_s2,.order_s4{font-size:20px;color:#ff6900}
+.addPay .order_s2,.order_s4{font-size:20px;color:#c62932}
 .addPay .order_s1{margin-left:-170px}
 .addPay .order_p input{width:112px;height:30px;background-color:#06c1ae;border:none;font-size:17px;color:#fff;margin-left:630px}
-.addPay .order_p a,.order_p1 a{color:#06c1ae}
+.addPay .order_p a,.order_p1 a{color:#c62932}
 .addPay .order_style2{text-align:left;border-collapse:collapse;background-color:#f6f6f6;border-bottom:1px dashed #d2d2d2}
 .addPay .order_img{padding-left:60px}
 .addPay .order_style2 span{color:#ff6900}
