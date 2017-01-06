@@ -49,7 +49,7 @@ body{background-color:#fff}
 .liOne .list ul li a{color:#333;font-size:14px}
 .liOne .list ul li a:hover{color:red}
 .liOne:hover .liOneA{color:#06c1ae;border-left:1px solid #06c1ae;border-right:1px solid #06c1ae;background-color:#fff}
-.liOne:hover .liOneA em{border-bottom:1px solid #06c1ae;border-right:1px solid #06c1ae;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);-moz-transform:rotate(-135deg);-webkit-transform:rotate(-135deg);-o-transform:rotate(-135deg);margin-top:0;transition:all .2s ease-out;-o-transition:all .2s ease-out;-webkit-transition:all .2s ease-out;-moztransition:all .2s ease-out}
+.liOne:hover .liOneA em{border-bottom:1px solid #bbb;border-right:1px solid #bbb;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);-moz-transform:rotate(-135deg);-webkit-transform:rotate(-135deg);-o-transform:rotate(-135deg);margin-top:0;transition:all .2s ease-out;-o-transition:all .2s ease-out;-webkit-transition:all .2s ease-out;-moztransition:all .2s ease-out}
 .liOne:hover .list{display:block}
 .liOne_visit .liOne_visit_pull{width:220px;border:1px solid #06c1ae;background-color:#FFF}
 .liOne_visit .liOne_visit_pull ul{border:none 0}
@@ -291,23 +291,23 @@ body{background-color:#fff}
 .syPub_list:hover img{opacity:.9;filter:alpha(opacity=90)}
 .syPub_list h3{line-height:20px}
 .syPub_list h3 a{display:block;color:#333;font-weight:400;padding:0 5px;line-height:20px;font-size: 12px;}
-.syPub_list:hover h3 a{color:#f60}
+.syPub_list:hover h3 a{color:#c62932}
 .syPub_list p{line-height:20px;padding:0 5px;font-size:12px}
 .syPub_list .btn_box{overflow:hidden;padding-top:7px;border-bottom:1px solid #f7f7f7;text-align:right}
-.syPub_list:hover .btn_box{border-bottom-color:#f60}
-.syPub_list .btn_box .price{padding-left:5px;font-size:16px;color:#f60}
+.syPub_list:hover .btn_box{border-bottom-color:#c62932}
+.syPub_list .btn_box .price{padding-left:5px;font-size:16px;color:#c62932}
 .syPub_list .btn_box .price del{font-size:12px;color:#999}
-.syPub_list .btn_box .btn{display:inline-block;padding:0 5px;background:#f60 none;color:#fff;line-height:24px}
-.syPub_list .btn_box .btn:hover{background:rgba(255,102,0,.9);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#BFff6600, endColorstr=#BFff6600)}
+.syPub_list .btn_box .btn{display:inline-block;padding:0 5px;background:#c62932 none;color:#fff;line-height:24px}
+.syPub_list .btn_box .btn:hover{background:rgba(198,41,50,.8);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#BFff6600, endColorstr=#BFff6600)}
 .syPub_list .long_btn{display:block; background:#fc378c;color:#fff;line-height:28px;border-radius:2px;text-align:center;font-size:16px}
-.syPub_list:hover .long_btn{background:#f60 none;color:#fff}
+.syPub_list:hover .long_btn{background:#c62932 none;color:#fff}
 .sy_cityBuy_ad{width:260px;overflow:hidden}
 .sy_cityBuy_list_box{width:940px;border-top:1px solid #e5e5e5;overflow:hidden;background:#fff}
 .sy_cityBuy_list{display:block;float:left;width:214px;padding:10px 10px 5px;border-right:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;line-height:24px}
 .sy_cityBuy_list .price{font-size:18px;margin-top:8px}
 .sy_cityBuy_list .price small{font-size:12px}
 .sy_cityBuy_list:hover img{opacity:.9;filter:alpha(opacity=90);transition:all .4s ease-out;-o-transition:all .4s ease-out;-webkit-transition:all .4s ease-out;-moztransition:all .4s ease-out}
-.sy_cityBuy_list:hover .bt{color:#f60}
+.sy_cityBuy_list:hover .bt{color:#c62932}
 .sy_waimai_one{border:1px solid #e5e5e5;background:#fff}
 .sy_waimai_cate{width:238px;height:358px;border-right:1px solid #e5e5e5;background:#fafafa}
 .sy_waimai_cate_list{padding:15px;height:128px;overflow:hidden}

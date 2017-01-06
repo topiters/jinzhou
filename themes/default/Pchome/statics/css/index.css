@@ -155,8 +155,7 @@
 .tabRank .hd h3.on a{color:#000}
 .tabRank .bd{clear:both;height:150px;overflow:hidden}
 .superior{background:#f8f8f8;border:#ddd 1px solid;border-top:#06C1AE 2px solid;margin-top:-1px}
-.superboxior{width:70px;text-align:center;padding:15px 3px}
-.superboxior:first-child{width:50px}
+.superboxior{width:63px;text-align:center;padding:15px 3px}
 .superior div i{background-image:url(../images/traiticon.png);width:45px;height:45px;display:block;margin:0 auto}
 .superior div span{display:block;line-height:32px;color:#666; font-size:12px;}
 .advcoor1{background-position:0 -45px}

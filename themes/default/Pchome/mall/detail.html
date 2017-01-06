@@ -29,8 +29,9 @@
 .spxq_slider .flex-control-nav {top: 300px;margin-left: 10px;}
 .spxq_slider .flex-control-nav li {width: 76px;}
 .spxq_slider .flex-control-thumbs img {width: 68px;}
-
-
+.mode_zx li.on{background-color:#fff;border:2px solid #c62932;color:#333;border-bottom:none}
+.mode_zx{height:auto;border-bottom:2px solid #c62932;margin:10px 0;height:40px;line-height:40px}
+.spxq_xqMapList li{width:120px;color:#c62932;font-weight:700;line-height:28px;background-color:#eee;text-align:center;margin-bottom:10px;cursor:pointer}
 </style>
 <div class="nav">
     <div class="navList">
@@ -233,7 +234,7 @@
                     
                     <span class="spxq_qgjgz"><{$discount}>折</span>
                     <if condition="$shop['is_renzheng'] eq 1">
-                    <span class="spxq_qgjgz" style="background:#33b095">该商家已通过资质认证</span>
+                    <span class="spxq_qgjgz" style="background:#c62932">该商家已通过资质认证</span>
                    
                     </if>
 					 </div>

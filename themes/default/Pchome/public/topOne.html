@@ -14,7 +14,7 @@
         <else/>
         <div class="left">欢迎 <b style="color: red;font-size:14px;"><{$MEMBER.nickname}></b> 来到<{$CONFIG.site.sitename}>&nbsp;&nbsp; 
         
-        <a href="<{:U('member/index/index')}>" class="maincl" >个人中心</a>
+        <a href="<{:U('member/order/index')}>" class="maincl" >个人中心</a>
         <a href="<{:U('member/message/index')}>" class="maincl toponeCart" >消息中心
          <if condition="!empty($msg_day)"><i id="num" class="radius100"><{$msg_day}></if></i></a>
         <a href="<{:U('pchome/passport/logout')}>" class="maincl" >退出登录</a>

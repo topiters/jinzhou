@@ -5,21 +5,114 @@
 
 <style>
 	/*首页样式重写*/
-	
-	.sy_partOne_r {width: 740px;}
-	.sy_flexslider {width: 730px;margin: 10px 10px 0px 10px;}
-	.homeloginbox {width: 210px;}
-	.sy_flsx {margin-left: 10px;border-left: 1px solid #dfdfdf;border-right: 1px solid #dfdfdf;border-bottom: 1px solid #dfdfdf;}
-	.sy_flsx li {height: 130px;}
-	.sy_flsx li {width: 218px;}
-	.sy_flsx li a {line-height: 18px;}
-	.sy_flsx li.bg_3 {border-right: none;}
-	.loginjgline{display:block;float:left;width:1px;border:0;border-top:#f76f4f 10px solid;border-bottom:#f76f4f 10px solid;height:20px;font:0;margin:0;padding:0;background:#f76f4f}
-	.login_btndz {background:#c62932;width:104.5px;height:40px;text-align:center;line-height:40px;display:block;float:left;margin:0}
-	.superior{background:#f8f8f8;border:#ddd 1px solid;border-top:#c62932 2px solid;margin-top:-1px}
-	.index_supplyop{background:#c62932;color:#fff;width:60px;height:22px;line-height:22px;display:block;margin:0 auto;text-align:center;color:#fff!important}
-	.sy_buy_tab a.on{color:#fff;background-color:#c62932}
-	.sy_buy_tab a:hover{color:#fff;background-color:#c62932}
+
+	.sy_partOne_r {
+		width: 740px;
+	}
+
+	.sy_flexslider {
+		width: 730px;
+		margin: 10px 10px 0px 10px;
+	}
+
+	.homeloginbox {
+		width: 210px;
+	}
+
+	.sy_flsx {
+		margin-left: 10px;
+		border-left: 1px solid #dfdfdf;
+		border-right: 1px solid #dfdfdf;
+		border-bottom: 1px solid #dfdfdf;
+	}
+
+	.sy_flsx li {
+		height: 130px;
+	}
+
+	.sy_flsx li {
+		width: 218px;
+	}
+
+	.sy_flsx li a {
+		line-height: 18px;
+	}
+
+	.sy_flsx li.bg_3 {
+		border-right: none;
+	}
+
+	.loginjgline {
+		display: block;
+		float: left;
+		width: 1px;
+		border: 0;
+		border-top: #f76f4f 10px solid;
+		border-bottom: #f76f4f 10px solid;
+		height: 20px;
+		font: 0;
+		margin: 0;
+		padding: 0;
+		background: #f76f4f
+	}
+
+	.login_btndz {
+		background: #c62932;
+		width: 104.5px;
+		height: 40px;
+		text-align: center;
+		line-height: 40px;
+		display: block;
+		float: left;
+		margin: 0
+	}
+
+	.superior {
+		background: #f8f8f8;
+		border: #ddd 1px solid;
+		border-top: #c62932 2px solid;
+		margin-top: -1px
+	}
+
+	.index_supplyop {
+		background: #c62932;
+		color: #fff;
+		width: 60px;
+		height: 22px;
+		line-height: 22px;
+		display: block;
+		margin: 0 auto;
+		text-align: center;
+		color: #fff !important
+	}
+
+	.sy_buy_tab a.on {
+		color: #fff;
+		background-color: #c62932
+	}
+
+	.sy_buy_tab a:hover {
+		color: #fff;
+		background-color: #c62932
+	}
+
+	.sy_FloorBt .right a:hover {
+		color: #c62932
+	}
+
+	.tabRank .hd h3.on {
+		background-color: #fff;
+		border-bottom: 1px solid #c62932;
+		color: #000
+	}
+
+	.settledin a:hover {
+		color: #c62932
+	}
+
+	.sy_flexslider .flex-control-nav .flex-active {
+		background-color: #c62932
+	}
 </style>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -407,7 +500,7 @@
                     <eq name="item2.parent_id" value="0"> 
                     <php>$i++;if($i <= 8){</php>
                     <a target="_blank" <php>if($i == 1) echo 'class="on"';</php> title="<{$item2.cate_name}>抢购" href="<{:U('tuan/index',array('cat'=>$item2['cate_id']))}>"><{$item2.cate_name}></a>
-                    <php>}</php>    
+                    <php>}</php>
                     </eq>
                 </foreach>
             </span>
@@ -541,13 +634,13 @@
 	<!--<div class="sy_FloorBt" data="top_1" id="floor1">
 		<div class="left sy_FloorBtz"><span class="bt cl_1">热卖商品</span>
 			<span class="sy_buy_tab">
-                <php>$i=0;</php>       
+                <php>$i=0;</php>
                 <foreach name="goodscates" item="item3">
 
-                    <eq name="item3.parent_id" value="0"> 
+                    <eq name="item3.parent_id" value="0">
                     <php>$i++;if($i <= 10){</php>
                     <a target="_blank" <php>if($i == 1) echo 'class="on"';</php> title="<{$item2.cate_name}>抢购" href="<{:LinkTo('mall/index',$linkArr,array('cat'=>$item3['cate_id']))}>"><{$item3.cate_name}></a>
-                    <php>}</php>    
+                    <php>}</php>
                     </eq>
                 </foreach>
             </span>
@@ -571,7 +664,7 @@
 							<{$item.intro}>
 						</p>
 						<p class="sy_hottjJg"><span class="left">¥
-                            
+
                             <if condition="($item.max_price eq $item.min_price AND $item.max_price gt 0 )">
                             <{:round($item['max_price']/100,2)}>
                             <elseif condition="($item.max_price gt 0) AND ($item.min_price gt 0)"/>
@@ -579,13 +672,13 @@
                             <else/>
                             <{:round($item['mall_price']/100,2)}>
                             </if>
-                            
-                            
-                            
+
+
+
                             <del>¥<{:round($item['price']/100,2)}></del></span><span class="right">已售<{$item.sold_num}></span></p>
 						<hr style=" border:none 0px; border-bottom: 1px solid #e0e0e0; margin-top:6px;" />
 						<p class="nearbuy_cpLiPf"><span style="cursor: pointer;" title="<{$shops[$item['shop_id']]['addr']}>" class="left"><em></em><{$item.views}>人已关注</span><span class="right">
-                            <if condition="$item['num'] elt 0"> 
+                            <if condition="$item['num'] elt 0">
                             <a class="sy_hottjJd" target="_blank" href="javascript:void(0)" >没库存了</a>
                             <else/>
                             <a class="sy_hottjJd" target="_blank" href="<{:U('mall/detail',array('goods_id'=>$item['goods_id']))}>" >立即购买</a>
@@ -612,7 +705,7 @@
 									.sy_sjcpwx1 {
 										text-align: center;
 									}
-									
+
 									.sy_sjcpwx1 canvas {
 										width: 102px;
 										height: 102px;
@@ -1333,7 +1426,7 @@
 
 			var items = $("#index-gun").find(".sy_FloorBt"); //定义变量，查找.item
 
-			var curId = ""; //定义变量，当前所在的楼层item #id 
+			var curId = ""; //定义变量，当前所在的楼层item #id
 
 			items.each(function() {
 
