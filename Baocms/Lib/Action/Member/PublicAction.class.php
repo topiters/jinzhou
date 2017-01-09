@@ -34,7 +34,7 @@ class PublicAction extends CommonAction {
         D('Users')->save($data);
         D('Users')->integral($this->uid, 'email');
         D('Users')->prestige($this->uid, 'email');
-        $this->success('恭喜您邮件认证成功！', U('index/index'));
+        $this->success('恭喜您邮件认证成功！', U('member/set/email'));
     }
     
 }

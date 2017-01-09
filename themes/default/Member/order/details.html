@@ -55,7 +55,7 @@
             	<div class="mallorder_tBox">
                 <eq name="detail.is_daofu" value="0">
                     <eq name="detail.status" value="0">
-                    	<p class=""><a class="myInfor_sx myInfor_sx_fk" href="<{:U('mobile/mall/pay',array('order_id'=>$detail['order_id']))}>">去付款</a></p>
+                    	<p class=""><a class="myInfor_sx myInfor_sx_fk" href="<{:U('../mall/pay',array('order_id'=>$detail['order_id']))}>">去付款</a></p>
                     <else />
                     	<p class=""><a class="myInfor_sx myInfor_sx_fk"><{$types[$detail['status']]}></a></p>
                     </eq>

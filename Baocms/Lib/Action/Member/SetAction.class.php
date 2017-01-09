@@ -84,7 +84,7 @@ class SetAction extends CommonAction {
             }
             if (D('Passport')->uppwd($this->member['account'], $oldpwd, $newpwd)) {
                 session('uid', null);
-                $this->baoSuccess('更改密码成功！', U('pchome/passport/login'));
+                $this->baoSuccess('更改密码成功！');
             }
             $this->baoError('修改密码失败！');
         } else {

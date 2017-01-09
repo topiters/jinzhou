@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>出错了！用户中心</title>        
+        <title>金州生活</title>
         <link href="__TMPL__statics/css/newstyle.css" rel="stylesheet" type="text/css" />
         <link href="themes/default/statics/css/style.css" rel="stylesheet" type="text/css" />
         <script src="__TMPL__statics/js/jquery.js"></script>
@@ -10,7 +10,21 @@
             var BAO_ROOT = '__ROOT__';</script>
         <script src="__PUBLIC__/js/web.js"></script>
         <script src="__PUBLIC__/js/layer/layer.js"></script>
-        <script>
+        <script language="javascript">
+            var secs = 3; //倒计时的秒数
+            var URL;
+            function Load(url) {
+                URL = url;
+                for (var i = secs; i >= 0; i--) {
+                    window.setTimeout('doUpdate(' + i + ')', (secs - i) * 1000);
+                }
+            }
+            function doUpdate(num) {
+                document.getElementById('czts_time').innerHTML = num;
+                if (num == 0) {
+                    window.location = URL;
+                }
+            }
         </script>
     </head>
     <body>
@@ -22,9 +36,9 @@
 
         <div class="czts">
             <present name="message">
-                <div class="cztsnr"><?php echo($message); ?><p class="czts_p">页面自动 跳转中   等待时间：<span class="czts_time" id="czts_time"></span></p></div>
+                <div class="cztsnr"><?php echo($message); ?><p class="czts_p">页面自动 跳转中   等待时间：<span class="czts_time" id="czts_time"><?php echo($waitSecond); ?></span></p></div>
                 <else/>
-                <div class="cztsnr cztsnr_Failure"><?php echo($error); ?><p class="czts_p">页面自动 跳转中   等待时间：<span class="czts_time" id="czts_time"></span></p></div>
+                <div class="cztsnr cztsnr_Failure"><?php echo($error); ?><p class="czts_p">页面自动 跳转中   等待时间：<span class="czts_time" id="czts_time"><?php echo($waitSecond); ?></span></p></div>
             </present>
         </div>
         <script language="javascript">
