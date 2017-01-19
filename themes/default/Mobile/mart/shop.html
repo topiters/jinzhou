@@ -57,13 +57,13 @@
 </script>
 
 <script src="/static/default/wap/css1/swiper1.min.js"></script>
-
+<div style="overflow:auto;">
 <header class="top-fixed bg-yellow bg-inverse">
 	<div class="top-back">
 		<a class="top-addr" href="javascript:history.go(-1);"><i class="icon-angle-left"></i></a>
 	</div>
 	<div class="top-title">
-		<{$detail.weidian_name}>
+		<{$detail.shop_name}>
 	</div>
 </header>
 
@@ -107,7 +107,7 @@
 					<ul>
 						<volist name="autocates" id="list" offset="0" length='8' key="k">
 							<li>
-								<a href="<{:U('mall/lists',array('id'=>$list['cate_id']))}>"><img src="/static/default/wap/images/t002.png"><span><{$list.cate_name}></span></a>
+								<a href="<{:U('mall/lists',array('id'=>$list['cate_id']))}>"><img src="__ROOT__/attachs/<{$list['img']}>"><span><{$list.cate_name}></span></a>
 							</li>
 						</volist>
 					</ul>
@@ -119,7 +119,7 @@
 					<ul>
 						<volist name="autocates" id="list" offset="8" length='8' key="k">
 							<li>
-								<a href="<{:U('mall/lists',array('shopcate_id'=>$list['shopcate_id']))}>"><img src="/static/default/wap/images/t002.png"><span><{$list.cate_name}></span></a>
+								<a href="<{:U('mall/lists',array('shopcate_id'=>$list['shopcate_id']))}>"><img src="__ROOT__/attachs/<{$list['img']}>"><span><{$list.cate_name}></span></a>
 							</li>
 						</volist>
 					</ul>
@@ -172,5 +172,5 @@
 		</div>
 	</div>
 </div>
-
+</div>
 <include file='public:footer' />

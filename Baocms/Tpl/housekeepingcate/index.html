@@ -12,7 +12,7 @@
         <form  target="baocms_frm" method="post">
             <div class="selectNr" style="border-top: 1px solid #e1e6eb;">
                 <div class="left">
-                    <{:BA('housekeepingcate/create','','添加分类','load','',600,300)}>
+                    <{:BA('housekeepingcate/create','','添加分类','load','',600,480)}>
                 </div>
                 <div class="right">
                     <{:BA('housekeepingcate/update','','更新','list','remberBtn')}>
@@ -31,8 +31,8 @@
                         	<td><{$var.cate_id}> </td>
                             <td ><{$var.cate_name}></td>
                             <td><input name="orderby[<{$var.cate_id}>]" value="<{$var.orderby}>" type="text" class="remberinput w80" /></td>
-                            <td >
-                                <{:BA('housekeepingcate/edit',array("cate_id"=>$var["cate_id"]),'编辑','load','remberBtn',600,300)}>
+                            <td>
+                                <{:BA('housekeepingcate/edit',array("cate_id"=>$var["cate_id"]),'编辑','load','remberBtn',600,480)}>
                                 <{:BA('housekeepingcate/delete',array("cate_id"=>$var["cate_id"]),'删除','act','remberBtn')}>
                             </td>  
                         </tr>

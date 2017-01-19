@@ -258,6 +258,7 @@ class TuanAction extends CommonAction
             }
             $this->assign('shops', $showshops);
         }
+//        dump($showshops);die;
         $this->assign('list', $list);
         // 赋值数据集
         $this->assign('page', $show);
@@ -294,6 +295,7 @@ class TuanAction extends CommonAction
         }
         $detail = D('Tuan')->_format($detail);
         $detail['d'] = getDistance($lat, $lng, $detail['lat'], $detail['lng']);
+//        dump($detail);die;
         $detail['end_time'] = strtotime($detail['end_date']) - NOW_TIME + 86400;
         $this->assign('detail', $detail);
         $shop_id = $detail['shop_id'];

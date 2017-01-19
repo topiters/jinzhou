@@ -18,8 +18,7 @@
                     </td>
                 </tr>  
                 
-                
-                
+
                  <tr>
                     <td class="lfTdBt">所在区域：</td>
                     <td class="rgTdBt jq_bao_city_area">
@@ -147,9 +146,9 @@
                     <td class="rgTdBt">
                         <select name="data[cate_id]" id="jq_cate" class="manageSelect">
                             <foreach name="channelmeans" item="item" key="key">
-                                <option value=""><{$item}></option>
+                                <option value=""><{$item['channel_name']}></option>
                                 <foreach name="cates" item="it" key="k">
-                                    <eq name="it.channel_id" value="$key">
+                                    <eq name="it.channel_id" value="$item['channel_id']">
                                     <option <eq name="detail.cate_id" value="$it.cate_id">selected="selected"</eq> value="<{$it.cate_id}>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<{$it.cate_name}></option>
                                     </eq>
                                 </foreach>

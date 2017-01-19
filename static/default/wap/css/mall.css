@@ -23,10 +23,10 @@
 .tuan-detail .intro .container *{max-width:100%;}
 
 .tuan-detail2 {  border-top: thin solid #eee; border-bottom: thin solid #eee;}
-.tuan-detail2 .status{padding:10px;color:#999;}
+.tuan-detail2 .status{padding:10px 0;color:#999;}
 .tuan-detail2 .status2{ border-top:#eee 1px solid;padding:10px;}
 .tuan-detail2 .status2 a{ color:#06c1ae; font-size:16px; font-weight:bold;}
-.tuan-detail2 .ui-starbar{margin-top:5px;}
+.tuan-detail2 .ui-starbar{margin:5px 0 0 10px;}
 
 
 
@@ -234,11 +234,11 @@ footer #jq_total{width:auto}
 .item-list .info em{color:#999;float:right;margin-right: 2px;}
 
 /*��Ʒ����*/
-.item-detail {background:#FFF;}
+.item-detail {background:#FFF;padding: 0 10px;}
 .item-detail .bb{border-bottom:thin solid #eee;}
 .item-detail .detail-pic{width:100%;margin:0;padding:0;border-bottom:thin solid #eee;}
 .item-detail .detail-pic img{width:100%;margin:0;padding:0;}
-.item-detail .detail-row{overflow:hidden;padding:10px;width:100%;}
+.item-detail .detail-row{overflow:hidden;padding:10px 0;width:100%;}
 .item-detail .item-tit{width:80%;float:left;font-size:14px;}
 .item-detail .item-share{width:50px;height:40px;line-height:40px;float:right;text-align:right;border-left:thin solid #eee;}
 .item-detail .item-share i{font-size:12px;color:#999;margin:15px 0;}
@@ -262,9 +262,10 @@ footer #jq_total{width:auto}
 .item-shop .shop-name{float:left;margin-left:10px;}
 .item-shop .shop-name h2{font-size:14px;margin:10px 0;}
 .item-shop .shop-desc{padding:0 10px;}
-.item-intro{background:#FFF;border-top:thin solid #eee;}
-.item-intro h2{height:40px;line-height:40px;font-size:14px;padding:0 10px;border-bottom:thin solid #eee;}
-.item-intro .intro-bd{line-height:25px;font-size:14px;padding:10px;}
+.item-intro{background:#FFF;border-top:thin solid #eee;
+    padding: 0 10px;}
+.item-intro h2{height:40px;line-height:40px;font-size:14px;border-bottom:thin solid #eee;}
+.item-intro .intro-bd{line-height:25px;font-size:14px;padding:10px 0;}
 .item-intro .intro-bd img{max-width:100%;}
 .item-intro .intro-bd *{line-height:25px;font-size:14px;}
 

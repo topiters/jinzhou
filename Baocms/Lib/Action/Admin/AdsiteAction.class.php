@@ -12,6 +12,7 @@ class AdsiteAction extends CommonAction {
         $this->assign('adsite',$Adsite->order('site_id')->select());
         $this->assign('types', $Adsite->getType());
         $this->assign('place', $Adsite->getPlace());
+//        dump($Adsite->order('site_id')->select());die;
         $this->display(); // 输出模板
     }
 

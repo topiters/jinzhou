@@ -16,12 +16,14 @@ class CommonAction extends Action
         $this->citys = D('City')->fetchAll();
         $this->assign('citys', $this->citys);
         $this->city_id = cookie('city_id');
-		
+//        $this->city_id = null;
+
         if (empty($this->city_id)) {
             import('ORG/Net/IpLocation');
             $IpLocation = new IpLocation('UTFWry.dat');
             // 实例化类 参数表示IP地址库文件
             $result = $IpLocation->getlocation($_SERVER['REMOTE_ADDR']);
+//            dump($result);die;
             foreach ($this->citys as $val) {
                 if (strstr($result['country'], $val['name'])) {
                     $city = $val;

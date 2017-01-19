@@ -4,7 +4,8 @@
         <php>$k++;</php>
         <div <if condition="$i == 1">class="item2 bo"<else/>class="item2"</if> >
             <h3>
-                <div class="left ico ico_<{$k}>"></div>
+                <!--<div class="left ico ico_<{$k}>"></div>-->
+                <img src="__ROOT__/attachs/<{$item.channel_img}>" alt="" class="left ico"/>
                 <div class="wz">
                 	<a class="bt1" title="<{$item}>" target="_blank" href="<{:U('life/index',array('channel'=>$key))}>"><{:msubstr($item,0,4,'utf-8',false)}></a>
                     <div class="bt2">

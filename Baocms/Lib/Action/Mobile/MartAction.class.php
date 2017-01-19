@@ -184,18 +184,18 @@ class MartAction extends CommonAction{
     
     public function shop( ){
     	$id = ( integer )$this->_get( "id" );
-    	$wd = D( "WeidianDetails" )->find( $id );
-    	if ( !( $detail = D( "WeidianDetails" )->find( $id ) ) ) {
-    		$this->error( "没有该微店商家" );
+    	$wd = D( "shop" )->find( $id );
+    	if ( !( $detail = D( "shop" )->find( $id ) ) ) {
+    		$this->error( "没有该商家" );
     		exit( );
     	}
     	if ( $detail['audit'] != 1 ){
-    		$this->error( "没有该微店商家" );
+    		$this->error( "没有该商家" );
     		exit( );
     	}
     	$autocates = D( "Goodsshopcate" )->order( array("orderby" => "asc") )->where( array("shop_id" => $wd['shop_id']))->select( );
-    	
-    	$wdid=$wd[shop_id];
+
+    	$wdid=$wd['shop_id'];
     	//店铺首页
     	$condition=array("closed"=>0,"audit"=>1,"shop_id"=>$wdid,"end_date" => array("EGT",TODAY));
     	$orderby=array("sold_num"=>"desc");

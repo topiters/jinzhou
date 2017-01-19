@@ -414,13 +414,6 @@
             <td class="rgTdBt"><input type="text" name="data[price]" value="<{$ex.price|default='0'}>" class="scAddTextName w210" />
             </td>
         </tr>
-        <tr>
-
-            <td class="lfTdBt">订座：</td>
-            <td class="rgTdBt">&nbsp;&nbsp;&nbsp;<input type="radio" name="data[is_ding]" value="1" <if condition="$detail.is_ding eq 1"> checked="checked" </if>  />是 &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="data[is_ding]" value="0"  <if condition="$detail.is_ding eq 0"> checked="checked" </if>/>否&nbsp;&nbsp;&nbsp;
-            </td>
-
-        </tr>
 
         <tr>
 
@@ -454,57 +447,24 @@
             </td>
         </tr>
 
-        
 
-        <tr>
-            <td class="lfTdBt">打印标识(apiKey)</td>
-            <td class="rgTdBt"><input type="text" name="data[apiKey]" value="<{$detail.apiKey}>" class="scAddTextName w210" />
-            <code>打印标识</code>
-            </td>
-        </tr>
+        <!--<tr>-->
+                <!--<td  class="lfTdBt">客服代码：</td>-->
+                <!--<td class="rgTdBt"><textarea  name="data[service]" cols="120" rows="15" ><{$detail.service|default=''}></textarea>-->
 
-		<tr>
-            <td class="lfTdBt">密钥(mKey)</td>
-            <td class="rgTdBt"><input type="text" name="data[mKey]" value="<{$detail.mKey}>" class="scAddTextName w210" />
-            <code>密钥</code>
-            </td>
-
-        </tr>
-
-		<tr>
-            <td class="lfTdBt">用户id(partner)</td>
-            <td class="rgTdBt"><input type="text" name="data[partner]" value="<{$detail.partner}>" class="scAddTextName w210" />
-            <code>你再打印平台注册的ID</code>
-            </td>
-        </tr>
-
-		<tr>
-            <td class="lfTdBt">打印机终端号(machine_code)</td>
-            <td class="rgTdBt"><input type="text" name="data[machine_code]" value="<{$detail.machine_code}>" class="scAddTextName w210" />
-             <code>打印机终端号，一般购买打印机后打印机后面都有此号码。</code>
-            </td>
-        </tr>
-        
-        
- 
-        
-        <tr>
-                <td  class="lfTdBt">客服代码：</td>
-                <td class="rgTdBt"><textarea  name="data[service]" cols="120" rows="15" ><{$detail.service|default=''}></textarea>
-
-                </td>
-            </tr>
-            
-		
-        
-          <tr>
-              <td class="lfTdBt">是否显示客服代码</td>
-              <td class="rgTdBt">
-                 <input type="radio" name="data[service_audit]" value="0" <if condition="$detail[service_audit] eq 0">checked="checked"</if> />不显示
-				<input type="radio" name="data[service_audit]" value="1" <if condition="$detail[service_audit] eq 1">checked="checked"</if> />显示
-                <code>特别说明，部分用户的JS代码是不安全的，所以需要你后台审核通过才可以显示</code>
-               </td>
-          </tr>
+                <!--</td>-->
+            <!--</tr>-->
+            <!---->
+		<!---->
+        <!---->
+          <!--<tr>-->
+              <!--<td class="lfTdBt">是否显示客服代码</td>-->
+              <!--<td class="rgTdBt">-->
+                 <!--<input type="radio" name="data[service_audit]" value="0" <if condition="$detail[service_audit] eq 0">checked="checked"</if> />不显示-->
+				<!--<input type="radio" name="data[service_audit]" value="1" <if condition="$detail[service_audit] eq 1">checked="checked"</if> />显示-->
+                <!--<code>特别说明，部分用户的JS代码是不安全的，所以需要你后台审核通过才可以显示</code>-->
+               <!--</td>-->
+          <!--</tr>-->
         
 
         

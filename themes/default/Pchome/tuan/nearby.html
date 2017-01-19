@@ -1,16 +1,50 @@
 <include file="public:header" /> 
 <include file="public:top"/>
+<style type="text/css">
+    .addr_list a.on {
+        background: #c62932;
+        color: #fff
+    }
+
+    .nearbuy_xg {
+        color: #c62932;
+        display: inline-block;
+        margin-left: 20px
+    }
+
+    .nearbuy_sxkLi.on .nearbuy_sxkLiA {
+        border-top: 2px solid #c62932;
+        margin-top: -1px;
+        color: #c62932
+    }
+
+    .nearbuy_sxkLi2Xl a:hover, .nearbuy_sxkLi:hover .nearbuy_sxkLiA {
+        color: #c62932
+    }
+
+    /*弹出框*/
+    .layui-layer-demo .layui-layer-title {
+        border: none;
+        background-color: #c62932;
+        color: #fff
+    }
+
+    .add-hold {
+        background-color: #c62932
+    }
+</style>
+
 <div class="nav">
     <div class="navList">
         <!--<div class="navListBg">&nbsp;</div>-->
         <ul>
-            <li class="navListAll"><span class="navListAllt">全部抢购分类</span>
+            <li class="navListAll"><span class="navListAllt">全部团购分类</span>
                 <div class="shadowy navAll">
                     <include file="public:cate"/>
                 </div>
             </li>
-            <li class="navLi"><a class="navA <if condition='$ctl eq tuan and $act eq index'>on</if> " href="<{:U('tuan/index')}>">首页</a></li>
-            <li class="navLi"><a class="navA <if condition='$ctl eq tuan and $act eq nearby'>on</if>" href="<{:U('tuan/nearby')}>">身边抢购</a></li>
+            <li class="navLi"><a class="navA <if condition='$ctl eq tuan and $act eq index'>on</if> " href="<{:U('index/index')}>">首页</a></li>
+            <li class="navLi"><a class="navA <if condition='$ctl eq tuan and $act eq nearby'>on</if>" href="<{:U('tuan/nearby')}>">身边团购</a></li>
             <li class="navLi"><a class="navA " href="<{:U('tuan/index',array('new'=>1))}>">今日新单</a></li>
             <li class="navLi"><a class="navA" href="<{:U('tuan/index',array('hot'=>1))}>">热门疯抢</a></li>
         </ul>

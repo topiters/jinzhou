@@ -26,7 +26,10 @@ class LifecateAction extends CommonAction {
         $list = $Lifecate->where($map)->order(array('cate_id' => 'desc'))->limit($Page->firstRow . ',' . $Page->listRows)->select();
         $this->assign('list', $list); // 赋值数据集
         $this->assign('page', $show); // 赋值分页输出
-        $this->assign('channelmeans', D('Lifecate')->getChannelMeans());
+        foreach (D('Lifecate')->getChannelMeans() as $k=>$v) {
+            $arr[$v['channel_id']]=$v['channel_name'];
+        }
+        $this->assign('channelmeans', $arr);
         $this->display(); // 输出模板
     }
     

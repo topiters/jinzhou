@@ -1,7 +1,7 @@
 <include file="public:header"/>
 <header class="top-fixed bg-yellow bg-inverse">
 	<div class="top-back">
-		<a class="top-addr" href="<{:U('index/index')}>"><i class="icon-angle-left"></i></a>
+		<a class="top-addr" href="javascript:history.go(-1);"><i class="icon-angle-left"></i></a>
 	</div>
 	<div class="top-title">
 		生活信息
@@ -48,7 +48,7 @@
 	<ul>
 		<li class="cate-name">
 			<a href="<{:U('life/channel',array('channel'=>$arr['channel_id']))}>">
-				<img src="/static/default/wap/image/life/cate-<{$ii}>.png" />
+				<img src="__ROOT__/attachs/<{$arr['channel_img']}>" />
 				<span><{$arr['channel']}></span>
 				<span class="float-right text-gray"><i class="icon-angle-right"></i></span>
 			</a>

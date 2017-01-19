@@ -31,9 +31,9 @@
     </div>
     <div class="hdsy_tab">
         <ul>
-        <li class="hdsy_tabLi on"><a href="<{:U('lifeservice/index')}>">全部家政</a></li>
+        <li class="hdsy_tabLi <if condition="$_GET['cat'] eq null">on</if>"><a href="<{:U('lifeservice/index')}>">全部家政</a></li>
             <volist name="lifeservicecates" id="item" key="index">
-                <li class="hdsy_tabLi <php>if($get_cat == $item['cate_id']){echo 'on';}</php>"><a href="<{:U('lifeservice/index',array('cat'=>$item['cate_id']))}>"><{$item.cate_name}></a></li>
+                <li class="hdsy_tabLi <php>if($_GET['cat'] == $item['cate_id']){echo 'on';}</php>"><a href="<{:U('lifeservice/index',array('cat'=>$item['cate_id']))}>"><{$item.cate_name}></a></li>
             </volist>
         </ul>
     </div>

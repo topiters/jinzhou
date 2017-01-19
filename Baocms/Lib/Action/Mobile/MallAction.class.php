@@ -46,7 +46,7 @@ class MallAction extends CommonAction{
         $this->assign('cat', $cat);
         
         $condition=array("closed"=>0,"audit"=>1,"end_date"=>array("egt",TODAY));
-        $jp=D("Goods")->where($condition)->order("views desc")->limit(0,6)->select();
+        $jp=D("Goods")->where($condition)->order("orderby desc")->limit(0,6)->select();
         $this->assign("jplist",$jp);
         
         

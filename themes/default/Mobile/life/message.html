@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/static/default/wap/css/index.css?V=2"/>
 <header class="top-fixed bg-yellow bg-inverse">
 	<div class="top-back">
-		<a class="top-addr" href="<{:U('life/category')}>"><i class="icon-angle-left"></i></a>
+		<a class="top-addr" href="javascript:history.go(-1);"><i class="icon-angle-left"></i></a>
 	</div>
 	<div class="top-title">
 		生活信息
@@ -48,8 +48,8 @@
 	<php>$ii++;</php>
 	<ul>
 		<li class="cate-name">
-			<a href="<{:U('life/channel',array('channel'=>$key))}>">
-				<img src="/static/default/wap/image/life/cate-<{$ii}>.png" />
+			<a href="<{:U('life/channel',array('channel'=>$arr['channel_id']))}>">
+				<img src="__ROOT__/attachs/<{$arr.channel_img}>" />
 				<span style="font-size:20px;"><{$arr['channel']}></span>
 				<span class="float-right text-gray"><i class="icon-angle-right"></i></span>
 			</a>

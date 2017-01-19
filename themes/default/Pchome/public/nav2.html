@@ -3,6 +3,12 @@
         <ul>
         <if condition="$ctl eq life">
        	 	<li class="navListAll"><span class="navListAllt">分类信息分类</span><div class="shadowy navAll"><include file="public:cate_life"/></div></li>
+            <elseif condition="$ctl eq lifeservice"/>
+            <li class="navListAll"><span class="navListAllt">全部分类</span>
+                <div class="shadowy navAll">
+                    <include file="public:cate_lifeservice"/>
+                </div>
+            </li>
         <elseif condition="$ctl eq shop"/>
         	<li class="navListAll"><span class="navListAllt">全部商家分类</span><div class="shadowy navAll"><include file="public:cate_shop"/></div></li>
         <else/>

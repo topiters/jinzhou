@@ -42,7 +42,7 @@
 
                     <td class="rgTdBt"><input type="text" name="data[host]" value="<{$CONFIG.site.host}>" class="scAddTextName " />
 
-                        <code>例如：http://www.abc.cn 如果你在二级目录下面就需要带上二级目录</code></td>
+                        <code>如果你在二级目录下面就需要带上二级目录</code></td>
 
                 </tr>
                 <tr>
@@ -51,7 +51,7 @@
 
                     <td class="rgTdBt"><input type="text" name="data[hostdo]" value="<{$CONFIG.site.hostdo}>" class="scAddTextName " />
 
-                        <code>例如：abc.cn 用于分站二级域名</code></td>
+                        <code>用于分站二级域名</code></td>
 
                 </tr>
 
@@ -61,7 +61,7 @@
 
                     <td class="rgTdBt"><input type="text" name="data[imgurl]" value="<{$CONFIG.site.imgurl}>" class="scAddTextName " />
 
-                        <code>例如：http://www.abc.cn 一般情况下是和站点网址一样，如果做了CDN加速一般就可能是其他的域名</code></td>
+                        <code>一般情况下是和站点网址一样，如果做了CDN加速一般就可能是其他的域名</code></td>
 
                 </tr>
 
@@ -335,99 +335,9 @@
 
                         商城<input type="text" name="data[goods]" value='<{$CONFIG.site.goods}>' style="width: 50px;"  class="scAddTextName " />（天）
 
-                        外卖<input type="text" name="data[ele]" value='<{$CONFIG.site.ele}>' style="width: 50px;"  class="scAddTextName " />（小时）
-
                     </td>
 
                 </tr>
-
-                
-
-                 <tr>
-
-                    <td class="lfTdBt">整合UCENTER：</td>
-
-                    <td class="rgTdBt">
-
-                        <label><input type="radio" name="data[ucenter]" <eq name="CONFIG.site.ucenter" value="1">checked="checked"</eq> value="1"  />开启</label>
-
-                        <label><input type="radio" name="data[ucenter]"  <eq name="CONFIG.site.ucenter" value="0">checked="checked"</eq>  value="0"  />不开启</label>
-
-                        <code>开启这个需要先在UCENTER接口配置先配置好！</code>
-
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td class="lfTdBt">贴吧发帖免审核：</td>
-
-                    <td class="rgTdBt">
-
-                        <label><input type="radio" name="data[postaudit]" <eq name="CONFIG.site.postaudit" value="1">checked="checked"</eq> value="1"  />开启</label>
-
-                        <label><input type="radio" name="data[postaudit]"  <eq name="CONFIG.site.postaudit" value="0">checked="checked"</eq>  value="0"  />不开启</label>
-
-                        <code>开启之后帖子发布免审核！</code>
-
-                    </td>
-
-                </tr>
-
-                 <tr>
-
-                    <td class="lfTdBt">贴吧回帖免审核：</td>
-
-                    <td class="rgTdBt">
-
-                        <label><input type="radio" name="data[replyaudit]" <eq name="CONFIG.site.replyaudit" value="1">checked="checked"</eq> value="1"  />开启</label>
-
-                        <label><input type="radio" name="data[replyaudit]"  <eq name="CONFIG.site.replyaudit" value="0">checked="checked"</eq>  value="0"  />不开启</label>
-
-                        <code>开启之后帖子发布免审核！</code>
-
-                    </td>
-
-                </tr>
-
-                
-
-                 <tr>
-
-                    <td class="lfTdBt">小区发帖免审核：</td>
-
-                    <td class="rgTdBt">
-
-                        <label><input type="radio" name="data[xiaoqu_post_audit]" <eq name="CONFIG.site.xiaoqu_post_audit" value="1">checked="checked"</eq> value="1"  />开启</label>
-
-                        <label><input type="radio" name="data[xiaoqu_post_audit]"  <eq name="CONFIG.site.xiaoqu_post_audit" value="0">checked="checked"</eq>  value="0"  />不开启</label>
-
-                        <code>开启之后小区帖子发布免审核！</code>
-
-                    </td>
-
-                </tr>
-
-                
-
-                 <tr>
-
-                    <td class="lfTdBt">小区回帖免审核：</td>
-
-                    <td class="rgTdBt">
-
-                        <label><input type="radio" name="data[xiaoqu_reply_audit]" <eq name="CONFIG.site.xiaoqu_reply_audit" value="1">checked="checked"</eq> value="1"  />开启</label>
-
-                        <label><input type="radio" name="data[xiaoqu_reply_audit]"  <eq name="CONFIG.site.xiaoqu_reply_audit" value="0">checked="checked"</eq>  value="0"  />不开启</label>
-
-                        <code>开启之后小区回帖发布免审核！</code>
-
-                    </td>
-
-                </tr>
-
-                
 
                 <tr>
 
@@ -444,40 +354,7 @@
                     </td>
 
                 </tr>
-                
-                
-                 <tr>
-                    <td class="lfTdBt">物业发送通知免审核：</td>
-                    <td class="rgTdBt">
-                        <label><input type="radio" name="data[xiaoqu_news_audit]" <eq name="CONFIG.site.xiaoqu_news_audit" value="1">checked="checked"</eq> value="1"  />开启</label>
-                        <label><input type="radio" name="data[xiaoqu_news_audit]"  <eq name="CONFIG.site.xiaoqu_news_audit" value="0">checked="checked"</eq>  value="0"  />不开启</label>
-                        <code>开启之后物业发送通知免审核，自己看吧，怕就不要开启自动！</code>
-                    </td>
-                </tr>
 
-                
-
-                 <tr>
-
-                    <td class="lfTdBt">手机端发布约会免审核：</td>
-
-                    <td class="rgTdBt">
-
-                        <label><input type="radio" name="data[hdmobile_hdfabu_audit]" <eq name="CONFIG.site.hdmobile_hdfabu_audit" value="1">checked="checked"</eq> value="1"  />开启</label>
-
-                        <label><input type="radio" name="data[hdmobile_hdfabu_audit]"  <eq name="CONFIG.site.hdmobile_hdfabu_audit" value="0">checked="checked"</eq>  value="0"  />不开启</label>
-
-                        <code>开启手机端发布的约会会员发布后即可显示无需审核！小心使用！</code>
-
-                    </td>
-
-                </tr>
-
-                
-
-                
-
-                
 
                 <tr>
 
@@ -495,47 +372,11 @@
 
                 </tr>
 
-                
+                <input type="hidden" name="data[citycode]" value="<{$CONFIG.site.citycode}>"/>
 
-                 <tr>
-
-                    <td class="lfTdBt">城市编号：</td>
-
-                    <td class="rgTdBt">
-
-                 <input type="text" name="data[citycode]" value="<{$CONFIG.site.citycode}>" class="scAddTextName " />
-
-                        <code>联系www.abc.com获取，自动采集商家用的！</code>
-
-                    </td>
-
-                </tr>
-
-                
+                <input type="hidden" name="data[profit_min_rank_id]" value="0"/>
 
                 <!--分销开始-->
-
-                <tr>
-
-                    <td class="lfTdBt">拥有分销权限用户最低等级：</td>
-
-                    <td class="rgTdBt">
-
-						<select name="data[profit_min_rank_id]" class="seleFl w200">
-
-							<option value="0">不限制</option>
-
-							<foreach name="ranks" item="item">           
-
-								<option <eq name="item.rank_id" value="$CONFIG.site.profit_min_rank_id">selected="selected"</eq> value="<{$item.rank_id}>"><{$item.rank_name}></option>
-
-							</foreach>
-
-						</select>
-
-					</td>
-
-                </tr>
 
                 <tr>
 
@@ -607,7 +448,7 @@
 
                  <input type="text" name="data[config_mobile]" value="<{$CONFIG.site.config_mobile}>" class="scAddTextName " />
 
-                        <code>填写有有的场景需要通知给管理员的手机号！</code>
+                        <code>填写有的场景需要通知给管理员的手机号！</code>
 
                     </td>
 

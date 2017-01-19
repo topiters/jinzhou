@@ -1,0 +1,18 @@
+<div class="menu_fllist2">
+    <php>$k = 0;</php>
+    <foreach name="lifeservicecates" item="item">
+        <eq name="item.parent_id" value="0">
+            <php>$k++;</php>
+            <div <if condition="$i == 1">class="item2 bo" <else/> class="item2" </if> style="height:52px;">
+            <h3 style="height:48px;">
+                <img src="__ROOT__/attachs/<{$item.img}>" alt="" class="left ico"/>
+                <div class="wz">
+                    <a class="bt1" title="<{$item['cate_name']}>" href="<{:U('lifeservice/index',array('cat'=>$item['cate_id']))}>">
+                        <{:msubstr($item['cate_name'],0,4,'utf-8',false)}></a>
+                </div>
+                <div class="clear"></div>
+            </h3>
+</div>
+</eq>
+</foreach>
+</div>

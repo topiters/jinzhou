@@ -19,13 +19,13 @@
 <div class="nav">
     <div class="navList">
         <ul>
-            <li class="navListAll"><span class="navListAllt">全部抢购分类</span>
+            <li class="navListAll"><span class="navListAllt">全部团购分类</span>
                 <div class="shadowy navAll">
                     <include file="public:cate"/>
                 </div>
             </li>
             <li class="navLi"><a class="navA <if condition='$ctl eq tuan and $act eq index'>on</if> " href="<{:U('index/index')}>">首页</a></li>
-            <li class="navLi"><a class="navA <if condition='$ctl eq tuan and $act eq nearby'>on</if>" href="<{:U('tuan/nearby')}>">身边抢购</a></li>
+            <li class="navLi"><a class="navA <if condition='$ctl eq tuan and $act eq nearby'>on</if>" href="<{:U('tuan/nearby')}>">身边团购</a></li>
             <li class="navLi"><a class="navA " href="<{:U('tuan/index',array('new'=>1))}>">今日新单</a></li>
             <li class="navLi"><a class="navA" href="<{:U('tuan/index',array('hot'=>1))}>">热门疯抢</a></li>
         </ul>

@@ -46,7 +46,7 @@
                     <ul >
                     <volist name="categorylist" id="dh" offset="0" length='8' key="k">
                       
-                            <li><a href="<{:U('life/message',array('channel_id'=>$dh['channel_id']))}>"><img src="/static/default/wap/images/<{$dh.channel_img}>.png"><span><{$dh['channel']}></span></a></li>
+                            <li><a href="<{:U('life/message',array('channel_id'=>$dh['channel_id']))}>"><img src="__ROOT__/attachs/<{$dh.channel_img}>"><span><{$dh['channel']}></span></a></li>
                    
                          </volist>
                     </ul>
@@ -58,7 +58,7 @@
 					      <ul >
                                 <volist name="categorylist" id="dh" offset="8" length='8' key="k">
                       
-                            <li><a href="<{:U('life/message',array('channel_id'=>$dh['channel_id']))}>"><img src="/static/default/wap/images/<{$dh.channel_img}>.png"><span><{$dh.channel}></span></a></li>
+                            <li><a href="<{:U('life/message',array('channel_id'=>$dh['channel_id']))}>"><img src="__ROOT__/attachs/<{$dh.channel_img}>"><span><{$dh.channel}></span></a></li>
                    
                          </volist>
                             </ul>

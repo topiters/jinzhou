@@ -226,7 +226,7 @@ class LifeAction extends CommonAction {
             die('0');
         }
         $list = $Life->where($map)->order(array('top_date' => 'desc', 'last_time' => 'desc'))->limit($Page->firstRow . ',' . $Page->listRows)->select();
-        dump($map);
+//        dump($map);
         $this->assign('list', $list); // 赋值数据集
         $this->assign('page', $show); // 赋值分页输出
         $this->display(); // 输出模板

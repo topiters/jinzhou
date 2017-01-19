@@ -117,7 +117,7 @@ protected $Lifeservicecates = array();
     	//$list = D('Houseworksetting')->order(views)->where($m)->limit(0, 1)->select();
     	//精彩推荐
     	$map = array('closed' => 0,'city_id'=>$this->city_id);//开启多城市
-    	$order=array('yuyue_num'=>'desc');
+    	$order=array('views'=>'desc');
     	$list=D('Houseworksetting')->where($map)->order($order)->limit(0,3)->select();
     	
     	$this->assign('list',$list);

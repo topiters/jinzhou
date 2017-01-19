@@ -12,7 +12,7 @@
     <div class="jsglNr">
         <div class="selectNr" style="border-top: 1px solid #dbdbdb;">
             <div class="left">
-                <{:BA('shopcate/create','','添加一级分类','load','',600,550)}>
+                <{:BA('shopcate/create','','添加一级分类','load','',600,700)}>
             </div>
         </div>
 
@@ -31,13 +31,13 @@
                             <td style="padding-left:20px;"><{$var.cate_name}>(<{$var.cate_id}>)</td>
                             <td style="padding-left:70px;"><input name="orderby[<{$var.cate_id}>]" value="<{$var.orderby}>" type="text" class="remberinput w80" /></td>
                             <td style="text-align:center;">
-                                <{:BA('shopcate/create',array("parent_id"=>$var['cate_id']),'添加子分类','load','remberBtn',600,550)}>
+                                <{:BA('shopcate/create',array("parent_id"=>$var['cate_id']),'添加子分类','load','remberBtn',600,700)}>
                                 <eq name="var.is_hot" value="0">
                                 <{:BA('shopcate/hots',array("cate_id"=>$var["cate_id"]),'设为热门','act','remberBtn')}>
                         <else />
                         <{:BA('shopcate/hots',array("cate_id"=>$var["cate_id"]),'取消热门','act','remberBtn')}>
                         </eq>
-                        <{:BA('shopcate/edit',array("cate_id"=>$var["cate_id"]),'编辑','load','remberBtn',600,550)}>
+                        <{:BA('shopcate/edit',array("cate_id"=>$var["cate_id"]),'编辑','load','remberBtn',600,700)}>
                         <{:BA('shopcate/delete',array("cate_id"=>$var["cate_id"]),'删除','act','remberBtn')}>
                         </td>
                         </tr>

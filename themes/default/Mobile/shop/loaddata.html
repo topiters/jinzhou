@@ -164,12 +164,12 @@
 	<script src="/static/default/wap/css1/swiper1.min.js"></script>
 
 	<div class="shangjia">
-		<div class="suning" onclick="localhost.href='<{:U('mart/shop',array('id'=>$item['weidianid']))}>'">
+		<div class="suning" onclick="location.href='<{:U('mart/shop',array('id'=>$item['shop_id']))}>'">
 			<div class="su"><img src="<{:config_img($item['logo'])}>"></div>
 			<div class="ping">
 				<div class="ss_1">
 					<a>
-						<{$item[ 'shop_name']}>
+						<{$item['shop_name']}>
 					</a>
 				</div>
 				<div class="ss_2">
@@ -180,8 +180,8 @@
 				</div>
 				<div class="ss_3">
 					<p>销量&nbsp;
-						<{$item[ 'num']}>&nbsp;&nbsp;共
-							<{$item[ 'con']}>件宝贝</p>
+						<{$item['num']}>&nbsp;&nbsp;共
+							<{$item['con']}>件宝贝</p>
 				</div>
 			</div>
 			<div class="jin">
@@ -189,7 +189,7 @@
 					<{$item.d}>
 				</div>
 				<div class="j_2">
-					<a href="<{:U('mart/shop',array('id'=>$item['weidianid']))}>"><img src="/static/default/wap/images/liebiao01_06.png"></a>
+					<a href="<{:U('mart/shop',array('id'=>$item['shop_id']))}>"><img src="/static/default/wap/images/liebiao01_06.png"></a>
 				</div>
 			</div>
 		</div>

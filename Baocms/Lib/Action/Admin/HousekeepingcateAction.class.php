@@ -4,8 +4,8 @@
 class HousekeepingcateAction extends CommonAction {
 
 
-   private $create_fields = array('cate_name', 'orderby');
-    private $edit_fields = array('cate_name', 'orderby');
+   private $create_fields = array('cate_name', 'orderby','img');
+    private $edit_fields = array('cate_name', 'orderby','img');
 
     public function index() {
         $housekeepingcate = D('Housekeepingcate');

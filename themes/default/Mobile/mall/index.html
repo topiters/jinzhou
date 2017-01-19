@@ -418,14 +418,7 @@
 						<li>
 							<a href="<{:U('mall/detail',array('goods_id'=>$item['goods_id']))}>">
 								<img src="<{:config_img($item['photo'])}>" style="height:72px; width:80%;">
-								<?php 
-            						$id=$item['shop_id'];
-                					$map=array("shop_id"=>$id);
-                					$shopname=D("Shop")->where($map)->limit(0,1)->select();
-            					?>
-								<volist name="shopname" id="val">
-									<span>【<{$val['shop_name']}>】</span>
-								</volist>
+								<span>【<{$item['title']}>】</span>
 							</a>
 						</li>
 					</volist>

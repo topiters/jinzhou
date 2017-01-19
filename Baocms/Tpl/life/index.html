@@ -21,9 +21,9 @@
                                 <span>分类</span>
                                 <select id="cate_id" name="cate_id" class="select manageSelect">
                                     <foreach name="channelmeans" item="item" key="key">
-                                        <option value=""><{$item}></option>
+                                        <option value=""><{$item['channel_name']}></option>
                                         <foreach name="cates" item="it" key="k">
-                                            <eq name="it.channel_id" value="$key">
+                                            <eq name="it.channel_id" value="$item['channel_id']">
                                             <option <eq name="cate_id" value="$it.cate_id">selected="selected"</eq> value="<{$it.cate_id}>">&nbsp;&nbsp;-<{$it.cate_name}></option>
                                             </eq>
                                         </foreach>

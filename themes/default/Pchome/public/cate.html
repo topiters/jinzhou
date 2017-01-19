@@ -5,7 +5,8 @@
         <php>$i++;if($i <= 8){</php>
         <div <if condition="$i == 1">class="item2 bo"<else/>class="item2"</if> >
             <h3>
-                <div class="left ico ico_<{$i}>"></div>
+                <!--<div class="left ico ico_<{$i}>"></div>-->
+                <img src="__ROOT__/attachs/<{$item.img}>" alt="" class="left ico"/>
                 <div class="wz">
                 	<a class="bt1" title="<{$item.cate_name}>" target="_blank" href="<{:U('mall/index',array('cat'=>$item['cate_id']))}>"><{:msubstr($item['cate_name'],0,2,'utf-8',false)}></a>
                     <div class="bt2">

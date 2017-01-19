@@ -1,7 +1,7 @@
 <?php
 class GoodscateAction extends CommonAction{
-    private $create_fields = array('cate_name', 'rate', 'select1', 'select2', 'select3', 'select4', 'select5', 'orderby');
-    private $edit_fields = array('cate_name', 'rate', 'select1', 'select2', 'select3', 'select4', 'select5', 'orderby');
+    private $create_fields = array('cate_name', 'rate', 'select1', 'select2', 'select3', 'select4', 'select5', 'orderby' , 'img');
+    private $edit_fields = array('cate_name', 'rate', 'select1', 'select2', 'select3', 'select4', 'select5', 'orderby' , 'img');
     public function index(){
         $Goodscate = D('Goodscate');
         $list = $Goodscate->fetchAll();

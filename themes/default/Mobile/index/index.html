@@ -276,27 +276,9 @@
 				<div class="content-1">
 					<ul>
 						<volist name="daohang" id="dh" offset="0" length='8' key="k">
-                            <if condition="$dh.cate_id eq 25">
                                 <li>
-                                    <a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="/static/default/wap/images/2.png"><span><{$dh.cate_name}></span></a>
+                                    <a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="__ROOT__/attachs/<{$dh.img}>"><span><{$dh.cate_name}></span></a>
                                 </li>
-                                <elseif condition="$dh.cate_id eq 16"/>
-                                <li>
-                                    <a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="/static/default/wap/images/33.png"><span><{$dh.cate_name}></span></a>
-                                </li>
-                                <elseif condition="$dh.cate_id eq 21"/>
-                                <li>
-                                    <a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="/static/default/wap/images/44.png"><span><{$dh.cate_name}></span></a>
-                                </li>
-                                <elseif condition="$dh.cate_id eq 23"/>
-                                <li>
-                                    <a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="/static/default/wap/images/8.png"><span><{$dh.cate_name}></span></a>
-                                </li>
-                                <else/>
-                                <li>
-                                    <a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="/static/default/wap/images/<{$k}>.png"><span><{$dh.cate_name}></span></a>
-                                </li>
-                            </if>
 						</volist>
 					</ul>
 
@@ -307,19 +289,9 @@
 				<div class="content-1">
 					<ul>
 						<volist name="daohang" id="dh" offset="8" length='8' key="k">
-                            <if condition="$dh.cate_id eq 27">
-                                <li>
-                                    <a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="/static/default/wap/images/13.png"><span><{$dh.cate_name}></span></a>
-                                </li>
-                                <elseif condition="$dh.cate_id eq 26"/>
-                                <li>
-                                    <a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="/static/default/wap/images/3.png"><span><{$dh.cate_name}></span></a>
-                                </li>
-                                <else/>
 							<li>
-								<a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="/static/default/wap/images/<{$k+8}>.png"><span><{$dh.cate_name}></span></a>
+								<a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="__ROOT__/attachs/<{$dh.img}>"><span><{$dh.cate_name}></span></a>
 							</li>
-                            </if>
 						</volist>
 
 						<volist name='nav' id='item'>
@@ -492,7 +464,7 @@
 					<ul>
 						<volist name="shoplist" id="item" offset="0" length='3'>
 							<li>
-								<a href="<{:U('mart/shop',array('id'=>$item['weidianid']))}>"><img src="__ROOT__/attachs/<{$item.logo|default='default.jpg'}>">
+								<a href="<{:U('mart/shop',array('id'=>$item['shop_id']))}>"><img src="__ROOT__/attachs/<{$item.logo|default='default.jpg'}>">
 									<span><p><{$item.shop_name}></p></span>
 								</a>
 							</li>
@@ -506,7 +478,7 @@
 					<ul>
 						<volist name="shoplist" id="item" offset="3" length='3'>
 							<li>
-								<a href="<{:U('mart/shop',array('id'=>$item['weidianid']))}>"><img src="__ROOT__/attachs/<{$item.logo|default='default.jpg'}>">
+								<a href="<{:U('mart/shop',array('id'=>$item['shop_id']))}>"><img src="__ROOT__/attachs/<{$item.logo|default='default.jpg'}>">
 									<span><p><{$item.shop_name}></p></span>
 								</a>
 							</li>

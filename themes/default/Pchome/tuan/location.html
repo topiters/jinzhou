@@ -23,13 +23,13 @@
     <div class="navList">
         <!--<div class="navListBg">&nbsp;</div>-->
         <ul>
-            <li class="navListAll zy_navListAll"><span class="navListAllt">全部抢购分类<em></em></span>
+            <li class="navListAll zy_navListAll"><span class="navListAllt">全部团购分类<em></em></span>
                 <div class="shadowy navAll">
                     <include file="public:cate"/>
                 </div>
             </li>
-            <li class="navLi"><a class="navA <if condition='$ctl eq tuan and $act eq index'>on</if> " href="<{:U('tuan/index')}>">首页</a></li>
-            <li class="navLi"><a class="navA <if condition='$ctl eq tuan and $act eq nearby'>on</if>" href="<{:U('tuan/nearby')}>">身边抢购</a></li>
+            <li class="navLi"><a class="navA <if condition='$ctl eq tuan and $act eq index'>on</if> " href="<{:U('index/index')}>">首页</a></li>
+            <li class="navLi"><a class="navA <if condition='$ctl eq tuan and $act eq nearby'>on</if>" href="<{:U('tuan/nearby')}>">身边团购</a></li>
             <li class="navLi"><a class="navA " href="<{:U('tuan/index',array('new'=>1))}>">今日新单</a></li>
             <li class="navLi"><a class="navA" href="<{:U('tuan/index',array('hot'=>1))}>">热门疯抢</a></li>
         </ul>
@@ -38,10 +38,10 @@
 <div class="content zy_content">
     <div class="locaTop">
         <div class="left locaTop_l">
-            <p class="locaTopP">在地图上<span>选择位置</span>，查看<span>附近抢购</span></p>
-            <if condition="empty($MEMBER)"><p class="locaTopDl">想查看之前保存位置的附近抢购。请<a href="<{:U('passport/login')}>">登录</a></p></if>
+            <p class="locaTopP">在地图上<span>选择位置</span>，查看<span>附近团购</span></p>
+            <if condition="empty($MEMBER)"><p class="locaTopDl">想查看之前保存位置的附近团购。请<a href="<{:U('passport/login')}>">登录</a></p></if>
         </div>
-        <div class="right locaTop_r"><span>微信扫一扫，<br />随时随地查看附近抢购</span>
+        <div class="right locaTop_r"><span>微信扫一扫，<br />随时随地查看附近团购</span>
             <img src="__ROOT__/attachs/<{$CONFIG.site.wxcode}>" width="81" height="81" /></div>
     </div>
     <div class="locaNr">
@@ -107,7 +107,7 @@
                                             height: 80, // 信息窗口高度
                                             enableMessage: false,
                                         }
-                                        var infoWindow = new BMap.InfoWindow("<div id='addr' style='height:48px; line-height:24px;'>地址:" + addr + "</div>" + "\r\n<div style='height:24px; line-height:24px; text-align:center; padding:0px 15px; border:1px solid #dedede; width:100px; margin:0px auto;'><a id='search_tuan' href='javascript:void(0);'>查看附近抢购</a></div>", opts);  // 创建信息窗口对象 
+                                        var infoWindow = new BMap.InfoWindow("<div id='addr' style='height:48px; line-height:24px;'>地址:" + addr + "</div>" + "\r\n<div style='height:24px; line-height:24px; text-align:center; padding:0px 15px; border:1px solid #dedede; width:100px; margin:0px auto;'><a id='search_tuan' href='javascript:void(0);'>查看附近团购</a></div>", opts);  // 创建信息窗口对象
                                         map.openInfoWindow(infoWindow, p); //开启信息窗口
                                         setTimeout(function () {
                                             $('#search_tuan').on('click', function () {
@@ -140,7 +140,7 @@
                                                 height: 80, // 信息窗口高度
                                                 enableMessage: false,
                                             }
-                                            var infoWindow = new BMap.InfoWindow("<div id='addr' style='height:48px; line-height:24px;'>地址:" + addr + "</div>" + "\r\n<div style='height:24px; line-height:24px; text-align:center; padding:0px 15px; border:1px solid #dedede; width:100px; margin:0px auto;'><a id='search_tuan' href='javascript:void(0);'>查看附近抢购</a></div>", opts);  // 创建信息窗口对象 
+                                            var infoWindow = new BMap.InfoWindow("<div id='addr' style='height:48px; line-height:24px;'>地址:" + addr + "</div>" + "\r\n<div style='height:24px; line-height:24px; text-align:center; padding:0px 15px; border:1px solid #dedede; width:100px; margin:0px auto;'><a id='search_tuan' href='javascript:void(0);'>查看附近团购</a></div>", opts);  // 创建信息窗口对象
                                             map.openInfoWindow(infoWindow, point); //开启信息窗口
                                             setTimeout(function () {
                                                 $('#search_tuan').on('click', function () {
@@ -212,7 +212,7 @@
                                                 // 判断状态是否正确      
                                                 var s = [];
                                                 for (var i = 0; i < results.getCurrentNumPois(); i++) {
-                                                    s.push("<li class='jq_li'><em></em><a class='locaNr_look' href='javascript:void(0);'>查看附近抢购</a><h3>" + results.getPoi(i).title + "</h3><p class='jq_addr'>地址：" + results.getPoi(i).address + "</p></li>");
+                                                    s.push("<li class='jq_li'><em></em><a class='locaNr_look' href='javascript:void(0);'>查看附近团购</a><h3>" + results.getPoi(i).title + "</h3><p class='jq_addr'>地址：" + results.getPoi(i).address + "</p></li>");
                                                 }
                                                 //var r = ["<p class='locaNr_serJg'>共有" + results.getNumPois() + "条结果</p>"];
                                                 //var p = ["<div class='x'>"+results.getPageIndex()+"</div>"];

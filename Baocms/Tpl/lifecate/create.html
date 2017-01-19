@@ -17,7 +17,7 @@
                     <td class="rgTdBt">
                         <select class="manageSelect w200" name="data[channel_id]">
                             <foreach name="channelmeans" item="item" key="key">
-                                <option value="<{$key}>" <eq name="detail.channel_id" value="$key">selected="selected"</eq> ><{$item}></option>
+                                <option value="<{$item['channel_id']}>" <eq name="detail.channel_id" value="$item['channel_id']">selected="selected"</eq> ><{$item['channel_name']}></option>
                             </foreach>
                         </select>
                     </td>

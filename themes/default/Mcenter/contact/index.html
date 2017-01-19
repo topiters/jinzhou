@@ -1,7 +1,7 @@
 <include file="public:header"/>
 <style>
 *{margin: 0;padding: 0;box-sizing: border-box;}
-.service_container{background: #f2f2f2;padding-top: 50px;}
+.service_container{padding-top: 50px;}
 .service_tip{padding: 0 30px;}
 .service_tip p{font-size: 16px;margin: 0;line-height: 2;text-indent: 20px;}
 .service_tip p span{color: #c62932;}
@@ -49,10 +49,10 @@
 <script type="text/javascript">
     $(function () {
         var dH = $(document).height();
-        $(".service_container").css("height", dH);
+        $(".service_container").css("height", 480);
     })
-    $(window).scroll(function () {
-        $(this).scrollTop(0)
-    });
+//    $(window).scroll(function () {
+//        $(this).scrollTop(0)
+//    });
 </script>
 <include  file='public:footer'/>

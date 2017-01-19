@@ -4,8 +4,8 @@
 
 class ShopcateAction extends CommonAction {
 
-    private $create_fields = array('cate_name','d1','d2','d3','title', 'orderby');
-    private $edit_fields = array('cate_name','d1','d2','d3','title', 'orderby');
+    private $create_fields = array('cate_name','d1','d2','d3','title', 'orderby','img');
+    private $edit_fields = array('cate_name','d1','d2','d3','title', 'orderby','img');
 
     public function index() {
         $Shopcate = D('Shopcate');

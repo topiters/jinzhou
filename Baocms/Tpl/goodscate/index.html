@@ -12,7 +12,7 @@
         <form id="cate_action" action="" target="baocms_frm" method="post">
             <div class="selectNr" style="border-top: 1px solid #dbdbdb;">
                 <div class="left">
-                    <{:BA('goodscate/create','','添加一级分类','load','',600,300)}>
+                    <{:BA('goodscate/create','','添加一级分类','load','',600,480)}>
                 </div>
                 <div class="right">
                     <{:BA('goodscate/update','','更新','list','remberBtn')}>
@@ -30,11 +30,11 @@
                         <if condition="($var.parent_id eq 0)">  
                             <tr bgcolor="#f1f1f1" height="48px" style="font-size:14px; color:#545454; text-align:left; line-height:48px;">
                                 <td style="padding-left:20px;"><{$var.cate_name}>(<{$var.cate_id}>)</td>
-                                <td style="padding-left:70px;"><input name="orderby[<{$var.cate_id}>]" value="<{$var.orderby}>" type="text" class="remberinput w80" /></td> 
+                                <td style="padding-left:70px;"><input name="orderby[<{$var.cate_id}>]" value="<{$var.orderby}>" type="text" class="remberinput w80" /></td>
                                 <td><{$var.rate}>‰（千分）</td>
                                 <td style="text-align: center;">
-                                    <{:BA('goodscate/create',array("parent_id"=>$var["cate_id"]),'添加子分类','load','remberBtn',600,300)}>
-                                    <{:BA('goodscate/edit',array("cate_id"=>$var["cate_id"]),'编辑','load','remberBtn',600,300)}>
+                                    <{:BA('goodscate/create',array("parent_id"=>$var["cate_id"]),'添加子分类','load','remberBtn',600,480)}>
+                                    <{:BA('goodscate/edit',array("cate_id"=>$var["cate_id"]),'编辑','load','remberBtn',600,480)}>
                                     <{:BA('goodscate/delete',array("cate_id"=>$var["cate_id"]),'删除','act','remberBtn')}>
                                 </td>
                             </tr>
@@ -45,7 +45,7 @@
                                     <td><input name="orderby[<{$var2.cate_id}>]" value="<{$var2.orderby}>" type="text" class="remberinput w80" /></td>
                           <td><{$var2.rate}>‰（千分）</td>
                                     <td>
-                                        <{:BA('goodscate/edit',array("cate_id"=>$var2["cate_id"]),'编辑','load','remberBtn',600,300)}>
+                                        <{:BA('goodscate/edit',array("cate_id"=>$var2["cate_id"]),'编辑','load','remberBtn',600,480)}>
                                         <{:BA('goodscate/delete',array("cate_id"=>$var2["cate_id"]),'删除','act','remberBtn')}>
                                     </td>
                                 </tr>

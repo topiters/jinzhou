@@ -4,8 +4,8 @@
 
 class GoodsshopcateAction extends CommonAction {
 
-    private $create_fields = array( 'cate_name', 'orderby', 'shop_id');
-    private $edit_fields = array( 'cate_name', 'orderby', 'shop_id');
+    private $create_fields = array( 'cate_name', 'orderby', 'shop_id','img');
+    private $edit_fields = array( 'cate_name', 'orderby', 'shop_id','img');
 	
 	 public function _initialize() {
         parent::_initialize();
@@ -110,10 +110,10 @@ class GoodsshopcateAction extends CommonAction {
         if (is_numeric($cate_id) && ($cate_id = (int) $cate_id)) {
             $obj = D('Goodsshopcate');
             if (!$detail = $obj->find($cate_id)) {
-                $this->baoError('改分类不存在');
+                $this->baoError('分类不存在');
             }
             if($detail['shop_id'] != $this->shop_id){
-                $this->baoError('改分类不存在');
+                $this->baoError('分类不存在');
             }
             
             $obj->delete($cate_id);

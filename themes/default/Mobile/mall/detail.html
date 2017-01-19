@@ -228,10 +228,10 @@
 <div class="tuan-detail2">
 	<div class="line status">
 		<div class="x6" style="float:left;">
-			<span class="ui-starbar"><span style="width:<{:round($score*10,2)}>%"></span></span>
+			<span class="ui-starbar"><span style="width:<{:round($score*10*2,2)}>%"></span></span>
 		</div>
 		<div class="x6" style="float:left;">
-			<span class="float-right"><a href="<{:U('mall/dianping',array('goods_id'=>$detail['goods_id']))}>"><{$pingnum}>人评价了该商品 </a><i class="icon-angle-right"></i></span>
+			<span class="float-right" style="margin-right: 10px;"><a href="<{:U('mall/dianping',array('goods_id'=>$detail['goods_id']))}>"><{$pingnum}>人评价了该商品 </a><i class="icon-angle-right"></i></span>
 		</div>
 	</div>
 </div>

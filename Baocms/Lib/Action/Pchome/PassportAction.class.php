@@ -83,10 +83,10 @@ class PassportAction extends CommonAction
     public function sendsms()
     {
         if (!($mobile = htmlspecialchars($_POST['mobile']))) {
-            die('请输入正确的手机号码1');
+            die('请输入正确的手机号码');
         }
         if (!isMobile($mobile)) {
-            die('请输入正确的手机号码2');
+            die('请输入正确的手机号码');
         }
         if ($user = D('Users')->getUserByAccount($mobile)) {
             die('手机号码已经存在！');

@@ -59,6 +59,7 @@
 
 .content {
     width: 100%;
+    margin-top: 10px;
 }
 
 .content-1 {
@@ -208,7 +209,7 @@
   </div>
 
 
-<div class="content">
+<div class="content" >
 
     <div class="swiper-container">
         <div class="swiper-wrapper">
@@ -217,7 +218,7 @@
                     <ul>
                         <volist name="fenlei" id="dh" offset="0" length="8" key="k">
                             <li>
-                                <a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="/static/default/wap/images/<{$k}>.png"><span><{$dh.cate_name}></span></a>
+                                <a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="__ROOT__/attachs/<{$dh.img|default='cat.png'}>"><span><{$dh.cate_name}></span></a>
                             </li>
                         </volist>
                     </ul>
@@ -231,7 +232,7 @@
                             <volist name="fenlei" id="dh" offset="8" length="8" key="k">
 
                                 <li>
-                                    <a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="/static/default/wap/images/<{$k+8}>.png"><span><{$dh.cate_name}></span></a>
+                                    <a href="<{:U('mall/fenlei',array('cate_id'=>$dh['cate_id']))}>"><img src="__ROOT__/attachs/<{$dh.img|default='cat.png'}>"><span><{$dh.cate_name}></span></a>
                                 </li>
 
                             </volist>

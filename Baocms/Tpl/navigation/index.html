@@ -20,9 +20,6 @@
                 <div class="left">
                  <{:BA('navigation/create','','添加导航')}>
                              <a <if condition="($aready eq '4') OR ($aready eq '')">class="on"</if> href="<{:U('admin/navigation/index', array('aready' => 4))}>">电脑主导航列表</a>
-                    <a <eq name='aready' value='2'>class="on"</eq> href="<{:U('admin/navigation/index', array('aready' => 2))}>">手机首页导航列表</a>
-           
-     
                 </div>
                 <div class="right">
                     <{:BA('navigation/update','','更新','list','remberBtn')}>

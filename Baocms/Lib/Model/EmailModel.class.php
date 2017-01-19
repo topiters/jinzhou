@@ -41,7 +41,7 @@ class EmailModel extends CommonModel {
             }
             $this->mailobj->Subject = $title;
             $this->mailobj->Body = $content;
-            dump($content);
+//            dump($this->mailobj);
             $this->mailobj->send();
             dump($this->getEorrer());die;
             return $this->mailobj->send();
@@ -56,6 +56,8 @@ class EmailModel extends CommonModel {
         $mail->Host = $config['mail']['smtp'];
         $mail->SMTPAuth = true;
         $mail->CharSet = "utf-8";
+//        $mail->SMTPAutoTLS = false;
+//        $mail->SMTPSecure = 'ssl';
         $mail->Username = $config['mail']['username'];
         $mail->Password = $config['mail']['password'];
         $mail->Port = $config['mail']['port'];

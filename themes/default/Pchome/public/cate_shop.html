@@ -5,9 +5,10 @@
         <php>$k++;</php>
         <div <if condition="$i == 1">class="item2 bo"<else/>class="item2"</if> >
             <h3>
-                <div class="left ico ico_<{$k}>"></div>
+                <!--<div class="left ico ico_<{$k}>"></div>-->
+                <img src="__ROOT__/attachs/<{$item.img}>" alt="" class="left ico"/>
                 <div class="wz">
-                	<a class="bt1" title="<{$item}>" target="_blank" href="<{:U('shop/index',array('cat'=>$item['cate_id']))}>"> <{:msubstr($var['cate_name'],0,4,'utf-8',false)}></a>
+                	<a class="bt1" title="<{$item}>" target="_blank" href="<{:U('shop/index',array('cat'=>$item['cate_id']))}>"> <{:msubstr($item['cate_name'],0,4,'utf-8',false)}></a>
                     <div class="bt2">
                 		 <php>$i=0;</php>
 							<foreach name="shopcates" item="var">
@@ -23,7 +24,7 @@
                 <div class="clear"></div>
             </h3>
             <div class="menu_flklist2">
-                <div class="menu_fl2t"><a title="<{$item.cate_name}>" target="_blank" href="<{:U('shop/index',array('cat'=>$item['cate_id']))}>"><{:msubstr($var['cate_name'],0,4,'utf-8',false)}></a></div>
+                <div class="menu_fl2t"><a title="<{$item.cate_name}>" target="_blank" href="<{:U('shop/index',array('cat'=>$item['cate_id']))}>"><{:msubstr($item['cate_name'],0,4,'utf-8',false)}></a></div>
                 <div class="menu_fl2nr">
                     <foreach name="shopcates" item="var">
 						<if condition="$var['parent_id'] eq $item['cate_id']">

@@ -14,7 +14,7 @@
               
                     <volist name="place" id="item" key="pl">
 					
-					<if condition="($pl eq 14) OR ($pl eq 16) OR ($pl eq 19)">
+					<if condition="($pl eq 14) OR ($pl eq 16) OR ($pl eq 1) ">
                     
                         <tr>
                             <td colspan="4" style="text-align: left; padding-left: 20px; font-size: 16px; font-weight: bold;"><{$item}></td>
@@ -27,9 +27,7 @@
                                         (<{$var.site_id}>)<{$var.site_name}>
                                         <{:BA('ad/index',array("site_id"=>$var["site_id"]),'管理广告','','remberBtn')}>
                                     </td>
-                                    <php>$i++; if($i%4==0) echo '</tr><tr>';</php> 
-                                 
-                                 
+                                    <php>$i++; if($i%4==0) echo '</tr><tr>';</php>
                             </if>
                         </foreach>
                            </tr>
