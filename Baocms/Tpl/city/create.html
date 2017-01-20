@@ -56,19 +56,7 @@
                     </script>
                 </td>
                 </tr>
-                
-                
-                <tr>
-                    <td class="lfTdBt">城市模板风格：</td>
-                    <td class="rgTdBt">
-                        <select name="data[theme]" class="select">
-                            <option value="">请选择</option>
-                            <foreach name="themes" item="item"> 
-                                <option <eq name="detail.theme" value="$item.theme"> selected="selected"</eq> value="<{$item.theme}>"><{$item.name}></option>
-                            </foreach>
-                        </select>
-                    </td>
-                </tr>
+
                  <tr>
                     <td class="lfTdBt">首字母：</td>
                     <td class="rgTdBt"><input type="text" name="data[first_letter]" value="<{$detail.first_letter|default=''}>" class="manageInput" />
