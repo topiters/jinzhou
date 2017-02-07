@@ -24,20 +24,62 @@
 
 <div class="blank-10"></div>
 
-<div class="container">
+<!--<div class="container">-->
 
-	<div id="uploader" class="uploader">
+	<!--<div id="uploader" class="uploader">-->
 
-		<div id="filepicker">选择图片</div>
+		<!--<div id="filepicker">选择图片</div>-->
 
-		<div id="filelist" class="uploader-list"></div>
+		<!--<div id="filelist" class="uploader-list"></div>-->
 
+	<!--</div>-->
+
+	<!--<div class="blank-10"></div>-->
+
+<!--</div>-->
+	<div class="Upload-img-box">
+		<div class="Upload-btn"><input type="file" id="fileToUpload" name="fileToUpload" data-role="none">选择图片</div>
+		<div class="Upload-img">
+			<div class="list-img loading" style="display:none;"><img src=""></div>
+			<div class="list-img jq_photo" style="display:none;"></div>
+		</div>
 	</div>
 
-	<div class="blank-10"></div>
+	<script type="text/javascript" src="/static/default/wap/js/ajaxfileupload.js"></script>
+	<script>
+        function ajaxupload() {
+            $(".loading").show();
+            $.ajaxFileUpload({
+                url: '<{:U("app/upload/upload",array("model"=>"life"))}>',
+                type: 'post',
+                fileElementId: 'fileToUpload',
+                dataType: 'text',
+                secureuri: false, //一般设置为false
+                success: function (data, status) {
+                    data = data.replace('thumb_', '');
+                    $(".loading").hide();
+                    var str = '<div class="newImg"><img src="__ROOT__/attachs/' + data + '"><img src="/themes/default/Mobile/statics/img/cha.png" class="cha"/><input type="hidden" name="data[photo]" value="' + data + '" /></div>';
+                    $(".jq_photo").show().append(str);
+                    $("#fileToUpload").unbind('change');
+                    $("#fileToUpload").change(function () {
+                        ajaxupload();
+                    });
+                }
+            });
+        }
+        $(document).ready(function () {
+            $("#fileToUpload").change(function () {
+                ajaxupload();
+            });
+            $(document).on("click", ".photo img", function () {
+                $(this).parent().remove();
+            });
+        });
+        $(document).on("click", ".cha", function () {
+            $(this).parent().remove();
+        });
 
-</div>
-
+	</script>
 
 
 <div class="blank-10 bg border-top"></div>

@@ -65,7 +65,7 @@ class IndexAction extends CommonAction {
         $this->assign('sign_day' , $sign_day = (int)D('Usersign')->where(array('user_id' => $this->uid , 'create_time' => array(array('ELT' , NOW_TIME) , array('EGT' , $bg_time))))->count());
 
         //首页推荐美食
-        $c['city_id'] = $this->city_id;
+        //$c['city_id'] = $this->city_id;
         $c['closed'] = 0;
         $c['audit'] = 1;
         $c['end_date'] = array("EGT" , TODAY);

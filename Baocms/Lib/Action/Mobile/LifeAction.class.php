@@ -421,7 +421,7 @@ class LifeAction extends CommonAction {
                 $lat = $this->_CONFIG['site']['lat'];
                 $lng = $this->_CONFIG['site']['lng'];
             }
-            $this->assign('areas', D('Area')->fetchAll());
+            $this->assign('areas', D('Area')->select());
             $this->assign('business', D('Business')->fetchAll());
             $this->assign('cate', $cate);
             $attrs = D('Lifecateattr')->getAttrs($cat);
